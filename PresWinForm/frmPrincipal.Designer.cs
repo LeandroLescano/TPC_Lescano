@@ -30,11 +30,15 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPrincipal));
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.tspEstatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tspCompras = new System.Windows.Forms.ToolStripButton();
-            this.tspVentas = new System.Windows.Forms.ToolStripButton();
-            this.tspEstatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.tspVentas = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.tspStock = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.tspProveedores = new System.Windows.Forms.ToolStripButton();
             this.statusStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -49,13 +53,23 @@
             this.statusStrip1.TabIndex = 0;
             this.statusStrip1.Text = "statusStrip1";
             // 
+            // tspEstatus
+            // 
+            this.tspEstatus.Name = "tspEstatus";
+            this.tspEstatus.Size = new System.Drawing.Size(100, 17);
+            this.tspEstatus.Text = "Logueado como: ";
+            // 
             // toolStrip1
             // 
             this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tspCompras,
             this.toolStripSeparator1,
-            this.tspVentas});
+            this.tspVentas,
+            this.toolStripSeparator2,
+            this.tspStock,
+            this.toolStripSeparator3,
+            this.tspProveedores});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(800, 25);
@@ -72,6 +86,11 @@
             this.tspCompras.Text = "Compras";
             this.tspCompras.Click += new System.EventHandler(this.tspCompras_Click);
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
             // tspVentas
             // 
             this.tspVentas.Image = ((System.Drawing.Image)(resources.GetObject("tspVentas.Image")));
@@ -81,16 +100,34 @@
             this.tspVentas.Size = new System.Drawing.Size(61, 22);
             this.tspVentas.Text = "Ventas";
             // 
-            // tspEstatus
+            // toolStripSeparator2
             // 
-            this.tspEstatus.Name = "tspEstatus";
-            this.tspEstatus.Size = new System.Drawing.Size(100, 17);
-            this.tspEstatus.Text = "Logueado como: ";
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
             // 
-            // toolStripSeparator1
+            // tspStock
             // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            this.tspStock.Image = ((System.Drawing.Image)(resources.GetObject("tspStock.Image")));
+            this.tspStock.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tspStock.Margin = new System.Windows.Forms.Padding(1, 1, 0, 2);
+            this.tspStock.Name = "tspStock";
+            this.tspStock.Size = new System.Drawing.Size(56, 22);
+            this.tspStock.Text = "Stock";
+            this.tspStock.Click += new System.EventHandler(this.tspStock_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            // 
+            // tspProveedores
+            // 
+            this.tspProveedores.Image = ((System.Drawing.Image)(resources.GetObject("tspProveedores.Image")));
+            this.tspProveedores.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tspProveedores.Name = "tspProveedores";
+            this.tspProveedores.Size = new System.Drawing.Size(92, 22);
+            this.tspProveedores.Text = "Proveedores";
+            this.tspProveedores.Click += new System.EventHandler(this.tspProveedores_Click);
             // 
             // frmPrincipal
             // 
@@ -119,6 +156,10 @@
         private System.Windows.Forms.ToolStripButton tspVentas;
         private System.Windows.Forms.ToolStripStatusLabel tspEstatus;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripButton tspStock;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripButton tspProveedores;
     }
 }
 

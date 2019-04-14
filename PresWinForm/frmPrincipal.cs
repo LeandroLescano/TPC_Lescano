@@ -23,5 +23,19 @@ namespace PresWinForm
             Compras.Show();
             this.WindowState = FormWindowState.Minimized;
         }
+
+        private void tspStock_Click(object sender, EventArgs e)
+        {
+            frmStock Stock = new frmStock();
+            Stock.Show();
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void tspProveedores_Click(object sender, EventArgs e)
+        {
+            frmProveedores Proveedores = new frmProveedores();
+            Proveedores.Show();
+            this.WindowState = FormWindowState.Minimized;
+        }
     }
 }
