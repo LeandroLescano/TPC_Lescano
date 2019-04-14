@@ -1,0 +1,11 @@
+C:\Users\Tateh\Desktop\Repos Git\TPC_Lescano\PresWinForm\bin\Debug\PresWinForm.exe.config
+C:\Users\Tateh\Desktop\Repos Git\TPC_Lescano\PresWinForm\bin\Debug\PresWinForm.exe
+C:\Users\Tateh\Desktop\Repos Git\TPC_Lescano\PresWinForm\bin\Debug\PresWinForm.pdb
+C:\Users\Tateh\Desktop\Repos Git\TPC_Lescano\PresWinForm\obj\Debug\PresWinForm.csprojAssemblyReference.cache
+C:\Users\Tateh\Desktop\Repos Git\TPC_Lescano\PresWinForm\obj\Debug\PresWinForm.frmPrincipal.resources
+C:\Users\Tateh\Desktop\Repos Git\TPC_Lescano\PresWinForm\obj\Debug\PresWinForm.Properties.Resources.resources
+C:\Users\Tateh\Desktop\Repos Git\TPC_Lescano\PresWinForm\obj\Debug\PresWinForm.csproj.GenerateResource.cache
+C:\Users\Tateh\Desktop\Repos Git\TPC_Lescano\PresWinForm\obj\Debug\PresWinForm.csproj.CoreCompileInputs.cache
+C:\Users\Tateh\Desktop\Repos Git\TPC_Lescano\PresWinForm\obj\Debug\PresWinForm.exe
+C:\Users\Tateh\Desktop\Repos Git\TPC_Lescano\PresWinForm\obj\Debug\PresWinForm.pdb
+C:\Users\Tateh\Desktop\Repos Git\TPC_Lescano\PresWinForm\obj\Debug\PresWinForm.frmCompras.resources
