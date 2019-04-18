@@ -38,7 +38,7 @@
             this.Name = "frmCompras";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Compras";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmCompras_FormClosing);
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.ResumeLayout(false);
 
         }

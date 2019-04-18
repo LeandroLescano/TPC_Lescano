@@ -21,21 +21,42 @@ namespace PresWinForm
         {
             frmCompras Compras = new frmCompras();
             Compras.Show();
-            this.WindowState = FormWindowState.Minimized;
         }
 
         private void tspStock_Click(object sender, EventArgs e)
         {
             frmStock Stock = new frmStock();
             Stock.Show();
-            this.WindowState = FormWindowState.Minimized;
         }
 
         private void tspProveedores_Click(object sender, EventArgs e)
         {
             frmProveedores Proveedores = new frmProveedores();
             Proveedores.Show();
-            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void btnComprar_Click(object sender, EventArgs e)
+        {
+            frmCompras Compras = new frmCompras();
+            Compras.Show();
+        }
+
+        private void btnVender_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnStock_Click(object sender, EventArgs e)
+        {
+            frmStock Stock = new frmStock();
+            Stock.Show();
+
+        }
+
+        private void btnProveedores_Click(object sender, EventArgs e)
+        {
+            frmProveedores Proveedores = new frmProveedores();
+            Proveedores.Show();
         }
     }
 }

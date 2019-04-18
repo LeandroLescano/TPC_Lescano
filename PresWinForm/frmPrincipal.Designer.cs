@@ -31,16 +31,11 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPrincipal));
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.tspEstatus = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.tspCompras = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.tspVentas = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.tspStock = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.tspProveedores = new System.Windows.Forms.ToolStripButton();
+            this.btnVender = new System.Windows.Forms.Button();
+            this.btnStock = new System.Windows.Forms.Button();
+            this.btnComprar = new System.Windows.Forms.Button();
+            this.btnProveedores = new System.Windows.Forms.Button();
             this.statusStrip1.SuspendLayout();
-            this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // statusStrip1
@@ -55,94 +50,78 @@
             // 
             // tspEstatus
             // 
+            this.tspEstatus.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.tspEstatus.Name = "tspEstatus";
             this.tspEstatus.Size = new System.Drawing.Size(100, 17);
             this.tspEstatus.Text = "Logueado como: ";
             // 
-            // toolStrip1
+            // btnVender
             // 
-            this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tspCompras,
-            this.toolStripSeparator1,
-            this.tspVentas,
-            this.toolStripSeparator2,
-            this.tspStock,
-            this.toolStripSeparator3,
-            this.tspProveedores});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(800, 25);
-            this.toolStrip1.TabIndex = 1;
-            this.toolStrip1.Text = "toolStrip1";
+            this.btnVender.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVender.Image = ((System.Drawing.Image)(resources.GetObject("btnVender.Image")));
+            this.btnVender.Location = new System.Drawing.Point(85, 249);
+            this.btnVender.Name = "btnVender";
+            this.btnVender.Size = new System.Drawing.Size(235, 104);
+            this.btnVender.TabIndex = 2;
+            this.btnVender.Text = "      Vender";
+            this.btnVender.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnVender.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnVender.UseVisualStyleBackColor = true;
+            this.btnVender.Click += new System.EventHandler(this.btnVender_Click);
             // 
-            // tspCompras
+            // btnStock
             // 
-            this.tspCompras.Image = ((System.Drawing.Image)(resources.GetObject("tspCompras.Image")));
-            this.tspCompras.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tspCompras.Margin = new System.Windows.Forms.Padding(1, 1, 0, 2);
-            this.tspCompras.Name = "tspCompras";
-            this.tspCompras.Size = new System.Drawing.Size(75, 22);
-            this.tspCompras.Text = "Compras";
-            this.tspCompras.Click += new System.EventHandler(this.tspCompras_Click);
+            this.btnStock.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStock.Location = new System.Drawing.Point(481, 97);
+            this.btnStock.Name = "btnStock";
+            this.btnStock.Size = new System.Drawing.Size(235, 104);
+            this.btnStock.TabIndex = 3;
+            this.btnStock.Text = "Stock";
+            this.btnStock.UseVisualStyleBackColor = true;
+            this.btnStock.Click += new System.EventHandler(this.btnStock_Click);
             // 
-            // toolStripSeparator1
+            // btnComprar
             // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            this.btnComprar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnComprar.Image = ((System.Drawing.Image)(resources.GetObject("btnComprar.Image")));
+            this.btnComprar.Location = new System.Drawing.Point(85, 97);
+            this.btnComprar.Name = "btnComprar";
+            this.btnComprar.Size = new System.Drawing.Size(235, 104);
+            this.btnComprar.TabIndex = 4;
+            this.btnComprar.Text = "     Comprar";
+            this.btnComprar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnComprar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnComprar.UseVisualStyleBackColor = true;
+            this.btnComprar.Click += new System.EventHandler(this.btnComprar_Click);
             // 
-            // tspVentas
+            // btnProveedores
             // 
-            this.tspVentas.Image = ((System.Drawing.Image)(resources.GetObject("tspVentas.Image")));
-            this.tspVentas.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tspVentas.Margin = new System.Windows.Forms.Padding(1, 1, 0, 2);
-            this.tspVentas.Name = "tspVentas";
-            this.tspVentas.Size = new System.Drawing.Size(61, 22);
-            this.tspVentas.Text = "Ventas";
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
-            // 
-            // tspStock
-            // 
-            this.tspStock.Image = ((System.Drawing.Image)(resources.GetObject("tspStock.Image")));
-            this.tspStock.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tspStock.Margin = new System.Windows.Forms.Padding(1, 1, 0, 2);
-            this.tspStock.Name = "tspStock";
-            this.tspStock.Size = new System.Drawing.Size(56, 22);
-            this.tspStock.Text = "Stock";
-            this.tspStock.Click += new System.EventHandler(this.tspStock_Click);
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
-            // 
-            // tspProveedores
-            // 
-            this.tspProveedores.Image = ((System.Drawing.Image)(resources.GetObject("tspProveedores.Image")));
-            this.tspProveedores.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tspProveedores.Name = "tspProveedores";
-            this.tspProveedores.Size = new System.Drawing.Size(92, 22);
-            this.tspProveedores.Text = "Proveedores";
-            this.tspProveedores.Click += new System.EventHandler(this.tspProveedores_Click);
+            this.btnProveedores.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnProveedores.Location = new System.Drawing.Point(481, 249);
+            this.btnProveedores.Name = "btnProveedores";
+            this.btnProveedores.Size = new System.Drawing.Size(235, 104);
+            this.btnProveedores.TabIndex = 5;
+            this.btnProveedores.Text = "Proveedor";
+            this.btnProveedores.UseVisualStyleBackColor = true;
+            this.btnProveedores.Click += new System.EventHandler(this.btnProveedores_Click);
             // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.toolStrip1);
+            this.Controls.Add(this.btnProveedores);
+            this.Controls.Add(this.btnComprar);
+            this.Controls.Add(this.btnStock);
+            this.Controls.Add(this.btnVender);
             this.Controls.Add(this.statusStrip1);
             this.Name = "frmPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sistema de gestión";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -151,15 +130,11 @@
         #endregion
 
         private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton tspCompras;
-        private System.Windows.Forms.ToolStripButton tspVentas;
         private System.Windows.Forms.ToolStripStatusLabel tspEstatus;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripButton tspStock;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
-        private System.Windows.Forms.ToolStripButton tspProveedores;
+        private System.Windows.Forms.Button btnStock;
+        private System.Windows.Forms.Button btnComprar;
+        private System.Windows.Forms.Button btnProveedores;
+        private System.Windows.Forms.Button btnVender;
     }
 }
 

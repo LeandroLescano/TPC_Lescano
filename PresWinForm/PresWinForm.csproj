@@ -46,11 +46,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmAgregarModifProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAgregarModifProducto.Designer.cs">
+      <DependentUpon>frmAgregarModifProducto.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmCompras.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmCompras.Designer.cs">
       <DependentUpon>frmCompras.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
     <Compile Include="frmPrincipal.cs">
       <SubType>Form</SubType>
@@ -72,8 +84,14 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmAgregarModifProducto.resx">
+      <DependentUpon>frmAgregarModifProducto.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmCompras.resx">
       <DependentUpon>frmCompras.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmPrincipal.resx">
       <DependentUpon>frmPrincipal.cs</DependentUpon>

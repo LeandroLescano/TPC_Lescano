@@ -55,6 +55,7 @@
             this.Controls.Add(this.dgvProveedores);
             this.Name = "frmProveedores";
             this.Text = "frmProveedores";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmProveedores_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProveedores)).EndInit();
             this.ResumeLayout(false);

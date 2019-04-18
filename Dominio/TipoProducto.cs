@@ -8,5 +8,6 @@ namespace Dominio
 {
     public class TipoProducto
     {
+        public string Categoria { get; set; }
     }
 }

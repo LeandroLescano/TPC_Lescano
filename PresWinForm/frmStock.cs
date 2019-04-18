@@ -31,11 +31,10 @@ namespace PresWinForm
             }
         }
 
-        private void frmStock_FormClosed(object sender, FormClosedEventArgs e)
+        private void btnAgregar_Click(object sender, EventArgs e)
         {
-            frmPrincipal p = new frmPrincipal();
-            p.WindowState = FormWindowState.Normal;
-            p.Show();
+            frmAltaModifProducto altaProd = new frmAltaModifProducto();
+            altaProd.Show();
         }
     }
 }

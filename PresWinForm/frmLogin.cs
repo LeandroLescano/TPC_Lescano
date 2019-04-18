@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace PresWinForm
 {
-    public partial class frmCompras : Form
+    public partial class frmLogin : Form
     {
-        public frmCompras()
+        public frmLogin()
         {
             InitializeComponent();
         }
