@@ -17,28 +17,10 @@ namespace PresWinForm
             InitializeComponent();
         }
 
-        private void tspCompras_Click(object sender, EventArgs e)
-        {
-            frmCompras Compras = new frmCompras();
-            Compras.Show();
-        }
-
-        private void tspStock_Click(object sender, EventArgs e)
-        {
-            frmProductos Stock = new frmProductos();
-            Stock.Show();
-        }
-
-        private void tspProveedores_Click(object sender, EventArgs e)
-        {
-            frmProveedores Proveedores = new frmProveedores();
-            Proveedores.Show();
-        }
-
         private void btnComprar_Click(object sender, EventArgs e)
         {
-            frmCompras Compras = new frmCompras();
-            Compras.Show();
+            frmCompras compras = new frmCompras();
+            compras.Show();
         }
 
         private void btnVender_Click(object sender, EventArgs e)
@@ -48,15 +30,21 @@ namespace PresWinForm
 
         private void btnStock_Click(object sender, EventArgs e)
         {
-            frmProductos Stock = new frmProductos();
-            Stock.Show();
+            frmProductos stock = new frmProductos();
+            stock.Show();
 
         }
 
         private void btnProveedores_Click(object sender, EventArgs e)
         {
-            frmProveedores Proveedores = new frmProveedores();
-            Proveedores.Show();
+            frmProveedores proveedores = new frmProveedores();
+            proveedores.Show();
+        }
+
+        private void btnEmpleados_Click(object sender, EventArgs e)
+        {
+            frmEmpleados empleados = new frmEmpleados();
+            empleados.Show();
         }
     }
 }

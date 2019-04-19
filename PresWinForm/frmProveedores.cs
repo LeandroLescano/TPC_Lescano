@@ -30,5 +30,11 @@ namespace PresWinForm
                 MessageBox.Show(ex.ToString());
             }
         }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            frmAltaModifProveedor alta = new frmAltaModifProveedor();
+            alta.ShowDialog();
+        }
     }
 }

@@ -34,7 +34,7 @@ namespace PresWinForm
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             frmAltaModifProducto altaProd = new frmAltaModifProducto();
-            altaProd.Show();
+            altaProd.ShowDialog();
         }
     }
 }

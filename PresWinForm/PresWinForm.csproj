@@ -46,17 +46,35 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="frmAgregarModifProducto.cs">
+    <Compile Include="frmAltaModifEmpleado.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmAgregarModifProducto.Designer.cs">
-      <DependentUpon>frmAgregarModifProducto.cs</DependentUpon>
+    <Compile Include="frmAltaModifEmpleado.Designer.cs">
+      <DependentUpon>frmAltaModifEmpleado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmAltaModifProveedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAltaModifProveedor.Designer.cs">
+      <DependentUpon>frmAltaModifProveedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmAltaModifProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAltaModifProducto.Designer.cs">
+      <DependentUpon>frmAltaModifProducto.cs</DependentUpon>
     </Compile>
     <Compile Include="frmCompras.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmCompras.Designer.cs">
       <DependentUpon>frmCompras.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmEmpleados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEmpleados.Designer.cs">
+      <DependentUpon>frmEmpleados.cs</DependentUpon>
     </Compile>
     <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
@@ -84,11 +102,20 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="frmAgregarModifProducto.resx">
-      <DependentUpon>frmAgregarModifProducto.cs</DependentUpon>
+    <EmbeddedResource Include="frmAltaModifEmpleado.resx">
+      <DependentUpon>frmAltaModifEmpleado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAltaModifProveedor.resx">
+      <DependentUpon>frmAltaModifProveedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAltaModifProducto.resx">
+      <DependentUpon>frmAltaModifProducto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmCompras.resx">
       <DependentUpon>frmCompras.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEmpleados.resx">
+      <DependentUpon>frmEmpleados.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>

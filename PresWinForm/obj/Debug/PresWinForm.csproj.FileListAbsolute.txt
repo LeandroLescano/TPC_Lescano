@@ -15,8 +15,11 @@ C:\Users\Tateh\Desktop\Repos Git\TPC_Lescano\PresWinForm\bin\Debug\Negocio.dll
 C:\Users\Tateh\Desktop\Repos Git\TPC_Lescano\PresWinForm\bin\Debug\AccesoDatos.pdb
 C:\Users\Tateh\Desktop\Repos Git\TPC_Lescano\PresWinForm\bin\Debug\Dominio.pdb
 C:\Users\Tateh\Desktop\Repos Git\TPC_Lescano\PresWinForm\bin\Debug\Negocio.pdb
-C:\Users\Tateh\Desktop\Repos Git\TPC_Lescano\PresWinForm\obj\Debug\PresWinForm.frmStock.resources
 C:\Users\Tateh\Desktop\Repos Git\TPC_Lescano\PresWinForm\obj\Debug\PresWinForm.csproj.CopyComplete
 C:\Users\Tateh\Desktop\Repos Git\TPC_Lescano\PresWinForm\obj\Debug\PresWinForm.frmProveedores.resources
 C:\Users\Tateh\Desktop\Repos Git\TPC_Lescano\PresWinForm\obj\Debug\PresWinForm.frmAltaModifProducto.resources
 C:\Users\Tateh\Desktop\Repos Git\TPC_Lescano\PresWinForm\obj\Debug\PresWinForm.frmLogin.resources
+C:\Users\Tateh\Desktop\Repos Git\TPC_Lescano\PresWinForm\obj\Debug\PresWinForm.frmEmpleados.resources
+C:\Users\Tateh\Desktop\Repos Git\TPC_Lescano\PresWinForm\obj\Debug\PresWinForm.frmProductos.resources
+C:\Users\Tateh\Desktop\Repos Git\TPC_Lescano\PresWinForm\obj\Debug\PresWinForm.frmAltaModifEmpleado.resources
+C:\Users\Tateh\Desktop\Repos Git\TPC_Lescano\PresWinForm\obj\Debug\PresWinForm.frmAltaModifProveedor.resources
