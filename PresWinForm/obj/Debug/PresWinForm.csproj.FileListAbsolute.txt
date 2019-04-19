@@ -19,3 +19,4 @@ C:\Users\Tateh\Desktop\Repos Git\TPC_Lescano\PresWinForm\obj\Debug\PresWinForm.f
 C:\Users\Tateh\Desktop\Repos Git\TPC_Lescano\PresWinForm\obj\Debug\PresWinForm.csproj.CopyComplete
 C:\Users\Tateh\Desktop\Repos Git\TPC_Lescano\PresWinForm\obj\Debug\PresWinForm.frmProveedores.resources
 C:\Users\Tateh\Desktop\Repos Git\TPC_Lescano\PresWinForm\obj\Debug\PresWinForm.frmAltaModifProducto.resources
+C:\Users\Tateh\Desktop\Repos Git\TPC_Lescano\PresWinForm\obj\Debug\PresWinForm.frmLogin.resources

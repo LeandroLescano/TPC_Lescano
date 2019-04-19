@@ -25,7 +25,7 @@ namespace PresWinForm
 
         private void tspStock_Click(object sender, EventArgs e)
         {
-            frmStock Stock = new frmStock();
+            frmProductos Stock = new frmProductos();
             Stock.Show();
         }
 
@@ -48,7 +48,7 @@ namespace PresWinForm
 
         private void btnStock_Click(object sender, EventArgs e)
         {
-            frmStock Stock = new frmStock();
+            frmProductos Stock = new frmProductos();
             Stock.Show();
 
         }

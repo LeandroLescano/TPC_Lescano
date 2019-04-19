@@ -9,5 +9,9 @@ namespace Dominio
     public class Cliente : Persona
     {
         public int Codigo { get; set; }
+        public string NombreUsuario { get; set; }
+        public string Contraseña { get; set; }
+        public string Domicilio { get; set; }
+
     }
 }

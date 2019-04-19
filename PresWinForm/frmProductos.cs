@@ -11,9 +11,9 @@ using Negocio;
 
 namespace PresWinForm
 {
-    public partial class frmStock : Form
+    public partial class frmProductos : Form
     {
-        public frmStock()
+        public frmProductos()
         {
             InitializeComponent();
         }

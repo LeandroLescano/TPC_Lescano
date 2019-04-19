@@ -9,5 +9,6 @@ namespace Dominio
     public class TipoProducto
     {
         public string Categoria { get; set; }
+        public bool Fraccionable { get; set; }
     }
 }

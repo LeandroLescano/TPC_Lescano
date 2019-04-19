@@ -1,6 +1,6 @@
 ﻿namespace PresWinForm
 {
-    partial class frmStock
+    partial class frmProductos
     {
         /// <summary>
         /// Required designer variable.

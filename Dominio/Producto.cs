@@ -12,7 +12,9 @@ namespace Dominio
         public string Nombre { get; set; }
         public string Marca { get; set; }
         public decimal PrecioUnitario { get; set; }
+        public decimal Peso { get; set; } //En caso de que sea fraccionable
+        public int PorcentajeGanancia { get; set; }
         public int Stock { get; set; }
-        public Proveedor Proveedor { get; set; }
+        public List<Proveedor> Proveedor { get; set; }
     }
 }
