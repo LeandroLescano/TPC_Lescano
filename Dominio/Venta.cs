@@ -9,7 +9,7 @@ namespace Dominio
     public class Venta
     {
         public string Codigo { get; set; }
-        public int NumFactura { get; set; }
+        public Factura Factura { get; set; }
         public Cliente Cliente { get; set; }
         public List<Producto> Producto { get; set; }
         public List<int> Cantidad { get; set; }

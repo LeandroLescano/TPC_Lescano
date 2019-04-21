@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-    public class Administrador : Persona
+    public class Coordenadas
     {
-        public int Codigo { get; set; }
-        public Usuario Usuario { get; set; }
+        public decimal Latitud { get; set; }
+        public decimal Longitud { get; set; }
     }
 }

@@ -10,7 +10,6 @@ namespace Dominio
     {
         public int Codigo { get; set; }
         public string CUIL { get; set; }
-        public decimal Sueldo { get; set; }
-
+        public Usuario Usuario { get; set; }
     }
 }

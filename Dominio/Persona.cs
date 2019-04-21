@@ -8,17 +8,13 @@ namespace Dominio
 {
     public class Persona
     {
+        public TipoPersona Tipo { get; set; }
         public string Apellido { get; set; }
         public string Nombre { get; set; }
-        public string DNI { get; set; }
-        public DateTime FechaNacimiento { get; set; }
+        public string RazonSocial { get; set; }
         public string CUIT { get; set; }
-        public string Mail { get; set; }
-        public string TelefonoLinea { get; set; }
-        public string TelefonoCelular { get; set; }
-
-        //Se comparte el Cliente, Vendedor y Administrador
-        //public string NombreUsuario { get; set; }
-        //public string Contraseña { get; set; }
+        public List<Domicilio> Domicilio { get; set; }
+        public List<Mail> Mails { get; set; }
+        public List<Telefono> Telefonos { get; set; }
     }
 }

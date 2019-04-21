@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-    public class TipoProducto
+    public class PersonaJuridica : Persona
     {
-        public string Categoria { get; set; }
-        public bool Fraccionable { get; set; }
+
     }
 }

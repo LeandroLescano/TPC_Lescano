@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-    public class Administrador : Persona
+    public class TipoPersona
     {
-        public int Codigo { get; set; }
-        public Usuario Usuario { get; set; }
+        public bool Fisica { get; set; }
+        public bool Juridica { get; set; }
     }
 }
