@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-    public class Edificio
+    public class Pedido
     {
         public int Codigo { get; set; }
-        public int Piso { get; set; }
-        public string Departamento { get; set; }
+        public Picada Picada { get; set; }
+        public string Descripcion { get; set; }
+        public Cliente Cliente { get; set; }
     }
 }

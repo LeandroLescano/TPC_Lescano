@@ -43,13 +43,16 @@
   <ItemGroup>
     <Compile Include="Administrador.cs" />
     <Compile Include="Cliente.cs" />
+    <Compile Include="Complejo.cs" />
     <Compile Include="Compra.cs" />
-    <Compile Include="Coordenadas.cs" />
+    <Compile Include="Coordenada.cs" />
     <Compile Include="Domicilio.cs" />
     <Compile Include="Edificio.cs" />
     <Compile Include="Factura.cs" />
     <Compile Include="Localidad.cs" />
     <Compile Include="Mail.cs" />
+    <Compile Include="Marca.cs" />
+    <Compile Include="Pedido.cs" />
     <Compile Include="PersonaFisica.cs" />
     <Compile Include="PersonaJuridica.cs" />
     <Compile Include="Picada.cs" />

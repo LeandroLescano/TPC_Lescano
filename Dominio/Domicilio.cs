@@ -9,7 +9,7 @@ namespace Dominio
     public class Domicilio
     {
         public int Codigo { get; set; }
-        public Coordenadas Coordenadas { get; set; }
+        public Coordenada Coordenadas { get; set; }
         public string Provincia { get; set; }
         public Localidad Localidad { get; set; }
         public string Calle { get; set; }

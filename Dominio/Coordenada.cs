@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-    public class Coordenadas
+    public class Coordenada
     {
         public decimal Latitud { get; set; }
         public decimal Longitud { get; set; }
