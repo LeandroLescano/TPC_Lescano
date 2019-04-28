@@ -91,12 +91,15 @@
             // 
             // btnCompras
             // 
+            this.btnCompras.Checked = true;
+            this.btnCompras.CheckState = System.Windows.Forms.CheckState.Indeterminate;
             this.btnCompras.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.btnCompras.Font = new System.Drawing.Font("Segoe UI", 15F);
+            this.btnCompras.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCompras.Image = ((System.Drawing.Image)(resources.GetObject("btnCompras.Image")));
             this.btnCompras.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnCompras.Margin = new System.Windows.Forms.Padding(3, 3, 0, 2);
             this.btnCompras.Name = "btnCompras";
-            this.btnCompras.Size = new System.Drawing.Size(94, 32);
+            this.btnCompras.Size = new System.Drawing.Size(96, 29);
             this.btnCompras.Text = "Compras";
             this.btnCompras.Click += new System.EventHandler(this.btnCompras_Click);
             // 
@@ -111,11 +114,12 @@
             // btnVentas
             // 
             this.btnVentas.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.btnVentas.Font = new System.Drawing.Font("Segoe UI", 15F);
+            this.btnVentas.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnVentas.Image = ((System.Drawing.Image)(resources.GetObject("btnVentas.Image")));
             this.btnVentas.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnVentas.Margin = new System.Windows.Forms.Padding(0, 3, 0, 2);
             this.btnVentas.Name = "btnVentas";
-            this.btnVentas.Size = new System.Drawing.Size(73, 32);
+            this.btnVentas.Size = new System.Drawing.Size(78, 29);
             this.btnVentas.Text = "Ventas";
             this.btnVentas.Click += new System.EventHandler(this.btnVentas_Click);
             // 
@@ -130,11 +134,12 @@
             // btnPedidos
             // 
             this.btnPedidos.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.btnPedidos.Font = new System.Drawing.Font("Segoe UI", 15F);
+            this.btnPedidos.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPedidos.Image = ((System.Drawing.Image)(resources.GetObject("btnPedidos.Image")));
             this.btnPedidos.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnPedidos.Margin = new System.Windows.Forms.Padding(0, 3, 0, 2);
             this.btnPedidos.Name = "btnPedidos";
-            this.btnPedidos.Size = new System.Drawing.Size(85, 32);
+            this.btnPedidos.Size = new System.Drawing.Size(87, 29);
             this.btnPedidos.Text = "Pedidos";
             this.btnPedidos.Click += new System.EventHandler(this.btnPedidos_Click);
             // 
@@ -149,11 +154,12 @@
             // btnProductos
             // 
             this.btnProductos.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.btnProductos.Font = new System.Drawing.Font("Segoe UI", 15F);
+            this.btnProductos.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnProductos.Image = ((System.Drawing.Image)(resources.GetObject("btnProductos.Image")));
             this.btnProductos.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnProductos.Margin = new System.Windows.Forms.Padding(0, 3, 0, 2);
             this.btnProductos.Name = "btnProductos";
-            this.btnProductos.Size = new System.Drawing.Size(105, 32);
+            this.btnProductos.Size = new System.Drawing.Size(104, 29);
             this.btnProductos.Text = "Productos";
             this.btnProductos.Click += new System.EventHandler(this.btnProductos_Click);
             // 
@@ -168,11 +174,12 @@
             // btnProveedores
             // 
             this.btnProveedores.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.btnProveedores.Font = new System.Drawing.Font("Segoe UI", 15F);
+            this.btnProveedores.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnProveedores.Image = ((System.Drawing.Image)(resources.GetObject("btnProveedores.Image")));
             this.btnProveedores.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnProveedores.Margin = new System.Windows.Forms.Padding(0, 3, 0, 2);
             this.btnProveedores.Name = "btnProveedores";
-            this.btnProveedores.Size = new System.Drawing.Size(125, 32);
+            this.btnProveedores.Size = new System.Drawing.Size(127, 29);
             this.btnProveedores.Text = "Proveedores";
             this.btnProveedores.Click += new System.EventHandler(this.btnProveedores_Click);
             // 
@@ -187,11 +194,12 @@
             // btnClientes
             // 
             this.btnClientes.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.btnClientes.Font = new System.Drawing.Font("Segoe UI", 15F);
+            this.btnClientes.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClientes.Image = ((System.Drawing.Image)(resources.GetObject("btnClientes.Image")));
             this.btnClientes.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnClientes.Margin = new System.Windows.Forms.Padding(0, 3, 0, 2);
             this.btnClientes.Name = "btnClientes";
-            this.btnClientes.Size = new System.Drawing.Size(84, 32);
+            this.btnClientes.Size = new System.Drawing.Size(87, 29);
             this.btnClientes.Text = "Clientes";
             this.btnClientes.Click += new System.EventHandler(this.btnClientes_Click);
             // 
@@ -206,11 +214,12 @@
             // btnEmpleados
             // 
             this.btnEmpleados.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.btnEmpleados.Font = new System.Drawing.Font("Segoe UI", 15F);
+            this.btnEmpleados.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEmpleados.Image = ((System.Drawing.Image)(resources.GetObject("btnEmpleados.Image")));
             this.btnEmpleados.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnEmpleados.Margin = new System.Windows.Forms.Padding(0, 3, 0, 2);
             this.btnEmpleados.Name = "btnEmpleados";
-            this.btnEmpleados.Size = new System.Drawing.Size(112, 32);
+            this.btnEmpleados.Size = new System.Drawing.Size(114, 29);
             this.btnEmpleados.Text = "Empleados";
             this.btnEmpleados.Click += new System.EventHandler(this.btnEmpleados_Click);
             // 

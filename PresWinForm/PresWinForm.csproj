@@ -53,11 +53,11 @@
     <Compile Include="frmAltaModifEmpleado.Designer.cs">
       <DependentUpon>frmAltaModifEmpleado.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmAltaModifProveedor.cs">
+    <Compile Include="frmAltaModifPersona.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmAltaModifProveedor.Designer.cs">
-      <DependentUpon>frmAltaModifProveedor.cs</DependentUpon>
+    <Compile Include="frmAltaModifPersona.Designer.cs">
+      <DependentUpon>frmAltaModifPersona.cs</DependentUpon>
     </Compile>
     <Compile Include="frmAltaModifProducto.cs">
       <SubType>Form</SubType>
@@ -124,8 +124,8 @@
     <EmbeddedResource Include="frmAltaModifEmpleado.resx">
       <DependentUpon>frmAltaModifEmpleado.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmAltaModifProveedor.resx">
-      <DependentUpon>frmAltaModifProveedor.cs</DependentUpon>
+    <EmbeddedResource Include="frmAltaModifPersona.resx">
+      <DependentUpon>frmAltaModifPersona.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmAltaModifProducto.resx">
       <DependentUpon>frmAltaModifProducto.cs</DependentUpon>

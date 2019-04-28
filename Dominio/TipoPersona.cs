@@ -10,5 +10,13 @@ namespace Dominio
     {
         public bool Fisica { get; set; }
         public bool Juridica { get; set; }
+
+        public override string ToString()
+        {
+            if (Fisica)
+                return "Fisica";
+            else
+                return "Jurídica";
+        }
     }
 }

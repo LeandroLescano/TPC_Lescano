@@ -16,5 +16,10 @@ namespace PresWinForm
         {
             InitializeComponent();
         }
+
+        private void frmPedidos_Load(object sender, EventArgs e)
+        {
+            //cargarGrilla();
+        }
     }
 }

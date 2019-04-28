@@ -14,7 +14,7 @@ namespace Dominio
         public virtual string RazonSocial { get; set; }
         public string DNI { get; set; }
         public string CUIT { get; set; }
-        public List<Domicilio> Domicilio { get; set; }
+        public Domicilio Domicilio { get; set; }
         public List<Mail> Mails { get; set; }
         public List<Telefono> Telefonos { get; set; }
     }

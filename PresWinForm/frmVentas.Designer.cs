@@ -88,6 +88,7 @@
             this.btnNueva.Name = "btnNueva";
             this.btnNueva.Size = new System.Drawing.Size(94, 29);
             this.btnNueva.Text = "Nueva";
+            this.btnNueva.Click += new System.EventHandler(this.btnNueva_Click);
             // 
             // btnModificar
             // 
@@ -110,6 +111,7 @@
             this.btnListar.Name = "btnListar";
             this.btnListar.Size = new System.Drawing.Size(94, 29);
             this.btnListar.Text = "Listar";
+            this.btnListar.Click += new System.EventHandler(this.btnListar_Click);
             // 
             // dtpFechaCompra
             // 
@@ -117,7 +119,8 @@
             this.dtpFechaCompra.Location = new System.Drawing.Point(350, 51);
             this.dtpFechaCompra.Name = "dtpFechaCompra";
             this.dtpFechaCompra.Size = new System.Drawing.Size(260, 23);
-            this.dtpFechaCompra.TabIndex = 33;
+            this.dtpFechaCompra.TabIndex = 1;
+            this.dtpFechaCompra.TabStop = false;
             // 
             // lblFecha
             // 
@@ -136,7 +139,7 @@
             this.txtNumeroCompra.Location = new System.Drawing.Point(350, 13);
             this.txtNumeroCompra.Name = "txtNumeroCompra";
             this.txtNumeroCompra.Size = new System.Drawing.Size(260, 26);
-            this.txtNumeroCompra.TabIndex = 31;
+            this.txtNumeroCompra.TabIndex = 0;
             // 
             // lblNumero
             // 
@@ -167,7 +170,7 @@
             this.panel1.Location = new System.Drawing.Point(135, 139);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(637, 299);
-            this.panel1.TabIndex = 34;
+            this.panel1.TabIndex = 3;
             // 
             // txtPrecio
             // 
@@ -175,7 +178,7 @@
             this.txtPrecio.Location = new System.Drawing.Point(213, 94);
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(121, 26);
-            this.txtPrecio.TabIndex = 26;
+            this.txtPrecio.TabIndex = 2;
             // 
             // lblPrecio
             // 
@@ -205,7 +208,7 @@
             this.btnAgregar.Location = new System.Drawing.Point(412, 120);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(137, 30);
-            this.btnAgregar.TabIndex = 24;
+            this.btnAgregar.TabIndex = 3;
             this.btnAgregar.Text = "Agregar a la lista";
             this.btnAgregar.UseVisualStyleBackColor = true;
             // 
@@ -248,7 +251,7 @@
             this.numericUpDown1.Location = new System.Drawing.Point(214, 53);
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(120, 26);
-            this.numericUpDown1.TabIndex = 22;
+            this.numericUpDown1.TabIndex = 1;
             // 
             // cmbProducto
             // 
@@ -257,7 +260,7 @@
             this.cmbProducto.Location = new System.Drawing.Point(214, 12);
             this.cmbProducto.Name = "cmbProducto";
             this.cmbProducto.Size = new System.Drawing.Size(260, 28);
-            this.cmbProducto.TabIndex = 20;
+            this.cmbProducto.TabIndex = 0;
             // 
             // lblDetalleVenta
             // 
@@ -302,7 +305,7 @@
             this.cmbClientes.Location = new System.Drawing.Point(350, 90);
             this.cmbClientes.Name = "cmbClientes";
             this.cmbClientes.Size = new System.Drawing.Size(260, 28);
-            this.cmbClientes.TabIndex = 36;
+            this.cmbClientes.TabIndex = 2;
             // 
             // frmVentas
             // 

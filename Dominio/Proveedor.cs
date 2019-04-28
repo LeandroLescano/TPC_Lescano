@@ -9,5 +9,6 @@ namespace Dominio
     public class Proveedor : Persona
     {
         public int Codigo { get; set; }
+        public Usuario Usuario { get; set; }
     }
 }

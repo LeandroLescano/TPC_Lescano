@@ -47,7 +47,7 @@
             this.lblProducto = new System.Windows.Forms.Label();
             this.cmbProducto = new System.Windows.Forms.ComboBox();
             this.lblCantidad = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.nudCantidad = new System.Windows.Forms.NumericUpDown();
             this.btnNuevoProd = new System.Windows.Forms.Button();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -56,7 +56,7 @@
             this.tspMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCompras)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetalle)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudCantidad)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -158,7 +158,7 @@
             this.cmbProveedores.Location = new System.Drawing.Point(350, 90);
             this.cmbProveedores.Name = "cmbProveedores";
             this.cmbProveedores.Size = new System.Drawing.Size(260, 28);
-            this.cmbProveedores.TabIndex = 11;
+            this.cmbProveedores.TabIndex = 2;
             // 
             // btnNuevoProv
             // 
@@ -167,7 +167,8 @@
             this.btnNuevoProv.Location = new System.Drawing.Point(628, 90);
             this.btnNuevoProv.Name = "btnNuevoProv";
             this.btnNuevoProv.Size = new System.Drawing.Size(75, 30);
-            this.btnNuevoProv.TabIndex = 12;
+            this.btnNuevoProv.TabIndex = 2;
+            this.btnNuevoProv.TabStop = false;
             this.btnNuevoProv.Text = "Nuevo";
             this.btnNuevoProv.UseVisualStyleBackColor = true;
             this.btnNuevoProv.Click += new System.EventHandler(this.btnNuevoProv_Click);
@@ -189,7 +190,7 @@
             this.txtNumeroCompra.Location = new System.Drawing.Point(350, 13);
             this.txtNumeroCompra.Name = "txtNumeroCompra";
             this.txtNumeroCompra.Size = new System.Drawing.Size(260, 26);
-            this.txtNumeroCompra.TabIndex = 14;
+            this.txtNumeroCompra.TabIndex = 0;
             // 
             // lblFecha
             // 
@@ -207,7 +208,8 @@
             this.dtpFechaCompra.Location = new System.Drawing.Point(350, 51);
             this.dtpFechaCompra.Name = "dtpFechaCompra";
             this.dtpFechaCompra.Size = new System.Drawing.Size(260, 23);
-            this.dtpFechaCompra.TabIndex = 16;
+            this.dtpFechaCompra.TabIndex = 1;
+            this.dtpFechaCompra.TabStop = false;
             // 
             // dgvDetalle
             // 
@@ -250,7 +252,7 @@
             this.cmbProducto.Location = new System.Drawing.Point(214, 12);
             this.cmbProducto.Name = "cmbProducto";
             this.cmbProducto.Size = new System.Drawing.Size(260, 28);
-            this.cmbProducto.TabIndex = 20;
+            this.cmbProducto.TabIndex = 0;
             // 
             // lblCantidad
             // 
@@ -262,13 +264,15 @@
             this.lblCantidad.TabIndex = 21;
             this.lblCantidad.Text = "Cantidad:";
             // 
-            // numericUpDown1
+            // nudCantidad
             // 
-            this.numericUpDown1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericUpDown1.Location = new System.Drawing.Point(214, 53);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(120, 26);
-            this.numericUpDown1.TabIndex = 22;
+            this.nudCantidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nudCantidad.Location = new System.Drawing.Point(214, 53);
+            this.nudCantidad.Name = "nudCantidad";
+            this.nudCantidad.Size = new System.Drawing.Size(120, 26);
+            this.nudCantidad.TabIndex = 1;
+            this.nudCantidad.ThousandsSeparator = true;
+            this.nudCantidad.Enter += new System.EventHandler(this.nudCantidad_Enter);
             // 
             // btnNuevoProd
             // 
@@ -278,6 +282,7 @@
             this.btnNuevoProd.Name = "btnNuevoProd";
             this.btnNuevoProd.Size = new System.Drawing.Size(75, 30);
             this.btnNuevoProd.TabIndex = 23;
+            this.btnNuevoProd.TabStop = false;
             this.btnNuevoProd.Text = "Nuevo";
             this.btnNuevoProd.UseVisualStyleBackColor = true;
             this.btnNuevoProd.Click += new System.EventHandler(this.btnNuevoProd_Click);
@@ -289,7 +294,7 @@
             this.btnAgregar.Location = new System.Drawing.Point(412, 120);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(137, 30);
-            this.btnAgregar.TabIndex = 24;
+            this.btnAgregar.TabIndex = 3;
             this.btnAgregar.Text = "Agregar a la lista";
             this.btnAgregar.UseVisualStyleBackColor = true;
             // 
@@ -307,13 +312,13 @@
             this.panel1.Controls.Add(this.lblProducto);
             this.panel1.Controls.Add(this.btnNuevoProd);
             this.panel1.Controls.Add(this.lblCantidad);
-            this.panel1.Controls.Add(this.numericUpDown1);
+            this.panel1.Controls.Add(this.nudCantidad);
             this.panel1.Controls.Add(this.cmbProducto);
             this.panel1.Controls.Add(this.lblDetalleCompra);
             this.panel1.Location = new System.Drawing.Point(135, 139);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(637, 299);
-            this.panel1.TabIndex = 25;
+            this.panel1.TabIndex = 3;
             // 
             // txtPrecio
             // 
@@ -321,7 +326,7 @@
             this.txtPrecio.Location = new System.Drawing.Point(213, 94);
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(121, 26);
-            this.txtPrecio.TabIndex = 26;
+            this.txtPrecio.TabIndex = 2;
             // 
             // lblPrecio
             // 
@@ -359,7 +364,7 @@
             this.tspMenu.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCompras)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetalle)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudCantidad)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -387,7 +392,7 @@
         private System.Windows.Forms.Label lblProducto;
         private System.Windows.Forms.ComboBox cmbProducto;
         private System.Windows.Forms.Label lblCantidad;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown nudCantidad;
         private System.Windows.Forms.Button btnNuevoProd;
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.Panel panel1;

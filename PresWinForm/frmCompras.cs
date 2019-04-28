@@ -49,7 +49,7 @@ namespace PresWinForm
 
         private void btnNuevoProv_Click(object sender, EventArgs e)
         {
-            frmAltaModifProveedor altaProv = new frmAltaModifProveedor();
+            frmAltaModifPersona altaProv = new frmAltaModifPersona('P');
             altaProv.Show();
         }
 
@@ -59,5 +59,11 @@ namespace PresWinForm
             cmb.AutoCompleteSource = AutoCompleteSource.ListItems;
             cmb.Text = "Elige una opción...";
         }
+
+        private void nudCantidad_Enter(object sender, EventArgs e)
+        {
+            nudCantidad.Select(0, 2);
+        }
+
     }
 }

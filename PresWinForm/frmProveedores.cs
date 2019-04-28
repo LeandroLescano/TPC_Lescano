@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Negocio;
+using Dominio;
 
 namespace PresWinForm
 {
@@ -21,21 +22,6 @@ namespace PresWinForm
         private void frmProveedores_Load(object sender, EventArgs e)
         {
             cargarGrilla();
-            //ProveedorNegocio negocio = new ProveedorNegocio();
-            //try
-            //{
-            //    dgvProveedores.DataSource = negocio.listarProveedores();
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.ToString());
-            //}
-        }
-
-        private void btnAgregar_Click(object sender, EventArgs e)
-        {
-            frmAltaModifProveedor alta = new frmAltaModifProveedor();
-            alta.ShowDialog();
         }
 
         private void cargarGrilla()
@@ -49,6 +35,24 @@ namespace PresWinForm
             {
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            frmAltaModifPersona alta = new frmAltaModifPersona('P');
+            alta.Show();
+        }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            Proveedor pmodif = (Proveedor)dgvProveedores.CurrentRow.DataBoundItem;
+            frmAltaModifPersona modif = new frmAltaModifPersona(pmodif, 'P');
+            modif.Show();
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

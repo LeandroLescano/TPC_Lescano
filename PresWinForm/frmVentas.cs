@@ -35,5 +35,16 @@ namespace PresWinForm
             cmb.AutoCompleteSource = AutoCompleteSource.ListItems;
             cmb.Text = "Elige una opción...";
         }
+
+        private void btnNueva_Click(object sender, EventArgs e)
+        {
+            dgvCompras.Visible = false;
+        }
+
+        private void btnListar_Click(object sender, EventArgs e)
+        {
+            dgvCompras.BringToFront();
+            dgvCompras.Visible = true;
+        }
     }
 }

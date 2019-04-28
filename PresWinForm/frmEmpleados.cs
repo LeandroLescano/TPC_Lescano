@@ -36,11 +36,29 @@ namespace PresWinForm
             try
             {
                 dgvEmpleados.DataSource = negocio.listarEmpleados();
+                dgvEmpleados.Columns["RazonSocial"].Visible = false;
+                dgvEmpleados.Columns["CUIT"].Visible = false;
+                dgvEmpleados.Columns["TipoPersona"].Visible = false;
+                dgvEmpleados.Columns["Codigo"].DisplayIndex = 0;
+                dgvEmpleados.Columns["Apellido"].DisplayIndex = 1;
+                dgvEmpleados.Columns["Nombre"].DisplayIndex = 2;
+                dgvEmpleados.Columns["DNI"].DisplayIndex = 3;
+                dgvEmpleados.Columns["CUIL"].DisplayIndex = 4;
+                dgvEmpleados.Columns["TipoEmpleado"].DisplayIndex = 5;
+                dgvEmpleados.Columns["Usuario"].DisplayIndex = 6;
+                dgvEmpleados.Columns["Domicilio"].DisplayIndex = 7;
+
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            frmAltaModifEmpleado modif = new frmAltaModifEmpleado();
+            modif.Show();
         }
     }
 }
