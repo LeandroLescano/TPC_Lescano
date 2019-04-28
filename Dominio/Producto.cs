@@ -17,5 +17,11 @@ namespace Dominio
         public decimal Peso { get; set; } //En caso de que sea fraccionable
         public int PorcentajeGanancia { get; set; }
         public List<Proveedor> Proveedor { get; set; }
+        public int Cantidad { get; set; }
+
+        public override string ToString()
+        {
+            return Nombre;
+        }
     }
 }

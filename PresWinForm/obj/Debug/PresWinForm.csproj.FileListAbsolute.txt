@@ -24,3 +24,5 @@ C:\Users\Tateh\Desktop\Repos Git\TPC_Lescano\PresWinForm\obj\Debug\PresWinForm.f
 C:\Users\Tateh\Desktop\Repos Git\TPC_Lescano\PresWinForm\obj\Debug\PresWinForm.frmAltaModifEmpleado.resources
 C:\Users\Tateh\Desktop\Repos Git\TPC_Lescano\PresWinForm\obj\Debug\PresWinForm.frmAltaModifProveedor.resources
 C:\Users\Tateh\Desktop\Repos Git\TPC_Lescano\PresWinForm\obj\Debug\PresWinForm.frmClientes.resources
+C:\Users\Tateh\Desktop\Repos Git\TPC_Lescano\PresWinForm\obj\Debug\PresWinForm.frmVentas.resources
+C:\Users\Tateh\Desktop\Repos Git\TPC_Lescano\PresWinForm\obj\Debug\PresWinForm.frmPedidos.resources

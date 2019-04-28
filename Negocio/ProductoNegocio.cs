@@ -35,10 +35,7 @@ namespace Negocio
                     nuevo.Categoria.Nombre = accesoDatos.Lector["CATEGORIA"].ToString();
                     listado.Add(nuevo);
                 }
-
-
                 return listado;
-
             }
             catch (Exception ex)
             {
@@ -56,6 +53,31 @@ namespace Negocio
             prov.Codigo = lector.GetInt32(5);
             prov.RazonSocial = lector.GetString(6);
             return prov;
+        }
+
+        public List<string> listarNombresProd()
+        {
+            AccesoDatosManager accesoDatos = new AccesoDatosManager();
+            List<string> listado = new List<string>();
+            try
+            {
+                accesoDatos.setearConsulta("SELECT NOMBRE FROM PRODUCTOS");
+                accesoDatos.abrirConexion();
+                accesoDatos.ejecutarConsulta();
+                while (accesoDatos.Lector.Read())
+                {
+                    listado.Add(accesoDatos.Lector.GetString(0));
+                }
+                return listado;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
         }
 
     }

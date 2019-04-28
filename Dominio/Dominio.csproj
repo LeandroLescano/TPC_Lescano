@@ -56,7 +56,6 @@
     <Compile Include="Marca.cs" />
     <Compile Include="Pedido.cs" />
     <Compile Include="Combo.cs" />
-    <Compile Include="Stock.cs" />
     <Compile Include="Telefono.cs" />
     <Compile Include="TipoEmpleado.cs" />
     <Compile Include="TipoPersona.cs" />

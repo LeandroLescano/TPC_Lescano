@@ -7,15 +7,15 @@ using AccesoDatos;
 
 namespace Negocio
 {
-    public class ClienteNegocio
+    public class MarcaNegocio
     {
-        public List<string> listarNombresClientes()
+        public List<string> listarNombresMarcas()
         {
             AccesoDatosManager accesoDatos = new AccesoDatosManager();
             List<string> listado = new List<string>();
             try
             {
-                accesoDatos.setearConsulta("SELECT RAZONSOCIAL AS NOMBRE FROM CLIENTES WHERE IDTIPOPERSONA = 2 UNION Select(APELLIDOS + ', ' + NOMBRES) AS NOMBRE FROM CLIENTES WHERE IDTIPOPERSONA = 1");
+                accesoDatos.setearConsulta("SELECT NOMBRE FROM MARCAS");
                 accesoDatos.abrirConexion();
                 accesoDatos.ejecutarConsulta();
                 while (accesoDatos.Lector.Read())

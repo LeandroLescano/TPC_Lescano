@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Dominio;
+using Negocio;
 
 namespace PresWinForm
 {
@@ -15,6 +17,10 @@ namespace PresWinForm
         public frmAltaModifProducto()
         {
             InitializeComponent();
+            ProveedorNegocio nombresProv = new ProveedorNegocio();
+            clbProveedores.DataSource = nombresProv.listarNombresProv();
+            MarcaNegocio nombresMarcas = new MarcaNegocio();
+            cmbMarca.DataSource = nombresMarcas.listarNombresMarcas();
         }
     }
 }

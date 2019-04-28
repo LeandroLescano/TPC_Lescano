@@ -226,6 +226,7 @@
             this.Name = "frmPrincipal";
             this.Text = "Sistema de gestión";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.frmPrincipal_Load);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.tspMenu.ResumeLayout(false);

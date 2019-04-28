@@ -28,7 +28,11 @@ namespace PresWinForm
 
         private void btnVentas_Click(object sender, EventArgs e)
         {
-
+            frmVentas ventas = new frmVentas();
+            ventas.MdiParent = this;
+            ventas.Dock = DockStyle.Fill;
+            ventas.FormBorderStyle = FormBorderStyle.None;
+            ventas.Show();
         }
 
         private void btnPedidos_Click(object sender, EventArgs e)
@@ -70,6 +74,15 @@ namespace PresWinForm
             empleados.Dock = DockStyle.Fill;
             empleados.FormBorderStyle = FormBorderStyle.None;
             empleados.Show();
+        }
+
+        private void frmPrincipal_Load(object sender, EventArgs e)
+        {
+            frmCompras compras = new frmCompras();
+            compras.MdiParent = this;
+            compras.Dock = DockStyle.Fill;
+            compras.FormBorderStyle = FormBorderStyle.None;
+            compras.Show();
         }
     }
 }
