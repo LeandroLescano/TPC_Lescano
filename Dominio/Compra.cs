@@ -10,15 +10,7 @@ namespace Dominio
     {
         public string Codigo { get; set; }
         public Proveedor Proveedor { get; set; }
-        public Producto Producto { get; set; }
-        public int Cantidad { get; set; }
-        public decimal PrecioUnitario
-        {
-            get { return Producto.PrecioUnitario; }
-        }
-        public decimal PrecioFinal
-        {
-            get { return PrecioUnitario * Cantidad; }
-        }
+        public DetalleCompra Detalle { get; set; }
+
     }
 }

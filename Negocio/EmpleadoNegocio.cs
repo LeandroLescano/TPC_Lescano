@@ -3,30 +3,35 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data.SqlClient;
 using Dominio;
 using AccesoDatos;
 
 namespace Negocio
 {
-    public class ProveedorNegocio
+    public class EmpleadoNegocio
     {
-        public List<Proveedor> listarProveedores()
+        public List<Empleado> listarEmpleados()
         {
             AccesoDatosManager accesoDatos = new AccesoDatosManager();
-            List<Proveedor> listado = new List<Proveedor>();
-            Proveedor nuevo;
+            List<Empleado> listado = new List<Empleado>();
+            Empleado nuevo = new Empleado();
             try
             {
-                accesoDatos.setearConsulta("Select ID, RAZONSOCIAL FROM PROVEEDORES");
+                accesoDatos.setearConsulta("SELECT E.ID, E.APELLIDOS, E.NOMBRES, E.DNI, E.IDTIPOEMPLEADO FROM EMPLEADOS AS E");
                 accesoDatos.abrirConexion();
                 accesoDatos.ejecutarConsulta();
-
                 while (accesoDatos.Lector.Read())
                 {
-                    nuevo = new Proveedor();
+                    nuevo = new Empleado();
                     nuevo.Codigo = accesoDatos.Lector.GetInt32(0);
-                    nuevo.RazonSocial = accesoDatos.Lector.GetString(1);
+                    nuevo.Apellido = accesoDatos.Lector.GetString(1); 
+                    nuevo.Nombre = accesoDatos.Lector.GetString(2);
+                    nuevo.DNI = accesoDatos.Lector.GetString(3);
+                    //nuevo.Domicilio
+                    //nuevo.Telefonos
+                    //nuevo.Mails
+                    //nuevo.TipoEmpleado = accesoDatos.Lector.GetString(1);
+                    //nuevo.Usuario
                     listado.Add(nuevo);
                 }
 
@@ -42,5 +47,7 @@ namespace Negocio
                 accesoDatos.cerrarConexion();
             }
         }
+
     }
 }
+

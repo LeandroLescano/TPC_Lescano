@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Dominio;
+using Negocio;
 
 namespace PresWinForm
 {
@@ -17,9 +19,28 @@ namespace PresWinForm
             InitializeComponent();
         }
 
+        private void frmEmpleados_Load(object sender, EventArgs e)
+        {
+            cargarGrilla();
+        }
+
         private void btnAgregar_Click(object sender, EventArgs e)
         {
+            frmAltaModifEmpleado alta = new frmAltaModifEmpleado();
+            alta.Show();
+        }
 
+        private void cargarGrilla()
+        {
+            EmpleadoNegocio negocio = new EmpleadoNegocio();
+            try
+            {
+                dgvEmpleados.DataSource = negocio.listarEmpleados();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
     }
 }

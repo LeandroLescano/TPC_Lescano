@@ -10,7 +10,6 @@ namespace Dominio
     {
         public int Codigo { get; set; }
         public int Numero { get; set; }
-        public char Tipo { get; set; }
         public string CUIT { get; set; }
         public Domicilio Domicilio { get; set; }
         public DateTime FechaInicio { get; set; }

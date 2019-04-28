@@ -20,6 +20,26 @@ namespace PresWinForm
 
         private void frmProveedores_Load(object sender, EventArgs e)
         {
+            cargarGrilla();
+            //ProveedorNegocio negocio = new ProveedorNegocio();
+            //try
+            //{
+            //    dgvProveedores.DataSource = negocio.listarProveedores();
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.ToString());
+            //}
+        }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            frmAltaModifProveedor alta = new frmAltaModifProveedor();
+            alta.ShowDialog();
+        }
+
+        private void cargarGrilla()
+        {
             ProveedorNegocio negocio = new ProveedorNegocio();
             try
             {
@@ -29,12 +49,6 @@ namespace PresWinForm
             {
                 MessageBox.Show(ex.ToString());
             }
-        }
-
-        private void btnAgregar_Click(object sender, EventArgs e)
-        {
-            frmAltaModifProveedor alta = new frmAltaModifProveedor();
-            alta.ShowDialog();
         }
     }
 }

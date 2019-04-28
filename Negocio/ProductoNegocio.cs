@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AccesoDatos;
 using Dominio;
 using System.Data.SqlClient;
 
@@ -12,32 +13,29 @@ namespace Negocio
     {
         public List<Producto> listarProductos()
         {
-            SqlConnection conexion = new SqlConnection();
-            SqlCommand comando = new SqlCommand();
-            SqlDataReader lector;
+            AccesoDatosManager accesoDatos = new AccesoDatosManager();
             List<Producto> listado = new List<Producto>();
-            Producto nuevo;
+            Producto nuevo = new Producto();
             try
             {
-                conexion.ConnectionString = "data source=DESKTOP-OT8NQNL\\SQLEXPRESS; initial catalog=FIAMBRERIA; integrated security=sspi";
-                comando.CommandType = System.Data.CommandType.Text;
-                comando.CommandText = "Select P.ID, P.NOMBRE, M.NOMBRE,P.PRECIOUNITARIO ,P.STOCK, PROV.NOMBRE,C.NOMBRE from PRODUCTOS AS P INNER JOIN MARCAS AS M ON M.ID = P.IDMARCA INNER JOIN PROVEEDORES AS PROV ON PROV.ID = P.IDPROVEEDOR INNER JOIN CATEGORIAS AS C ON C.ID = P.IDCATEGORIA";
-                comando.Connection = conexion;
-                conexion.Open();
-                lector = comando.ExecuteReader();
-
-                while (lector.Read())
+                accesoDatos.setearConsulta("Select P.ID, P.NOMBRE, M.NOMBRE as MARCA ,P.PRECIOUNITARIO ,P.STOCK,PROV.ID, PROV.RAZONSOCIAL,C.NOMBRE AS CATEGORIA from PRODUCTOS AS P LEFT JOIN MARCAS AS M ON M.ID = P.IDMARCA LEFT JOIN PROVEEDORES_X_PRODUCTO AS PP ON PP.IDPRODUCTO = P.ID LEFT JOIN PROVEEDORES AS PROV ON PROV.ID = PP.IDPROVEEDOR LEFT JOIN CATEGORIAS AS C ON C.ID = P.IDCATEGORIA");
+                accesoDatos.abrirConexion();
+                accesoDatos.ejecutarConsulta();
+                while (accesoDatos.Lector.Read())
                 {
                     nuevo = new Producto();
-                    nuevo.Codigo = lector.GetInt32(0);
-                    nuevo.Nombre = lector.GetString(1);
-                    nuevo.Marca = lector.GetString(2);
-                    nuevo.PrecioUnitario = lector.GetDecimal(3);
-                    nuevo.Stock = lector.GetInt32(4);
-                    //nuevo.Proveedor.Nombre = lector.GetString(5); 
-                    nuevo.Categoria = lector.GetString(6);
+                    nuevo.Codigo = accesoDatos.Lector.GetInt32(0);
+                    nuevo.Nombre = accesoDatos.Lector.GetString(1);
+                    nuevo.Marca = new Marca();
+                    nuevo.Marca.Nombre = accesoDatos.Lector["MARCA"].ToString();
+                    nuevo.PrecioUnitario = accesoDatos.Lector.GetDecimal(3);
+                    nuevo.Proveedor = new List<Proveedor>();
+                    nuevo.Proveedor.Add(convertirProveedor(accesoDatos.Lector)); 
+                    nuevo.Categoria = new Categoria();
+                    nuevo.Categoria.Nombre = accesoDatos.Lector["CATEGORIA"].ToString();
                     listado.Add(nuevo);
                 }
+
 
                 return listado;
 
@@ -48,8 +46,16 @@ namespace Negocio
             }
             finally
             {
-                conexion.Close();
+                accesoDatos.cerrarConexion();
             }
+        }
+
+        private Proveedor convertirProveedor(SqlDataReader lector)
+        {
+            Proveedor prov = new Proveedor();
+            prov.Codigo = lector.GetInt32(5);
+            prov.RazonSocial = lector.GetString(6);
+            return prov;
         }
 
     }

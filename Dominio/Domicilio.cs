@@ -10,7 +10,6 @@ namespace Dominio
     {
         public int Codigo { get; set; }
         public Coordenada Coordenadas { get; set; }
-        public string Provincia { get; set; }
         public Localidad Localidad { get; set; }
         public string Calle { get; set; }
         public int Altura { get; set; }

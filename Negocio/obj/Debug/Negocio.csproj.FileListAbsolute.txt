@@ -7,3 +7,5 @@ C:\Users\Tateh\Desktop\Repos Git\TPC_Lescano\Negocio\obj\Debug\Negocio.csproj.Co
 C:\Users\Tateh\Desktop\Repos Git\TPC_Lescano\Negocio\obj\Debug\Negocio.csproj.CopyComplete
 C:\Users\Tateh\Desktop\Repos Git\TPC_Lescano\Negocio\obj\Debug\Negocio.dll
 C:\Users\Tateh\Desktop\Repos Git\TPC_Lescano\Negocio\obj\Debug\Negocio.pdb
+C:\Users\Tateh\Desktop\Repos Git\TPC_Lescano\Negocio\bin\Debug\AccesoDatos.dll
+C:\Users\Tateh\Desktop\Repos Git\TPC_Lescano\Negocio\bin\Debug\AccesoDatos.pdb

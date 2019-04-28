@@ -9,12 +9,8 @@ namespace Dominio
     public class Venta
     {
         public string Codigo { get; set; }
-        public Factura Factura { get; set; }
         public Cliente Cliente { get; set; }
-        public List<Producto> Producto { get; set; }
-        public List<int> Cantidad { get; set; }
-        public List<decimal> PrecioUnitario { get; set; }
-        public List<decimal> PrecioParcial { get; set; }
-        public decimal PrecioFinal { get; set; }
+        public Factura Factura { get; set; }
+        public DetalleVenta Detalle { get; set; }
     }
 }

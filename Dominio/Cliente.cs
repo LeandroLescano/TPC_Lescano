@@ -10,9 +10,6 @@ namespace Dominio
     {
         public int Codigo { get; set; }
         public Usuario Usuario { get; set; }
-
         public DateTime FechaNacimiento { get; set; }
-
-        public string DNI { get; set; }
     }
 }

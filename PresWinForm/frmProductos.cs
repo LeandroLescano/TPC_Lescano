@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Negocio;
+using Dominio;
 
 namespace PresWinForm
 {
@@ -20,6 +21,17 @@ namespace PresWinForm
 
         private void frmStock_Load(object sender, EventArgs e)
         {
+            cargarGrilla();
+        }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            frmAltaModifProducto altaProd = new frmAltaModifProducto();
+            altaProd.ShowDialog();
+        }
+
+        private void cargarGrilla()
+        {
             ProductoNegocio negocio = new ProductoNegocio();
             try
             {
@@ -29,12 +41,6 @@ namespace PresWinForm
             {
                 MessageBox.Show(ex.ToString());
             }
-        }
-
-        private void btnAgregar_Click(object sender, EventArgs e)
-        {
-            frmAltaModifProducto altaProd = new frmAltaModifProducto();
-            altaProd.ShowDialog();
         }
     }
 }

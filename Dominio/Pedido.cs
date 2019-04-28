@@ -9,7 +9,7 @@ namespace Dominio
     public class Pedido
     {
         public int Codigo { get; set; }
-        public Picada Picada { get; set; }
+        public Combo Picada { get; set; }
         public string Descripcion { get; set; }
         public Cliente Cliente { get; set; }
     }

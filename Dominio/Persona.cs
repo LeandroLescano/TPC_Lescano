@@ -8,10 +8,11 @@ namespace Dominio
 {
     public class Persona
     {
-        public TipoPersona Tipo { get; set; }
+        public TipoPersona TipoPersona { get; set; }
         public string Apellido { get; set; }
         public string Nombre { get; set; }
-        public string RazonSocial { get; set; }
+        public virtual string RazonSocial { get; set; }
+        public string DNI { get; set; }
         public string CUIT { get; set; }
         public List<Domicilio> Domicilio { get; set; }
         public List<Mail> Mails { get; set; }

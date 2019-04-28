@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Dominio
+namespace Negocio
 {
-    public class PersonaJuridica : Persona
+    class ClienteNegocio
     {
-
     }
 }
