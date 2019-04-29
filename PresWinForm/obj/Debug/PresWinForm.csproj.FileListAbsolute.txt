@@ -26,3 +26,6 @@ C:\Users\Tateh\Desktop\Repos Git\TPC_Lescano\PresWinForm\obj\Debug\PresWinForm.f
 C:\Users\Tateh\Desktop\Repos Git\TPC_Lescano\PresWinForm\obj\Debug\PresWinForm.frmVentas.resources
 C:\Users\Tateh\Desktop\Repos Git\TPC_Lescano\PresWinForm\obj\Debug\PresWinForm.frmPedidos.resources
 C:\Users\Tateh\Desktop\Repos Git\TPC_Lescano\PresWinForm\obj\Debug\PresWinForm.frmAltaModifPersona.resources
+C:\Users\Tateh\Desktop\Repos Git\TPC_Lescano\PresWinForm\obj\Debug\PresWinForm.frmAltaModifMarcaCat.resources
+C:\Users\Tateh\Desktop\Repos Git\TPC_Lescano\PresWinForm\obj\Debug\PresWinForm.frmCategorias.resources
+C:\Users\Tateh\Desktop\Repos Git\TPC_Lescano\PresWinForm\obj\Debug\PresWinForm.frmMarcas.resources

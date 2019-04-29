@@ -53,6 +53,12 @@
     <Compile Include="frmAltaModifEmpleado.Designer.cs">
       <DependentUpon>frmAltaModifEmpleado.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmAltaModifMarcaCat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAltaModifMarcaCat.Designer.cs">
+      <DependentUpon>frmAltaModifMarcaCat.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmAltaModifPersona.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -64,6 +70,12 @@
     </Compile>
     <Compile Include="frmAltaModifProducto.Designer.cs">
       <DependentUpon>frmAltaModifProducto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCategorias.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCategorias.Designer.cs">
+      <DependentUpon>frmCategorias.cs</DependentUpon>
     </Compile>
     <Compile Include="frmClientes.cs">
       <SubType>Form</SubType>
@@ -88,6 +100,12 @@
     </Compile>
     <Compile Include="frmLogin.Designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMarcas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMarcas.Designer.cs">
+      <DependentUpon>frmMarcas.cs</DependentUpon>
     </Compile>
     <Compile Include="frmPedidos.cs">
       <SubType>Form</SubType>
@@ -124,11 +142,17 @@
     <EmbeddedResource Include="frmAltaModifEmpleado.resx">
       <DependentUpon>frmAltaModifEmpleado.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmAltaModifMarcaCat.resx">
+      <DependentUpon>frmAltaModifMarcaCat.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmAltaModifPersona.resx">
       <DependentUpon>frmAltaModifPersona.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmAltaModifProducto.resx">
       <DependentUpon>frmAltaModifProducto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCategorias.resx">
+      <DependentUpon>frmCategorias.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmClientes.resx">
       <DependentUpon>frmClientes.cs</DependentUpon>
@@ -141,6 +165,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMarcas.resx">
+      <DependentUpon>frmMarcas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmPedidos.resx">
       <DependentUpon>frmPedidos.cs</DependentUpon>

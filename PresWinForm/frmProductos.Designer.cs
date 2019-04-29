@@ -36,6 +36,10 @@
             this.btnAgregar = new System.Windows.Forms.ToolStripButton();
             this.btnModificar = new System.Windows.Forms.ToolStripButton();
             this.btnEliminar = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnMarcas = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnCategorias = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
             this.tspMenu.SuspendLayout();
             this.SuspendLayout();
@@ -48,11 +52,11 @@
             this.dgvProductos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvProductos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgvProductos.Location = new System.Drawing.Point(125, 12);
+            this.dgvProductos.Location = new System.Drawing.Point(135, 12);
             this.dgvProductos.MultiSelect = false;
             this.dgvProductos.Name = "dgvProductos";
             this.dgvProductos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProductos.Size = new System.Drawing.Size(646, 392);
+            this.dgvProductos.Size = new System.Drawing.Size(636, 392);
             this.dgvProductos.TabIndex = 0;
             // 
             // tspMenu
@@ -64,12 +68,16 @@
             this.tspMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnAgregar,
             this.btnModificar,
-            this.btnEliminar});
+            this.btnEliminar,
+            this.toolStripSeparator1,
+            this.btnMarcas,
+            this.toolStripSeparator2,
+            this.btnCategorias});
             this.tspMenu.Location = new System.Drawing.Point(0, 0);
             this.tspMenu.Name = "tspMenu";
             this.tspMenu.Padding = new System.Windows.Forms.Padding(0);
             this.tspMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.tspMenu.Size = new System.Drawing.Size(105, 416);
+            this.tspMenu.Size = new System.Drawing.Size(121, 416);
             this.tspMenu.TabIndex = 5;
             this.tspMenu.Text = "tspMenu";
             // 
@@ -83,8 +91,9 @@
             this.btnAgregar.Margin = new System.Windows.Forms.Padding(5, 10, 5, 5);
             this.btnAgregar.MergeIndex = 0;
             this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(94, 29);
+            this.btnAgregar.Size = new System.Drawing.Size(110, 29);
             this.btnAgregar.Text = "Agregar";
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // btnModificar
             // 
@@ -94,7 +103,7 @@
             this.btnModificar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnModificar.Margin = new System.Windows.Forms.Padding(5);
             this.btnModificar.Name = "btnModificar";
-            this.btnModificar.Size = new System.Drawing.Size(94, 29);
+            this.btnModificar.Size = new System.Drawing.Size(110, 29);
             this.btnModificar.Text = "Modificar";
             // 
             // btnEliminar
@@ -105,8 +114,42 @@
             this.btnEliminar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnEliminar.Margin = new System.Windows.Forms.Padding(5);
             this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(94, 29);
+            this.btnEliminar.Size = new System.Drawing.Size(110, 29);
             this.btnEliminar.Text = "Eliminar";
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(120, 6);
+            // 
+            // btnMarcas
+            // 
+            this.btnMarcas.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnMarcas.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMarcas.Image = ((System.Drawing.Image)(resources.GetObject("btnMarcas.Image")));
+            this.btnMarcas.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnMarcas.Margin = new System.Windows.Forms.Padding(5);
+            this.btnMarcas.Name = "btnMarcas";
+            this.btnMarcas.Size = new System.Drawing.Size(110, 29);
+            this.btnMarcas.Text = "Marcas";
+            this.btnMarcas.Click += new System.EventHandler(this.btnMarcas_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(120, 6);
+            // 
+            // btnCategorias
+            // 
+            this.btnCategorias.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnCategorias.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCategorias.Image = ((System.Drawing.Image)(resources.GetObject("btnCategorias.Image")));
+            this.btnCategorias.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnCategorias.Margin = new System.Windows.Forms.Padding(5);
+            this.btnCategorias.Name = "btnCategorias";
+            this.btnCategorias.Size = new System.Drawing.Size(110, 29);
+            this.btnCategorias.Text = "Categorias";
+            this.btnCategorias.Click += new System.EventHandler(this.btnCategorias_Click);
             // 
             // frmProductos
             // 
@@ -137,5 +180,9 @@
         private System.Windows.Forms.ToolStripButton btnAgregar;
         private System.Windows.Forms.ToolStripButton btnModificar;
         private System.Windows.Forms.ToolStripButton btnEliminar;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripButton btnMarcas;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripButton btnCategorias;
     }
 }

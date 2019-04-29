@@ -42,5 +42,17 @@ namespace PresWinForm
                 MessageBox.Show(ex.ToString());
             }
         }
+
+        private void btnMarcas_Click(object sender, EventArgs e)
+        {
+            frmMarcas marcas = new frmMarcas();
+            marcas.Show();
+        }
+
+        private void btnCategorias_Click(object sender, EventArgs e)
+        {
+            frmCategorias categorias = new frmCategorias();
+            categorias.Show();
+        }
     }
 }
