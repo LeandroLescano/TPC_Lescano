@@ -9,7 +9,7 @@ namespace AccesoDatos
 {
     public class AccesoDatosManager
     {
-        public static string cadenaConexion = "data source=DESKTOP-OT8NQNL\\SQLEXPRESS; initial catalog=FIAMBRERIA; integrated security=sspi";
+        public static string cadenaConexion = "data source=DESKTOP-OT8NQNL\\SQLEXPRESS; initial catalog=LESCANO_DB; integrated security=sspi";
         private SqlCommand comando;
         private SqlConnection conexion;
         private SqlDataReader lector;
@@ -28,7 +28,6 @@ namespace AccesoDatos
             conexion = new SqlConnection(cadenaConexion);
         }
 
-        //setear consulta embebida.
         public void setearConsulta(string consulta)
         {
             comando = new SqlCommand();
@@ -36,7 +35,6 @@ namespace AccesoDatos
             comando.CommandText = consulta;
         }
 
-        //esto para luego...
         public void setearSP(string sp)
         {
             comando = new SqlCommand();
