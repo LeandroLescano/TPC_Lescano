@@ -23,10 +23,10 @@ namespace PresWinForm
         {
             dgvDetalle.DataSource = new List<DetalleVenta>();
             ProductoNegocio nombresProd = new ProductoNegocio();
-            cmbProducto.DataSource = nombresProd.listarNombresProd();
+            cmbProducto.DataSource = nombresProd.listarProductos();
             ComboStyle(cmbProducto);
             ProveedorNegocio nombresProv = new ProveedorNegocio();
-            cmbProveedores.DataSource = nombresProv.listarNombresProv();
+            cmbProveedores.DataSource = nombresProv.listarProveedores();
             ComboStyle(cmbProveedores);
         }
 

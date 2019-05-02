@@ -58,9 +58,9 @@
             this.txtApellido = new System.Windows.Forms.TextBox();
             this.dtpFechaNac = new System.Windows.Forms.DateTimePicker();
             this.txtDNI = new System.Windows.Forms.TextBox();
-            this.lblCodigo = new System.Windows.Forms.Label();
+            this.lblID = new System.Windows.Forms.Label();
             this.txtCUIL = new System.Windows.Forms.TextBox();
-            this.txtCodigo = new System.Windows.Forms.TextBox();
+            this.txtID = new System.Windows.Forms.TextBox();
             this.lblCUIL = new System.Windows.Forms.Label();
             this.lblFechNacimiento = new System.Windows.Forms.Label();
             this.lblDNI = new System.Windows.Forms.Label();
@@ -379,15 +379,15 @@
             this.txtDNI.Size = new System.Drawing.Size(208, 23);
             this.txtDNI.TabIndex = 3;
             // 
-            // lblCodigo
+            // lblID
             // 
-            this.lblCodigo.AutoSize = true;
-            this.lblCodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCodigo.Location = new System.Drawing.Point(29, 19);
-            this.lblCodigo.Name = "lblCodigo";
-            this.lblCodigo.Size = new System.Drawing.Size(56, 17);
-            this.lblCodigo.TabIndex = 93;
-            this.lblCodigo.Text = "Código:";
+            this.lblID.AutoSize = true;
+            this.lblID.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblID.Location = new System.Drawing.Point(29, 19);
+            this.lblID.Name = "lblID";
+            this.lblID.Size = new System.Drawing.Size(56, 17);
+            this.lblID.TabIndex = 93;
+            this.lblID.Text = "Código:";
             // 
             // txtCUIL
             // 
@@ -397,16 +397,16 @@
             this.txtCUIL.Size = new System.Drawing.Size(208, 23);
             this.txtCUIL.TabIndex = 4;
             // 
-            // txtCodigo
+            // txtID
             // 
-            this.txtCodigo.Enabled = false;
-            this.txtCodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCodigo.Location = new System.Drawing.Point(125, 16);
-            this.txtCodigo.Name = "txtCodigo";
-            this.txtCodigo.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtCodigo.Size = new System.Drawing.Size(208, 23);
-            this.txtCodigo.TabIndex = 0;
-            this.txtCodigo.TabStop = false;
+            this.txtID.Enabled = false;
+            this.txtID.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtID.Location = new System.Drawing.Point(125, 16);
+            this.txtID.Name = "txtID";
+            this.txtID.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txtID.Size = new System.Drawing.Size(208, 23);
+            this.txtID.TabIndex = 0;
+            this.txtID.TabStop = false;
             // 
             // lblCUIL
             // 
@@ -542,9 +542,9 @@
             this.Controls.Add(this.txtApellido);
             this.Controls.Add(this.dtpFechaNac);
             this.Controls.Add(this.txtDNI);
-            this.Controls.Add(this.lblCodigo);
+            this.Controls.Add(this.lblID);
             this.Controls.Add(this.txtCUIL);
-            this.Controls.Add(this.txtCodigo);
+            this.Controls.Add(this.txtID);
             this.Controls.Add(this.lblCUIL);
             this.Controls.Add(this.lblFechNacimiento);
             this.Controls.Add(this.lblDNI);
@@ -601,9 +601,9 @@
         private System.Windows.Forms.TextBox txtApellido;
         private System.Windows.Forms.DateTimePicker dtpFechaNac;
         private System.Windows.Forms.TextBox txtDNI;
-        private System.Windows.Forms.Label lblCodigo;
+        private System.Windows.Forms.Label lblID;
         private System.Windows.Forms.TextBox txtCUIL;
-        private System.Windows.Forms.TextBox txtCodigo;
+        private System.Windows.Forms.TextBox txtID;
         private System.Windows.Forms.Label lblCUIL;
         private System.Windows.Forms.Label lblFechNacimiento;
         private System.Windows.Forms.Label lblDNI;

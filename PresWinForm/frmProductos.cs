@@ -54,5 +54,12 @@ namespace PresWinForm
             frmCategorias categorias = new frmCategorias();
             categorias.Show();
         }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            Producto pmodif = (Producto)dgvProductos.CurrentRow.DataBoundItem;
+            frmAltaModifProducto modif = new frmAltaModifProducto(pmodif);
+            modif.Show();
+        }
     }
 }

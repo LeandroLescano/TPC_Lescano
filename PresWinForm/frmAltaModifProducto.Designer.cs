@@ -28,13 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lblCodigo = new System.Windows.Forms.Label();
+            this.lblID = new System.Windows.Forms.Label();
             this.lblNombre = new System.Windows.Forms.Label();
             this.lblMarca = new System.Windows.Forms.Label();
             this.lblPrecioUnitario = new System.Windows.Forms.Label();
             this.lblStock = new System.Windows.Forms.Label();
             this.lblProveedor = new System.Windows.Forms.Label();
-            this.txtCodigo = new System.Windows.Forms.TextBox();
+            this.txtID = new System.Windows.Forms.TextBox();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.cmbMarca = new System.Windows.Forms.ComboBox();
             this.btnAgregar = new System.Windows.Forms.Button();
@@ -50,15 +50,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudStock)).BeginInit();
             this.SuspendLayout();
             // 
-            // lblCodigo
+            // lblID
             // 
-            this.lblCodigo.AutoSize = true;
-            this.lblCodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCodigo.Location = new System.Drawing.Point(25, 21);
-            this.lblCodigo.Name = "lblCodigo";
-            this.lblCodigo.Size = new System.Drawing.Size(67, 20);
-            this.lblCodigo.TabIndex = 0;
-            this.lblCodigo.Text = "Código: ";
+            this.lblID.AutoSize = true;
+            this.lblID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblID.Location = new System.Drawing.Point(25, 21);
+            this.lblID.Name = "lblID";
+            this.lblID.Size = new System.Drawing.Size(67, 20);
+            this.lblID.TabIndex = 0;
+            this.lblID.Text = "Código: ";
             // 
             // lblNombre
             // 
@@ -110,14 +110,15 @@
             this.lblProveedor.TabIndex = 5;
             this.lblProveedor.Text = "Proveedor/es:";
             // 
-            // txtCodigo
+            // txtID
             // 
-            this.txtCodigo.Enabled = false;
-            this.txtCodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCodigo.Location = new System.Drawing.Point(161, 18);
-            this.txtCodigo.Name = "txtCodigo";
-            this.txtCodigo.Size = new System.Drawing.Size(257, 26);
-            this.txtCodigo.TabIndex = 6;
+            this.txtID.Enabled = false;
+            this.txtID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtID.Location = new System.Drawing.Point(161, 18);
+            this.txtID.Name = "txtID";
+            this.txtID.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txtID.Size = new System.Drawing.Size(257, 26);
+            this.txtID.TabIndex = 1;
             // 
             // txtNombre
             // 
@@ -125,7 +126,7 @@
             this.txtNombre.Location = new System.Drawing.Point(161, 58);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(257, 26);
-            this.txtNombre.TabIndex = 7;
+            this.txtNombre.TabIndex = 0;
             // 
             // cmbMarca
             // 
@@ -134,7 +135,7 @@
             this.cmbMarca.Location = new System.Drawing.Point(161, 138);
             this.cmbMarca.Name = "cmbMarca";
             this.cmbMarca.Size = new System.Drawing.Size(257, 28);
-            this.cmbMarca.TabIndex = 8;
+            this.cmbMarca.TabIndex = 2;
             // 
             // btnAgregar
             // 
@@ -144,7 +145,7 @@
             this.btnAgregar.Location = new System.Drawing.Point(130, 407);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(87, 30);
-            this.btnAgregar.TabIndex = 12;
+            this.btnAgregar.TabIndex = 8;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = true;
             // 
@@ -156,7 +157,7 @@
             this.btnCancelar.Location = new System.Drawing.Point(305, 407);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(87, 30);
-            this.btnCancelar.TabIndex = 13;
+            this.btnCancelar.TabIndex = 9;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             // 
@@ -167,7 +168,7 @@
             this.nudPrecioUnit.Name = "nudPrecioUnit";
             this.nudPrecioUnit.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.nudPrecioUnit.Size = new System.Drawing.Size(120, 26);
-            this.nudPrecioUnit.TabIndex = 14;
+            this.nudPrecioUnit.TabIndex = 4;
             // 
             // nudStock
             // 
@@ -175,7 +176,7 @@
             this.nudStock.Location = new System.Drawing.Point(161, 218);
             this.nudStock.Name = "nudStock";
             this.nudStock.Size = new System.Drawing.Size(120, 26);
-            this.nudStock.TabIndex = 15;
+            this.nudStock.TabIndex = 5;
             // 
             // clbProveedores
             // 
@@ -186,7 +187,7 @@
             this.clbProveedores.Name = "clbProveedores";
             this.clbProveedores.Size = new System.Drawing.Size(257, 130);
             this.clbProveedores.Sorted = true;
-            this.clbProveedores.TabIndex = 16;
+            this.clbProveedores.TabIndex = 6;
             // 
             // btnNuevaMarca
             // 
@@ -195,7 +196,7 @@
             this.btnNuevaMarca.Location = new System.Drawing.Point(435, 138);
             this.btnNuevaMarca.Name = "btnNuevaMarca";
             this.btnNuevaMarca.Size = new System.Drawing.Size(75, 30);
-            this.btnNuevaMarca.TabIndex = 17;
+            this.btnNuevaMarca.TabIndex = 3;
             this.btnNuevaMarca.Text = "Nueva";
             this.btnNuevaMarca.UseVisualStyleBackColor = true;
             // 
@@ -206,7 +207,7 @@
             this.btnNuevoProv.Location = new System.Drawing.Point(435, 308);
             this.btnNuevoProv.Name = "btnNuevoProv";
             this.btnNuevoProv.Size = new System.Drawing.Size(75, 30);
-            this.btnNuevoProv.TabIndex = 18;
+            this.btnNuevoProv.TabIndex = 7;
             this.btnNuevoProv.Text = "Nuevo";
             this.btnNuevoProv.UseVisualStyleBackColor = true;
             this.btnNuevoProv.Click += new System.EventHandler(this.btnNuevoProv_Click);
@@ -218,7 +219,7 @@
             this.cmbCategoria.Location = new System.Drawing.Point(161, 98);
             this.cmbCategoria.Name = "cmbCategoria";
             this.cmbCategoria.Size = new System.Drawing.Size(257, 28);
-            this.cmbCategoria.TabIndex = 20;
+            this.cmbCategoria.TabIndex = 1;
             // 
             // lblCategoria
             // 
@@ -246,13 +247,13 @@
             this.Controls.Add(this.btnAgregar);
             this.Controls.Add(this.cmbMarca);
             this.Controls.Add(this.txtNombre);
-            this.Controls.Add(this.txtCodigo);
+            this.Controls.Add(this.txtID);
             this.Controls.Add(this.lblProveedor);
             this.Controls.Add(this.lblStock);
             this.Controls.Add(this.lblPrecioUnitario);
             this.Controls.Add(this.lblMarca);
             this.Controls.Add(this.lblNombre);
-            this.Controls.Add(this.lblCodigo);
+            this.Controls.Add(this.lblID);
             this.Name = "frmAltaModifProducto";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Agregar producto";
@@ -266,13 +267,13 @@
 
         #endregion
 
-        private System.Windows.Forms.Label lblCodigo;
+        private System.Windows.Forms.Label lblID;
         private System.Windows.Forms.Label lblNombre;
         private System.Windows.Forms.Label lblMarca;
         private System.Windows.Forms.Label lblPrecioUnitario;
         private System.Windows.Forms.Label lblStock;
         private System.Windows.Forms.Label lblProveedor;
-        private System.Windows.Forms.TextBox txtCodigo;
+        private System.Windows.Forms.TextBox txtID;
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.ComboBox cmbMarca;
         private System.Windows.Forms.Button btnAgregar;

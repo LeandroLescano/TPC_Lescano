@@ -39,7 +39,7 @@ namespace PresWinForm
                 dgvEmpleados.Columns["RazonSocial"].Visible = false;
                 dgvEmpleados.Columns["CUIT"].Visible = false;
                 dgvEmpleados.Columns["TipoPersona"].Visible = false;
-                dgvEmpleados.Columns["Codigo"].DisplayIndex = 0;
+                dgvEmpleados.Columns["ID"].DisplayIndex = 0;
                 dgvEmpleados.Columns["Apellido"].DisplayIndex = 1;
                 dgvEmpleados.Columns["Nombre"].DisplayIndex = 2;
                 dgvEmpleados.Columns["DNI"].DisplayIndex = 3;

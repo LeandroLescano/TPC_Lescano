@@ -8,7 +8,7 @@ namespace Dominio
 {
     public class Venta
     {
-        public string Codigo { get; set; }
+        public string ID { get; set; }
         public Cliente Cliente { get; set; }
         public Factura Factura { get; set; }
         public DetalleVenta Detalle { get; set; }

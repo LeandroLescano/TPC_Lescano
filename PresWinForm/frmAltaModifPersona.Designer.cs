@@ -33,7 +33,7 @@
             this.txtMail = new System.Windows.Forms.TextBox();
             this.dtpFechaNac = new System.Windows.Forms.DateTimePicker();
             this.txtDNI = new System.Windows.Forms.TextBox();
-            this.lblCodigo = new System.Windows.Forms.Label();
+            this.lblID = new System.Windows.Forms.Label();
             this.lblTelCelular = new System.Windows.Forms.Label();
             this.lblTelLinea = new System.Windows.Forms.Label();
             this.btnCancelar = new System.Windows.Forms.Button();
@@ -41,7 +41,7 @@
             this.txtApellido = new System.Windows.Forms.TextBox();
             this.txtCUIT = new System.Windows.Forms.TextBox();
             this.txtNombre = new System.Windows.Forms.TextBox();
-            this.txtCodigo = new System.Windows.Forms.TextBox();
+            this.txtID = new System.Windows.Forms.TextBox();
             this.lblMail = new System.Windows.Forms.Label();
             this.lblCUIT = new System.Windows.Forms.Label();
             this.lblFechNacimiento = new System.Windows.Forms.Label();
@@ -122,15 +122,15 @@
             this.txtDNI.Size = new System.Drawing.Size(208, 23);
             this.txtDNI.TabIndex = 4;
             // 
-            // lblCodigo
+            // lblID
             // 
-            this.lblCodigo.AutoSize = true;
-            this.lblCodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCodigo.Location = new System.Drawing.Point(32, 83);
-            this.lblCodigo.Name = "lblCodigo";
-            this.lblCodigo.Size = new System.Drawing.Size(56, 17);
-            this.lblCodigo.TabIndex = 30;
-            this.lblCodigo.Text = "Código:";
+            this.lblID.AutoSize = true;
+            this.lblID.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblID.Location = new System.Drawing.Point(32, 83);
+            this.lblID.Name = "lblID";
+            this.lblID.Size = new System.Drawing.Size(56, 17);
+            this.lblID.TabIndex = 30;
+            this.lblID.Text = "Código:";
             // 
             // lblTelCelular
             // 
@@ -201,15 +201,15 @@
             this.txtNombre.Size = new System.Drawing.Size(208, 23);
             this.txtNombre.TabIndex = 2;
             // 
-            // txtCodigo
+            // txtID
             // 
-            this.txtCodigo.Enabled = false;
-            this.txtCodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCodigo.Location = new System.Drawing.Point(128, 80);
-            this.txtCodigo.Name = "txtCodigo";
-            this.txtCodigo.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtCodigo.Size = new System.Drawing.Size(208, 23);
-            this.txtCodigo.TabIndex = 0;
+            this.txtID.Enabled = false;
+            this.txtID.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtID.Location = new System.Drawing.Point(128, 80);
+            this.txtID.Name = "txtID";
+            this.txtID.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txtID.Size = new System.Drawing.Size(208, 23);
+            this.txtID.TabIndex = 0;
             // 
             // lblMail
             // 
@@ -545,11 +545,11 @@
             this.Controls.Add(this.txtApellido);
             this.Controls.Add(this.dtpFechaNac);
             this.Controls.Add(this.txtDNI);
-            this.Controls.Add(this.lblCodigo);
+            this.Controls.Add(this.lblID);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAgregar);
             this.Controls.Add(this.txtCUIT);
-            this.Controls.Add(this.txtCodigo);
+            this.Controls.Add(this.txtID);
             this.Controls.Add(this.lblCUIT);
             this.Controls.Add(this.lblFechNacimiento);
             this.Controls.Add(this.lblDNI);
@@ -577,7 +577,7 @@
         private System.Windows.Forms.TextBox txtMail;
         private System.Windows.Forms.DateTimePicker dtpFechaNac;
         private System.Windows.Forms.TextBox txtDNI;
-        private System.Windows.Forms.Label lblCodigo;
+        private System.Windows.Forms.Label lblID;
         private System.Windows.Forms.Label lblTelCelular;
         private System.Windows.Forms.Label lblTelLinea;
         private System.Windows.Forms.Button btnCancelar;
@@ -585,7 +585,7 @@
         private System.Windows.Forms.TextBox txtApellido;
         private System.Windows.Forms.TextBox txtCUIT;
         private System.Windows.Forms.TextBox txtNombre;
-        private System.Windows.Forms.TextBox txtCodigo;
+        private System.Windows.Forms.TextBox txtID;
         private System.Windows.Forms.Label lblMail;
         private System.Windows.Forms.Label lblCUIT;
         private System.Windows.Forms.Label lblFechNacimiento;

@@ -8,7 +8,20 @@ namespace Dominio
 {
     public class Proveedor : Persona
     {
-        public int Codigo { get; set; }
+        public int ID { get; set; }
         public Usuario Usuario { get; set; }
+
+        public override string ToString()
+        {
+            TipoPersona = new TipoPersona();
+            if (TipoPersona.Fisica)
+            {
+                return Apellido + ", " + Nombre;
+            }
+            else
+            {
+                return RazonSocial;
+            }
+        }
     }
 }

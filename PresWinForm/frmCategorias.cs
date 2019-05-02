@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Dominio;
+using Negocio;
 
 namespace PresWinForm
 {
@@ -21,6 +23,24 @@ namespace PresWinForm
         {
             frmAltaModifMarcaCat alta = new frmAltaModifMarcaCat();
             alta.Show();
+        }
+
+        private void frmCategorias_Load(object sender, EventArgs e)
+        {
+            cargarGrilla();
+        }
+
+        private void cargarGrilla()
+        {
+            CategoriaNegocio negocio = new CategoriaNegocio();
+            try
+            {
+                dgvCategoria.DataSource = negocio.listarCategorias();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
     }
 }

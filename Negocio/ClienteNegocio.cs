@@ -24,7 +24,7 @@ namespace Negocio
                 while (accesoDatos.Lector.Read())
                 {
                     nuevo = new Cliente();
-                    nuevo.Codigo = accesoDatos.Lector.GetInt32(0);
+                    nuevo.ID = accesoDatos.Lector.GetInt32(0);
                     nuevo.Apellido = accesoDatos.Lector.GetString(1);
                     nuevo.Nombre = accesoDatos.Lector.GetString(2);
                     nuevo.RazonSocial = accesoDatos.Lector.GetString(3);
@@ -45,31 +45,6 @@ namespace Negocio
                     listado.Add(nuevo);
                 }
 
-                return listado;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                accesoDatos.cerrarConexion();
-            }
-        }
-
-        public List<string> listarNombresClientes()
-        {
-            AccesoDatosManager accesoDatos = new AccesoDatosManager();
-            List<string> listado = new List<string>();
-            try
-            {
-                accesoDatos.setearConsulta("SELECT RAZONSOCIAL AS NOMBRE FROM CLIENTES WHERE IDTIPOPERSONA = 2 UNION Select(APELLIDOS + ', ' + NOMBRES) AS NOMBRE FROM CLIENTES WHERE IDTIPOPERSONA = 1");
-                accesoDatos.abrirConexion();
-                accesoDatos.ejecutarConsulta();
-                while (accesoDatos.Lector.Read())
-                {
-                    listado.Add(accesoDatos.Lector.GetString(0));
-                }
                 return listado;
             }
             catch (Exception ex)

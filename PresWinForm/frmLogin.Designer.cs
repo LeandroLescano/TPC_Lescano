@@ -40,7 +40,7 @@
             // 
             this.lblUsuario.AutoSize = true;
             this.lblUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUsuario.Location = new System.Drawing.Point(22, 56);
+            this.lblUsuario.Location = new System.Drawing.Point(22, 31);
             this.lblUsuario.Name = "lblUsuario";
             this.lblUsuario.Size = new System.Drawing.Size(68, 20);
             this.lblUsuario.TabIndex = 0;
@@ -50,7 +50,7 @@
             // 
             this.lblContraseña.AutoSize = true;
             this.lblContraseña.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblContraseña.Location = new System.Drawing.Point(22, 112);
+            this.lblContraseña.Location = new System.Drawing.Point(22, 87);
             this.lblContraseña.Name = "lblContraseña";
             this.lblContraseña.Size = new System.Drawing.Size(96, 20);
             this.lblContraseña.TabIndex = 1;
@@ -58,22 +58,22 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(129, 58);
+            this.textBox1.Location = new System.Drawing.Point(129, 33);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.Size = new System.Drawing.Size(126, 20);
             this.textBox1.TabIndex = 2;
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(129, 114);
+            this.textBox2.Location = new System.Drawing.Point(129, 89);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
+            this.textBox2.Size = new System.Drawing.Size(126, 20);
             this.textBox2.TabIndex = 3;
             // 
             // btnIngresar
             // 
             this.btnIngresar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnIngresar.Location = new System.Drawing.Point(42, 165);
+            this.btnIngresar.Location = new System.Drawing.Point(53, 140);
             this.btnIngresar.Name = "btnIngresar";
             this.btnIngresar.Size = new System.Drawing.Size(73, 26);
             this.btnIngresar.TabIndex = 4;
@@ -83,7 +83,7 @@
             // btnCancelar
             // 
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.Location = new System.Drawing.Point(136, 165);
+            this.btnCancelar.Location = new System.Drawing.Point(155, 140);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(73, 26);
             this.btnCancelar.TabIndex = 5;
@@ -94,7 +94,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(250, 212);
+            this.ClientSize = new System.Drawing.Size(280, 183);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnIngresar);
             this.Controls.Add(this.textBox2);

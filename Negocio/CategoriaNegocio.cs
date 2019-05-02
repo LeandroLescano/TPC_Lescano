@@ -10,18 +10,22 @@ namespace Negocio
 {
     public class CategoriaNegocio
     {
-        public List<string> listarNombresCategorias()
+        public List<Categoria> listarCategorias()
         {
             AccesoDatosManager accesoDatos = new AccesoDatosManager();
-            List<string> listado = new List<string>();
+            List<Categoria> listado = new List<Categoria>();
+            Categoria nueva;
             try
             {
-                accesoDatos.setearConsulta("SELECT NOMBRE FROM CATEGORIAS");
+                accesoDatos.setearConsulta("SELECT ID, NOMBRE FROM CATEGORIAS");
                 accesoDatos.abrirConexion();
                 accesoDatos.ejecutarConsulta();
                 while (accesoDatos.Lector.Read())
                 {
-                    listado.Add(accesoDatos.Lector.GetString(0));
+                    nueva = new Categoria();
+                    nueva.ID = accesoDatos.Lector.GetInt32(0);
+                    nueva.Nombre = accesoDatos.Lector.GetString(1);
+                    listado.Add(nueva);
                 }
                 return listado;
             }

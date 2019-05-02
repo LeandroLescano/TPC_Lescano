@@ -45,6 +45,8 @@
             this.btnClientes = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.btnEmpleados = new System.Windows.Forms.ToolStripButton();
+            this.btnCombos = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             this.statusStrip1.SuspendLayout();
             this.tspMenu.SuspendLayout();
             this.SuspendLayout();
@@ -75,6 +77,8 @@
             this.toolStripSeparator2,
             this.btnPedidos,
             this.toolStripSeparator3,
+            this.btnCombos,
+            this.toolStripSeparator7,
             this.btnProductos,
             this.toolStripSeparator4,
             this.btnProveedores,
@@ -223,6 +227,26 @@
             this.btnEmpleados.Text = "Empleados";
             this.btnEmpleados.Click += new System.EventHandler(this.btnEmpleados_Click);
             // 
+            // btnCombos
+            // 
+            this.btnCombos.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnCombos.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCombos.Image = ((System.Drawing.Image)(resources.GetObject("btnCombos.Image")));
+            this.btnCombos.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnCombos.Margin = new System.Windows.Forms.Padding(0, 3, 0, 2);
+            this.btnCombos.Name = "btnCombos";
+            this.btnCombos.Size = new System.Drawing.Size(90, 29);
+            this.btnCombos.Text = "Combos";
+            this.btnCombos.Click += new System.EventHandler(this.btnCombos_Click);
+            // 
+            // toolStripSeparator7
+            // 
+            this.toolStripSeparator7.AutoSize = false;
+            this.toolStripSeparator7.Margin = new System.Windows.Forms.Padding(0, 2, 0, 0);
+            this.toolStripSeparator7.MergeIndex = 0;
+            this.toolStripSeparator7.Name = "toolStripSeparator7";
+            this.toolStripSeparator7.Size = new System.Drawing.Size(6, 35);
+            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -263,6 +287,8 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
+        private System.Windows.Forms.ToolStripButton btnCombos;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
     }
 }
 

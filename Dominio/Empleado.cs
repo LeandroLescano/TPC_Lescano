@@ -8,7 +8,7 @@ namespace Dominio
 {
     public class Empleado : Persona
     {
-        public int Codigo { get; set; }
+        public int ID { get; set; }
         public string CUIL { get; set; }
         public TipoEmpleado TipoEmpleado { get; set; }
         public Usuario Usuario { get; set; }

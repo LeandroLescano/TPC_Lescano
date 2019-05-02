@@ -8,9 +8,9 @@ namespace Dominio
 {
     public class Localidad
     {
-        public int Codigo { get; set; }
+        public int ID { get; set; }
         public string Nombre { get; set; }
         public string Partido { get; set; }
-        public string CodigoPostal { get; set; }
+        public string IDPostal { get; set; }
     }
 }

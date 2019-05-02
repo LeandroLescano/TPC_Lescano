@@ -8,6 +8,7 @@ namespace Dominio
 {
     public class Combo
     {
+        public int ID { get; set; }
         public string Nombre { get; set; }
         public List<Producto> Productos { get; set; }
         public string Descripción { get; set; }

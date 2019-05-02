@@ -47,6 +47,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmAltaModifCombos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAltaModifCombos.Designer.cs">
+      <DependentUpon>frmAltaModifCombos.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmAltaModifEmpleado.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -82,6 +88,12 @@
     </Compile>
     <Compile Include="frmClientes.Designer.cs">
       <DependentUpon>frmClientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCombos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCombos.Designer.cs">
+      <DependentUpon>frmCombos.cs</DependentUpon>
     </Compile>
     <Compile Include="frmCompras.cs">
       <SubType>Form</SubType>
@@ -139,6 +151,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmAltaModifCombos.resx">
+      <DependentUpon>frmAltaModifCombos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmAltaModifEmpleado.resx">
       <DependentUpon>frmAltaModifEmpleado.cs</DependentUpon>
     </EmbeddedResource>
@@ -156,6 +171,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmClientes.resx">
       <DependentUpon>frmClientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCombos.resx">
+      <DependentUpon>frmCombos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmCompras.resx">
       <DependentUpon>frmCompras.cs</DependentUpon>

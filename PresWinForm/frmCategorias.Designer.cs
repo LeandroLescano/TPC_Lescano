@@ -33,9 +33,9 @@
             this.btnAgregar = new System.Windows.Forms.ToolStripButton();
             this.btnModificar = new System.Windows.Forms.ToolStripButton();
             this.btnEliminar = new System.Windows.Forms.ToolStripButton();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvCategoria = new System.Windows.Forms.DataGridView();
             this.tspMenu.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCategoria)).BeginInit();
             this.SuspendLayout();
             // 
             // tspMenu
@@ -92,29 +92,35 @@
             this.btnEliminar.Size = new System.Drawing.Size(76, 24);
             this.btnEliminar.Text = "Eliminar";
             // 
-            // dataGridView1
+            // dgvCategoria
             // 
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.dgvCategoria.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(106, 12);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(249, 272);
-            this.dataGridView1.TabIndex = 7;
+            this.dgvCategoria.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvCategoria.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCategoria.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dgvCategoria.Location = new System.Drawing.Point(100, 12);
+            this.dgvCategoria.MultiSelect = false;
+            this.dgvCategoria.Name = "dgvCategoria";
+            this.dgvCategoria.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvCategoria.Size = new System.Drawing.Size(339, 272);
+            this.dgvCategoria.TabIndex = 7;
             // 
             // frmCategorias
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(361, 296);
+            this.ClientSize = new System.Drawing.Size(451, 296);
             this.Controls.Add(this.tspMenu);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgvCategoria);
             this.Name = "frmCategorias";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmCategorias";
+            this.Load += new System.EventHandler(this.frmCategorias_Load);
             this.tspMenu.ResumeLayout(false);
             this.tspMenu.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCategoria)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -126,6 +132,6 @@
         private System.Windows.Forms.ToolStripButton btnAgregar;
         private System.Windows.Forms.ToolStripButton btnModificar;
         private System.Windows.Forms.ToolStripButton btnEliminar;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvCategoria;
     }
 }

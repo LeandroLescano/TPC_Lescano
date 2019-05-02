@@ -43,7 +43,7 @@ namespace PresWinForm
             try
             {
                 dgvClientes.DataSource = negocio.listarClientes();
-                dgvClientes.Columns["Codigo"].DisplayIndex = 0;
+                dgvClientes.Columns["ID"].DisplayIndex = 0;
                 dgvClientes.Columns["Apellido"].DisplayIndex = 1;
                 dgvClientes.Columns["Nombre"].DisplayIndex = 2;
                 dgvClientes.Columns["RazonSocial"].DisplayIndex = 3;

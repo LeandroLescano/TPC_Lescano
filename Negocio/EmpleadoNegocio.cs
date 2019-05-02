@@ -23,7 +23,7 @@ namespace Negocio
                 while (accesoDatos.Lector.Read())
                 {
                     nuevo = new Empleado();
-                    nuevo.Codigo = accesoDatos.Lector.GetInt32(0);
+                    nuevo.ID = accesoDatos.Lector.GetInt32(0);
                     nuevo.Apellido = accesoDatos.Lector.GetString(1); 
                     nuevo.Nombre = accesoDatos.Lector.GetString(2);
                     nuevo.DNI = accesoDatos.Lector.GetString(3);

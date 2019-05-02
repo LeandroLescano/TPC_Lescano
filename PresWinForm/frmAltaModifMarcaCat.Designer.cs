@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.txtNombre = new System.Windows.Forms.TextBox();
-            this.txtCodigo = new System.Windows.Forms.TextBox();
+            this.txtID = new System.Windows.Forms.TextBox();
             this.lblNombre = new System.Windows.Forms.Label();
-            this.lblCodigo = new System.Windows.Forms.Label();
+            this.lblID = new System.Windows.Forms.Label();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -42,16 +42,16 @@
             this.txtNombre.Location = new System.Drawing.Point(85, 55);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(192, 26);
-            this.txtNombre.TabIndex = 11;
+            this.txtNombre.TabIndex = 1;
             // 
-            // txtCodigo
+            // txtID
             // 
-            this.txtCodigo.Enabled = false;
-            this.txtCodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCodigo.Location = new System.Drawing.Point(85, 17);
-            this.txtCodigo.Name = "txtCodigo";
-            this.txtCodigo.Size = new System.Drawing.Size(192, 26);
-            this.txtCodigo.TabIndex = 10;
+            this.txtID.Enabled = false;
+            this.txtID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtID.Location = new System.Drawing.Point(85, 17);
+            this.txtID.Name = "txtID";
+            this.txtID.Size = new System.Drawing.Size(192, 26);
+            this.txtID.TabIndex = 0;
             // 
             // lblNombre
             // 
@@ -63,15 +63,15 @@
             this.lblNombre.TabIndex = 9;
             this.lblNombre.Text = "Nombre: ";
             // 
-            // lblCodigo
+            // lblID
             // 
-            this.lblCodigo.AutoSize = true;
-            this.lblCodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCodigo.Location = new System.Drawing.Point(12, 20);
-            this.lblCodigo.Name = "lblCodigo";
-            this.lblCodigo.Size = new System.Drawing.Size(67, 20);
-            this.lblCodigo.TabIndex = 8;
-            this.lblCodigo.Text = "Código: ";
+            this.lblID.AutoSize = true;
+            this.lblID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblID.Location = new System.Drawing.Point(12, 20);
+            this.lblID.Name = "lblID";
+            this.lblID.Size = new System.Drawing.Size(67, 20);
+            this.lblID.TabIndex = 8;
+            this.lblID.Text = "Código: ";
             // 
             // btnCancelar
             // 
@@ -81,7 +81,7 @@
             this.btnCancelar.Location = new System.Drawing.Point(184, 98);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(87, 30);
-            this.btnCancelar.TabIndex = 15;
+            this.btnCancelar.TabIndex = 3;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             // 
@@ -93,11 +93,11 @@
             this.btnAgregar.Location = new System.Drawing.Point(25, 98);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(87, 30);
-            this.btnAgregar.TabIndex = 14;
+            this.btnAgregar.TabIndex = 2;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = true;
             // 
-            // frmAltaModifMarca
+            // frmAltaModifMarcaCat
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -105,10 +105,11 @@
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAgregar);
             this.Controls.Add(this.txtNombre);
-            this.Controls.Add(this.txtCodigo);
+            this.Controls.Add(this.txtID);
             this.Controls.Add(this.lblNombre);
-            this.Controls.Add(this.lblCodigo);
-            this.Name = "frmAltaModifMarca";
+            this.Controls.Add(this.lblID);
+            this.Name = "frmAltaModifMarcaCat";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmAltaModifMarca";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -118,9 +119,9 @@
         #endregion
 
         private System.Windows.Forms.TextBox txtNombre;
-        private System.Windows.Forms.TextBox txtCodigo;
+        private System.Windows.Forms.TextBox txtID;
         private System.Windows.Forms.Label lblNombre;
-        private System.Windows.Forms.Label lblCodigo;
+        private System.Windows.Forms.Label lblID;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnAgregar;
     }

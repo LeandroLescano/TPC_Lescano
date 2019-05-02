@@ -98,7 +98,7 @@ namespace PresWinForm
                     //clienteLocal.Usuario.Nombre = txtNombreU.Text;
                     //clienteLocal.Usuario.Contraseña = txtContraseña.Text;
 
-                    if(clienteLocal.Codigo != 0)
+                    if(clienteLocal.ID != 0)
                     {
                         //clienteNegocio.modificarCliente(clienteLocal);
                     }
@@ -140,7 +140,7 @@ namespace PresWinForm
                     //proveedorLocal.Usuario.Nombre = txtNombreU.Text;
                     //proveedorLocal.Usuario.Contraseña = txtContraseña.Text;
 
-                    if (proveedorLocal.Codigo != 0)
+                    if (proveedorLocal.ID != 0)
                     {
                         //proveedorNegocio.modificarProveedor(proveedorLocal);
                     }
@@ -168,7 +168,8 @@ namespace PresWinForm
                 {
                     if(clienteLocal != null)
                     {
-                        txtCodigo.Text = clienteLocal.Codigo.ToString();
+                        btnAgregar.Text = "Modificar";
+                        txtID.Text = clienteLocal.ID.ToString();
                         txtNombre.Text = clienteLocal.Nombre;
                         txtApellido.Text = clienteLocal.Apellido;
                         txtRazonSocial.Text = clienteLocal.RazonSocial;
@@ -185,7 +186,8 @@ namespace PresWinForm
                 {
                     if (proveedorLocal != null)
                     {
-                        txtCodigo.Text = proveedorLocal.Codigo.ToString();
+                        btnAgregar.Text = "Modificar";
+                        txtID.Text = proveedorLocal.ID.ToString();
                         txtNombre.Text = proveedorLocal.Nombre;
                         txtApellido.Text = proveedorLocal.Apellido;
                         txtRazonSocial.Text = proveedorLocal.RazonSocial;

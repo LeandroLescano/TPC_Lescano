@@ -65,6 +65,12 @@ namespace PresWinForm
             setearVentana(compras, btnCompras);
         }
 
+        private void btnCombos_Click(object sender, EventArgs e)
+        {
+            frmCombos combos = new frmCombos();
+            setearVentana(combos, btnCombos);
+        }
+
         private void setearVentana(Form frm, ToolStripButton btn)
         {
             frm.MdiParent = this;
@@ -77,7 +83,7 @@ namespace PresWinForm
                 {
                     ToolStripButton boton = (ToolStripButton)b;
                     if (boton.CheckState == CheckState.Indeterminate)
-                        boton.CheckState = CheckState.Unchecked;
+                      boton.CheckState = CheckState.Unchecked;
                 }
             }
             btn.CheckState = CheckState.Indeterminate;

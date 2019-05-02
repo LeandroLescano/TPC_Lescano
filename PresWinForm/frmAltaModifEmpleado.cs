@@ -49,7 +49,7 @@ namespace PresWinForm
                     empleadoLocal.TipoEmpleado.Vendedor = true;
                 }
 
-                if(empleadoLocal.Codigo != 0)
+                if(empleadoLocal.ID != 0)
                 {
                     //negocio.modificarEmpleado(empleadoLocal);
                 }
@@ -73,7 +73,8 @@ namespace PresWinForm
             {
                 if(empleadoLocal != null)
                 {
-                    txtCodigo.Text = empleadoLocal.Codigo.ToString(); ;
+                    btnAgregar.Text = "Modificar";
+                    txtID.Text = empleadoLocal.ID.ToString(); ;
                     txtApellido.Text = empleadoLocal.Apellido;
                     txtNombre.Text = empleadoLocal.Nombre;
                     txtDNI.Text = empleadoLocal.DNI;

@@ -8,7 +8,7 @@ namespace Dominio
 {
     public class Compra
     {
-        public string Codigo { get; set; }
+        public string ID { get; set; }
         public Proveedor Proveedor { get; set; }
         public DetalleCompra Detalle { get; set; }
 

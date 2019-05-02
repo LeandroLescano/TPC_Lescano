@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Negocio;
 
 namespace PresWinForm
 {
@@ -19,7 +20,20 @@ namespace PresWinForm
 
         private void frmPedidos_Load(object sender, EventArgs e)
         {
-            //cargarGrilla();
+            cargarGrilla();
+        }
+
+        private void cargarGrilla()
+        {
+            PedidoNegocio negocio = new PedidoNegocio();
+            try
+            {
+                dgvPedidos.DataSource = negocio.listarPedidos();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
     }
 }
