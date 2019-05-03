@@ -22,7 +22,8 @@ namespace PresWinForm
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             frmAltaModifMarcaCat alta = new frmAltaModifMarcaCat();
-            alta.Show();
+            alta.ShowDialog();
+            cargarGrilla();
         }
 
         private void frmCategorias_Load(object sender, EventArgs e)

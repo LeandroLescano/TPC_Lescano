@@ -16,5 +16,12 @@ namespace PresWinForm
         {
             InitializeComponent();
         }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            frmAltaModifCombo combo = new frmAltaModifCombo();
+            combo.ShowDialog();
+            //cargarGrilla();
+        }
     }
 }

@@ -121,7 +121,6 @@
             this.Name = "frmClientes";
             this.Text = "frmClientes";
             this.Load += new System.EventHandler(this.frmClientes_Load);
-            this.Enter += new System.EventHandler(this.frmClientes_Enter);
             this.tspMenu.ResumeLayout(false);
             this.tspMenu.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).EndInit();

@@ -22,14 +22,16 @@ namespace PresWinForm
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             frmAltaModifPersona alta = new frmAltaModifPersona('C');
-            alta.Show();
+            alta.ShowDialog();
+            cargarGrilla();
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
             Cliente cmodif = (Cliente)dgvClientes.CurrentRow.DataBoundItem;
             frmAltaModifPersona modif = new frmAltaModifPersona(cmodif, 'C');
-            modif.Show();
+            modif.ShowDialog();
+            cargarGrilla();
         }
 
         private void frmClientes_Load(object sender, EventArgs e)
@@ -57,11 +59,6 @@ namespace PresWinForm
             {
                 MessageBox.Show(ex.ToString());
             }
-        }
-
-        private void frmClientes_Enter(object sender, EventArgs e)
-        {
-            cargarGrilla();
         }
     }
 }

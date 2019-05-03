@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace PresWinForm
 {
-    public partial class frmAltaModifCombos : Form
+    public partial class frmAltaModifCombo : Form
     {
-        public frmAltaModifCombos()
+        public frmAltaModifCombo()
         {
             InitializeComponent();
         }

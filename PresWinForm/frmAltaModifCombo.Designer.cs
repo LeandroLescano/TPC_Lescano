@@ -1,6 +1,6 @@
 ﻿namespace PresWinForm
 {
-    partial class frmAltaModifCombos
+    partial class frmAltaModifCombo
     {
         /// <summary>
         /// Required designer variable.
