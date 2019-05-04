@@ -80,5 +80,24 @@ namespace Negocio
                 accesoDatos.cerrarConexion();
             }
         }
+
+        public void eliminarCliente(Cliente nuevo)
+        {
+            AccesoDatosManager accesoDatos = new AccesoDatosManager();
+            try
+            {
+                accesoDatos.setearConsulta("DELETE FROM CLIENTES WHERE ID = " + nuevo.ID);
+                accesoDatos.abrirConexion();
+                accesoDatos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+        }
     }
 }

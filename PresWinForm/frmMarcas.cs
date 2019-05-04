@@ -21,15 +21,17 @@ namespace PresWinForm
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            frmAltaModifMarcaCat alta = new frmAltaModifMarcaCat();
-            alta.Show();
+            frmAltaModifMarcaCat alta = new frmAltaModifMarcaCat('M');
+            alta.ShowDialog();
+            cargarGrilla();
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
             Marca mModif = (Marca)dgvMarca.CurrentRow.DataBoundItem;
-            frmAltaModifMarcaCat modif = new frmAltaModifMarcaCat(mModif);
-            modif.Show();
+            frmAltaModifMarcaCat modif = new frmAltaModifMarcaCat(mModif, 'M');
+            modif.ShowDialog();
+            cargarGrilla();
         }
 
         private void frmMarcas_Load(object sender, EventArgs e)

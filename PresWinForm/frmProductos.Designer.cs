@@ -40,6 +40,7 @@
             this.btnMarcas = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.btnCategorias = new System.Windows.Forms.ToolStripButton();
+            this.btnVerProveedores = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
             this.tspMenu.SuspendLayout();
             this.SuspendLayout();
@@ -56,7 +57,7 @@
             this.dgvProductos.MultiSelect = false;
             this.dgvProductos.Name = "dgvProductos";
             this.dgvProductos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProductos.Size = new System.Drawing.Size(636, 392);
+            this.dgvProductos.Size = new System.Drawing.Size(636, 353);
             this.dgvProductos.TabIndex = 0;
             // 
             // tspMenu
@@ -77,7 +78,7 @@
             this.tspMenu.Name = "tspMenu";
             this.tspMenu.Padding = new System.Windows.Forms.Padding(0);
             this.tspMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.tspMenu.Size = new System.Drawing.Size(121, 416);
+            this.tspMenu.Size = new System.Drawing.Size(121, 413);
             this.tspMenu.TabIndex = 5;
             this.tspMenu.Text = "tspMenu";
             // 
@@ -152,12 +153,26 @@
             this.btnCategorias.Text = "Categorias";
             this.btnCategorias.Click += new System.EventHandler(this.btnCategorias_Click);
             // 
+            // btnVerProveedores
+            // 
+            this.btnVerProveedores.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnVerProveedores.AutoSize = true;
+            this.btnVerProveedores.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVerProveedores.Location = new System.Drawing.Point(635, 371);
+            this.btnVerProveedores.Name = "btnVerProveedores";
+            this.btnVerProveedores.Size = new System.Drawing.Size(136, 30);
+            this.btnVerProveedores.TabIndex = 6;
+            this.btnVerProveedores.Text = "Ver proveedores";
+            this.btnVerProveedores.UseVisualStyleBackColor = true;
+            this.btnVerProveedores.Click += new System.EventHandler(this.btnVerProveedores_Click);
+            // 
             // frmProductos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(783, 416);
+            this.ClientSize = new System.Drawing.Size(783, 413);
             this.ControlBox = false;
+            this.Controls.Add(this.btnVerProveedores);
             this.Controls.Add(this.tspMenu);
             this.Controls.Add(this.dgvProductos);
             this.MaximizeBox = false;
@@ -185,5 +200,6 @@
         private System.Windows.Forms.ToolStripButton btnMarcas;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton btnCategorias;
+        private System.Windows.Forms.Button btnVerProveedores;
     }
 }

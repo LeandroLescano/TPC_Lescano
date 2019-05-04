@@ -38,5 +38,24 @@ namespace Negocio
                 accesoDatos.cerrarConexion();
             }
         }
+
+        public void agregarMarca(Marca nuevo)
+        {
+            AccesoDatosManager accesoDatos = new AccesoDatosManager();
+            try
+            {
+                accesoDatos.setearConsulta("INSERT INTO MARCAS (NOMBRE) VALUES('" + nuevo.Nombre + "')");
+                accesoDatos.abrirConexion();
+                accesoDatos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+        }
     }
 }

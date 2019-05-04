@@ -61,5 +61,11 @@ namespace PresWinForm
             frmAltaModifProducto modif = new frmAltaModifProducto(pmodif);
             modif.Show();
         }
+
+        private void btnVerProveedores_Click(object sender, EventArgs e)
+        {
+            frmProveedoresXProducto provXProd = new frmProveedoresXProducto((Producto)dgvProductos.CurrentRow.DataBoundItem);
+            provXProd.Show();
+        }
     }
 }

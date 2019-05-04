@@ -19,8 +19,13 @@ namespace PresWinForm
             InitializeComponent();
         }
 
-        private void btnAgregar_Click(object sender, EventArgs e)
+        private void frmClientes_Load(object sender, EventArgs e)
         {
+            cargarGrilla();
+        }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        { 
             frmAltaModifPersona alta = new frmAltaModifPersona('C');
             alta.ShowDialog();
             cargarGrilla();
@@ -34,9 +39,23 @@ namespace PresWinForm
             cargarGrilla();
         }
 
-        private void frmClientes_Load(object sender, EventArgs e)
+        private void btnEliminar_Click(object sender, EventArgs e)
         {
-            cargarGrilla();
+
+            ClienteNegocio negocio = new ClienteNegocio();
+            try
+            {
+                Cliente cmodif = (Cliente)dgvClientes.CurrentRow.DataBoundItem;
+                if (MessageBox.Show("Seguro que desea eliminar el cliente " + cmodif.Apellido + ", " + cmodif.Nombre + " con ID: " + cmodif.ID + "?", "Atención!", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    negocio.eliminarCliente(cmodif);
+                    cargarGrilla();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
 
         private void cargarGrilla()

@@ -148,6 +148,7 @@
             this.btnAgregar.TabIndex = 8;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // btnCancelar
             // 
@@ -160,6 +161,7 @@
             this.btnCancelar.TabIndex = 9;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // nudPrecioUnit
             // 
@@ -199,6 +201,7 @@
             this.btnNuevaMarca.TabIndex = 3;
             this.btnNuevaMarca.Text = "Nueva";
             this.btnNuevaMarca.UseVisualStyleBackColor = true;
+            this.btnNuevaMarca.Click += new System.EventHandler(this.btnNuevaMarca_Click);
             // 
             // btnNuevoProv
             // 

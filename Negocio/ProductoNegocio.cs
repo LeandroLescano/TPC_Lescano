@@ -18,7 +18,7 @@ namespace Negocio
             Producto nuevo = new Producto();
             try
             {
-                accesoDatos.setearConsulta("Select P.ID, P.NOMBRE, M.NOMBRE as MARCA ,P.PRECIOUNITARIO ,P.STOCK,PROV.ID, PROV.RAZONSOCIAL,C.NOMBRE AS CATEGORIA from PRODUCTOS AS P LEFT JOIN MARCAS AS M ON M.ID = P.IDMARCA LEFT JOIN PROVEEDORES_X_PRODUCTO AS PP ON PP.IDPRODUCTO = P.ID LEFT JOIN PROVEEDORES AS PROV ON PROV.ID = PP.IDPROVEEDOR LEFT JOIN CATEGORIAS AS C ON C.ID = P.IDCATEGORIA");
+                accesoDatos.setearConsulta("Select P.ID, P.NOMBRE, M.NOMBRE as MARCA ,P.PRECIOUNITARIO ,P.STOCK, PROV.ID AS IDPROV, PROV.RAZONSOCIAL,C.NOMBRE AS CATEGORIA from PRODUCTOS AS P LEFT JOIN MARCAS AS M ON M.ID = P.IDMARCA LEFT JOIN PROVEEDORES_X_PRODUCTO AS PP ON PP.IDPRODUCTO = P.ID LEFT JOIN PROVEEDORES AS PROV ON PROV.ID = PP.IDPROVEEDOR LEFT JOIN CATEGORIAS AS C ON C.ID = P.IDCATEGORIA");
                 accesoDatos.abrirConexion();
                 accesoDatos.ejecutarConsulta();
                 while (accesoDatos.Lector.Read())
@@ -27,7 +27,11 @@ namespace Negocio
                     nuevo.ID = accesoDatos.Lector.GetInt32(0);
                     nuevo.Nombre = accesoDatos.Lector.GetString(1);
                     nuevo.Marca = new Marca();
-                    nuevo.Marca.Nombre = accesoDatos.Lector["MARCA"].ToString();
+
+                    if (!Convert.IsDBNull(accesoDatos.Lector["MARCA"]))
+                        nuevo.Marca.Nombre = accesoDatos.Lector.GetString(2);
+
+                    //nuevo.Marca.Nombre = accesoDatos.Lector["MARCA"].ToString();
                     nuevo.PrecioUnitario = accesoDatos.Lector.GetDecimal(3);
                     nuevo.Proveedor = new List<Proveedor>();
                     nuevo.Proveedor.Add(convertirProveedor(accesoDatos.Lector)); 
@@ -47,11 +51,32 @@ namespace Negocio
             }
         }
 
+        public void agregarProducto(Producto nuevo, int idCategoria, int idMarca)
+        {
+            AccesoDatosManager accesoDatos = new AccesoDatosManager();
+            try
+            {
+                accesoDatos.setearConsulta("INSERT INTO PRODUCTOS (NOMBRE, PRECIOUNITARIO, STOCK, IDCATEGORIA, IDMARCA) VALUES ('" + nuevo.Nombre + "'," + nuevo.PrecioUnitario + ", " + nuevo.Cantidad + ", " + idCategoria + ", " + idMarca + ")");
+                accesoDatos.abrirConexion();
+                accesoDatos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+        }
+
         private Proveedor convertirProveedor(SqlDataReader lector)
         {
             Proveedor prov = new Proveedor();
-            prov.ID = lector.GetInt32(5);
-            prov.RazonSocial = lector.GetString(6);
+            if (!Convert.IsDBNull(lector["IDPROV"]))
+                prov.ID = lector.GetInt32(5);
+            if (!Convert.IsDBNull(lector["RAZONSOCIAL"]))
+                prov.RazonSocial = lector.GetString(6);
             return prov;
         }
     }

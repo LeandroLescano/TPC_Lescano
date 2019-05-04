@@ -18,7 +18,7 @@ namespace PresWinForm
         private Proveedor proveedorLocal = null;
         private char Tipo;
 
-        public frmAltaModifPersona(char T)
+        public frmAltaModifPersona( char T)
         {
             InitializeComponent();
             Tipo = T;

@@ -56,5 +56,36 @@ namespace Negocio
                 accesoDatos.cerrarConexion();
             }
         }
+
+        public List<ProveedorLite> listarProveedoresXProducto(int idProd)
+        {
+            AccesoDatosManager accesoDatos = new AccesoDatosManager();
+            List<ProveedorLite> listado = new List<ProveedorLite>();
+            ProveedorLite nuevo = new ProveedorLite();
+            try
+            {
+                accesoDatos.setearConsulta("Select P.ID, (P.NOMBRES + ', ' + P.APELLIDOS) AS 'NOMBRE Y/O RAZON SOCIAL', P.DNI, P.CUIT from PROVEEDORES_X_PRODUCTO as PP inner join PROVEEDORES as P on P.ID = PP.IDPROVEEDOR Where PP.IDPRODUCTO = " + idProd + " AND IDTIPOPERSONA = 1 UNION Select P.ID, RAZONSOCIAL, P.DNI, P.CUIT from PROVEEDORES_X_PRODUCTO as PP inner join PROVEEDORES as P on P.ID = PP.IDPROVEEDOR Where PP.IDPRODUCTO = " + idProd + "AND IDTIPOPERSONA = 2");
+                accesoDatos.abrirConexion();
+                accesoDatos.ejecutarConsulta();
+                while (accesoDatos.Lector.Read())
+                {
+                    nuevo = new ProveedorLite();
+                    nuevo.ID = accesoDatos.Lector.GetInt32(0);
+                    nuevo.Nombre = accesoDatos.Lector.GetString(1);
+                    nuevo.DNI = accesoDatos.Lector.GetString(2).ToString();
+                    nuevo.CUIT = accesoDatos.Lector.GetString(3).ToString();
+                    listado.Add(nuevo);
+                }
+                return listado;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+        }
     }
 }
