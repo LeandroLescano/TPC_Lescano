@@ -87,5 +87,43 @@ namespace Negocio
                 accesoDatos.cerrarConexion();
             }
         }
+
+        public void agregarProvXProductos(int IDProd, Proveedor Prov)
+        {
+            AccesoDatosManager accesoDatos = new AccesoDatosManager();
+            try
+            {
+                accesoDatos.setearConsulta("INSERT INTO PROVEEDORES_X_PRODUCTO (IDPRODUCTO, IDPROVEEDOR) VALUES(" + IDProd + ", " + Prov.ID + ")");
+                accesoDatos.abrirConexion();
+                accesoDatos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+        }
+
+        public void eliminarProvXProductos(int IDProd)
+        {
+            AccesoDatosManager accesoDatos = new AccesoDatosManager();
+            try
+            {
+                accesoDatos.abrirConexion();
+                accesoDatos.setearConsulta("DELETE FROM PROVEEDORES_X_PRODUCTO WHERE IDPRODUCTO = " + IDProd);
+                accesoDatos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+        }
     }
 }

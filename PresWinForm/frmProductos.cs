@@ -28,6 +28,7 @@ namespace PresWinForm
         {
             frmAltaModifProducto altaProd = new frmAltaModifProducto();
             altaProd.ShowDialog();
+            cargarGrilla();
         }
 
         private void cargarGrilla()
@@ -59,13 +60,25 @@ namespace PresWinForm
         {
             Producto pmodif = (Producto)dgvProductos.CurrentRow.DataBoundItem;
             frmAltaModifProducto modif = new frmAltaModifProducto(pmodif);
-            modif.Show();
+            modif.ShowDialog();
+            cargarGrilla();
         }
 
         private void btnVerProveedores_Click(object sender, EventArgs e)
         {
             frmProveedoresXProducto provXProd = new frmProveedoresXProducto((Producto)dgvProductos.CurrentRow.DataBoundItem);
             provXProd.Show();
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            Producto peliminar = (Producto)dgvProductos.CurrentRow.DataBoundItem;
+            if(MessageBox.Show("Está a punto de eliminar el producto: "+ peliminar.Nombre + ".\n\n¿Desea eliminarlo?", "Atención!", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                ProductoNegocio negocio = new ProductoNegocio();
+                negocio.eliminarProducto(peliminar);
+                cargarGrilla();
+            }
         }
     }
 }

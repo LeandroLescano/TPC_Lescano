@@ -15,7 +15,7 @@ namespace Dominio
         public decimal PrecioUnitario { get; set; }
         public bool Fraccionable { get; set; }
         public decimal Peso { get; set; } //En caso de que sea fraccionable
-        public int PorcentajeGanancia { get; set; }
+        public decimal PorcentajeGanancia { get; set; }
         public List<Proveedor> Proveedor { get; set; }
         public int Cantidad { get; set; }
 
