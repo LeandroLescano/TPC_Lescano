@@ -11,6 +11,6 @@ namespace Dominio
         public int ID { get; set; }
         public string Nombre { get; set; }
         public string Partido { get; set; }
-        public string IDPostal { get; set; }
+        public string CPostal { get; set; }
     }
 }

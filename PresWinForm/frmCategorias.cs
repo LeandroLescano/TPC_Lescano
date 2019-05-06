@@ -21,8 +21,16 @@ namespace PresWinForm
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            frmAltaModifMarcaCat alta = new frmAltaModifMarcaCat('M');
+            frmAltaModifMarcaCat alta = new frmAltaModifMarcaCat('C');
             alta.ShowDialog();
+            cargarGrilla();
+        }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            Categoria cModif = (Categoria)dgvCategoria.CurrentRow.DataBoundItem;
+            frmAltaModifMarcaCat modif = new frmAltaModifMarcaCat(cModif, 'C');
+            modif.ShowDialog();
             cargarGrilla();
         }
 
@@ -43,5 +51,6 @@ namespace PresWinForm
                 MessageBox.Show(ex.ToString());
             }
         }
+
     }
 }

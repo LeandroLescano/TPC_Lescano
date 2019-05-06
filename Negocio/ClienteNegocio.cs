@@ -25,23 +25,21 @@ namespace Negocio
                 {
                     nuevo = new Cliente();
                     nuevo.ID = accesoDatos.Lector.GetInt32(0);
-                    nuevo.Apellido = accesoDatos.Lector.GetString(1);
-                    nuevo.Nombre = accesoDatos.Lector.GetString(2);
-                    nuevo.RazonSocial = accesoDatos.Lector.GetString(3);
-                    nuevo.DNI = accesoDatos.Lector.GetString(4);
-                    nuevo.CUIT = accesoDatos.Lector.GetString(5);
                     nuevo.TipoPersona = new TipoPersona();
-                    nuevo.FechaNacimiento = (DateTime)accesoDatos.Lector["FECHNAC"];
                     if (accesoDatos.Lector.GetInt32(6) == 1)
                     {
                         nuevo.TipoPersona.Fisica = true;
-                        nuevo.TipoPersona.Juridica = false;
+                        nuevo.FechaNacimiento = (DateTime)accesoDatos.Lector["FECHNAC"];
+                        nuevo.Apellido = accesoDatos.Lector.GetString(1);
+                        nuevo.Nombre = accesoDatos.Lector.GetString(2);
                     }
                     else
                     {
                         nuevo.TipoPersona.Juridica = true;
-                        nuevo.TipoPersona.Fisica = false;
+                        nuevo.RazonSocial = accesoDatos.Lector.GetString(3);
                     }
+                    nuevo.DNI = accesoDatos.Lector.GetString(4);
+                    nuevo.CUIT = accesoDatos.Lector.GetString(5);
                     listado.Add(nuevo);
                 }
 

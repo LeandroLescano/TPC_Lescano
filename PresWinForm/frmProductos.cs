@@ -47,13 +47,13 @@ namespace PresWinForm
         private void btnMarcas_Click(object sender, EventArgs e)
         {
             frmMarcas marcas = new frmMarcas();
-            marcas.Show();
+            marcas.ShowDialog();
         }
 
         private void btnCategorias_Click(object sender, EventArgs e)
         {
             frmCategorias categorias = new frmCategorias();
-            categorias.Show();
+            categorias.ShowDialog();
         }
 
         private void btnModificar_Click(object sender, EventArgs e)

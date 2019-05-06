@@ -19,42 +19,49 @@ namespace PresWinForm
 
         private void btnCompras_Click(object sender, EventArgs e)
         {
+            this.ActiveMdiChild.Close();
             frmCompras compras = new frmCompras();
             setearVentana(compras, btnCompras);
         }
 
         private void btnVentas_Click(object sender, EventArgs e)
         {
+            this.ActiveMdiChild.Close();
             frmVentas ventas = new frmVentas();
             setearVentana(ventas, btnVentas);
         }
 
         private void btnPedidos_Click(object sender, EventArgs e)
         {
+            this.ActiveMdiChild.Close();
             frmPedidos pedidos = new frmPedidos();
             setearVentana(pedidos, btnPedidos);
         }
 
         private void btnProductos_Click(object sender, EventArgs e)
         {
+            this.ActiveMdiChild.Close();
             frmProductos stock = new frmProductos();
             setearVentana(stock, btnProductos);
         }
 
         private void btnProveedores_Click(object sender, EventArgs e)
         {
+            this.ActiveMdiChild.Close();
             frmProveedores proveedores = new frmProveedores();
             setearVentana(proveedores, btnProveedores);
         }
 
         private void btnClientes_Click(object sender, EventArgs e)
         {
+            this.ActiveMdiChild.Close();
             frmClientes clientes = new frmClientes();
             setearVentana(clientes, btnClientes);
         }
 
         private void btnEmpleados_Click(object sender, EventArgs e)
         {
+            this.ActiveMdiChild.Close();
             frmEmpleados empleados = new frmEmpleados();
             setearVentana(empleados, btnEmpleados);
         }
@@ -67,6 +74,7 @@ namespace PresWinForm
 
         private void btnCombos_Click(object sender, EventArgs e)
         {
+            this.ActiveMdiChild.Close();
             frmCombos combos = new frmCombos();
             setearVentana(combos, btnCombos);
         }

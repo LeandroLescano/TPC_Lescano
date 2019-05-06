@@ -16,5 +16,17 @@ namespace Dominio
         public string EntreCalle1 { get; set; }
         public string EntreCalle2 { get; set; }
         public Edificio Edificio { get; set; }
+
+        public override string ToString()
+        {
+            if(Calle != null)
+            {
+                return Calle + ", " + Altura;
+            }
+            else
+            {
+                return "Sin registro de domicilio.";
+            }
+        }
     }
 }

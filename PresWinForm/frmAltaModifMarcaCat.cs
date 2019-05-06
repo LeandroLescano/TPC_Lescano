@@ -70,5 +70,19 @@ namespace PresWinForm
             }
                 this.Close();
         }
+
+        private void frmAltaModifMarcaCat_Load(object sender, EventArgs e)
+        {
+            if(categoriaLocal != null)
+            {
+                txtID.Text = categoriaLocal.ID.ToString();
+                txtNombre.Text = categoriaLocal.Nombre;
+            }
+            else if(marcaLocal != null)
+            {
+                txtID.Text = marcaLocal.ID.ToString();
+                txtNombre.Text = marcaLocal.Nombre;
+            }
+        }
     }
 }

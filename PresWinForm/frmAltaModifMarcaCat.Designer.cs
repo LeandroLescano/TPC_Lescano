@@ -112,6 +112,7 @@
             this.Name = "frmAltaModifMarcaCat";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmAltaModifMarca";
+            this.Load += new System.EventHandler(this.frmAltaModifMarcaCat_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
