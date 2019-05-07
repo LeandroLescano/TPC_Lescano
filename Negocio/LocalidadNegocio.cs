@@ -35,7 +35,7 @@ namespace Negocio
             try
             {
                 int idLoc = -1;
-                accesoDatos.setearConsulta("Select ID FROM LOCALIDADES where NOMBRE LIKE '" + Nombre + "' AND PARTIDO LIKE '"+ Partido +"'");
+                accesoDatos.setearConsulta("Select ID FROM LOCALIDADES where NOMBRE LIKE '" + Nombre + "' AND PARTIDO LIKE '"+ Partido + "'");
                 accesoDatos.abrirConexion();
                 accesoDatos.ejecutarConsulta();
                 while (accesoDatos.Lector.Read())

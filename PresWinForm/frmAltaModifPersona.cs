@@ -111,7 +111,7 @@ namespace PresWinForm
                     ProveedorNegocio negocioProv = new ProveedorNegocio();
                     LocalidadNegocio negocioLoc = new LocalidadNegocio();
                     DomicilioNegocio negocioDoc = new DomicilioNegocio();
-                    if (btnAgregar.Text != "Modificar")
+                    if (btnAgregar.Text == "Agregar")
                     {
                         proveedorLocal = new Proveedor();
                         if(llenarProvLocal(proveedorLocal))
@@ -126,7 +126,7 @@ namespace PresWinForm
                     {
                         if(llenarProvLocal(proveedorLocal))
                         {
-                            if(negocioDoc.idDomicilio(proveedorLocal.Domicilio) == -1)
+                            if(proveedorLocal.Domicilio.ID < 1)
                             {
                                 negocioDoc.agregarDomicilio(proveedorLocal.Domicilio);
                             }
@@ -171,10 +171,9 @@ namespace PresWinForm
                         txtDNI.Text = clienteLocal.DNI;
                         txtCUIT.Text = clienteLocal.CUIT;
                         dtpFechaNac.Text = clienteLocal.FechaNacimiento.ToString();
-                        if(clienteLocal.TipoPersona.Fisica)
-                        {
-                            rbtParticular.Checked = true;
-                        }
+                        txtCalle.Text = clienteLocal.Domicilio.Calle;
+                        txtAltura.Text = clienteLocal.Domicilio.Altura.ToString();
+                        txtLocalidad.Text = clienteLocal.Domicilio.Localidad.Nombre;
                     }
                 }
                 else if (Tipo == 'P')
@@ -196,6 +195,14 @@ namespace PresWinForm
                         txtRazonSocial.Text = proveedorLocal.RazonSocial;
                         txtDNI.Text = proveedorLocal.DNI;
                         txtCUIT.Text = proveedorLocal.CUIT;
+                        txtCalle.Text = proveedorLocal.Domicilio.Calle;
+                        txtAltura.Text = proveedorLocal.Domicilio.Altura.ToString();
+                        txtEntreCalle1.Text = proveedorLocal.Domicilio.EntreCalle1;
+                        txtEntreCalle2.Text = proveedorLocal.Domicilio.EntreCalle2;
+                        txtPiso.Text = proveedorLocal.Domicilio.Edificio.Piso.ToString();
+                        txtDepto.Text = proveedorLocal.Domicilio.Edificio.Departamento;
+                        txtLocalidad.Text = proveedorLocal.Domicilio.Localidad.Nombre;
+                        txtPartido.Text = proveedorLocal.Domicilio.Localidad.Partido;
                     }
                 }
             }
@@ -222,9 +229,11 @@ namespace PresWinForm
             }
             local.DNI = txtDNI.Text;
             local.CUIT = txtCUIT.Text;
+            int idDomicilio = local.Domicilio.ID;
             if(txtCalle.Text.Trim() != "" && txtAltura.Text.Trim() != "")
             {
                 local.Domicilio = new Domicilio();
+                local.Domicilio.ID = idDomicilio;
                 local.Domicilio.Altura = Convert.ToInt32(txtAltura.Text);
                 local.Domicilio.Calle = txtCalle.Text;
                 local.Domicilio.EntreCalle1 = txtEntreCalle1.Text;
