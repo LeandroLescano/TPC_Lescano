@@ -18,7 +18,7 @@ namespace Negocio
             Proveedor nuevo;
             try
             {
-                accesoDatos.setearConsulta("Select P.*, D.CALLE, D.ALTURA, L.NOMBRE as LOCALIDAD, D.ID AS IDDOM, D.PISO, D.DEPARTAMENTO, L.CODPOSTAL, L.PARTIDO from PROVEEDORES AS P LEFT JOIN DOMICILIOS AS D ON D.ID = P.IDDOMICILIO LEFT JOIN LOCALIDADES AS L ON L.ID = D.IDLOCALIDAD");
+                accesoDatos.setearConsulta("Select P.*, D.CALLE, D.ALTURA, L.NOMBRE as LOCALIDAD, D.ID AS IDDOM, D.PISO, D.DEPARTAMENTO, L.CODPOSTAL, L.PARTIDO, L.ID AS IDLOCALIDAD from PROVEEDORES AS P LEFT JOIN DOMICILIOS AS D ON D.ID = P.IDDOMICILIO LEFT JOIN LOCALIDADES AS L ON L.ID = D.IDLOCALIDAD");
                 accesoDatos.abrirConexion();
                 accesoDatos.ejecutarConsulta();
 
@@ -42,26 +42,31 @@ namespace Negocio
                     nuevo.DNI = accesoDatos.Lector.GetString(4);
                     nuevo.Domicilio = new Domicilio();
                     nuevo.Domicilio.Localidad = new Localidad();
+                    nuevo.Domicilio.Edificio = new Edificio();
+
+                    //Domicilio
                     if (!Convert.IsDBNull(accesoDatos.Lector["CALLE"]))
                         nuevo.Domicilio.Calle = accesoDatos.Lector.GetString(8);    
                     if (!Convert.IsDBNull(accesoDatos.Lector["ALTURA"]))
                         nuevo.Domicilio.Altura = accesoDatos.Lector.GetInt32(9);
-                    if (!Convert.IsDBNull(accesoDatos.Lector["LOCALIDAD"]))
-                        nuevo.Domicilio.Localidad.Nombre = accesoDatos.Lector.GetString(10);
                     if (!Convert.IsDBNull(accesoDatos.Lector["IDDOM"]))
                         nuevo.Domicilio.ID = accesoDatos.Lector.GetInt32(11);
 
-                    nuevo.Domicilio.Edificio = new Edificio();
+                    //Edificio
                     if (!Convert.IsDBNull(accesoDatos.Lector["PISO"]))
                         nuevo.Domicilio.Edificio.Piso = accesoDatos.Lector.GetInt32(12);
                     if (!Convert.IsDBNull(accesoDatos.Lector["DEPARTAMENTO"]))
                         nuevo.Domicilio.Edificio.Departamento = accesoDatos.Lector.GetString(13);
 
-                    nuevo.Domicilio.Localidad = new Localidad();
+                    //Localidad
+                    if (!Convert.IsDBNull(accesoDatos.Lector["LOCALIDAD"]))
+                        nuevo.Domicilio.Localidad.Nombre = accesoDatos.Lector.GetString(10);
                     if (!Convert.IsDBNull(accesoDatos.Lector["CODPOSTAL"]))
                         nuevo.Domicilio.Localidad.CPostal = accesoDatos.Lector.GetString(14);
                     if (!Convert.IsDBNull(accesoDatos.Lector["PARTIDO"]))
                         nuevo.Domicilio.Localidad.Partido = accesoDatos.Lector.GetString(15);
+                    if (!Convert.IsDBNull(accesoDatos.Lector["IDLOCALIDAD"]))
+                        nuevo.Domicilio.Localidad.ID = accesoDatos.Lector.GetInt32(16);
 
 
                     listado.Add(nuevo);
@@ -108,7 +113,7 @@ namespace Negocio
             }
         }
 
-        public void modificarProveedor(Proveedor modif, int idDomicilio)
+        public void modificarProveedor(Proveedor modif)
         {
             AccesoDatosManager accesoDatos = new AccesoDatosManager();
             try
@@ -132,8 +137,27 @@ namespace Negocio
                 }
                 accesoDatos.Comando.Parameters.AddWithValue("@Dni", modif.DNI);
                 accesoDatos.Comando.Parameters.AddWithValue("@Cuit", modif.CUIT);
-                accesoDatos.Comando.Parameters.AddWithValue("@Domicilio", idDomicilio);
+                accesoDatos.Comando.Parameters.AddWithValue("@Domicilio", modif.Domicilio.ID);
                 accesoDatos.Comando.Parameters.AddWithValue("@TipoPersona", TipoPersona);
+                accesoDatos.abrirConexion();
+                accesoDatos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+        }
+
+        public void eliminarProveedor(Proveedor prov)
+        {
+            AccesoDatosManager accesoDatos = new AccesoDatosManager();
+            try
+            {
+                accesoDatos.setearConsulta("DELETE FROM PROVEEDORES WHERE ID = " + prov.ID + "DELETE FROM DOMICILIOS WHERE ID = " + prov.Domicilio.ID);
                 accesoDatos.abrirConexion();
                 accesoDatos.ejecutarAccion();
             }

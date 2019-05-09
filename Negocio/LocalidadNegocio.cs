@@ -10,35 +10,16 @@ namespace Negocio
 {
     public class LocalidadNegocio
     {
-        public void agregarLocalidad(Localidad nuevo)
+        public int agregarLocalidad(Localidad nuevo)
         {
             AccesoDatosManager accesoDatos = new AccesoDatosManager();
             try
             {
-                accesoDatos.setearConsulta("INSERT INTO LOCALIDADES (NOMBRE, PARTIDO, CODPOSTAL) VALUES ('"+nuevo.Nombre+"', '"+nuevo.Partido+"', '"+nuevo.CPostal+"')");
-                accesoDatos.abrirConexion();
-                accesoDatos.ejecutarAccion();
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                accesoDatos.cerrarConexion();
-            }
-        }
-
-        public int idLocalidad(string Nombre, string Partido)
-        {
-            AccesoDatosManager accesoDatos = new AccesoDatosManager();
-            try
-            {
-                int idLoc = -1;
-                accesoDatos.setearConsulta("Select ID FROM LOCALIDADES where NOMBRE LIKE '" + Nombre + "' AND PARTIDO LIKE '"+ Partido + "'");
+                int idLoc = 0;
+                accesoDatos.setearConsulta("INSERT INTO LOCALIDADES (NOMBRE, PARTIDO, CODPOSTAL) VALUES ('"+nuevo.Nombre+"', '"+nuevo.Partido+"', '"+nuevo.CPostal+ "') SELECT TOP 1 ID from LOCALIDADES ORDER BY ID DESC");
                 accesoDatos.abrirConexion();
                 accesoDatos.ejecutarConsulta();
-                while (accesoDatos.Lector.Read())
+                while(accesoDatos.Lector.Read())
                 {
                     idLoc = accesoDatos.Lector.GetInt32(0);
                 }
@@ -52,8 +33,84 @@ namespace Negocio
             finally
             {
                 accesoDatos.cerrarConexion();
+
             }
         }
+
+        public void modificarLocalidad(Domicilio modif)
+        {
+            AccesoDatosManager accesoDatos = new AccesoDatosManager();
+            try
+            {
+                LocalidadNegocio negocio = new LocalidadNegocio();
+                int idLoc = idLocalidad(modif.Localidad.Nombre, modif.ID);
+                accesoDatos.setearConsulta("UPDATE LOCALIDADES SET NOMBRE=@Nombre, PARTIDO=@Partido, CODPOSTAL=@CodPostal WHERE ID=" + idLoc);
+                accesoDatos.Comando.Parameters.Clear();
+                accesoDatos.Comando.Parameters.AddWithValue("@Nombre", modif.Localidad.Nombre);
+                accesoDatos.Comando.Parameters.AddWithValue("@Partido", modif.Localidad.Partido);
+                accesoDatos.Comando.Parameters.AddWithValue("@CodPostal", modif.Localidad.CPostal);
+                accesoDatos.abrirConexion();
+                accesoDatos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+        }
+
+        public int idLocalidad(string Nombre, int idDom)
+        {
+            AccesoDatosManager accesoDatos = new AccesoDatosManager();
+            try
+            {
+                int idLoc = -1;
+                accesoDatos.setearConsulta("Select L.ID FROM LOCALIDADES AS L INNER JOIN DOMICILIOS AS D ON D.IDLOCALIDAD = L.ID where L.NOMBRE LIKE '" + Nombre + "' AND D.ID = "+ idDom);
+                accesoDatos.abrirConexion();
+                accesoDatos.ejecutarConsulta();
+                while (accesoDatos.Lector.Read())
+                {
+                    idLoc = accesoDatos.Lector.GetInt32(0);
+                }
+                return idLoc;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+        }
+
+        //public int idLocalidad(string Nombre, string Partido)
+        //{
+        //    AccesoDatosManager accesoDatos = new AccesoDatosManager();
+        //    try
+        //    {
+        //        int idLoc = -1;
+        //        accesoDatos.setearConsulta("Select ID FROM LOCALIDADES where NOMBRE LIKE '" + Nombre + "' AND PARTIDO LIKE '"+ Partido +"'");
+        //        accesoDatos.abrirConexion();
+        //        accesoDatos.ejecutarConsulta();
+        //        while (accesoDatos.Lector.Read())
+        //        {
+        //            idLoc = accesoDatos.Lector.GetInt32(0);
+        //        }
+        //        return idLoc;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw ex;
+        //    }
+        //    finally
+        //    {
+        //        accesoDatos.cerrarConexion();
+        //    }
+        //}
 
     }
 }

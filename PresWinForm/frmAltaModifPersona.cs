@@ -114,27 +114,29 @@ namespace PresWinForm
                     if (btnAgregar.Text == "Agregar")
                     {
                         proveedorLocal = new Proveedor();
-                        if(llenarProvLocal(proveedorLocal))
+                        if(llenarLocal(proveedorLocal))
                         {
-                            negocioLoc.agregarLocalidad(proveedorLocal.Domicilio.Localidad);
-                            negocioDoc.agregarDomicilio(proveedorLocal.Domicilio);
-                            negocioProv.agregarProveedor(proveedorLocal, negocioDoc.idDomicilio(proveedorLocal.Domicilio));
+                            int IDNuevaLoc = negocioLoc.agregarLocalidad(proveedorLocal.Domicilio.Localidad);
+                            int IDNuevoDoc = negocioDoc.agregarDomicilio(proveedorLocal.Domicilio, IDNuevaLoc);
+                            negocioProv.agregarProveedor(proveedorLocal, IDNuevoDoc);
                             Close();
                         }
                     }
                     else
                     {
-                        if(llenarProvLocal(proveedorLocal))
+                        if(llenarLocal(proveedorLocal))
                         {
                             if(proveedorLocal.Domicilio.ID < 1)
                             {
-                                negocioDoc.agregarDomicilio(proveedorLocal.Domicilio);
+                                int IDNuevaLoc = negocioLoc.agregarLocalidad(proveedorLocal.Domicilio.Localidad);
+                                negocioDoc.agregarDomicilio(proveedorLocal.Domicilio, IDNuevaLoc);
                             }
                             else
                             {
+                                negocioLoc.modificarLocalidad(proveedorLocal.Domicilio);
                                 negocioDoc.modificarDomicilio(proveedorLocal.Domicilio);
                             }
-                            negocioProv.modificarProveedor(proveedorLocal, negocioDoc.idDomicilio(proveedorLocal.Domicilio));
+                            negocioProv.modificarProveedor(proveedorLocal);
                             Close();
                         }
                     }
@@ -199,10 +201,14 @@ namespace PresWinForm
                         txtAltura.Text = proveedorLocal.Domicilio.Altura.ToString();
                         txtEntreCalle1.Text = proveedorLocal.Domicilio.EntreCalle1;
                         txtEntreCalle2.Text = proveedorLocal.Domicilio.EntreCalle2;
-                        txtPiso.Text = proveedorLocal.Domicilio.Edificio.Piso.ToString();
+                        if(proveedorLocal.Domicilio.Edificio.Piso != 0)
+                        {
+                            txtPiso.Text = proveedorLocal.Domicilio.Edificio.Piso.ToString();
+                        }
                         txtDepto.Text = proveedorLocal.Domicilio.Edificio.Departamento;
                         txtLocalidad.Text = proveedorLocal.Domicilio.Localidad.Nombre;
                         txtPartido.Text = proveedorLocal.Domicilio.Localidad.Partido;
+                        txtCPostal.Text = proveedorLocal.Domicilio.Localidad.CPostal;
                     }
                 }
             }
@@ -213,7 +219,7 @@ namespace PresWinForm
             }
         }
 
-        private bool llenarProvLocal(Proveedor local)
+        private bool llenarLocal(Persona local)
         {
             local.TipoPersona = new TipoPersona();
             if (rbtParticular.Checked)
@@ -229,42 +235,15 @@ namespace PresWinForm
             }
             local.DNI = txtDNI.Text;
             local.CUIT = txtCUIT.Text;
-            int idDomicilio = local.Domicilio.ID;
-            if(txtCalle.Text.Trim() != "" && txtAltura.Text.Trim() != "")
+            if(!llenarDomicilio(local))
             {
-                local.Domicilio = new Domicilio();
-                local.Domicilio.ID = idDomicilio;
-                local.Domicilio.Altura = Convert.ToInt32(txtAltura.Text);
-                local.Domicilio.Calle = txtCalle.Text;
-                local.Domicilio.EntreCalle1 = txtEntreCalle1.Text;
-                local.Domicilio.EntreCalle2 = txtEntreCalle2.Text;
+                return false;
             }
-            else if((txtCalle.Text.Trim() == "" && txtAltura.Text.Trim() != "") || (txtCalle.Text.Trim() != "" && txtAltura.Text.Trim() == ""))
+            if (!llenarEdificio(local))
             {
-                if(MessageBox.Show("Faltan datos del DOMICILIO para completar.\n\n¿Desea regresar para completarlos?\nDe lo contrario no se guardará ningún dato del domicilio.", "Atención!", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                {
-                    return false;
-                }
+                return false;
             }
-
-            if(txtPiso.Text.Trim() !=  "" && txtDepto.Text.Trim() != "")
-            {
-                local.Domicilio.Edificio = new Edificio();
-                local.Domicilio.Edificio.Piso = Convert.ToInt32(txtPiso.Text);
-                local.Domicilio.Edificio.Departamento = txtDepto.Text;
-            }
-            else if ((txtPiso.Text.Trim() != "" && txtDepto.Text.Trim() == "") || (txtPiso.Text.Trim() == "" && txtDepto.Text.Trim() != ""))
-            {
-                if(MessageBox.Show("Faltan datos del EDIFICIO para completar.\n\n¿Desea regresar para completarlos?\nDe lo contrario no se guardará ningún dato del edificio.", "Atención!", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                {
-                    return false;
-                }
-            }
-
-            local.Domicilio.Localidad = new Localidad();
-            local.Domicilio.Localidad.Nombre = txtLocalidad.Text;
-            local.Domicilio.Localidad.Partido = txtPartido.Text;
-            local.Domicilio.Localidad.CPostal = txtCPostal.Text;
+            llenarLocalidad(local);
 
             //local.Telefonos = new List<Telefono>();
             //for (int i = 0; i < 2; i++)
@@ -282,6 +261,100 @@ namespace PresWinForm
             mail.Descripcion = txtApellido.Text + ", " + txtNombre.Text;
             mail.Direccion = txtMail.Text;
             local.Mails.Add(mail);
+            return true;
+        }
+
+        private bool llenarDomicilio(Persona local)
+        {
+            if(local.Domicilio == null)
+            {
+                local.Domicilio = new Domicilio();
+                if (txtCalle.Text.Trim() != "" && txtAltura.Text.Trim() != "")
+                {
+                    local.Domicilio.Altura = Convert.ToInt32(txtAltura.Text);
+                    local.Domicilio.Calle = txtCalle.Text;
+                    local.Domicilio.EntreCalle1 = txtEntreCalle1.Text;
+                    local.Domicilio.EntreCalle2 = txtEntreCalle2.Text;
+                }
+                else if ((txtCalle.Text.Trim() == "" && txtAltura.Text.Trim() != "") || (txtCalle.Text.Trim() != "" && txtAltura.Text.Trim() == ""))
+            {
+                if (MessageBox.Show("Faltan datos del DOMICILIO para completar.\n\n¿Desea continuar? No se guardará ningún dato del domicilio.", "Atención!", MessageBoxButtons.YesNo) == DialogResult.No)
+                {
+                    return false;
+                }
+            }
+            }
+            else
+            {
+                if (txtCalle.Text.Trim() != "" && txtAltura.Text.Trim() != "")
+                {
+                    local.Domicilio.Altura = Convert.ToInt32(txtAltura.Text);
+                    local.Domicilio.Calle = txtCalle.Text;
+                    local.Domicilio.EntreCalle1 = txtEntreCalle1.Text;
+                    local.Domicilio.EntreCalle2 = txtEntreCalle2.Text;
+                }
+                else if ((txtCalle.Text.Trim() == "" && txtAltura.Text.Trim() != "") || (txtCalle.Text.Trim() != "" && txtAltura.Text.Trim() == ""))
+                {
+                    if (MessageBox.Show("Faltan datos del DOMICILIO para completar.\n\n¿Desea continuar? No se guardará ningún dato del domicilio.", "Atención!", MessageBoxButtons.YesNo) == DialogResult.No)
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+
+        private bool llenarEdificio(Persona local)
+        {
+            if(local.Domicilio.Edificio == null)
+            {
+                local.Domicilio.Edificio = new Edificio();
+                if (txtPiso.Text.Trim() != "" && txtDepto.Text.Trim() != "")
+                {
+                    local.Domicilio.Edificio.Piso = Convert.ToInt32(txtPiso.Text);
+                    local.Domicilio.Edificio.Departamento = txtDepto.Text;
+                }
+                else if ((txtPiso.Text.Trim() != "" && txtDepto.Text.Trim() == "") || (txtPiso.Text.Trim() == "" && txtDepto.Text.Trim() != ""))
+                {
+                    if (MessageBox.Show("Faltan datos del EDIFICIO para completar.\n\n¿Desea continuar? No se guardará ningún dato del edificio.", "Atención!", MessageBoxButtons.YesNo) == DialogResult.No)
+                    {
+                        return false;
+                    }
+                }
+            }
+            else
+            {
+                if (txtPiso.Text.Trim() != "" && txtDepto.Text.Trim() != "")
+                {
+                    local.Domicilio.Edificio.Piso = Convert.ToInt32(txtPiso.Text);
+                    local.Domicilio.Edificio.Departamento = txtDepto.Text;
+                }
+                else if ((txtPiso.Text.Trim() != "" && txtDepto.Text.Trim() == "") || (txtPiso.Text.Trim() == "" && txtDepto.Text.Trim() != ""))
+                {
+                    if (MessageBox.Show("Faltan datos del EDIFICIO para completar.\n\n¿Desea continuar? No se guardará ningún dato del edificio.", "Atención!", MessageBoxButtons.YesNo) == DialogResult.No)
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+
+        private bool llenarLocalidad(Persona local)
+        {
+            if(local.Domicilio.Localidad == null)
+            {
+                local.Domicilio.Localidad = new Localidad();
+                local.Domicilio.Localidad.Nombre = txtLocalidad.Text;
+                local.Domicilio.Localidad.Partido = txtPartido.Text;
+                local.Domicilio.Localidad.CPostal = txtCPostal.Text;
+            }
+            else
+            {
+                local.Domicilio.Localidad.Nombre = txtLocalidad.Text;
+                local.Domicilio.Localidad.Partido = txtPartido.Text;
+                local.Domicilio.Localidad.CPostal = txtCPostal.Text;
+            }
             return true;
         }
     }

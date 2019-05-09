@@ -10,29 +10,29 @@ namespace Negocio
 {
     public class DomicilioNegocio
     {
-        public void agregarDomicilio(Domicilio nuevo)
+        public int agregarDomicilio(Domicilio nuevo, int IDLocalidad)
         {
             AccesoDatosManager accesoDatos = new AccesoDatosManager();
             LocalidadNegocio negocioLoc = new LocalidadNegocio();
             try
             {
-                int IDLocalidad = negocioLoc.idLocalidad(nuevo.Localidad.Nombre, nuevo.Localidad.Partido);
-                if (nuevo.Edificio == null)
-                {
-                    if (IDLocalidad == -1)
-                        accesoDatos.setearConsulta("INSERT INTO DOMICILIOS (ALTURA, CALLE, ENTRECALLE1, ENTRECALLE2) VALUES(" + nuevo.Altura + ", '" + nuevo.Calle + "', '" + nuevo.EntreCalle1 + "', '" + nuevo.EntreCalle2 + "')");
-                    else
-                        accesoDatos.setearConsulta("INSERT INTO DOMICILIOS (ALTURA, CALLE, ENTRECALLE1, ENTRECALLE2, IDLOCALIDAD) VALUES(" + nuevo.Altura + ", '" + nuevo.Calle + "', '" + nuevo.EntreCalle1 + "', '" + nuevo.EntreCalle2 + "', " + IDLocalidad + ")");
-                }
-                else
-                {
-                    if (IDLocalidad == -1)
-                        accesoDatos.setearConsulta("INSERT INTO DOMICILIOS (ALTURA, CALLE, ENTRECALLE1, ENTRECALLE2, PISO, DEPARTAMENTO) VALUES(" + nuevo.Altura + ", '" + nuevo.Calle + "', '" + nuevo.EntreCalle1 + "', '" + nuevo.EntreCalle2 + "', " + nuevo.Edificio.Piso + ", '" + nuevo.Edificio.Departamento + "')");
-                    else
-                        accesoDatos.setearConsulta("INSERT INTO DOMICILIOS (ALTURA, CALLE, ENTRECALLE1, ENTRECALLE2, PISO, DEPARTAMENTO, IDLOCALIDAD) VALUES(" + nuevo.Altura + ", '" + nuevo.Calle + "', '" + nuevo.EntreCalle1 + "', '" + nuevo.EntreCalle2 + "', "+ nuevo.Edificio.Piso +", '"+ nuevo.Edificio.Departamento +"', "+ IDLocalidad +")");
-                }
+                int idDomicilio = 0;
+                accesoDatos.setearConsulta("ALTER TABLE DOMICILIOS NOCHECK CONSTRAINT FK__DOMICILIO__IDLOC__440B1D61 INSERT INTO DOMICILIOS (ALTURA, CALLE, ENTRECALLE1, ENTRECALLE2, PISO, DEPARTAMENTO, IDLOCALIDAD) VALUES(@Altura, @Calle, @EntreCalle1, @EntreCalle2, @Piso, @Depto, @Localidad ) ALTER TABLE DOMICILIOS CHECK CONSTRAINT FK__DOMICILIO__IDLOC__440B1D61  select TOP 1 ID from DOMICILIOS ORDER BY ID DESC ");
+                accesoDatos.Comando.Parameters.AddWithValue("@Calle", esNulo(nuevo.Calle));
+                accesoDatos.Comando.Parameters.AddWithValue("@Altura", esNulo(nuevo.Altura));
+                accesoDatos.Comando.Parameters.AddWithValue("@EntreCalle1", esNulo(nuevo.EntreCalle1));
+                accesoDatos.Comando.Parameters.AddWithValue("@EntreCalle2", esNulo(nuevo.EntreCalle2));
+                accesoDatos.Comando.Parameters.AddWithValue("@Piso", esNulo(nuevo.Edificio.Piso));
+                accesoDatos.Comando.Parameters.AddWithValue("@Depto", esNulo(nuevo.Edificio.Departamento));
+                accesoDatos.Comando.Parameters.AddWithValue("@Localidad", esNulo(nuevo.Localidad.ID));
                 accesoDatos.abrirConexion();
-                accesoDatos.ejecutarAccion();
+                accesoDatos.ejecutarConsulta();
+                while(accesoDatos.Lector.Read())
+                {
+                    idDomicilio = accesoDatos.Lector.GetInt32(0);
+                }
+
+                return idDomicilio;
             }
             catch (Exception ex)
             {
@@ -47,57 +47,20 @@ namespace Negocio
         public void modificarDomicilio(Domicilio modif)
         {
             AccesoDatosManager accesoDatos = new AccesoDatosManager();
-            LocalidadNegocio negocioLoc = new LocalidadNegocio();
-            DomicilioNegocio negocioDom = new DomicilioNegocio();
             try
             {
-                int IDLocalidad = negocioLoc.idLocalidad(modif.Localidad.Nombre, modif.Localidad.Partido);
-                //string Consulta = "UPDATE DOMICILIOS SET CALLE = @Calle, ALTURA = @Altura, ENTRECALLE1 = @EntreCalle1, ENTRECALLE2 = @Entrecalle2";
-                //if (modif.Edificio != null)
-                //{
-                //    Consulta += ", PISO=@Piso, DEPARTAMENTO=@Depto";
-                //}
-                //if(IDLocalidad != -1)
-                //{
-                //    Consulta += ", IDLOCALIDAD=@Localidad";
-                //}
-                //accesoDatos.setearConsulta(Consulta +  " WHERE ID=" + negocioDom.idDomicilio(modif));
-                //accesoDatos.Comando.Parameters.Clear();
-                //accesoDatos.Comando.Parameters.AddWithValue("@Calle", modif.Calle);
-                //accesoDatos.Comando.Parameters.AddWithValue("@Altura", modif.Altura);
-                //accesoDatos.Comando.Parameters.AddWithValue("@EntreCalle1", modif.EntreCalle1);
-                //accesoDatos.Comando.Parameters.AddWithValue("@EntreCalle2", modif.EntreCalle2);
-                //if(modif.Edificio != null)
-                //{
-                //    accesoDatos.Comando.Parameters.AddWithValue("@Piso", modif.Edificio.Piso);
-                //    accesoDatos.Comando.Parameters.AddWithValue("@Depto", modif.Edificio.Departamento);
-                //}
-                //accesoDatos.Comando.Parameters.AddWithValue("@Localidad", IDLocalidad);
-                accesoDatos.setearConsulta("UPDATE DOMICILIOS SET CALLE = @Calle, ALTURA = @Altura, ENTRECALLE1 = @EntreCalle1, ENTRECALLE2 = @Entrecalle2, PISO=@Piso, DEPARTAMENTO=@Depto, IDLOCALIDAD=@Localidad WHERE ID=" + negocioDom.idDomicilio(modif));
+                accesoDatos.setearConsulta("UPDATE DOMICILIOS SET CALLE = @Calle, ALTURA = @Altura, ENTRECALLE1 = @EntreCalle1, ENTRECALLE2 = @Entrecalle2, PISO=@Piso, DEPARTAMENTO=@Depto, IDLOCALIDAD=@Localidad WHERE ID=" + modif.ID);
                 accesoDatos.Comando.Parameters.Clear();
-                accesoDatos.Comando.Parameters.AddWithValue("@Calle", modif.Calle);
-                accesoDatos.Comando.Parameters.AddWithValue("@Altura", modif.Altura);
-                accesoDatos.Comando.Parameters.AddWithValue("@EntreCalle1", modif.EntreCalle1);
-                accesoDatos.Comando.Parameters.AddWithValue("@EntreCalle2", modif.EntreCalle2);
-                if (modif.Edificio != null)
-                {
-                    accesoDatos.Comando.Parameters.AddWithValue("@Piso", modif.Edificio.Piso);
-                    accesoDatos.Comando.Parameters.AddWithValue("@Depto", modif.Edificio.Departamento);
-                }
+                accesoDatos.Comando.Parameters.AddWithValue("@Calle", esNulo(modif.Calle));
+                if(modif.Altura == 0)
+                    accesoDatos.Comando.Parameters.AddWithValue("@Altura", DBNull.Value);
                 else
-                {
-                    accesoDatos.Comando.Parameters.AddWithValue("@Piso", DBNull.Value);
-                    accesoDatos.Comando.Parameters.AddWithValue("@Depto", DBNull.Value);
-                }
-                if(IDLocalidad != -1)
-                {
-                    accesoDatos.Comando.Parameters.AddWithValue("@Localidad", IDLocalidad);
-                }
-                else
-                {
-                    accesoDatos.Comando.Parameters.AddWithValue("@Localidad", DBNull.Value);
-                }
-
+                    accesoDatos.Comando.Parameters.AddWithValue("@Altura", esNulo(modif.Altura));
+                accesoDatos.Comando.Parameters.AddWithValue("@EntreCalle1", esNulo(modif.EntreCalle1));
+                accesoDatos.Comando.Parameters.AddWithValue("@EntreCalle2", esNulo(modif.EntreCalle2));
+                accesoDatos.Comando.Parameters.AddWithValue("@Piso", esNulo(modif.Edificio.Piso));
+                accesoDatos.Comando.Parameters.AddWithValue("@Depto", esNulo(modif.Edificio.Departamento));
+                accesoDatos.Comando.Parameters.AddWithValue("@Localidad", esNulo(modif.Localidad.ID));
                 accesoDatos.abrirConexion();
                 accesoDatos.ejecutarAccion();
             }
@@ -111,21 +74,14 @@ namespace Negocio
             }
         }
 
-        public int idDomicilio (Domicilio dom)
+        public void eliminarDomicilio(Domicilio dom)
         {
             AccesoDatosManager accesoDatos = new AccesoDatosManager();
             try
             {
-                int idDom = -1;
-                accesoDatos.setearConsulta("Select ID FROM DOMICILIOS where CALLE LIKE '%" + dom.Calle + "%' AND ALTURA LIKE " + dom.Altura);
+                accesoDatos.setearConsulta("DELETE FROM DOMICILIOS WHERE ID = " + dom.ID);
                 accesoDatos.abrirConexion();
-                accesoDatos.ejecutarConsulta();
-                while (accesoDatos.Lector.Read())
-                {
-                    idDom = accesoDatos.Lector.GetInt32(0);
-                }
-
-                return idDom;
+                accesoDatos.ejecutarAccion();
             }
             catch (Exception ex)
             {
@@ -134,6 +90,18 @@ namespace Negocio
             finally
             {
                 accesoDatos.cerrarConexion();
+            }
+        }
+
+        private object esNulo(object campo)
+        {
+            if(campo == null)
+            {
+                return DBNull.Value;
+            }
+            else
+            {
+                return campo;
             }
         }
     }
