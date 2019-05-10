@@ -52,5 +52,15 @@ namespace PresWinForm
             }
         }
 
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            Categoria cEliminar = (Categoria)dgvCategoria.CurrentRow.DataBoundItem;
+            if (MessageBox.Show("¿Desea eliminar la categoria \"" + cEliminar.Nombre + "\" ?", "Atención!", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                CategoriaNegocio negocio = new CategoriaNegocio();
+                negocio.eliminarCategoria(cEliminar);
+                cargarGrilla();
+            }
+        }
     }
 }

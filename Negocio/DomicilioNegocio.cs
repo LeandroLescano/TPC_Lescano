@@ -10,7 +10,7 @@ namespace Negocio
 {
     public class DomicilioNegocio
     {
-        public int agregarDomicilio(Domicilio nuevo, int IDLocalidad)
+        public int agregarDomicilio(Domicilio nuevo)
         {
             AccesoDatosManager accesoDatos = new AccesoDatosManager();
             LocalidadNegocio negocioLoc = new LocalidadNegocio();
@@ -52,10 +52,7 @@ namespace Negocio
                 accesoDatos.setearConsulta("UPDATE DOMICILIOS SET CALLE = @Calle, ALTURA = @Altura, ENTRECALLE1 = @EntreCalle1, ENTRECALLE2 = @Entrecalle2, PISO=@Piso, DEPARTAMENTO=@Depto, IDLOCALIDAD=@Localidad WHERE ID=" + modif.ID);
                 accesoDatos.Comando.Parameters.Clear();
                 accesoDatos.Comando.Parameters.AddWithValue("@Calle", esNulo(modif.Calle));
-                if(modif.Altura == 0)
-                    accesoDatos.Comando.Parameters.AddWithValue("@Altura", DBNull.Value);
-                else
-                    accesoDatos.Comando.Parameters.AddWithValue("@Altura", esNulo(modif.Altura));
+                accesoDatos.Comando.Parameters.AddWithValue("@Altura", esNulo(modif.Altura));
                 accesoDatos.Comando.Parameters.AddWithValue("@EntreCalle1", esNulo(modif.EntreCalle1));
                 accesoDatos.Comando.Parameters.AddWithValue("@EntreCalle2", esNulo(modif.EntreCalle2));
                 accesoDatos.Comando.Parameters.AddWithValue("@Piso", esNulo(modif.Edificio.Piso));
@@ -79,7 +76,7 @@ namespace Negocio
             AccesoDatosManager accesoDatos = new AccesoDatosManager();
             try
             {
-                accesoDatos.setearConsulta("DELETE FROM DOMICILIOS WHERE ID = " + dom.ID);
+                accesoDatos.setearConsulta("ALTER TABLE PROVEEDORES_X_PRODUCTO NOCHECK CONSTRAINT FK__PROVEEDOR__IDPRO__7F2BE32F DELETE FROM DOMICILIOS WHERE ID = " + dom.ID + " ALTER TABLE PROVEEDORES_x_PRODUCTO CHECK CONSTRAINT FK__PROVEEDOR__IDPRO__7F2BE32F");
                 accesoDatos.abrirConexion();
                 accesoDatos.ejecutarAccion();
             }
@@ -95,7 +92,16 @@ namespace Negocio
 
         private object esNulo(object campo)
         {
-            if(campo == null)
+            double num;
+            bool isNumber = Double.TryParse(Convert.ToString(campo), out num);
+            if(isNumber)
+            {
+                if ((int)campo == 0)
+                    return DBNull.Value;
+                else
+                    return campo;
+            }
+            else if (campo == null)
             {
                 return DBNull.Value;
             }

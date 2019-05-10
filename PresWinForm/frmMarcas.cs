@@ -51,5 +51,16 @@ namespace PresWinForm
                 MessageBox.Show(ex.ToString());
             }
         }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            Marca mEliminar = (Marca)dgvMarca.CurrentRow.DataBoundItem;
+            if(MessageBox.Show("¿Desea eliminar la marca \"" +mEliminar.Nombre+ "\" ?" ,"Atención!", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                MarcaNegocio negocio = new MarcaNegocio();
+                negocio.eliminarMarca(mEliminar);
+                cargarGrilla();
+            }
+        }
     }
 }

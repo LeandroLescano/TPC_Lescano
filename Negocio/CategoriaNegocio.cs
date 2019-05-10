@@ -57,5 +57,24 @@ namespace Negocio
                 accesoDatos.cerrarConexion();
             }
         }
+
+        public void eliminarCategoria(Categoria cat)
+        {
+            AccesoDatosManager accesoDatos = new AccesoDatosManager();
+            try
+            {
+                accesoDatos.setearConsulta("DELETE FROM CATEGORIAS WHERE ID = " + cat.ID);
+                accesoDatos.abrirConexion();
+                accesoDatos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+        }
     }
 }

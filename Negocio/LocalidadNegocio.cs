@@ -43,8 +43,7 @@ namespace Negocio
             try
             {
                 LocalidadNegocio negocio = new LocalidadNegocio();
-                int idLoc = idLocalidad(modif.Localidad.Nombre, modif.ID);
-                accesoDatos.setearConsulta("UPDATE LOCALIDADES SET NOMBRE=@Nombre, PARTIDO=@Partido, CODPOSTAL=@CodPostal WHERE ID=" + idLoc);
+                accesoDatos.setearConsulta("UPDATE LOCALIDADES SET NOMBRE=@Nombre, PARTIDO=@Partido, CODPOSTAL=@CodPostal WHERE ID=" + modif.Localidad.ID);
                 accesoDatos.Comando.Parameters.Clear();
                 accesoDatos.Comando.Parameters.AddWithValue("@Nombre", modif.Localidad.Nombre);
                 accesoDatos.Comando.Parameters.AddWithValue("@Partido", modif.Localidad.Partido);

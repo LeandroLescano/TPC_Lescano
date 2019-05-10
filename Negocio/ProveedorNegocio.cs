@@ -85,7 +85,7 @@ namespace Negocio
             }
         }
 
-        public void agregarProveedor(Proveedor nuevo, int IDDomicilio)
+        public void agregarProveedor(Proveedor nuevo)
         {
             AccesoDatosManager accesoDatos = new AccesoDatosManager();
             try
@@ -99,7 +99,22 @@ namespace Negocio
                 {
                     IDTipoPersona = 2;
                 }
-                accesoDatos.setearConsulta("INSERT INTO PROVEEDORES (APELLIDOS, NOMBRES, RAZONSOCIAL, DNI, CUIT, IDDOMICILIO, IDTIPOPERSONA) VALUES ('"+ nuevo.Apellido +"', '" + nuevo.Nombre + "', '" + nuevo.RazonSocial +"', '" + nuevo.DNI + "', '" + nuevo.CUIT + "', "+ IDDomicilio +", "+ IDTipoPersona +")");
+                accesoDatos.setearConsulta("INSERT INTO PROVEEDORES (APELLIDOS, NOMBRES, RAZONSOCIAL, DNI, CUIT, IDDOMICILIO, IDTIPOPERSONA) VALUES (@Apellido, @Nombre, @RazonSocial, @DNi, @CUIT, @Domicilio, @TipoPersona)");
+                accesoDatos.Comando.Parameters.AddWithValue("@Apellido", esNulo(nuevo.Apellido));
+                accesoDatos.Comando.Parameters.AddWithValue("@Nombre", esNulo(nuevo.Nombre));
+                accesoDatos.Comando.Parameters.AddWithValue("@RazonSocial", esNulo(nuevo.RazonSocial));
+                accesoDatos.Comando.Parameters.AddWithValue("@DNI", nuevo.DNI);
+                accesoDatos.Comando.Parameters.AddWithValue("@CUIT", nuevo.CUIT);
+                if(nuevo.Domicilio.ID != 0)
+                {
+                    accesoDatos.Comando.Parameters.AddWithValue("@Domicilio", nuevo.Domicilio.ID);
+                }
+                else
+                {
+                    accesoDatos.Comando.Parameters.AddWithValue("@Domicilio", DBNull.Value);
+                }
+                accesoDatos.Comando.Parameters.AddWithValue("@TipoPersona", IDTipoPersona);
+
                 accesoDatos.abrirConexion();
                 accesoDatos.ejecutarAccion();
             }
@@ -238,6 +253,14 @@ namespace Negocio
             {
                 accesoDatos.cerrarConexion();
             }
+        }
+
+        private object esNulo(object campo)
+        {
+            if (campo == null)
+                return "";
+            else
+                return campo;
         }
     }
 }
