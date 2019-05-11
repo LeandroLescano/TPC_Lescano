@@ -17,7 +17,8 @@ namespace Negocio
             try
             {
                 int idDomicilio = 0;
-                accesoDatos.setearConsulta("ALTER TABLE DOMICILIOS NOCHECK CONSTRAINT FK__DOMICILIO__IDLOC__440B1D61 INSERT INTO DOMICILIOS (ALTURA, CALLE, ENTRECALLE1, ENTRECALLE2, PISO, DEPARTAMENTO, IDLOCALIDAD) VALUES(@Altura, @Calle, @EntreCalle1, @EntreCalle2, @Piso, @Depto, @Localidad ) ALTER TABLE DOMICILIOS CHECK CONSTRAINT FK__DOMICILIO__IDLOC__440B1D61  select TOP 1 ID from DOMICILIOS ORDER BY ID DESC ");
+                //accesoDatos.setearConsulta("ALTER TABLE DOMICILIOS NOCHECK CONSTRAINT FK__DOMICILIO__IDLOC__440B1D61 INSERT INTO DOMICILIOS (ALTURA, CALLE, ENTRECALLE1, ENTRECALLE2, PISO, DEPARTAMENTO, IDLOCALIDAD) VALUES(@Altura, @Calle, @EntreCalle1, @EntreCalle2, @Piso, @Depto, @Localidad ) ALTER TABLE DOMICILIOS CHECK CONSTRAINT FK__DOMICILIO__IDLOC__440B1D61  select TOP 1 ID from DOMICILIOS ORDER BY ID DESC ");
+                accesoDatos.setearConsulta("INSERT INTO DOMICILIOS (ALTURA, CALLE, ENTRECALLE1, ENTRECALLE2, PISO, DEPARTAMENTO, IDLOCALIDAD) VALUES(@Altura, @Calle, @EntreCalle1, @EntreCalle2, @Piso, @Depto, @Localidad ) select TOP 1 ID from DOMICILIOS ORDER BY ID DESC ");
                 accesoDatos.Comando.Parameters.AddWithValue("@Calle", esNulo(nuevo.Calle));
                 accesoDatos.Comando.Parameters.AddWithValue("@Altura", esNulo(nuevo.Altura));
                 accesoDatos.Comando.Parameters.AddWithValue("@EntreCalle1", esNulo(nuevo.EntreCalle1));

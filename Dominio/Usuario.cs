@@ -14,7 +14,14 @@ namespace Dominio
 
         public override string ToString()
         {
-            return Nombre;
+            if (Nombre != null)
+            {
+                return Nombre;
+            }
+            else
+            {
+                return "Sin registro de usuario.";
+            }
         }
     }
 }

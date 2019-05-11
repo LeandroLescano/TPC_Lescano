@@ -37,37 +37,37 @@ namespace Negocio
             }
         }
 
-        public void modificarLocalidad(Domicilio modif)
-        {
-            AccesoDatosManager accesoDatos = new AccesoDatosManager();
-            try
-            {
-                LocalidadNegocio negocio = new LocalidadNegocio();
-                accesoDatos.setearConsulta("UPDATE LOCALIDADES SET NOMBRE=@Nombre, PARTIDO=@Partido, CODPOSTAL=@CodPostal WHERE ID=" + modif.Localidad.ID);
-                accesoDatos.Comando.Parameters.Clear();
-                accesoDatos.Comando.Parameters.AddWithValue("@Nombre", modif.Localidad.Nombre);
-                accesoDatos.Comando.Parameters.AddWithValue("@Partido", modif.Localidad.Partido);
-                accesoDatos.Comando.Parameters.AddWithValue("@CodPostal", modif.Localidad.CPostal);
-                accesoDatos.abrirConexion();
-                accesoDatos.ejecutarAccion();
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                accesoDatos.cerrarConexion();
-            }
-        }
+        //public void modificarLocalidad(Domicilio modif)
+        //{
+        //    AccesoDatosManager accesoDatos = new AccesoDatosManager();
+        //    try
+        //    {
+        //        LocalidadNegocio negocio = new LocalidadNegocio();
+        //        accesoDatos.setearConsulta("UPDATE LOCALIDADES SET NOMBRE=@Nombre, PARTIDO=@Partido, CODPOSTAL=@CodPostal WHERE ID=" + modif.Localidad.ID);
+        //        accesoDatos.Comando.Parameters.Clear();
+        //        accesoDatos.Comando.Parameters.AddWithValue("@Nombre", modif.Localidad.Nombre);
+        //        accesoDatos.Comando.Parameters.AddWithValue("@Partido", modif.Localidad.Partido);
+        //        accesoDatos.Comando.Parameters.AddWithValue("@CodPostal", modif.Localidad.CPostal);
+        //        accesoDatos.abrirConexion();
+        //        accesoDatos.ejecutarAccion();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw ex;
+        //    }
+        //    finally
+        //    {
+        //        accesoDatos.cerrarConexion();
+        //    }
+        //}
 
-        public int idLocalidad(string Nombre, int idDom)
+        public int buscarLocalidad(Localidad loc)
         {
             AccesoDatosManager accesoDatos = new AccesoDatosManager();
             try
             {
                 int idLoc = -1;
-                accesoDatos.setearConsulta("Select L.ID FROM LOCALIDADES AS L INNER JOIN DOMICILIOS AS D ON D.IDLOCALIDAD = L.ID where L.NOMBRE LIKE '" + Nombre + "' AND D.ID = "+ idDom);
+                accesoDatos.setearConsulta("Select * FROM LOCALIDADES WHERE NOMBRE LIKE '"+loc.Nombre+"' AND PARTIDO LIKE '"+loc.Partido+"' AND CODPOSTAL = " + loc.CPostal);
                 accesoDatos.abrirConexion();
                 accesoDatos.ejecutarConsulta();
                 while (accesoDatos.Lector.Read())
@@ -85,31 +85,6 @@ namespace Negocio
                 accesoDatos.cerrarConexion();
             }
         }
-
-        //public int idLocalidad(string Nombre, string Partido)
-        //{
-        //    AccesoDatosManager accesoDatos = new AccesoDatosManager();
-        //    try
-        //    {
-        //        int idLoc = -1;
-        //        accesoDatos.setearConsulta("Select ID FROM LOCALIDADES where NOMBRE LIKE '" + Nombre + "' AND PARTIDO LIKE '"+ Partido +"'");
-        //        accesoDatos.abrirConexion();
-        //        accesoDatos.ejecutarConsulta();
-        //        while (accesoDatos.Lector.Read())
-        //        {
-        //            idLoc = accesoDatos.Lector.GetInt32(0);
-        //        }
-        //        return idLoc;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw ex;
-        //    }
-        //    finally
-        //    {
-        //        accesoDatos.cerrarConexion();
-        //    }
-        //}
 
     }
 }
