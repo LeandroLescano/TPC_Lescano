@@ -155,6 +155,7 @@ namespace PresWinForm
                                 }
                                 negocioDoc.modificarDomicilio(proveedorLocal.Domicilio);
                             }
+
                             negocioProv.modificarProveedor(proveedorLocal);
                             Close();
                         }
