@@ -46,31 +46,31 @@ namespace Negocio
 
                     //Domicilio
                     if (!Convert.IsDBNull(accesoDatos.Lector["CALLE"]))
-                        nuevo.Domicilio.Calle = accesoDatos.Lector.GetString(8);    
+                        nuevo.Domicilio.Calle = accesoDatos.Lector.GetString(9);    
                     if (!Convert.IsDBNull(accesoDatos.Lector["ALTURA"]))
-                        nuevo.Domicilio.Altura = accesoDatos.Lector.GetInt32(9);
+                        nuevo.Domicilio.Altura = accesoDatos.Lector.GetInt32(10);
                     if (!Convert.IsDBNull(accesoDatos.Lector["IDDOMICILIO"]))
                         nuevo.Domicilio.ID = accesoDatos.Lector.GetInt32(6);
                     if (!Convert.IsDBNull(accesoDatos.Lector["ENTRECALLE1"]))
-                        nuevo.Domicilio.EntreCalle1 = accesoDatos.Lector.GetString(16);
+                        nuevo.Domicilio.EntreCalle1 = accesoDatos.Lector.GetString(17);
                     if (!Convert.IsDBNull(accesoDatos.Lector["ENTRECALLE2"]))
-                        nuevo.Domicilio.EntreCalle2 = accesoDatos.Lector.GetString(17);
+                        nuevo.Domicilio.EntreCalle2 = accesoDatos.Lector.GetString(18);
 
                     //Edificio
                     if (!Convert.IsDBNull(accesoDatos.Lector["PISO"]))
-                        nuevo.Domicilio.Edificio.Piso = accesoDatos.Lector.GetInt32(11);
+                        nuevo.Domicilio.Edificio.Piso = accesoDatos.Lector.GetInt32(12);
                     if (!Convert.IsDBNull(accesoDatos.Lector["DEPARTAMENTO"]))
-                        nuevo.Domicilio.Edificio.Departamento = accesoDatos.Lector.GetString(12);
+                        nuevo.Domicilio.Edificio.Departamento = accesoDatos.Lector.GetString(13);
 
                     //Localidad
                     if (!Convert.IsDBNull(accesoDatos.Lector["LOCALIDAD"]))
-                        nuevo.Domicilio.Localidad.Nombre = accesoDatos.Lector.GetString(10);
+                        nuevo.Domicilio.Localidad.Nombre = accesoDatos.Lector.GetString(11);
                     if (!Convert.IsDBNull(accesoDatos.Lector["CODPOSTAL"]))
-                        nuevo.Domicilio.Localidad.CPostal = accesoDatos.Lector.GetString(13);
+                        nuevo.Domicilio.Localidad.CPostal = accesoDatos.Lector.GetString(14);
                     if (!Convert.IsDBNull(accesoDatos.Lector["PARTIDO"]))
-                        nuevo.Domicilio.Localidad.Partido = accesoDatos.Lector.GetString(14);
+                        nuevo.Domicilio.Localidad.Partido = accesoDatos.Lector.GetString(15);
                     if (!Convert.IsDBNull(accesoDatos.Lector["IDLOCALIDAD"]))
-                        nuevo.Domicilio.Localidad.ID = accesoDatos.Lector.GetInt32(15);
+                        nuevo.Domicilio.Localidad.ID = accesoDatos.Lector.GetInt32(16);
 
 
                     listado.Add(nuevo);

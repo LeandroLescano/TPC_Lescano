@@ -10,12 +10,10 @@ namespace Dominio
     {
         public int ID { get; set; }
         public Usuario Usuario { get; set; }
-        public DateTime FechaNacimiento { get; set; }
 
         public override string ToString()
         {
-            TipoPersona = new TipoPersona();
-            if (TipoPersona.Fisica)
+            if (this.TipoPersona.Fisica == true)
             {
                 return Apellido + ", " + Nombre;
             }

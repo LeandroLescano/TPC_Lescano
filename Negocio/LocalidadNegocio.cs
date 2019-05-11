@@ -67,7 +67,7 @@ namespace Negocio
             try
             {
                 int idLoc = -1;
-                accesoDatos.setearConsulta("Select * FROM LOCALIDADES WHERE NOMBRE LIKE '"+loc.Nombre+"' AND PARTIDO LIKE '"+loc.Partido+"' AND CODPOSTAL = " + loc.CPostal);
+                accesoDatos.setearConsulta("Select * FROM LOCALIDADES WHERE NOMBRE LIKE '"+loc.Nombre+"' AND PARTIDO LIKE '"+loc.Partido+"' AND CODPOSTAL LIKE '" + loc.CPostal + "'");
                 accesoDatos.abrirConexion();
                 accesoDatos.ejecutarConsulta();
                 while (accesoDatos.Lector.Read())

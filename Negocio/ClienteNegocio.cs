@@ -36,10 +36,10 @@ namespace Negocio
                         nuevo.Apellido = accesoDatos.Lector.GetString(1);
                         nuevo.Nombre = accesoDatos.Lector.GetString(2);
                         nuevo.TipoPersona.Fisica = true;
+                        nuevo.FechaNacimiento = accesoDatos.Lector.GetDateTime(6);
                     }
                     nuevo.DNI = accesoDatos.Lector.GetString(4);
                     nuevo.CUIT = accesoDatos.Lector.GetString(5);
-                    nuevo.FechaNacimiento = accesoDatos.Lector.GetDateTime(6);
                     nuevo.Usuario = new Usuario();
                     if (!Convert.IsDBNull(accesoDatos.Lector["IDUSUARIO"]))
                         nuevo.Usuario.ID = accesoDatos.Lector.GetInt32(8);
@@ -95,12 +95,25 @@ namespace Negocio
             AccesoDatosManager accesoDatos = new AccesoDatosManager();
             try
             {
-                int tipoPersona;
+                int IDTipoPersona;
                 if (nuevo.TipoPersona.Fisica)
-                    tipoPersona = 1;
+                {
+                    IDTipoPersona = 1;
+                }
                 else
-                    tipoPersona = 2;
-                accesoDatos.setearConsulta("insert into CLIENTES (APELLIDOS, NOMBRES, RAZONSOCIAL, DNI, CUIT, IDTIPOPERSONA, FECHNAC) values ('" + nuevo.Apellido + "', '" + nuevo.Nombre + "', '" + nuevo.RazonSocial + "', '" + nuevo.DNI + "', '" + nuevo.CUIT + "', " + tipoPersona + ", '" + nuevo.FechaNacimiento.ToString("MM/dd/yyyy") + "')");
+                {
+                    IDTipoPersona = 2;
+                }
+                accesoDatos.setearConsulta("INSERT INTO CLIENTES (APELLIDOS, NOMBRES, RAZONSOCIAL, DNI, CUIT, FECHNAC, IDDOMICILIO, IDUSUARIO, IDTIPOPERSONA) VALUES (@Apellido, @Nombre, @RazonSocial, @DNI, @CUIT, @FechNac, @Domicilio, @Usuario, @TipoPersona)");
+                accesoDatos.Comando.Parameters.AddWithValue("@Apellido", esNuloNT(nuevo.Apellido));
+                accesoDatos.Comando.Parameters.AddWithValue("@Nombre", esNuloNT(nuevo.Nombre));
+                accesoDatos.Comando.Parameters.AddWithValue("@RazonSocial", esNuloNT(nuevo.RazonSocial));
+                accesoDatos.Comando.Parameters.AddWithValue("@DNI", nuevo.DNI);
+                accesoDatos.Comando.Parameters.AddWithValue("@CUIT", nuevo.CUIT);
+                accesoDatos.Comando.Parameters.AddWithValue("@FechNac", esNulo(nuevo.FechaNacimiento));
+                accesoDatos.Comando.Parameters.AddWithValue("@Domicilio", esNulo(nuevo.Domicilio.ID));
+                accesoDatos.Comando.Parameters.AddWithValue("@Usuario", esNulo(nuevo.Usuario.ID));
+                accesoDatos.Comando.Parameters.AddWithValue("@TipoPersona", IDTipoPersona);
                 accesoDatos.abrirConexion();
                 accesoDatos.ejecutarAccion();
             }
@@ -170,6 +183,35 @@ namespace Negocio
             {
                 accesoDatos.cerrarConexion();
             }
+        }
+
+        private object esNulo(object campo)
+        {
+            double num;
+            bool isNumber = Double.TryParse(Convert.ToString(campo), out num);
+            if (isNumber)
+            {
+                if ((int)campo == 0)
+                    return DBNull.Value;
+                else
+                    return campo;
+            }
+            else if (campo == null)
+            {
+                return DBNull.Value;
+            }
+            else
+            {
+                return campo;
+            }
+        }
+
+        private object esNuloNT(object campo)
+        {
+            if (campo == null)
+                return "";
+            else
+                return campo;
         }
     }
 }
