@@ -100,7 +100,7 @@ namespace PresWinForm
                             {
                                 if(proveedorLocal.Domicilio.Localidad.ID == 0)
                                 {
-                                    if (idLocalidad == -1)
+                                    if (idLocalidad == -1 && txtLocalidad.Text != "")
                                         proveedorLocal.Domicilio.Localidad.ID = negocioLoc.agregarLocalidad(proveedorLocal.Domicilio.Localidad);
                                     else
                                         proveedorLocal.Domicilio.Localidad.ID = idLocalidad;
@@ -113,7 +113,7 @@ namespace PresWinForm
                             }
                             else
                             {
-                                if (idLocalidad == -1)
+                                if (idLocalidad == -1 && txtLocalidad.Text != "")
                                     proveedorLocal.Domicilio.Localidad.ID = negocioLoc.agregarLocalidad(proveedorLocal.Domicilio.Localidad);
                                 else
                                     proveedorLocal.Domicilio.Localidad.ID = idLocalidad;
@@ -377,7 +377,7 @@ namespace PresWinForm
                     int idLocalidad = negocioLoc.buscarLocalidad(local.Domicilio.Localidad);
                     if (local.Domicilio != null)
                     {
-                        if (idLocalidad == -1)
+                        if (idLocalidad == -1 && txtLocalidad.Text != "")
                             local.Domicilio.Localidad.ID = negocioLoc.agregarLocalidad(local.Domicilio.Localidad);
                         else
                             local.Domicilio.Localidad.ID = idLocalidad;
@@ -399,7 +399,7 @@ namespace PresWinForm
                     {
                         if (local.Domicilio.Localidad.ID == 0)
                         {
-                            if (idLocalidad == -1)
+                            if (idLocalidad == -1 && txtLocalidad.Text != "")
                                 local.Domicilio.Localidad.ID = negocioLoc.agregarLocalidad(local.Domicilio.Localidad);
                             else
                                 local.Domicilio.Localidad.ID = idLocalidad;
@@ -414,7 +414,7 @@ namespace PresWinForm
                     {
                         if (local.Domicilio.Localidad.ID == 0)
                         {
-                            if (idLocalidad == -1)
+                            if (idLocalidad == -1 && txtLocalidad.Text != "")
                                 local.Domicilio.Localidad.ID = negocioLoc.agregarLocalidad(local.Domicilio.Localidad);
                             else
                                 local.Domicilio.Localidad.ID = idLocalidad;
