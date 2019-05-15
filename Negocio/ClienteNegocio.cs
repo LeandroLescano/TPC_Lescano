@@ -127,12 +127,12 @@ namespace Negocio
             }
         }
 
-        public void eliminarCliente(Cliente nuevo)
+        public void eliminarCliente(Cliente cliente)
         {
             AccesoDatosManager accesoDatos = new AccesoDatosManager();
             try
             {
-                accesoDatos.setearConsulta("DELETE FROM CLIENTES WHERE ID = " + nuevo.ID);
+                accesoDatos.setearConsulta("DELETE FROM CLIENTES WHERE ID = " + cliente.ID);
                 accesoDatos.abrirConexion();
                 accesoDatos.ejecutarAccion();
             }

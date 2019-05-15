@@ -72,7 +72,6 @@ namespace Negocio
                     if (!Convert.IsDBNull(accesoDatos.Lector["IDLOCALIDAD"]))
                         nuevo.Domicilio.Localidad.ID = accesoDatos.Lector.GetInt32(16);
 
-
                     listado.Add(nuevo);
                 }
 

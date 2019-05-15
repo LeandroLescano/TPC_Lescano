@@ -37,30 +37,6 @@ namespace Negocio
             }
         }
 
-        //public void modificarLocalidad(Domicilio modif)
-        //{
-        //    AccesoDatosManager accesoDatos = new AccesoDatosManager();
-        //    try
-        //    {
-        //        LocalidadNegocio negocio = new LocalidadNegocio();
-        //        accesoDatos.setearConsulta("UPDATE LOCALIDADES SET NOMBRE=@Nombre, PARTIDO=@Partido, CODPOSTAL=@CodPostal WHERE ID=" + modif.Localidad.ID);
-        //        accesoDatos.Comando.Parameters.Clear();
-        //        accesoDatos.Comando.Parameters.AddWithValue("@Nombre", modif.Localidad.Nombre);
-        //        accesoDatos.Comando.Parameters.AddWithValue("@Partido", modif.Localidad.Partido);
-        //        accesoDatos.Comando.Parameters.AddWithValue("@CodPostal", modif.Localidad.CPostal);
-        //        accesoDatos.abrirConexion();
-        //        accesoDatos.ejecutarAccion();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw ex;
-        //    }
-        //    finally
-        //    {
-        //        accesoDatos.cerrarConexion();
-        //    }
-        //}
-
         public int buscarLocalidad(Localidad loc)
         {
             AccesoDatosManager accesoDatos = new AccesoDatosManager();

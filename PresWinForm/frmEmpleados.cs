@@ -27,7 +27,8 @@ namespace PresWinForm
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             frmAltaModifEmpleado alta = new frmAltaModifEmpleado();
-            alta.Show();
+            alta.ShowDialog();
+            cargarGrilla();
         }
 
         private void cargarGrilla()
@@ -57,8 +58,21 @@ namespace PresWinForm
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            frmAltaModifEmpleado modif = new frmAltaModifEmpleado();
-            modif.Show();
+            Empleado eModif = (Empleado)dgvEmpleados.CurrentRow.DataBoundItem;
+            frmAltaModifEmpleado modif = new frmAltaModifEmpleado(eModif);
+            modif.ShowDialog();
+            cargarGrilla();
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            Empleado eEliminar = (Empleado)dgvEmpleados.CurrentRow.DataBoundItem;
+            if (MessageBox.Show("Está a punto de eliminar al empleado: " + eEliminar.Nombre + ".\n\n¿Desea eliminarlo?", "Atención!", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                EmpleadoNegocio negocio = new EmpleadoNegocio();
+                negocio.eliminarEmpleado(eEliminar);
+                cargarGrilla();
+            }
         }
     }
 }

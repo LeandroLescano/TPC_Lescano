@@ -76,7 +76,7 @@ namespace Negocio
             AccesoDatosManager accesoDatos = new AccesoDatosManager();
             try
             {
-                accesoDatos.setearConsulta("ALTER TABLE PROVEEDORES_X_PRODUCTO NOCHECK CONSTRAINT FK__PROVEEDOR__IDPRO__7F2BE32F DELETE FROM DOMICILIOS WHERE ID = " + dom.ID + " ALTER TABLE PROVEEDORES_x_PRODUCTO CHECK CONSTRAINT FK__PROVEEDOR__IDPRO__7F2BE32F");
+                accesoDatos.setearConsulta("DELETE FROM DOMICILIOS WHERE ID = " + dom.ID);
                 accesoDatos.abrirConexion();
                 accesoDatos.ejecutarAccion();
             }

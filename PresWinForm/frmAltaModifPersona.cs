@@ -64,66 +64,15 @@ namespace PresWinForm
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            ClienteNegocio clienteNegocio = new ClienteNegocio();
-            ProveedorNegocio provNegocio = new ProveedorNegocio();
             try
             {
                 if (Tipo == 'C')
                 {
-                    AddModif(clienteLocal, 'C');
+                    AddModif(clienteLocal, Tipo);
                 }
                 else if (Tipo == 'P')
                 {
-                    ProveedorNegocio negocioProv = new ProveedorNegocio();
-                    LocalidadNegocio negocioLoc = new LocalidadNegocio();
-                    DomicilioNegocio negocioDoc = new DomicilioNegocio();
-                    if (btnAgregar.Text == "Agregar")
-                    {
-                        //proveedorLocal = new Proveedor();
-                        if(llenarLocal(proveedorLocal))
-                        {
-                            if(proveedorLocal.Domicilio != null)
-                            {
-                                proveedorLocal.Domicilio.Localidad.ID = negocioLoc.agregarLocalidad(proveedorLocal.Domicilio.Localidad);
-                                proveedorLocal.Domicilio.ID = negocioDoc.agregarDomicilio(proveedorLocal.Domicilio);
-                            }
-                            negocioProv.agregarProveedor(proveedorLocal);
-                            Close();
-                        }
-                    }
-                    else
-                    {
-                        if(llenarLocal(proveedorLocal))
-                        {
-                            int idLocalidad = negocioLoc.buscarLocalidad(proveedorLocal.Domicilio.Localidad);
-                            if (proveedorLocal.Domicilio.ID < 1)
-                            {
-                                if(proveedorLocal.Domicilio.Localidad.ID == 0)
-                                {
-                                    if (idLocalidad == -1 && txtLocalidad.Text != "")
-                                        proveedorLocal.Domicilio.Localidad.ID = negocioLoc.agregarLocalidad(proveedorLocal.Domicilio.Localidad);
-                                    else
-                                        proveedorLocal.Domicilio.Localidad.ID = idLocalidad;
-                                }
-                                proveedorLocal.Domicilio.ID = negocioDoc.agregarDomicilio(proveedorLocal.Domicilio);
-                            }
-                            else if (proveedorLocal.Domicilio.Calle == "" || proveedorLocal.Domicilio.Altura == 0)
-                            {
-                                negocioDoc.eliminarDomicilio(proveedorLocal.Domicilio);
-                            }
-                            else
-                            {
-                                if (idLocalidad == -1 && txtLocalidad.Text != "")
-                                    proveedorLocal.Domicilio.Localidad.ID = negocioLoc.agregarLocalidad(proveedorLocal.Domicilio.Localidad);
-                                else
-                                    proveedorLocal.Domicilio.Localidad.ID = idLocalidad;
-
-                                negocioDoc.modificarDomicilio(proveedorLocal.Domicilio);
-                            }
-                            negocioProv.modificarProveedor(proveedorLocal);
-                            Close();
-                        }
-                    }
+                    AddModif(proveedorLocal, Tipo);
                 }
             }
             catch (Exception ex)
@@ -213,6 +162,7 @@ namespace PresWinForm
                     else
                     {
                         proveedorLocal = new Proveedor();
+                        proveedorLocal.TipoPersona = new TipoPersona();
                         proveedorLocal.Domicilio = new Domicilio();
                         proveedorLocal.Domicilio.Localidad = new Localidad();
                         proveedorLocal.Domicilio.Edificio = new Edificio();
@@ -293,19 +243,22 @@ namespace PresWinForm
             }
             else
             {
-                if (txtCalle.Text.Trim() != "" && txtAltura.Text.Trim() != "")
-                {
-                    local.Domicilio.Altura = Convert.ToInt32(txtAltura.Text);
-                    local.Domicilio.Calle = txtCalle.Text;
-                    local.Domicilio.EntreCalle1 = txtEntreCalle1.Text;
-                    local.Domicilio.EntreCalle2 = txtEntreCalle2.Text;
-                }
-                else if ((txtCalle.Text.Trim() == "" && txtAltura.Text.Trim() != "") || (txtCalle.Text.Trim() != "" && txtAltura.Text.Trim() == ""))
+                if ((txtCalle.Text.Trim() == "" && txtAltura.Text.Trim() != "") || (txtCalle.Text.Trim() != "" && txtAltura.Text.Trim() == ""))
                 {
                     if (MessageBox.Show("Faltan datos del DOMICILIO para completar.\n\n¿Desea continuar? No se guardará ningún dato del domicilio.", "Atención!", MessageBoxButtons.YesNo) == DialogResult.No)
                     {
                         return false;
                     }
+                }
+                else
+                {
+                    if(txtAltura.Text != "")
+                        local.Domicilio.Altura = Convert.ToInt32(txtAltura.Text);
+                    else
+                        local.Domicilio.Altura = 0;
+                    local.Domicilio.Calle = txtCalle.Text;
+                    local.Domicilio.EntreCalle1 = txtEntreCalle1.Text;
+                    local.Domicilio.EntreCalle2 = txtEntreCalle2.Text;
                 }
             }
             return true;
@@ -325,24 +278,6 @@ namespace PresWinForm
                     return false;
                 }
             }
-
-            //if (txtPiso.Text.Trim() != "" && txtDepto.Text.Trim() != "")
-            //{
-            //    local.Domicilio.Edificio.Piso = Convert.ToInt32(txtPiso.Text);
-            //    local.Domicilio.Edificio.Departamento = txtDepto.Text;
-            //}
-            //else if (txtPiso.Text.Trim() == "" && txtDepto.Text.Trim() == "")
-            //{
-            //    local.Domicilio.Edificio.Piso = 0;
-            //    local.Domicilio.Edificio.Departamento = null;
-            //}
-            //else if ((txtPiso.Text.Trim() != "" && txtDepto.Text.Trim() == "") || (txtPiso.Text.Trim() == "" && txtDepto.Text.Trim() != ""))
-            //{
-            //    if (MessageBox.Show("Faltan datos del EDIFICIO para completar.\n\n¿Desea continuar? No se guardará ningún dato del edificio.", "Atención!", MessageBoxButtons.YesNo) == DialogResult.No)
-            //    {
-            //        return false;
-            //    }
-            //}
             return true;
         }
 
@@ -375,7 +310,7 @@ namespace PresWinForm
                 if (llenarLocal(local))
                 {
                     int idLocalidad = negocioLoc.buscarLocalidad(local.Domicilio.Localidad);
-                    if (local.Domicilio != null)
+                    if(txtCalle.Text.Trim() != "" && txtAltura.Text.Trim() != "")
                     {
                         if (idLocalidad == -1 && txtLocalidad.Text != "")
                             local.Domicilio.Localidad.ID = negocioLoc.agregarLocalidad(local.Domicilio.Localidad);

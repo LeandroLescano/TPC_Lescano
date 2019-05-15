@@ -18,6 +18,7 @@ namespace AccesoDatos
         {
             get { return lector; }
         }
+
         public SqlCommand Comando
         {
             get { return comando; }
@@ -84,7 +85,7 @@ namespace AccesoDatos
             try
             {
                 comando.Connection = conexion;
-                return (int)comando.ExecuteScalar();
+                return Convert.ToInt32(comando.ExecuteScalar());
             }
             catch (Exception ex)
             {
