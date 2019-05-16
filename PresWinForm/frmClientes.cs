@@ -64,6 +64,7 @@ namespace PresWinForm
             try
             {
                 dgvClientes.DataSource = negocio.listarClientes();
+                dgvClientes.Columns["Usuario"].Visible = false;
                 dgvClientes.Columns["ID"].DisplayIndex = 0;
                 dgvClientes.Columns["Apellido"].DisplayIndex = 1;
                 dgvClientes.Columns["Nombre"].DisplayIndex = 2;
@@ -72,7 +73,6 @@ namespace PresWinForm
                 dgvClientes.Columns["CUIT"].DisplayIndex = 5;
                 dgvClientes.Columns["FechaNacimiento"].DisplayIndex = 6;
                 dgvClientes.Columns["TipoPersona"].DisplayIndex = 7;
-                dgvClientes.Columns["Usuario"].DisplayIndex = 8;
             }
             catch (Exception ex)
             {

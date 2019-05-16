@@ -137,6 +137,7 @@
             this.txtDiasAnticipo.Name = "txtDiasAnticipo";
             this.txtDiasAnticipo.Size = new System.Drawing.Size(100, 23);
             this.txtDiasAnticipo.TabIndex = 2;
+            this.txtDiasAnticipo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDiasAnticipo_KeyPress);
             // 
             // txtPrecio
             // 
@@ -176,8 +177,9 @@
             this.btnCancelar.TabIndex = 6;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
-            // frmAltaModifCombos
+            // frmAltaModifCombo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -196,8 +198,9 @@
             this.Controls.Add(this.lblDescripción);
             this.Controls.Add(this.lblNombre);
             this.Controls.Add(this.lblCodigo);
-            this.Name = "frmAltaModifCombos";
+            this.Name = "frmAltaModifCombo";
             this.Text = "frmAltaModifCombos";
+            this.Load += new System.EventHandler(this.frmAltaModifCombo_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

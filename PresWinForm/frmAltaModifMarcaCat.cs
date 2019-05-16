@@ -84,5 +84,10 @@ namespace PresWinForm
                 txtNombre.Text = marcaLocal.Nombre;
             }
         }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

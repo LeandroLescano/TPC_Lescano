@@ -27,7 +27,7 @@ namespace Negocio
                     nuevo = new Proveedor();
                     nuevo.ID = accesoDatos.Lector.GetInt32(0);
                     nuevo.TipoPersona = new TipoPersona();
-                    if((int)accesoDatos.Lector["IDTIPOPERSONA"] == 2)
+                    if ((int)accesoDatos.Lector["IDTIPOPERSONA"] == 2)
                     {
                         nuevo.RazonSocial = accesoDatos.Lector.GetString(3);
                         nuevo.TipoPersona.Juridica = true;

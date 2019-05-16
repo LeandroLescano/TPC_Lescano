@@ -163,6 +163,7 @@
             this.btnCancelar.TabIndex = 10;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnAgregar
             // 
@@ -441,6 +442,7 @@
             this.txtAltura.Size = new System.Drawing.Size(71, 23);
             this.txtAltura.TabIndex = 1;
             this.txtAltura.TextChanged += new System.EventHandler(this.txtAltura_TextChanged);
+            this.txtAltura.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAltura_KeyPress);
             // 
             // label3
             // 

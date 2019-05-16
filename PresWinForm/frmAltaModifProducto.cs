@@ -59,6 +59,13 @@ namespace PresWinForm
                     }
                 }
             }
+            else
+            {
+                productoLocal = new Producto();
+                productoLocal.Categoria = new Categoria();
+                productoLocal.Marca = new Marca();
+                productoLocal.Proveedor = new List<Proveedor>();
+            }
         }
 
         private void btnNuevoProv_Click(object sender, EventArgs e)
@@ -67,7 +74,6 @@ namespace PresWinForm
             altaProv.ShowDialog();
         }
 
-
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             Categoria catSelec = (Categoria)cmbCategoria.SelectedItem;
@@ -75,15 +81,14 @@ namespace PresWinForm
             if (validaciónCampos(catSelec, marcaSelec))
             {
                 ProductoNegocio negocio = new ProductoNegocio();
-                if (productoLocal == null)
+                ProveedorNegocio negocioProv = new ProveedorNegocio();
+                if (btnAgregar.Text == "Agregar")
                 {
-                    productoLocal = new Producto();
                     llenarLocal(productoLocal);
                     negocio.agregarProducto(productoLocal, catSelec.ID, marcaSelec.ID);
                     int idProd = negocio.idProducto(productoLocal.Nombre);
                     foreach (object item in clbProveedores.CheckedItems)
                     {
-                        ProveedorNegocio negocioProv = new ProveedorNegocio();
                         negocioProv.agregarProvXProductos(idProd, (Proveedor)item);
                     }
                 }
@@ -92,11 +97,9 @@ namespace PresWinForm
                     llenarLocal(productoLocal);
                     negocio.modificarProducto(productoLocal, catSelec.ID, marcaSelec.ID);
                     int idProd = negocio.idProducto(productoLocal.Nombre);
-                    ProveedorNegocio negocioEliminar = new ProveedorNegocio();
-                    negocioEliminar.eliminarProvXProductos(idProd);
+                    negocioProv.eliminarProvXProductos(idProd);
                     foreach (object item in clbProveedores.CheckedItems)
                     {
-                        ProveedorNegocio negocioProv = new ProveedorNegocio();
                         negocioProv.agregarProvXProductos(idProd, (Proveedor)item);
                     }
                 }

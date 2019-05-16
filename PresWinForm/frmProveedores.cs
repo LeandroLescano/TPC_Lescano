@@ -14,6 +14,8 @@ namespace PresWinForm
 {
     public partial class frmProveedores : Form
     {
+        private List<Proveedor> listaProv;
+
         public frmProveedores()
         {
             InitializeComponent();
@@ -29,7 +31,17 @@ namespace PresWinForm
             ProveedorNegocio negocio = new ProveedorNegocio();
             try
             {
-                dgvProveedores.DataSource = negocio.listarProveedores();
+                listaProv = negocio.listarProveedores();
+                dgvProveedores.DataSource = listaProv;
+                dgvProveedores.Columns["Usuario"].Visible = false;
+                dgvProveedores.Columns["ID"].DisplayIndex = 0;
+                dgvProveedores.Columns["Apellido"].DisplayIndex = 1;
+                dgvProveedores.Columns["Nombre"].DisplayIndex = 2;
+                dgvProveedores.Columns["RazonSocial"].DisplayIndex = 3;
+                dgvProveedores.Columns["DNI"].DisplayIndex = 4;
+                dgvProveedores.Columns["CUIT"].DisplayIndex = 5;
+                dgvProveedores.Columns["FechaNacimiento"].DisplayIndex = 6;
+                dgvProveedores.Columns["TipoPersona"].DisplayIndex = 7;
             }
             catch (Exception ex)
             {
@@ -65,6 +77,25 @@ namespace PresWinForm
                 ProveedorNegocio negocio = new ProveedorNegocio();
                 negocio.eliminarProveedor(peliminar);
                 cargarGrilla();
+            }
+        }
+
+        private void txtBusqueda_TextChanged(object sender, EventArgs e)
+        {
+            if (txtBusqueda.Text == "")
+            {
+                dgvProveedores.DataSource = listaProv;
+            }
+            else
+            {
+                if (txtBusqueda.Text.Length >= 1)
+                {
+                    List<Proveedor> lista;
+                    lista = listaProv.FindAll(X => X.Nombre != null && X.Nombre.Contains(txtBusqueda.Text) || 
+                                              X.Apellido != null && X.Apellido.Contains(txtBusqueda.Text)  || 
+                                              X.RazonSocial != null && X.RazonSocial.Contains(txtBusqueda.Text));
+                    dgvProveedores.DataSource = lista;
+                }
             }
         }
     }
