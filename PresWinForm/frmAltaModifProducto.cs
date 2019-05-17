@@ -35,8 +35,8 @@ namespace PresWinForm
                 btnAgregar.Text = "Modificar";
                 txtID.Text = productoLocal.ID.ToString();
                 txtNombre.Text = productoLocal.Nombre;
-                cmbCategoria.Text = productoLocal.Categoria.Nombre;
-                cmbMarca.Text = productoLocal.Marca.Nombre;
+                cmbCategoria.SelectedIndex = cmbCategoria.FindString(productoLocal.Categoria.Nombre);
+                cmbMarca.SelectedIndex = cmbMarca.FindString(productoLocal.Marca.Nombre);
                 nudPeso.Value = productoLocal.Peso;
                 nudPorcentajeGanancia.Value = productoLocal.PorcentajeGanancia;
                 nudPrecioUnit.Value = productoLocal.PrecioUnitario;

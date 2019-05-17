@@ -329,32 +329,35 @@ namespace PresWinForm
             {
                 if (llenarLocal(local))
                 {
-                    int idLocalidad = negocioLoc.buscarLocalidad(local.Domicilio.Localidad);
-                    if (local.Domicilio.ID < 1)
+                    if (txtCalle.Text.Trim() != "" && txtAltura.Text.Trim() != "")
                     {
-                        if (local.Domicilio.Localidad.ID == 0)
+                        int idLocalidad = negocioLoc.buscarLocalidad(local.Domicilio.Localidad);
+                        if (local.Domicilio.ID < 1)
                         {
-                            if (idLocalidad == -1 && txtLocalidad.Text != "")
-                                local.Domicilio.Localidad.ID = negocioLoc.agregarLocalidad(local.Domicilio.Localidad);
-                            else
-                                local.Domicilio.Localidad.ID = idLocalidad;
+                            if (local.Domicilio.Localidad.ID == 0)
+                            {
+                                if (idLocalidad == -1 && txtLocalidad.Text != "")
+                                    local.Domicilio.Localidad.ID = negocioLoc.agregarLocalidad(local.Domicilio.Localidad);
+                                else
+                                    local.Domicilio.Localidad.ID = idLocalidad;
+                            }
+                            local.Domicilio.ID = negocioDoc.agregarDomicilio(local.Domicilio);
                         }
-                        local.Domicilio.ID = negocioDoc.agregarDomicilio(local.Domicilio);
+                        else
+                        {
+                            if (local.Domicilio.Localidad.ID == 0)
+                            {
+                                if (idLocalidad == -1 && txtLocalidad.Text != "")
+                                    local.Domicilio.Localidad.ID = negocioLoc.agregarLocalidad(local.Domicilio.Localidad);
+                                else
+                                    local.Domicilio.Localidad.ID = idLocalidad;
+                            }
+                            negocioDoc.modificarDomicilio(local.Domicilio);
+                        }
                     }
                     else if (local.Domicilio.Calle == "" || local.Domicilio.Altura == 0)
                     {
                         negocioDoc.eliminarDomicilio(local.Domicilio);
-                    }
-                    else
-                    {
-                        if (local.Domicilio.Localidad.ID == 0)
-                        {
-                            if (idLocalidad == -1 && txtLocalidad.Text != "")
-                                local.Domicilio.Localidad.ID = negocioLoc.agregarLocalidad(local.Domicilio.Localidad);
-                            else
-                                local.Domicilio.Localidad.ID = idLocalidad;
-                        }
-                        negocioDoc.modificarDomicilio(local.Domicilio);
                     }
                     if (Tipo == 'P')
                         negocioProv.modificarProveedor((Proveedor)local);

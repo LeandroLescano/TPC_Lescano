@@ -96,7 +96,7 @@ namespace Negocio
             bool isNumber = Double.TryParse(Convert.ToString(campo), out num);
             if(isNumber)
             {
-                if ((int)campo == 0)
+                if ((int)campo == 0 || (int)campo == -1)
                     return DBNull.Value;
                 else
                     return campo;

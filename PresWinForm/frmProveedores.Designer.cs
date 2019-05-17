@@ -48,11 +48,11 @@
             this.dgvProveedores.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvProveedores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvProveedores.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgvProveedores.Location = new System.Drawing.Point(125, 42);
+            this.dgvProveedores.Location = new System.Drawing.Point(125, 35);
             this.dgvProveedores.MultiSelect = false;
             this.dgvProveedores.Name = "dgvProveedores";
             this.dgvProveedores.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProveedores.Size = new System.Drawing.Size(663, 396);
+            this.dgvProveedores.Size = new System.Drawing.Size(663, 403);
             this.dgvProveedores.TabIndex = 0;
             // 
             // tspMenu
@@ -114,7 +114,7 @@
             // txtBusqueda
             // 
             this.txtBusqueda.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBusqueda.Location = new System.Drawing.Point(203, 13);
+            this.txtBusqueda.Location = new System.Drawing.Point(204, 6);
             this.txtBusqueda.Name = "txtBusqueda";
             this.txtBusqueda.Size = new System.Drawing.Size(138, 23);
             this.txtBusqueda.TabIndex = 6;
@@ -124,7 +124,7 @@
             // 
             this.lblBusqueda.AutoSize = true;
             this.lblBusqueda.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBusqueda.Location = new System.Drawing.Point(122, 16);
+            this.lblBusqueda.Location = new System.Drawing.Point(122, 9);
             this.lblBusqueda.Name = "lblBusqueda";
             this.lblBusqueda.Size = new System.Drawing.Size(76, 17);
             this.lblBusqueda.TabIndex = 7;

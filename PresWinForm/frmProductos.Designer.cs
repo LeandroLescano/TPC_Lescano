@@ -41,6 +41,8 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.btnCategorias = new System.Windows.Forms.ToolStripButton();
             this.btnVerProveedores = new System.Windows.Forms.Button();
+            this.lblBusqueda = new System.Windows.Forms.Label();
+            this.txtBusqueda = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
             this.tspMenu.SuspendLayout();
             this.SuspendLayout();
@@ -53,11 +55,11 @@
             this.dgvProductos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvProductos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgvProductos.Location = new System.Drawing.Point(135, 12);
+            this.dgvProductos.Location = new System.Drawing.Point(135, 35);
             this.dgvProductos.MultiSelect = false;
             this.dgvProductos.Name = "dgvProductos";
             this.dgvProductos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProductos.Size = new System.Drawing.Size(636, 353);
+            this.dgvProductos.Size = new System.Drawing.Size(636, 330);
             this.dgvProductos.TabIndex = 0;
             // 
             // tspMenu
@@ -167,12 +169,33 @@
             this.btnVerProveedores.UseVisualStyleBackColor = true;
             this.btnVerProveedores.Click += new System.EventHandler(this.btnVerProveedores_Click);
             // 
+            // lblBusqueda
+            // 
+            this.lblBusqueda.AutoSize = true;
+            this.lblBusqueda.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBusqueda.Location = new System.Drawing.Point(132, 9);
+            this.lblBusqueda.Name = "lblBusqueda";
+            this.lblBusqueda.Size = new System.Drawing.Size(76, 17);
+            this.lblBusqueda.TabIndex = 9;
+            this.lblBusqueda.Text = "Busqueda:";
+            // 
+            // txtBusqueda
+            // 
+            this.txtBusqueda.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBusqueda.Location = new System.Drawing.Point(213, 6);
+            this.txtBusqueda.Name = "txtBusqueda";
+            this.txtBusqueda.Size = new System.Drawing.Size(138, 23);
+            this.txtBusqueda.TabIndex = 8;
+            this.txtBusqueda.TextChanged += new System.EventHandler(this.txtBusqueda_TextChanged);
+            // 
             // frmProductos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(783, 413);
             this.ControlBox = false;
+            this.Controls.Add(this.lblBusqueda);
+            this.Controls.Add(this.txtBusqueda);
             this.Controls.Add(this.btnVerProveedores);
             this.Controls.Add(this.tspMenu);
             this.Controls.Add(this.dgvProductos);
@@ -202,5 +225,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton btnCategorias;
         private System.Windows.Forms.Button btnVerProveedores;
+        private System.Windows.Forms.Label lblBusqueda;
+        private System.Windows.Forms.TextBox txtBusqueda;
     }
 }

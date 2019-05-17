@@ -14,6 +14,8 @@ namespace PresWinForm
 {
     public partial class frmProductos : Form
     {
+        private List<Producto> listaProd;
+
         public frmProductos()
         {
             InitializeComponent();
@@ -36,7 +38,9 @@ namespace PresWinForm
             ProductoNegocio negocio = new ProductoNegocio();
             try
             {
-                dgvProductos.DataSource = negocio.listarProductos();
+                listaProd = negocio.listarProductos();
+                dgvProductos.DataSource = listaProd;
+                dgvProductos.Columns["Nombre"].DisplayIndex = 1;
             }
             catch (Exception ex)
             {
@@ -78,6 +82,23 @@ namespace PresWinForm
                 ProductoNegocio negocio = new ProductoNegocio();
                 negocio.eliminarProducto(peliminar);
                 cargarGrilla();
+            }
+        }
+
+        private void txtBusqueda_TextChanged(object sender, EventArgs e)
+        {
+            if (txtBusqueda.Text == "")
+            {
+                dgvProductos.DataSource = listaProd;
+            }
+            else
+            {
+                if (txtBusqueda.Text.Length >= 1)
+                {
+                    List<Producto> lista;
+                    lista = listaProd.FindAll(X => X.Nombre.ToUpper().Contains(txtBusqueda.Text.ToUpper()));
+                    dgvProductos.DataSource = lista;
+                }
             }
         }
     }

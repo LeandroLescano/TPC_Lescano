@@ -91,9 +91,9 @@ namespace PresWinForm
                 if (txtBusqueda.Text.Length >= 1)
                 {
                     List<Proveedor> lista;
-                    lista = listaProv.FindAll(X => X.Nombre != null && X.Nombre.Contains(txtBusqueda.Text) || 
-                                              X.Apellido != null && X.Apellido.Contains(txtBusqueda.Text)  || 
-                                              X.RazonSocial != null && X.RazonSocial.Contains(txtBusqueda.Text));
+                    lista = listaProv.FindAll(X => X.Nombre != null && X.Nombre.ToUpper().Contains(txtBusqueda.Text.ToUpper()) || 
+                                              X.Apellido != null && X.Apellido.ToUpper().Contains(txtBusqueda.Text.ToUpper())  || 
+                                              X.RazonSocial != null && X.RazonSocial.ToUpper().Contains(txtBusqueda.Text.ToUpper()));
                     dgvProveedores.DataSource = lista;
                 }
             }

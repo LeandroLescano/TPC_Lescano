@@ -152,7 +152,7 @@ namespace Negocio
             try
             {
                 int TipoPersona;
-                accesoDatos.setearConsulta("UPDATE CLIENTES Set APELLIDOS=@Apellido, NOMBRES=@Nombre, RAZONSOCIAL=@RazonSocial, DNI=@Dni, IDDOMICILIO=@Domicilio, IDTIPOPERSONA=@TipoPersona, CUIT=@Cuit WHERE ID=" + modif.ID.ToString() + " ALTER TABLE PROVEEDORES CHECK CONSTRAINT FK__PROVEEDOR__IDDOM__6A30C649 ");
+                accesoDatos.setearConsulta("ALTER TABLE CLIENTES NOCHECK CONSTRAINT FK__CLIENTES__IDDOMI__4F7CD00D UPDATE CLIENTES Set APELLIDOS=@Apellido, NOMBRES=@Nombre, RAZONSOCIAL=@RazonSocial, DNI=@Dni, IDDOMICILIO=@Domicilio, IDTIPOPERSONA=@TipoPersona, CUIT=@Cuit WHERE ID=" + modif.ID.ToString() + " ALTER TABLE CLIENTES NOCHECK CONSTRAINT FK__CLIENTES__IDDOMI__4F7CD00D");
                 accesoDatos.Comando.Parameters.Clear();
                 if (modif.TipoPersona.Fisica)
                 {
