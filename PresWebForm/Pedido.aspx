@@ -9,4 +9,7 @@
     <p>La podrás retirar en:  días</p>
     <p>Observaciones:  </p> 
     <asp:TextBox ID="txtObservaciones" runat="server" Height="100px" Width="300px" TextMode="MultiLine"></asp:TextBox>
+    <br />
+    <br />
+    <asp:Button ID="Button1" runat="server" Text="Enviar pedido"/>
 </asp:Content>
