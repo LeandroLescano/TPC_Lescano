@@ -189,14 +189,15 @@ namespace Negocio
             }
         }
 
-        public List<ProveedorLite> listarProveedoresXProducto(int idProd)
+        //PROVEEDORES X PRODUCTO
+        public List<ProveedorLite> listarProveedoresXProducto(int IDProd)
         {
             AccesoDatosManager accesoDatos = new AccesoDatosManager();
             List<ProveedorLite> listado = new List<ProveedorLite>();
             ProveedorLite nuevo = new ProveedorLite();
             try
             {
-                accesoDatos.setearConsulta("Select P.ID, (P.NOMBRES + ', ' + P.APELLIDOS) AS 'NOMBRE Y/O RAZON SOCIAL', P.DNI, P.CUIT from PROVEEDORES_X_PRODUCTO as PP inner join PROVEEDORES as P on P.ID = PP.IDPROVEEDOR Where PP.IDPRODUCTO = " + idProd + " AND IDTIPOPERSONA = 1 UNION Select P.ID, RAZONSOCIAL, P.DNI, P.CUIT from PROVEEDORES_X_PRODUCTO as PP inner join PROVEEDORES as P on P.ID = PP.IDPROVEEDOR Where PP.IDPRODUCTO = " + idProd + "AND IDTIPOPERSONA = 2");
+                accesoDatos.setearConsulta("Select P.ID, (P.NOMBRES + ', ' + P.APELLIDOS) AS 'NOMBRE Y/O RAZON SOCIAL', P.DNI, P.CUIT from PROVEEDORES_X_PRODUCTO as PP inner join PROVEEDORES as P on P.ID = PP.IDPROVEEDOR Where PP.IDPRODUCTO = " + IDProd + " AND IDTIPOPERSONA = 1 UNION Select P.ID, RAZONSOCIAL, P.DNI, P.CUIT from PROVEEDORES_X_PRODUCTO as PP inner join PROVEEDORES as P on P.ID = PP.IDPROVEEDOR Where PP.IDPRODUCTO = " + IDProd + "AND IDTIPOPERSONA = 2");
                 accesoDatos.abrirConexion();
                 accesoDatos.ejecutarConsulta();
                 while (accesoDatos.Lector.Read())
@@ -246,6 +247,143 @@ namespace Negocio
             {
                 accesoDatos.abrirConexion();
                 accesoDatos.setearConsulta("DELETE FROM PROVEEDORES_X_PRODUCTO WHERE IDPRODUCTO = " + IDProd);
+                accesoDatos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+        }
+
+        //MAILS POR PROVEEDOR
+        public List<Mail> listarMailsXProveedor(Proveedor prov)
+        {
+            AccesoDatosManager accesoDatos = new AccesoDatosManager();
+            List<Mail> listado = new List<Mail>();
+            Mail nuevo;
+            try
+            {
+                accesoDatos.setearConsulta("SELECT M.* FROM MAILS AS M INNER JOIN MAILS_X_PROVEEDORES AS MP ON MP.IDMAIL = M.ID WHERE MP.IDPROVEEDOR =" + prov.ID);
+                accesoDatos.abrirConexion();
+                accesoDatos.ejecutarConsulta();
+                while (accesoDatos.Lector.Read())
+                {
+                    nuevo = new Mail();
+                    nuevo.ID = accesoDatos.Lector.GetInt32(0);
+                    nuevo.Direccion = accesoDatos.Lector.GetString(1);
+                    nuevo.Descripcion = accesoDatos.Lector.GetString(2);
+                    listado.Add(nuevo);
+                }
+                return listado;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+        }
+
+        public void agregarMailXProveedor(Proveedor local, int IDMail)
+        {
+            AccesoDatosManager accesoDatos = new AccesoDatosManager();
+            try
+            {
+                accesoDatos.setearConsulta("INSERT INTO MAILS_X_PROVEEDORES (IDPROVEEDOR, IDMAIL) VALUES(" + local.ID + ", " + IDMail + ")");
+                accesoDatos.abrirConexion();
+                accesoDatos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+        }
+
+        public void eliminarMailXProveedor(Proveedor prov)
+        {
+            AccesoDatosManager accesoDatos = new AccesoDatosManager();
+            try
+            {
+                accesoDatos.abrirConexion();
+                accesoDatos.setearConsulta("DELETE FROM MAILS_X_PROVEEDORES WHERE IDPROVEEDOR = " + prov.ID);
+                accesoDatos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+        }
+
+        //TELEFONOS POR CLIENTE
+        public List<Telefono> listarTelefonosXProveedor(Proveedor prov)
+        {
+            AccesoDatosManager accesoDatos = new AccesoDatosManager();
+            List<Telefono> listado = new List<Telefono>();
+            Telefono nuevo;
+            try
+            {
+                accesoDatos.setearConsulta("SELECT T.* FROM TELEFONOS AS T INNER JOIN TELEFONOS_X_PROVEEDORES AS TP ON TP.IDTELEFONO = T.ID WHERE TP.IDPROVEEDOR = " + prov.ID);
+                accesoDatos.abrirConexion();
+                accesoDatos.ejecutarConsulta();
+                while (accesoDatos.Lector.Read())
+                {
+                    nuevo = new Telefono();
+                    nuevo.ID = accesoDatos.Lector.GetInt32(0);
+                    nuevo.Numero = accesoDatos.Lector.GetString(1);
+                    listado.Add(nuevo);
+                }
+                return listado;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+        }
+
+        public void agregarTelefonoXProveedor(Proveedor prov, int IDTel)
+        {
+            AccesoDatosManager accesoDatos = new AccesoDatosManager();
+            try
+            {
+                accesoDatos.setearConsulta("INSERT INTO TELEFONOS_X_PROVEEDORES (IDPROVEEDOR, IDTELEFONO) VALUES(" + prov.ID + ", " + IDTel + ")");
+                accesoDatos.abrirConexion();
+                accesoDatos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+        }
+
+        public void eliminarTelefonoXProveedor(Proveedor prov)
+        {
+            AccesoDatosManager accesoDatos = new AccesoDatosManager();
+            try
+            {
+                accesoDatos.abrirConexion();
+                accesoDatos.setearConsulta("DELETE FROM TELEFONOS_X_PROVEEDORES WHERE IDPROVEEDOR = " + prov.ID);
                 accesoDatos.ejecutarAccion();
             }
             catch (Exception ex)

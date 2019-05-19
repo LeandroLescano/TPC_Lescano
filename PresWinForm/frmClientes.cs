@@ -14,6 +14,8 @@ namespace PresWinForm
 {
     public partial class frmClientes : Form
     {
+        private List<Cliente> listaCli;
+
         public frmClientes()
         {
             InitializeComponent();
@@ -63,7 +65,8 @@ namespace PresWinForm
             ClienteNegocio negocio = new ClienteNegocio();
             try
             {
-                dgvClientes.DataSource = negocio.listarClientes();
+                listaCli = negocio.listarClientes();
+                dgvClientes.DataSource = listaCli;
                 dgvClientes.Columns["Usuario"].Visible = false;
                 dgvClientes.Columns["ID"].DisplayIndex = 0;
                 dgvClientes.Columns["Apellido"].DisplayIndex = 1;
@@ -77,6 +80,25 @@ namespace PresWinForm
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void txtBusqueda_TextChanged(object sender, EventArgs e)
+        {
+            if (txtBusqueda.Text == "")
+            {
+                dgvClientes.DataSource = listaCli;
+            }
+            else
+            {
+                if (txtBusqueda.Text.Length >= 1)
+                {
+                    List<Cliente> lista;
+                    lista = listaCli.FindAll(X => X.Nombre != null && X.Nombre.ToUpper().Contains(txtBusqueda.Text.ToUpper()) ||
+                                              X.Apellido != null && X.Apellido.ToUpper().Contains(txtBusqueda.Text.ToUpper()) ||
+                                              X.RazonSocial != null && X.RazonSocial.ToUpper().Contains(txtBusqueda.Text.ToUpper()));
+                    dgvClientes.DataSource = lista;
+                }
             }
         }
     }

@@ -14,6 +14,8 @@ namespace PresWinForm
 {
     public partial class frmEmpleados : Form
     {
+        private List<Empleado> listaEmp;
+
         public frmEmpleados()
         {
             InitializeComponent();
@@ -36,7 +38,8 @@ namespace PresWinForm
             EmpleadoNegocio negocio = new EmpleadoNegocio();
             try
             {
-                dgvEmpleados.DataSource = negocio.listarEmpleados();
+                listaEmp = negocio.listarEmpleados();
+                dgvEmpleados.DataSource = listaEmp;
                 dgvEmpleados.Columns["RazonSocial"].Visible = false;
                 dgvEmpleados.Columns["CUIT"].Visible = false;
                 dgvEmpleados.Columns["TipoPersona"].Visible = false;
@@ -72,6 +75,24 @@ namespace PresWinForm
                 EmpleadoNegocio negocio = new EmpleadoNegocio();
                 negocio.eliminarEmpleado(eEliminar);
                 cargarGrilla();
+            }
+        }
+
+        private void txtBusqueda_TextChanged(object sender, EventArgs e)
+        {
+            if (txtBusqueda.Text == "")
+            {
+                dgvEmpleados.DataSource = listaEmp;
+            }
+            else
+            {
+                if (txtBusqueda.Text.Length >= 1)
+                {
+                    List<Empleado> lista;
+                    lista = listaEmp.FindAll(X => X.Nombre.ToUpper().Contains(txtBusqueda.Text.ToUpper()) ||
+                                              X.Apellido.ToUpper().Contains(txtBusqueda.Text.ToUpper()));
+                    dgvEmpleados.DataSource = lista;
+                }
             }
         }
     }

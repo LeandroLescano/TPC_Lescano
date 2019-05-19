@@ -36,7 +36,7 @@ namespace Negocio
                     nuevo.Categoria.Nombre = accesoDatos.Lector["CATEGORIA"].ToString();
                     nuevo.Fraccionable = accesoDatos.Lector.GetBoolean(6);
                     nuevo.Peso = Convert.ToDecimal(accesoDatos.Lector.GetString(7).Replace('.', ','));
-                    nuevo.PorcentajeGanancia = Convert.ToDecimal(accesoDatos.Lector.GetString(8).Replace('.',','));
+                    nuevo.PorcentajeGanancia = Convert.ToDecimal(accesoDatos.Lector.GetString(8).Replace('.', ','));
 
                     //accesoDatos.setearConsulta("Select P.* from PROVEEDORES as P INNER JOIN PROVEEDORES_X_PRODUCTO as PP on PP.IDPROVEEDOR = P.ID INNER JOIN PRODUCTOS as PROD ON PROD.ID = PP.IDPRODUCTO WHERE PROD.ID = "+ nuevo.ID);
                     //accesoDatos.abrirConexion();
@@ -89,7 +89,7 @@ namespace Negocio
             try
             {
                 int Fraccionable = 0;
-                if(modif.Fraccionable)
+                if (modif.Fraccionable)
                 {
                     Fraccionable = 1;
                 }
@@ -105,7 +105,7 @@ namespace Negocio
                 accesoDatos.Comando.Parameters.AddWithValue("@IDCat", IDCategoria);
                 accesoDatos.Comando.Parameters.AddWithValue("@IDMarca", IDMarca);
                 accesoDatos.Comando.Parameters.AddWithValue("@Fraccionable", Fraccionable);
-                accesoDatos.Comando.Parameters.AddWithValue("@Peso", modif.Peso.ToString().Replace(',','.'));
+                accesoDatos.Comando.Parameters.AddWithValue("@Peso", modif.Peso.ToString().Replace(',', '.'));
                 accesoDatos.Comando.Parameters.AddWithValue("@Porcentaje", modif.PorcentajeGanancia.ToString().Replace(',', '.'));
                 accesoDatos.abrirConexion();
                 accesoDatos.ejecutarAccion();
@@ -125,7 +125,7 @@ namespace Negocio
             AccesoDatosManager accesoDatos = new AccesoDatosManager();
             try
             {
-                accesoDatos.setearConsulta("DELETE FROM PROVEEDORES_X_PRODUCTO WHERE IDPRODUCTO = "+ prod.ID +" DELETE FROM PRODUCTOS WHERE ID = " + prod.ID);
+                accesoDatos.setearConsulta("DELETE FROM PROVEEDORES_X_PRODUCTO WHERE IDPRODUCTO = " + prod.ID + " DELETE FROM PRODUCTOS WHERE ID = " + prod.ID);
                 accesoDatos.abrirConexion();
                 accesoDatos.ejecutarAccion();
             }
@@ -139,13 +139,13 @@ namespace Negocio
             }
         }
 
-        public int idProducto (string Nombre)
+        public int idProducto(string Nombre)
         {
             AccesoDatosManager accesoDatos = new AccesoDatosManager();
             try
             {
                 int idProd = -1;
-                accesoDatos.setearConsulta("Select ID FROM PRODUCTOS where NOMBRE LIKE '" + Nombre +"'");
+                accesoDatos.setearConsulta("Select ID FROM PRODUCTOS where NOMBRE LIKE '" + Nombre + "'");
                 accesoDatos.abrirConexion();
                 accesoDatos.ejecutarConsulta();
                 while (accesoDatos.Lector.Read())

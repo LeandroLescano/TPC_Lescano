@@ -18,14 +18,18 @@ namespace Negocio
             Cliente nuevo = new Cliente();
             try
             {
-                accesoDatos.setearConsulta("Select C.*, D.CALLE, D.ALTURA, L.NOMBRE as LOCALIDAD, D.PISO, D.DEPARTAMENTO, L.CODPOSTAL, L.PARTIDO, L.ID AS IDLOCALIDAD, D.ENTRECALLE1, D.ENTRECALLE2 from CLIENTES AS C LEFT JOIN DOMICILIOS AS D ON D.ID = C.IDDOMICILIO LEFT JOIN LOCALIDADES AS L ON L.ID = D.IDLOCALIDAD");
+                accesoDatos.setearConsulta("Select C.*, D.CALLE, D.ALTURA, L.NOMBRE as LOCALIDAD, D.PISO, D.DEPARTAMENTO, L.CODPOSTAL, L.PARTIDO, L.ID AS IDLOCALIDAD, D.ENTRECALLE1, D.ENTRECALLE2, M.MAIL from CLIENTES AS C LEFT JOIN DOMICILIOS AS D ON D.ID = C.IDDOMICILIO LEFT JOIN LOCALIDADES AS L ON L.ID = D.IDLOCALIDAD LEFT JOIN MAILS_X_CLIENTES AS MC ON MC.IDCLIENTE = C.ID LEFT JOIN MAILS AS M ON M.ID = MC.IDMAIL ");
                 accesoDatos.abrirConexion();
                 accesoDatos.ejecutarConsulta();
                 while (accesoDatos.Lector.Read())
                 {
                     nuevo = new Cliente();
-                    nuevo.ID = accesoDatos.Lector.GetInt32(0);
                     nuevo.TipoPersona = new TipoPersona();
+                    nuevo.Usuario = new Usuario();
+                    nuevo.Domicilio = new Domicilio();
+                    nuevo.Domicilio.Localidad = new Localidad();
+                    nuevo.Domicilio.Edificio = new Edificio();
+                    nuevo.ID = accesoDatos.Lector.GetInt32(0);
                     if ((int)accesoDatos.Lector["IDTIPOPERSONA"] == 2)
                     {
                         nuevo.RazonSocial = accesoDatos.Lector.GetString(3);
@@ -40,12 +44,10 @@ namespace Negocio
                     }
                     nuevo.DNI = accesoDatos.Lector.GetString(4);
                     nuevo.CUIT = accesoDatos.Lector.GetString(5);
-                    nuevo.Usuario = new Usuario();
+
+                    //Usuario
                     if (!Convert.IsDBNull(accesoDatos.Lector["IDUSUARIO"]))
                         nuevo.Usuario.ID = accesoDatos.Lector.GetInt32(8);
-                    nuevo.Domicilio = new Domicilio();
-                    nuevo.Domicilio.Localidad = new Localidad();
-                    nuevo.Domicilio.Edificio = new Edificio();      
 
                     //Domicilio
                     if (!Convert.IsDBNull(accesoDatos.Lector["IDDOMICILIO"]))
@@ -173,6 +175,143 @@ namespace Negocio
                 accesoDatos.Comando.Parameters.AddWithValue("@Domicilio", modif.Domicilio.ID);
                 accesoDatos.Comando.Parameters.AddWithValue("@TipoPersona", TipoPersona);
                 accesoDatos.abrirConexion();
+                accesoDatos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+        }
+
+        //MAILS POR CLIENTE
+        public List<Mail> listarMailsXCliente(Cliente cliente)
+        {
+            AccesoDatosManager accesoDatos = new AccesoDatosManager();
+            List<Mail> listado = new List<Mail>();
+            Mail nuevo;
+            try
+            {
+                accesoDatos.setearConsulta("SELECT M.* FROM MAILS AS M INNER JOIN MAILS_X_CLIENTES AS MC ON MC.IDMAIL = M.ID WHERE MC.IDCLIENTE = " + cliente.ID);
+                accesoDatos.abrirConexion();
+                accesoDatos.ejecutarConsulta();
+                while (accesoDatos.Lector.Read())
+                {
+                    nuevo = new Mail();
+                    nuevo.ID = accesoDatos.Lector.GetInt32(0);
+                    nuevo.Direccion = accesoDatos.Lector.GetString(1);
+                    nuevo.Descripcion = accesoDatos.Lector.GetString(2);
+                    listado.Add(nuevo);
+                }
+                return listado;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+        }
+
+        public void agregarMailXCliente(Cliente cliente, int IDMail)
+        {
+            AccesoDatosManager accesoDatos = new AccesoDatosManager();
+            try
+            {
+                accesoDatos.setearConsulta("INSERT INTO MAILS_X_CLIENTES (IDCLIENTE, IDMAIL) VALUES(" + cliente.ID + ", " + IDMail + ")");
+                accesoDatos.abrirConexion();
+                accesoDatos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+        }
+
+        public void eliminarMailXCliente(Cliente cliente)
+        {
+            AccesoDatosManager accesoDatos = new AccesoDatosManager();
+            try
+            {
+                accesoDatos.abrirConexion();
+                accesoDatos.setearConsulta("DELETE FROM MAILS_X_CLIENTES WHERE IDCLIENTE = " + cliente.ID);
+                accesoDatos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+        }
+
+        //TELEFONOS POR CLIENTE
+        public List<Telefono> listarTelefonosXCliente(Cliente cliente)
+        {
+            AccesoDatosManager accesoDatos = new AccesoDatosManager();
+            List<Telefono> listado = new List<Telefono>();
+            Telefono nuevo;
+            try
+            {
+                accesoDatos.setearConsulta("SELECT T.* FROM TELEFONOS AS T INNER JOIN TELEFONOS_X_CLIENTES AS TC ON TC.IDTELEFONO = T.ID WHERE TC.IDCLIENTE = " + cliente.ID);
+                accesoDatos.abrirConexion();
+                accesoDatos.ejecutarConsulta();
+                while (accesoDatos.Lector.Read())
+                {
+                    nuevo = new Telefono();
+                    nuevo.ID = accesoDatos.Lector.GetInt32(0);
+                    nuevo.Numero = accesoDatos.Lector.GetString(1);
+                    listado.Add(nuevo);
+                }
+                return listado;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+        }
+
+        public void agregarTelefonoXCliente(Cliente cliente, int IDTel)
+        {
+            AccesoDatosManager accesoDatos = new AccesoDatosManager();
+            try
+            {
+                accesoDatos.setearConsulta("INSERT INTO TELEFONOS_X_CLIENTES (IDCLIENTE, IDTELEFONO) VALUES(" + cliente.ID + ", " + IDTel + ")");
+                accesoDatos.abrirConexion();
+                accesoDatos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+        }
+
+        public void eliminarTelefonoXCliente(Cliente cliente)
+        {
+            AccesoDatosManager accesoDatos = new AccesoDatosManager();
+            try
+            {
+                accesoDatos.abrirConexion();
+                accesoDatos.setearConsulta("DELETE FROM TELEFONOS_X_CLIENTES WHERE IDCLIENTE = " + cliente.ID);
                 accesoDatos.ejecutarAccion();
             }
             catch (Exception ex)

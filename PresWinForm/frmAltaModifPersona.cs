@@ -16,6 +16,7 @@ namespace PresWinForm
     {
         private Cliente clienteLocal = null;
         private Proveedor proveedorLocal = null;
+        private MailNegocio negocioMail = new MailNegocio();
         private char Tipo;
     
         public frmAltaModifPersona( char T)
@@ -84,6 +85,11 @@ namespace PresWinForm
         private void frmAltaModifPersona_Load(object sender, EventArgs e)
         {
             txtRazonSocial.Enabled = false;
+            cmbTel.Items.Add("Particular");
+            cmbTel.Items.Add("Laboral");
+            cmbTel.Items.Add("Celular");
+            cmbTel.SelectedIndex = 0;
+            btnAñadirMail.Enabled = false;
             try
             {
                 if(Tipo == 'C')
@@ -91,7 +97,17 @@ namespace PresWinForm
                     if(clienteLocal != null)
                     {
                         btnAgregar.Text = "Modificar";
-                        if(clienteLocal.TipoPersona.Fisica)
+                        txtID.Text = clienteLocal.ID.ToString();
+                        ClienteNegocio negocioCli = new ClienteNegocio();
+                        foreach (var item in negocioCli.listarMailsXCliente(clienteLocal))
+                        {
+                            listaMails.Items.Add(item.Direccion);
+                        }
+                        foreach (var item in negocioCli.listarTelefonosXCliente(clienteLocal))
+                        {
+                            listaTelefonos.Items.Add(item.Numero);
+                        }
+                        if (clienteLocal.TipoPersona.Fisica)
                         {
                             rbtParticular.Checked = true;
                             dtpFechaNac.Text = clienteLocal.FechaNacimiento.ToString();
@@ -100,23 +116,7 @@ namespace PresWinForm
                         {
                             rbtEmpresa.Checked = true;
                         }
-                        txtID.Text = clienteLocal.ID.ToString();
-                        txtNombre.Text = clienteLocal.Nombre;
-                        txtApellido.Text = clienteLocal.Apellido;
-                        txtRazonSocial.Text = clienteLocal.RazonSocial;
-                        txtDNI.Text = clienteLocal.DNI;
-                        txtCUIT.Text = clienteLocal.CUIT;
-                        txtCalle.Text = clienteLocal.Domicilio.Calle;
-                        if (clienteLocal.Domicilio.Altura != 0)
-                            txtAltura.Text = clienteLocal.Domicilio.Altura.ToString();
-                        txtEntreCalle1.Text = clienteLocal.Domicilio.EntreCalle1;
-                        txtEntreCalle2.Text = clienteLocal.Domicilio.EntreCalle2;
-                        if (clienteLocal.Domicilio.Edificio.Piso != 0)
-                            txtPiso.Text = clienteLocal.Domicilio.Edificio.Piso.ToString();
-                        txtDepto.Text = clienteLocal.Domicilio.Edificio.Departamento;
-                        txtLocalidad.Text = clienteLocal.Domicilio.Localidad.Nombre;
-                        txtPartido.Text = clienteLocal.Domicilio.Localidad.Partido;
-                        txtCPostal.Text = clienteLocal.Domicilio.Localidad.CPostal;
+                        cargarFormulario(clienteLocal);
                     }
                     else
                     {
@@ -132,7 +132,17 @@ namespace PresWinForm
                 {
                     if (proveedorLocal != null)
                     {
+                        ProveedorNegocio negocioProv = new ProveedorNegocio();
                         btnAgregar.Text = "Modificar";
+                        txtID.Text = proveedorLocal.ID.ToString();
+                        foreach (var item in negocioProv.listarMailsXProveedor(proveedorLocal))
+                        {
+                            listaMails.Items.Add(item.Direccion);
+                        }
+                        foreach (var item in negocioProv.listarTelefonosXProveedor(proveedorLocal))
+                        {
+                            listaTelefonos.Items.Add(item.Numero);
+                        }
                         if (proveedorLocal.TipoPersona.Fisica)
                         {
                             rbtParticular.Checked = true;
@@ -141,23 +151,7 @@ namespace PresWinForm
                         {
                             rbtEmpresa.Checked = true;
                         }
-                        txtID.Text = proveedorLocal.ID.ToString();
-                        txtNombre.Text = proveedorLocal.Nombre;
-                        txtApellido.Text = proveedorLocal.Apellido;
-                        txtRazonSocial.Text = proveedorLocal.RazonSocial;
-                        txtDNI.Text = proveedorLocal.DNI;
-                        txtCUIT.Text = proveedorLocal.CUIT;
-                        txtCalle.Text = proveedorLocal.Domicilio.Calle;
-                        if(proveedorLocal.Domicilio.Altura != 0)
-                            txtAltura.Text = proveedorLocal.Domicilio.Altura.ToString();
-                        txtEntreCalle1.Text = proveedorLocal.Domicilio.EntreCalle1;
-                        txtEntreCalle2.Text = proveedorLocal.Domicilio.EntreCalle2;
-                        if(proveedorLocal.Domicilio.Edificio.Piso != 0)
-                            txtPiso.Text = proveedorLocal.Domicilio.Edificio.Piso.ToString();
-                        txtDepto.Text = proveedorLocal.Domicilio.Edificio.Departamento;
-                        txtLocalidad.Text = proveedorLocal.Domicilio.Localidad.Nombre;
-                        txtPartido.Text = proveedorLocal.Domicilio.Localidad.Partido;
-                        txtCPostal.Text = proveedorLocal.Domicilio.Localidad.CPostal;
+                        cargarFormulario(proveedorLocal);
                     }
                     else
                     {
@@ -174,6 +168,26 @@ namespace PresWinForm
 
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        private void cargarFormulario(Persona local)
+        {
+            txtNombre.Text = local.Nombre;
+            txtApellido.Text = local.Apellido;
+            txtRazonSocial.Text = local.RazonSocial;
+            txtDNI.Text = local.DNI;
+            txtCUIT.Text = local.CUIT;
+            txtCalle.Text = local.Domicilio.Calle;
+            if (local.Domicilio.Altura != 0)
+                txtAltura.Text = local.Domicilio.Altura.ToString();
+            txtEntreCalle1.Text = local.Domicilio.EntreCalle1;
+            txtEntreCalle2.Text = local.Domicilio.EntreCalle2;
+            if (local.Domicilio.Edificio.Piso != 0)
+                txtPiso.Text = local.Domicilio.Edificio.Piso.ToString();
+            txtDepto.Text = local.Domicilio.Edificio.Departamento;
+            txtLocalidad.Text = local.Domicilio.Localidad.Nombre;
+            txtPartido.Text = local.Domicilio.Localidad.Partido;
+            txtCPostal.Text = local.Domicilio.Localidad.CPostal;
         }
 
         private bool llenarLocal(Persona local)
@@ -202,22 +216,28 @@ namespace PresWinForm
             }
             llenarLocalidad(local);
 
-            //local.Telefonos = new List<Telefono>();
-            //for (int i = 0; i < 2; i++)
-            //{
-            //    Telefono tel = new Telefono();
-            //    tel.Numero = item.
-            //    Telefonos.Add();
-            //}
-            //tel.Descripcion = txtApellido.Text + ", " + txtNombre.Text;
-            //tel.Numero = txtTelCelular.Text;
-            //proveedorLocal.Telefonos.Add(tel);
+            local.Telefonos = new List<Telefono>();
+            foreach (var item in listaTelefonos.Items)
+            {
+                Telefono tel = new Telefono();
+                string telefono = item.ToString();
+                tel.Descripcion = telefono.Substring(0,telefono.IndexOf(' '));
+                tel.Numero = telefono.Substring(telefono.IndexOf('-')+2);
+                local.Telefonos.Add(tel);
+
+            }
 
             local.Mails = new List<Mail>();
-            Mail mail = new Mail();
-            mail.Descripcion = txtApellido.Text + ", " + txtNombre.Text;
-            mail.Direccion = txtMail.Text;
-            local.Mails.Add(mail);
+            foreach (var item in listaMails.Items)
+            {
+                Mail mail = new Mail();
+                mail.Direccion = item.ToString();
+                if(local.TipoPersona.Fisica)
+                    mail.Descripcion = txtApellido.Text + ", " + txtNombre.Text;
+                else
+                    mail.Descripcion = txtRazonSocial.Text;
+                local.Mails.Add(mail);
+            }
             return true;
         }
 
@@ -305,10 +325,13 @@ namespace PresWinForm
             ProveedorNegocio negocioProv = new ProveedorNegocio();
             LocalidadNegocio negocioLoc = new LocalidadNegocio();
             DomicilioNegocio negocioDoc = new DomicilioNegocio();
+            TelefonoNegocio negocioTel = new TelefonoNegocio();
+            MailNegocio negocioMail = new MailNegocio();
             if (btnAgregar.Text == "Agregar")
             {
                 if (llenarLocal(local))
                 {
+                    //Domicilio
                     int idLocalidad = negocioLoc.buscarLocalidad(local.Domicilio.Localidad);
                     if(txtCalle.Text.Trim() != "" && txtAltura.Text.Trim() != "")
                     {
@@ -318,6 +341,27 @@ namespace PresWinForm
                             local.Domicilio.Localidad.ID = idLocalidad;
                         local.Domicilio.ID = negocioDoc.agregarDomicilio(local.Domicilio);
                     }
+
+                    //Mail
+                    for (int i = 0; i < local.Mails.Count; i++)
+                    {
+                        int idMail = negocioMail.agregarMail(local.Mails[i]);
+                        if (Tipo == 'P')
+                            negocioProv.agregarMailXProveedor((Proveedor)local, idMail);
+                        else
+                            negocioCli.agregarMailXCliente((Cliente)local, idMail);
+                    }
+
+                    //Telefono
+                    for (int i = 0; i < local.Telefonos.Count; i++)
+                    {
+                        int idMail = negocioTel.agregarTelefono(local.Telefonos[i]);
+                        if (Tipo == 'P')
+                            negocioProv.agregarTelefonoXProveedor((Proveedor)local, idMail);
+                        else
+                            negocioCli.agregarTelefonoXCliente((Cliente)local, idMail);
+                    }
+
                     if (Tipo == 'P')
                         negocioProv.agregarProveedor((Proveedor)local);
                     else
@@ -359,6 +403,39 @@ namespace PresWinForm
                     {
                         negocioDoc.eliminarDomicilio(local.Domicilio);
                     }
+
+                    //Mail
+                    if (Tipo == 'P')
+                        negocioProv.eliminarMailXProveedor((Proveedor)local);
+                    else
+                        negocioCli.eliminarMailXCliente((Cliente)local);
+
+                    for (int i = 0; i < local.Mails.Count; i++)
+                    {
+                        int idMail = negocioMail.agregarMail(local.Mails[i]);
+                        if (Tipo == 'P')
+                            negocioProv.agregarMailXProveedor((Proveedor)local, idMail);
+                        else
+                            negocioCli.agregarMailXCliente((Cliente)local, idMail);
+                    }
+
+                    //Telefono
+                    if (Tipo == 'P')
+                        negocioProv.eliminarTelefonoXProveedor((Proveedor)local);
+                    else
+                        negocioCli.eliminarTelefonoXCliente((Cliente)local);
+
+                    for (int i = 0; i < local.Telefonos.Count; i++)
+                    {
+                        int idMail = negocioTel.agregarTelefono(local.Telefonos[i]);
+                        if (Tipo == 'P')
+                            negocioProv.agregarTelefonoXProveedor((Proveedor)local, idMail);
+                        else
+                            negocioCli.agregarTelefonoXCliente((Cliente)local, idMail);
+                    }
+
+
+
                     if (Tipo == 'P')
                         negocioProv.modificarProveedor((Proveedor)local);
                     else
@@ -426,6 +503,58 @@ namespace PresWinForm
             if(!(char.IsNumber(e.KeyChar)) && (e.KeyChar != (char)Keys.Back))
             {
                 e.Handled = true;
+            }
+        }
+
+        private void btnAñadirTel_Click(object sender, EventArgs e)
+        {
+            if(txtTel.Text.Trim() != "")
+                listaTelefonos.Items.Add(cmbTel.SelectedItem.ToString() + " - " + txtTel.Text);
+            txtTel.ResetText();
+            txtTel.Focus();
+        }
+
+        private void btnEliminarTel_Click(object sender, EventArgs e)
+        {
+            if(listaTelefonos.SelectedItem == null)
+            {
+                MessageBox.Show("No hay ningún telefono seleccionado.", "Atención");
+            }
+            else
+            {
+                listaTelefonos.Items.Remove(listaTelefonos.SelectedItem);
+            }
+        }
+
+        private void btnAñadirMail_Click(object sender, EventArgs e)
+        {
+            if(txtMail.Text.Trim() != "")
+                listaMails.Items.Add(txtMail.Text);
+            txtMail.ResetText();
+            txtMail.Focus();
+        }
+
+        private void brnEliminarMail_Click(object sender, EventArgs e)
+        {
+            if (listaMails.SelectedItem == null)
+            {
+                MessageBox.Show("No hay ningún mail seleccionado.", "Atención");
+            }
+            else
+            {
+                listaMails.Items.Remove(listaMails.SelectedItem);
+            }
+        }
+
+        private void txtMail_TextChanged(object sender, EventArgs e)
+        {
+            if(negocioMail.IsValidEmail(txtMail.Text))
+            {
+                btnAñadirMail.Enabled = true;
+            }
+            else
+            {
+                btnAñadirMail.Enabled = false;
             }
         }
     }

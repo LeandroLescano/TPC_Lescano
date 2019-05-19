@@ -14,6 +14,8 @@ namespace PresWinForm
 {
     public partial class frmCategorias : Form
     {
+        private List<Categoria> listaCat;
+
         public frmCategorias()
         {
             InitializeComponent();
@@ -44,7 +46,8 @@ namespace PresWinForm
             CategoriaNegocio negocio = new CategoriaNegocio();
             try
             {
-                dgvCategoria.DataSource = negocio.listarCategorias();
+                listaCat = negocio.listarCategorias();
+                dgvCategoria.DataSource = listaCat;
             }
             catch (Exception ex)
             {
@@ -60,6 +63,23 @@ namespace PresWinForm
                 CategoriaNegocio negocio = new CategoriaNegocio();
                 negocio.eliminarCategoria(cEliminar);
                 cargarGrilla();
+            }
+        }
+
+        private void txtBusqueda_TextChanged(object sender, EventArgs e)
+        {
+            if (txtBusqueda.Text == "")
+            {
+                dgvCategoria.DataSource = listaCat;
+            }
+            else
+            {
+                if (txtBusqueda.Text.Length >= 1)
+                {
+                    List<Categoria> lista;
+                    lista = listaCat.FindAll(X => X.Nombre.ToUpper().Contains(txtBusqueda.Text.ToUpper()));
+                    dgvCategoria.DataSource = lista;
+                }
             }
         }
     }

@@ -15,16 +15,9 @@ namespace Negocio
             AccesoDatosManager accesoDatos = new AccesoDatosManager();
             try
             {
-                int idLoc = 0;
-                accesoDatos.setearConsulta("INSERT INTO LOCALIDADES (NOMBRE, PARTIDO, CODPOSTAL) VALUES ('"+nuevo.Nombre+"', '"+nuevo.Partido+"', '"+nuevo.CPostal+ "') SELECT TOP 1 ID from LOCALIDADES ORDER BY ID DESC");
+                accesoDatos.setearConsulta("INSERT INTO LOCALIDADES (NOMBRE, PARTIDO, CODPOSTAL) VALUES ('"+nuevo.Nombre+"', '"+nuevo.Partido+"', '"+nuevo.CPostal+ "') SELECT SCOPE_IDENTITY();");
                 accesoDatos.abrirConexion();
-                accesoDatos.ejecutarConsulta();
-                while(accesoDatos.Lector.Read())
-                {
-                    idLoc = accesoDatos.Lector.GetInt32(0);
-                }
-
-                return idLoc;
+                return accesoDatos.ejecutarAccionReturn();
             }
             catch (Exception ex)
             {

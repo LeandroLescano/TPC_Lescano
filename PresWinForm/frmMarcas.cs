@@ -14,6 +14,8 @@ namespace PresWinForm
 {
     public partial class frmMarcas : Form
     {
+        private List<Marca> listaMarcas;
+
         public frmMarcas()
         {
             InitializeComponent();
@@ -44,7 +46,8 @@ namespace PresWinForm
             MarcaNegocio negocio = new MarcaNegocio();
             try
             {
-                dgvMarca.DataSource = negocio.listarMarcas();
+                listaMarcas = negocio.listarMarcas();
+                dgvMarca.DataSource = listaMarcas;
             }
             catch (Exception ex)
             {
@@ -60,6 +63,23 @@ namespace PresWinForm
                 MarcaNegocio negocio = new MarcaNegocio();
                 negocio.eliminarMarca(mEliminar);
                 cargarGrilla();
+            }
+        }
+
+        private void txtBusqueda_TextChanged(object sender, EventArgs e)
+        {
+            if (txtBusqueda.Text == "")
+            {
+                dgvMarca.DataSource = listaMarcas;
+            }
+            else
+            {
+                if (txtBusqueda.Text.Length >= 1)
+                {
+                    List<Marca> lista;
+                    lista = listaMarcas.FindAll(X => X.Nombre.ToUpper().Contains(txtBusqueda.Text.ToUpper()));
+                    dgvMarca.DataSource = lista;
+                }
             }
         }
     }

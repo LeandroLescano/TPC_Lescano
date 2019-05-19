@@ -128,6 +128,7 @@
             this.txtBusqueda.Name = "txtBusqueda";
             this.txtBusqueda.Size = new System.Drawing.Size(112, 23);
             this.txtBusqueda.TabIndex = 10;
+            this.txtBusqueda.TextChanged += new System.EventHandler(this.txtBusqueda_TextChanged);
             // 
             // frmCategorias
             // 
