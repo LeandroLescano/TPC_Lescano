@@ -105,7 +105,7 @@ namespace PresWinForm
                         }
                         foreach (var item in negocioCli.listarTelefonosXCliente(clienteLocal))
                         {
-                            listaTelefonos.Items.Add(item.Numero);
+                            listaTelefonos.Items.Add(item.Descripcion +" - "+item.Numero);
                         }
                         if (clienteLocal.TipoPersona.Fisica)
                         {
@@ -141,7 +141,7 @@ namespace PresWinForm
                         }
                         foreach (var item in negocioProv.listarTelefonosXProveedor(proveedorLocal))
                         {
-                            listaTelefonos.Items.Add(item.Numero);
+                            listaTelefonos.Items.Add(item.Descripcion + " - " + item.Numero);
                         }
                         if (proveedorLocal.TipoPersona.Fisica)
                         {

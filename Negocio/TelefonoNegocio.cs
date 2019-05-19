@@ -15,7 +15,7 @@ namespace Negocio
             AccesoDatosManager accesoDatos = new AccesoDatosManager();
             try
             {
-                accesoDatos.setearConsulta("INSERT INTO TELEFONOS (TELEFONO) VALUES ('" + nuevo.Numero + "') SELECT SCOPE_IDENTITY();");
+                accesoDatos.setearConsulta("INSERT INTO TELEFONOS (TELEFONO, DESCRIPCION) VALUES ('" + nuevo.Numero + "', '"+ nuevo.Descripcion +"') SELECT SCOPE_IDENTITY();");
                 accesoDatos.abrirConexion();
                 return accesoDatos.ejecutarAccionReturn();
             }

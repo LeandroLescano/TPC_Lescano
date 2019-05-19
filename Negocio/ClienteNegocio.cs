@@ -272,6 +272,7 @@ namespace Negocio
                     nuevo = new Telefono();
                     nuevo.ID = accesoDatos.Lector.GetInt32(0);
                     nuevo.Numero = accesoDatos.Lector.GetString(1);
+                    nuevo.Descripcion = accesoDatos.Lector.GetString(2);
                     listado.Add(nuevo);
                 }
                 return listado;

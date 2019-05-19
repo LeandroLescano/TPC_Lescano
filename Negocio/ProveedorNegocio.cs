@@ -328,7 +328,7 @@ namespace Negocio
             }
         }
 
-        //TELEFONOS POR CLIENTE
+        //TELEFONOS POR PROVEEDOR
         public List<Telefono> listarTelefonosXProveedor(Proveedor prov)
         {
             AccesoDatosManager accesoDatos = new AccesoDatosManager();
@@ -344,6 +344,7 @@ namespace Negocio
                     nuevo = new Telefono();
                     nuevo.ID = accesoDatos.Lector.GetInt32(0);
                     nuevo.Numero = accesoDatos.Lector.GetString(1);
+                    nuevo.Descripcion = accesoDatos.Lector.GetString(2);
                     listado.Add(nuevo);
                 }
                 return listado;
