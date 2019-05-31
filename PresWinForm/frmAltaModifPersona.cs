@@ -18,8 +18,8 @@ namespace PresWinForm
         private Proveedor proveedorLocal = null;
         private MailNegocio negocioMail = new MailNegocio();
         private char Tipo;
-    
-        public frmAltaModifPersona( char T)
+
+        public frmAltaModifPersona(char T)
         {
             InitializeComponent();
             Tipo = T;
@@ -41,7 +41,7 @@ namespace PresWinForm
 
         private void rbtEmpresa_CheckedChanged(object sender, EventArgs e)
         {
-            if(rbtEmpresa.Checked)
+            if (rbtEmpresa.Checked)
             {
                 txtApellido.Enabled = false;
                 txtNombre.Enabled = false;
@@ -92,9 +92,9 @@ namespace PresWinForm
             btnAñadirMail.Enabled = false;
             try
             {
-                if(Tipo == 'C')
+                if (Tipo == 'C')
                 {
-                    if(clienteLocal != null)
+                    if (clienteLocal != null)
                     {
                         btnAgregar.Text = "Modificar";
                         txtID.Text = clienteLocal.ID.ToString();
@@ -105,7 +105,7 @@ namespace PresWinForm
                         }
                         foreach (var item in negocioCli.listarTelefonosXCliente(clienteLocal))
                         {
-                            listaTelefonos.Items.Add(item.Descripcion +" - "+item.Numero);
+                            listaTelefonos.Items.Add(item.Descripcion + " - " + item.Numero);
                         }
                         if (clienteLocal.TipoPersona.Fisica)
                         {
@@ -192,19 +192,52 @@ namespace PresWinForm
 
         private bool llenarLocal(Persona local)
         {
+            string msgPersona;
+            if (Tipo == 'C')
+            {
+                msgPersona = "cliente";
+            }
+            else
+            {
+                msgPersona = "proveedor";
+            }
             if (rbtParticular.Checked)
             {
-               local.Apellido = txtApellido.Text;
-               local.Nombre = txtNombre.Text;
-               local.TipoPersona.Fisica = true;
-            }  
-            else
-            {  
-               local.RazonSocial = txtRazonSocial.Text;
-               local.TipoPersona.Juridica = true;
+                if (txtApellido.Text.Trim() != "" && txtNombre.Text.Trim() != "")
+                {
+                    local.Apellido = txtApellido.Text;
+                    local.Nombre = txtNombre.Text;
+                    local.TipoPersona.Fisica = true;
+                }
+                else
+                {
+                    MessageBox.Show("No puedes agregar un " + msgPersona + " sin nombre y/o apellido.", "Cuidado!");
+                    return false;
+                }
             }
-            local.DNI = txtDNI.Text;
-            local.CUIT = txtCUIT.Text;
+            else
+            {
+                if (txtRazonSocial.Text.Trim() != "")
+                {
+                    local.RazonSocial = txtRazonSocial.Text;
+                    local.TipoPersona.Juridica = true;
+                }
+                else
+                {
+                    MessageBox.Show("No puedes agregar un " + msgPersona + " sin razón social.", "Cuidado!");
+                    return false;
+                }
+            }
+            if(txtDNI.Text.Trim() != "" || txtCUIT.Text.Trim() != "")
+            {
+                local.DNI = txtDNI.Text;
+                local.CUIT = txtCUIT.Text;
+            }
+            else
+            {
+                MessageBox.Show("No puedes agregar un " + msgPersona + " sin DNI y/o CUIT.", "Cuidado!");
+                return false;
+            }
             local.FechaNacimiento = (DateTime)dtpFechaNac.Value;
             if (!llenarDomicilio(local))
             {
@@ -221,8 +254,8 @@ namespace PresWinForm
             {
                 Telefono tel = new Telefono();
                 string telefono = item.ToString();
-                tel.Descripcion = telefono.Substring(0,telefono.IndexOf(' '));
-                tel.Numero = telefono.Substring(telefono.IndexOf('-')+2);
+                tel.Descripcion = telefono.Substring(0, telefono.IndexOf(' '));
+                tel.Numero = telefono.Substring(telefono.IndexOf('-') + 2);
                 local.Telefonos.Add(tel);
 
             }
@@ -232,7 +265,7 @@ namespace PresWinForm
             {
                 Mail mail = new Mail();
                 mail.Direccion = item.ToString();
-                if(local.TipoPersona.Fisica)
+                if (local.TipoPersona.Fisica)
                     mail.Descripcion = txtApellido.Text + ", " + txtNombre.Text;
                 else
                     mail.Descripcion = txtRazonSocial.Text;
@@ -243,7 +276,7 @@ namespace PresWinForm
 
         private bool llenarDomicilio(Persona local)
         {
-            if(local.Domicilio == null)
+            if (local.Domicilio == null)
             {
                 if (txtCalle.Text.Trim() != "" && txtAltura.Text.Trim() != "")
                 {
@@ -257,7 +290,7 @@ namespace PresWinForm
                 {
                     if (MessageBox.Show("Faltan datos del DOMICILIO para completar.\n\n¿Desea continuar? No se guardará ningún dato del domicilio.", "Atención!", MessageBoxButtons.YesNo) == DialogResult.No)
                     {
-                    return false;
+                        return false;
                     }
                 }
             }
@@ -272,7 +305,7 @@ namespace PresWinForm
                 }
                 else
                 {
-                    if(txtAltura.Text != "")
+                    if (txtAltura.Text != "")
                         local.Domicilio.Altura = Convert.ToInt32(txtAltura.Text);
                     else
                         local.Domicilio.Altura = 0;
@@ -303,7 +336,7 @@ namespace PresWinForm
 
         private bool llenarLocalidad(Persona local)
         {
-            if(txtLocalidad.Text.Trim() != "")
+            if (txtLocalidad.Text.Trim() != "")
             {
                 local.Domicilio.Localidad.Nombre = txtLocalidad.Text;
                 local.Domicilio.Localidad.Partido = txtPartido.Text;
@@ -333,7 +366,7 @@ namespace PresWinForm
                 {
                     //Domicilio
                     int idLocalidad = negocioLoc.buscarLocalidad(local.Domicilio.Localidad);
-                    if(txtCalle.Text.Trim() != "" && txtAltura.Text.Trim() != "")
+                    if (txtCalle.Text.Trim() != "" && txtAltura.Text.Trim() != "")
                     {
                         if (idLocalidad == -1 && txtLocalidad.Text != "")
                             local.Domicilio.Localidad.ID = negocioLoc.agregarLocalidad(local.Domicilio.Localidad);
@@ -447,7 +480,7 @@ namespace PresWinForm
 
         private void txtCalle_TextChanged(object sender, EventArgs e)
         {
-            if(txtCalle.Text != "" && txtAltura.Text != "")
+            if (txtCalle.Text != "" && txtAltura.Text != "")
             {
                 txtEntreCalle1.Enabled = true;
                 txtEntreCalle2.Enabled = true;
@@ -500,7 +533,7 @@ namespace PresWinForm
 
         private void txtAltura_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if(!(char.IsNumber(e.KeyChar)) && (e.KeyChar != (char)Keys.Back))
+            if (!(char.IsNumber(e.KeyChar)) && (e.KeyChar != (char)Keys.Back))
             {
                 e.Handled = true;
             }
@@ -508,7 +541,7 @@ namespace PresWinForm
 
         private void btnAñadirTel_Click(object sender, EventArgs e)
         {
-            if(txtTel.Text.Trim() != "")
+            if (txtTel.Text.Trim() != "")
                 listaTelefonos.Items.Add(cmbTel.SelectedItem.ToString() + " - " + txtTel.Text);
             txtTel.ResetText();
             txtTel.Focus();
@@ -516,7 +549,7 @@ namespace PresWinForm
 
         private void btnEliminarTel_Click(object sender, EventArgs e)
         {
-            if(listaTelefonos.SelectedItem == null)
+            if (listaTelefonos.SelectedItem == null)
             {
                 MessageBox.Show("No hay ningún telefono seleccionado.", "Atención");
             }
@@ -528,7 +561,7 @@ namespace PresWinForm
 
         private void btnAñadirMail_Click(object sender, EventArgs e)
         {
-            if(txtMail.Text.Trim() != "")
+            if (txtMail.Text.Trim() != "")
                 listaMails.Items.Add(txtMail.Text);
             txtMail.ResetText();
             txtMail.Focus();
@@ -548,7 +581,7 @@ namespace PresWinForm
 
         private void txtMail_TextChanged(object sender, EventArgs e)
         {
-            if(negocioMail.IsValidEmail(txtMail.Text))
+            if (negocioMail.IsValidEmail(txtMail.Text))
             {
                 btnAñadirMail.Enabled = true;
             }
