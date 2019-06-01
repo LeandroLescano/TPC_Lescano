@@ -35,14 +35,23 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav">
+                <div class="nav navbar-nav">
                     <a class="nav-item nav-link active ml-auto" href="Default">Inicio <span class="sr-only">(current)</span></a>
                     <a class="nav-item nav-link ml-auto" href="Pedido">Hace tu pedido</a>
                     <a class="nav-item nav-link ml-auto" href="Contact">Contactanos</a>
-                    <ul class="nav navbar-nav ml-auto">
-                        <li><button type="button" class="btn btn-dark">Ingresa</button></li>
-                    </ul>
+<%--                    <ul class="nav navbar-nav ml-auto">
+                        <li>
+                            <button type="button" class="btn btn-dark" style="float: right">Ingresa</button></li>
+                    </ul>--%>
+
                 </div>
+                    <div class="nav navbar-right">
+                        <li>
+                            <div class="btn-nav">
+                                <button type="button" class="btn btn-dark" style="float: right">Ingresa</button>
+                            </div>
+                        </li>
+                    </div>
 
             </div>
         </nav>
