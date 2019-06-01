@@ -36,5 +36,16 @@ namespace PresWinForm
             ProductoNegocio negocio = new ProductoNegocio();
             clbProductos.DataSource = negocio.listarProductos();
         }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            this.openFileDialog = new OpenFileDialog();
+            openFileDialog.InitialDirectory = @"C:\";
+            openFileDialog.RestoreDirectory = true;
+            openFileDialog.Title = "Selecciona la imagen del combo";
+            openFileDialog.ShowDialog();
+            txtRuta.Text = openFileDialog.FileName;
+            picImagen.Image = Image.FromFile(txtRuta.Text);
+        }
     }
 }

@@ -18,7 +18,7 @@ namespace Negocio
             Producto nuevo = new Producto();
             try
             {
-                accesoDatos.setearConsulta("Select P.ID, P.NOMBRE, M.NOMBRE as MARCA ,P.PRECIOUNITARIO ,P.STOCK, C.NOMBRE AS CATEGORIA, P.FRACCIONABLE, P.PESO, P.PORCENTAJEGANANCIA from PRODUCTOS AS P LEFT JOIN MARCAS AS M ON M.ID = P.IDMARCA LEFT JOIN CATEGORIAS AS C ON C.ID = P.IDCATEGORIA");
+                accesoDatos.setearConsulta("Select P.ID, P.NOMBRE, M.NOMBRE as MARCA ,P.PRECIOUNITARIO ,P.STOCK, C.NOMBRE AS CATEGORIA, P.FRACCIONABLE, P.PESO, P.PORCENTAJEGANANCIA, P.ESTADO from PRODUCTOS AS P LEFT JOIN MARCAS AS M ON M.ID = P.IDMARCA LEFT JOIN CATEGORIAS AS C ON C.ID = P.IDCATEGORIA");
                 accesoDatos.abrirConexion();
                 accesoDatos.ejecutarConsulta();
                 while (accesoDatos.Lector.Read())
@@ -37,15 +37,7 @@ namespace Negocio
                     nuevo.Fraccionable = accesoDatos.Lector.GetBoolean(6);
                     nuevo.Peso = Convert.ToDecimal(accesoDatos.Lector.GetString(7).Replace('.', ','));
                     nuevo.PorcentajeGanancia = Convert.ToDecimal(accesoDatos.Lector.GetString(8).Replace('.', ','));
-
-                    //accesoDatos.setearConsulta("Select P.* from PROVEEDORES as P INNER JOIN PROVEEDORES_X_PRODUCTO as PP on PP.IDPROVEEDOR = P.ID INNER JOIN PRODUCTOS as PROD ON PROD.ID = PP.IDPRODUCTO WHERE PROD.ID = "+ nuevo.ID);
-                    //accesoDatos.abrirConexion();
-                    //accesoDatos.ejecutarConsulta();
-                    //while (accesoDatos.Lector.Read())
-                    //{
-                    //    nuevo.Proveedor = new List<Proveedor>();
-                    //    nuevo.Proveedor.Add(convertirProveedor(accesoDatos.Lector, nuevo)); 
-                    //}
+                    nuevo.Estado = accesoDatos.Lector.GetBoolean(9);
                     agregarProveedores(nuevo);
                     listado.Add(nuevo);
                 }
@@ -126,6 +118,25 @@ namespace Negocio
             try
             {
                 accesoDatos.setearConsulta("DELETE FROM PROVEEDORES_X_PRODUCTO WHERE IDPRODUCTO = " + prod.ID + " DELETE FROM PRODUCTOS WHERE ID = " + prod.ID);
+                accesoDatos.abrirConexion();
+                accesoDatos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+        }
+
+        public void habilitarProducto(Producto prod)
+        {
+            AccesoDatosManager accesoDatos = new AccesoDatosManager();
+            try
+            {
+                accesoDatos.setearConsulta("UPDATE PRODUCTOS SET ESTADO = 1 WHERE ID = " + prod.ID);
                 accesoDatos.abrirConexion();
                 accesoDatos.ejecutarAccion();
             }

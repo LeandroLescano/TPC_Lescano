@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAltaModifCombo));
             this.lblCodigo = new System.Windows.Forms.Label();
             this.lblNombre = new System.Windows.Forms.Label();
             this.lblDescripción = new System.Windows.Forms.Label();
@@ -42,6 +43,11 @@
             this.clbProductos = new System.Windows.Forms.CheckedListBox();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
+            this.picImagen = new System.Windows.Forms.PictureBox();
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.btnBuscar = new System.Windows.Forms.Button();
+            this.txtRuta = new System.Windows.Forms.TextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.picImagen)).BeginInit();
             this.SuspendLayout();
             // 
             // lblCodigo
@@ -151,7 +157,7 @@
             // 
             this.clbProductos.CheckOnClick = true;
             this.clbProductos.FormattingEnabled = true;
-            this.clbProductos.Location = new System.Drawing.Point(137, 224);
+            this.clbProductos.Location = new System.Drawing.Point(137, 235);
             this.clbProductos.Name = "clbProductos";
             this.clbProductos.Size = new System.Drawing.Size(217, 94);
             this.clbProductos.TabIndex = 4;
@@ -179,11 +185,52 @@
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
+            // picImagen
+            // 
+            this.picImagen.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.picImagen.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.picImagen.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.picImagen.Image = ((System.Drawing.Image)(resources.GetObject("picImagen.Image")));
+            this.picImagen.InitialImage = null;
+            this.picImagen.Location = new System.Drawing.Point(374, 12);
+            this.picImagen.Name = "picImagen";
+            this.picImagen.Size = new System.Drawing.Size(301, 284);
+            this.picImagen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picImagen.TabIndex = 7;
+            this.picImagen.TabStop = false;
+            // 
+            // openFileDialog
+            // 
+            this.openFileDialog.FileName = "openFileDialog";
+            // 
+            // btnBuscar
+            // 
+            this.btnBuscar.AutoSize = true;
+            this.btnBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBuscar.Location = new System.Drawing.Point(374, 302);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(75, 27);
+            this.btnBuscar.TabIndex = 8;
+            this.btnBuscar.Text = "Buscar";
+            this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            // 
+            // txtRuta
+            // 
+            this.txtRuta.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRuta.Location = new System.Drawing.Point(455, 304);
+            this.txtRuta.Name = "txtRuta";
+            this.txtRuta.Size = new System.Drawing.Size(220, 23);
+            this.txtRuta.TabIndex = 9;
+            // 
             // frmAltaModifCombo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(366, 370);
+            this.ClientSize = new System.Drawing.Size(687, 370);
+            this.Controls.Add(this.txtRuta);
+            this.Controls.Add(this.btnBuscar);
+            this.Controls.Add(this.picImagen);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAgregar);
             this.Controls.Add(this.clbProductos);
@@ -201,6 +248,7 @@
             this.Name = "frmAltaModifCombo";
             this.Text = "frmAltaModifCombos";
             this.Load += new System.EventHandler(this.frmAltaModifCombo_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.picImagen)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -222,5 +270,9 @@
         private System.Windows.Forms.CheckedListBox clbProductos;
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.PictureBox picImagen;
+        private System.Windows.Forms.OpenFileDialog openFileDialog;
+        private System.Windows.Forms.Button btnBuscar;
+        private System.Windows.Forms.TextBox txtRuta;
     }
 }

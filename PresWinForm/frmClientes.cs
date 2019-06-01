@@ -66,6 +66,10 @@ namespace PresWinForm
             try
             {
                 listaCli = negocio.listarClientes();
+                if (chbEstado.Checked == false)
+                {
+                    listaCli = listaCli.FindAll(X => X.Estado == true);
+                }
                 dgvClientes.DataSource = listaCli;
                 dgvClientes.Columns["Usuario"].Visible = false;
                 dgvClientes.Columns["ID"].DisplayIndex = 0;
@@ -76,6 +80,17 @@ namespace PresWinForm
                 dgvClientes.Columns["CUIT"].DisplayIndex = 5;
                 dgvClientes.Columns["FechaNacimiento"].DisplayIndex = 6;
                 dgvClientes.Columns["TipoPersona"].DisplayIndex = 7;
+                dgvClientes.Columns["Estado"].Visible = false;
+                dgvClientes.ClearSelection();
+
+                foreach (DataGridViewRow row in dgvClientes.Rows)
+                {
+                    Cliente cli = (Cliente)row.DataBoundItem;
+                    if (cli.Estado == false)
+                    {
+                        row.DefaultCellStyle.BackColor = Color.LightGray;
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -99,6 +114,32 @@ namespace PresWinForm
                                               X.RazonSocial != null && X.RazonSocial.ToUpper().Contains(txtBusqueda.Text.ToUpper()));
                     dgvClientes.DataSource = lista;
                 }
+            }
+        }
+
+        private void chbEstado_CheckedChanged(object sender, EventArgs e)
+        {
+            cargarGrilla();
+        }
+
+        private void btnHabilitar_Click(object sender, EventArgs e)
+        {
+            ClienteNegocio negocio = new ClienteNegocio();
+            Cliente cli = (Cliente)dgvClientes.CurrentRow.DataBoundItem;
+            negocio.habilitarCliente(cli);
+            cargarGrilla();
+        }
+
+        private void dgvClientes_SelectionChanged(object sender, EventArgs e)
+        {
+            Cliente cli = (Cliente)dgvClientes.CurrentRow.DataBoundItem;
+            if (cli.Estado == false)
+            {
+                btnHabilitar.Enabled = true;
+            }
+            else
+            {
+                btnHabilitar.Enabled = false;
             }
         }
     }

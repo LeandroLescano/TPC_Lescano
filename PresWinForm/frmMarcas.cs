@@ -47,7 +47,20 @@ namespace PresWinForm
             try
             {
                 listaMarcas = negocio.listarMarcas();
+                if (chbEstado.Checked == false)
+                {
+                    listaMarcas = listaMarcas.FindAll(X => X.Estado == true);
+                }
                 dgvMarca.DataSource = listaMarcas;
+                dgvMarca.Columns["Estado"].Visible = false;
+                foreach (DataGridViewRow row in dgvMarca.Rows)
+                {
+                    Marca marca = (Marca)row.DataBoundItem;
+                    if (marca.Estado == false)
+                    {
+                        row.DefaultCellStyle.BackColor = Color.LightGray;
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -80,6 +93,32 @@ namespace PresWinForm
                     lista = listaMarcas.FindAll(X => X.Nombre.ToUpper().Contains(txtBusqueda.Text.ToUpper()));
                     dgvMarca.DataSource = lista;
                 }
+            }
+        }
+
+        private void chbEstado_CheckedChanged(object sender, EventArgs e)
+        {
+            cargarGrilla();
+        }
+
+        private void btnHabilitar_Click(object sender, EventArgs e)
+        {
+            MarcaNegocio negocio = new MarcaNegocio();
+            Marca marca = (Marca)dgvMarca.CurrentRow.DataBoundItem;
+            negocio.habilitarMarca(marca);
+            cargarGrilla();
+        }
+
+        private void dgvMarca_SelectionChanged(object sender, EventArgs e)
+        {
+            Marca marca = (Marca)dgvMarca.CurrentRow.DataBoundItem;
+            if (marca.Estado == false)
+            {
+                btnHabilitar.Enabled = true;
+            }
+            else
+            {
+                btnHabilitar.Enabled = false;
             }
         }
     }

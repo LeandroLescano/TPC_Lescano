@@ -18,6 +18,7 @@ namespace Dominio
         public decimal PorcentajeGanancia { get; set; }
         public List<Proveedor> Proveedor { get; set; }
         public int Cantidad { get; set; }
+        public bool Estado { get; set; }
 
         public override string ToString()
         {

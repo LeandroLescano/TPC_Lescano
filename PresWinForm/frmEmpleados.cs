@@ -39,6 +39,10 @@ namespace PresWinForm
             try
             {
                 listaEmp = negocio.listarEmpleados();
+                if (chbEstado.Checked == false)
+                {
+                    listaEmp = listaEmp.FindAll(X => X.Estado == true);
+                }
                 dgvEmpleados.DataSource = listaEmp;
                 dgvEmpleados.Columns["RazonSocial"].Visible = false;
                 dgvEmpleados.Columns["CUIT"].Visible = false;
@@ -51,7 +55,16 @@ namespace PresWinForm
                 dgvEmpleados.Columns["TipoEmpleado"].DisplayIndex = 5;
                 dgvEmpleados.Columns["Usuario"].DisplayIndex = 6;
                 dgvEmpleados.Columns["Domicilio"].DisplayIndex = 7;
-
+                dgvEmpleados.Columns["Estado"].Visible = false;
+                dgvEmpleados.ClearSelection();
+                foreach (DataGridViewRow row in dgvEmpleados.Rows)
+                {
+                    Empleado emp = (Empleado)row.DataBoundItem;
+                    if (emp.Estado == false)
+                    {
+                        row.DefaultCellStyle.BackColor = Color.LightGray;
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -93,6 +106,32 @@ namespace PresWinForm
                                               X.Apellido.ToUpper().Contains(txtBusqueda.Text.ToUpper()));
                     dgvEmpleados.DataSource = lista;
                 }
+            }
+        }
+
+        private void btnHabilitar_Click(object sender, EventArgs e)
+        {
+            EmpleadoNegocio negocio = new EmpleadoNegocio();
+            Empleado emp = (Empleado)dgvEmpleados.CurrentRow.DataBoundItem;
+            negocio.habilitarEmpleado(emp);
+            cargarGrilla();
+        }
+
+        private void chbEstado_CheckedChanged(object sender, EventArgs e)
+        {
+            cargarGrilla();
+        }
+
+        private void dgvEmpleados_SelectionChanged(object sender, EventArgs e)
+        {
+            Empleado emp = (Empleado)dgvEmpleados.CurrentRow.DataBoundItem;
+            if (emp.Estado == false)
+            {
+                btnHabilitar.Enabled = true;
+            }
+            else
+            {
+                btnHabilitar.Enabled = false;
             }
         }
     }

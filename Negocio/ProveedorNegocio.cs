@@ -27,6 +27,7 @@ namespace Negocio
                     nuevo = new Proveedor();
                     nuevo.ID = accesoDatos.Lector.GetInt32(0);
                     nuevo.TipoPersona = new TipoPersona();
+                    nuevo.Estado = accesoDatos.Lector.GetBoolean(9);
                     if ((int)accesoDatos.Lector["IDTIPOPERSONA"] == 2)
                     {
                         nuevo.RazonSocial = accesoDatos.Lector.GetString(3);
@@ -44,33 +45,34 @@ namespace Negocio
                     nuevo.Domicilio.Localidad = new Localidad();
                     nuevo.Domicilio.Edificio = new Edificio();
 
+
                     //Domicilio
                     if (!Convert.IsDBNull(accesoDatos.Lector["CALLE"]))
-                        nuevo.Domicilio.Calle = accesoDatos.Lector.GetString(9);    
+                        nuevo.Domicilio.Calle = accesoDatos.Lector.GetString(10);    
                     if (!Convert.IsDBNull(accesoDatos.Lector["ALTURA"]))
-                        nuevo.Domicilio.Altura = accesoDatos.Lector.GetInt32(10);
+                        nuevo.Domicilio.Altura = accesoDatos.Lector.GetInt32(11);
                     if (!Convert.IsDBNull(accesoDatos.Lector["IDDOMICILIO"]))
                         nuevo.Domicilio.ID = accesoDatos.Lector.GetInt32(6);
                     if (!Convert.IsDBNull(accesoDatos.Lector["ENTRECALLE1"]))
-                        nuevo.Domicilio.EntreCalle1 = accesoDatos.Lector.GetString(17);
+                        nuevo.Domicilio.EntreCalle1 = accesoDatos.Lector.GetString(18);
                     if (!Convert.IsDBNull(accesoDatos.Lector["ENTRECALLE2"]))
-                        nuevo.Domicilio.EntreCalle2 = accesoDatos.Lector.GetString(18);
+                        nuevo.Domicilio.EntreCalle2 = accesoDatos.Lector.GetString(19);
 
                     //Edificio
                     if (!Convert.IsDBNull(accesoDatos.Lector["PISO"]))
-                        nuevo.Domicilio.Edificio.Piso = accesoDatos.Lector.GetInt32(12);
+                        nuevo.Domicilio.Edificio.Piso = accesoDatos.Lector.GetInt32(13);
                     if (!Convert.IsDBNull(accesoDatos.Lector["DEPARTAMENTO"]))
-                        nuevo.Domicilio.Edificio.Departamento = accesoDatos.Lector.GetString(13);
+                        nuevo.Domicilio.Edificio.Departamento = accesoDatos.Lector.GetString(14);
 
                     //Localidad
                     if (!Convert.IsDBNull(accesoDatos.Lector["LOCALIDAD"]))
-                        nuevo.Domicilio.Localidad.Nombre = accesoDatos.Lector.GetString(11);
+                        nuevo.Domicilio.Localidad.Nombre = accesoDatos.Lector.GetString(12);
                     if (!Convert.IsDBNull(accesoDatos.Lector["CODPOSTAL"]))
-                        nuevo.Domicilio.Localidad.CPostal = accesoDatos.Lector.GetString(14);
+                        nuevo.Domicilio.Localidad.CPostal = accesoDatos.Lector.GetString(15);
                     if (!Convert.IsDBNull(accesoDatos.Lector["PARTIDO"]))
-                        nuevo.Domicilio.Localidad.Partido = accesoDatos.Lector.GetString(15);
+                        nuevo.Domicilio.Localidad.Partido = accesoDatos.Lector.GetString(16);
                     if (!Convert.IsDBNull(accesoDatos.Lector["IDLOCALIDAD"]))
-                        nuevo.Domicilio.Localidad.ID = accesoDatos.Lector.GetInt32(16);
+                        nuevo.Domicilio.Localidad.ID = accesoDatos.Lector.GetInt32(17);
 
                     listado.Add(nuevo);
                 }
@@ -175,7 +177,26 @@ namespace Negocio
             AccesoDatosManager accesoDatos = new AccesoDatosManager();
             try
             {
-                accesoDatos.setearConsulta("DELETE FROM PROVEEDORES WHERE ID = " + prov.ID + "DELETE FROM DOMICILIOS WHERE ID = " + prov.Domicilio.ID);
+                accesoDatos.setearConsulta("DELETE FROM PROVEEDORES WHERE ID = " + prov.ID);
+                accesoDatos.abrirConexion();
+                accesoDatos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+        }
+
+        public void habilitarProveedor(Proveedor prov)
+        {
+            AccesoDatosManager accesoDatos = new AccesoDatosManager();
+            try
+            {
+                accesoDatos.setearConsulta("UPDATE PROVEEDORES SET ESTADO = 1 WHERE ID = " + prov.ID);
                 accesoDatos.abrirConexion();
                 accesoDatos.ejecutarAccion();
             }

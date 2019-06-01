@@ -47,7 +47,21 @@ namespace PresWinForm
             try
             {
                 listaCat = negocio.listarCategorias();
+                if (chbEstado.Checked == false)
+                {
+                    listaCat = listaCat.FindAll(X => X.Estado == true);
+                }
                 dgvCategoria.DataSource = listaCat;
+                dgvCategoria.Columns[2].Visible = false;
+                dgvCategoria.ClearSelection();
+                foreach (DataGridViewRow row in dgvCategoria.Rows)
+                {
+                    Categoria cat = (Categoria)row.DataBoundItem;
+                    if(cat.Estado == false)
+                    {
+                        row.DefaultCellStyle.BackColor = Color.LightGray;
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -77,10 +91,36 @@ namespace PresWinForm
                 if (txtBusqueda.Text.Length >= 1)
                 {
                     List<Categoria> lista;
-                    lista = listaCat.FindAll(X => X.Nombre.ToUpper().Contains(txtBusqueda.Text.ToUpper()));
+                    lista = listaCat.FindAll(X => X.Nombre.ToUpper().Contains(txtBusqueda.Text.ToUpper()) && X.Estado == true);
                     dgvCategoria.DataSource = lista;
                 }
             }
+        }
+
+        private void chbEstado_CheckedChanged(object sender, EventArgs e)
+        {
+            cargarGrilla();
+        }
+
+        private void dgvCategoria_SelectionChanged(object sender, EventArgs e)
+        {
+            Categoria cat = (Categoria)dgvCategoria.CurrentRow.DataBoundItem;
+            if (cat.Estado == false)
+            {
+                btnHabilitar.Enabled = true;
+            }
+            else
+            {
+                btnHabilitar.Enabled = false;
+            }
+        }
+
+        private void btnHabilitar_Click(object sender, EventArgs e)
+        {
+            CategoriaNegocio negocio = new CategoriaNegocio();
+            Categoria cat = (Categoria)dgvCategoria.CurrentRow.DataBoundItem;
+            negocio.habilitarCategoria(cat);
+            cargarGrilla();
         }
     }
 }

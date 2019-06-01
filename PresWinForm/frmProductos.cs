@@ -39,8 +39,21 @@ namespace PresWinForm
             try
             {
                 listaProd = negocio.listarProductos();
+                if (chbEstado.Checked == false)
+                {
+                    listaProd = listaProd.FindAll(X => X.Estado == true);
+                }
                 dgvProductos.DataSource = listaProd;
                 dgvProductos.Columns["Nombre"].DisplayIndex = 1;
+                dgvProductos.Columns["Estado"].Visible = false;
+                foreach (DataGridViewRow row in dgvProductos.Rows)
+                {
+                    Producto prod = (Producto)row.DataBoundItem;
+                    if (prod.Estado == false)
+                    {
+                        row.DefaultCellStyle.BackColor = Color.LightGray;
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -99,6 +112,32 @@ namespace PresWinForm
                     lista = listaProd.FindAll(X => X.Nombre.ToUpper().Contains(txtBusqueda.Text.ToUpper()));
                     dgvProductos.DataSource = lista;
                 }
+            }
+        }
+
+        private void chbEstado_CheckedChanged(object sender, EventArgs e)
+        {
+            cargarGrilla();
+        }
+
+        private void btnHabilitar_Click(object sender, EventArgs e)
+        {
+            ProductoNegocio negocio = new ProductoNegocio();
+            Producto prod = (Producto)dgvProductos.CurrentRow.DataBoundItem;
+            negocio.habilitarProducto(prod);
+            cargarGrilla();
+        }
+
+        private void dgvProductos_SelectionChanged(object sender, EventArgs e)
+        {
+            Producto prod = (Producto)dgvProductos.CurrentRow.DataBoundItem;
+            if (prod.Estado == false)
+            {
+                btnHabilitar.Enabled = true;
+            }
+            else
+            {
+                btnHabilitar.Enabled = false;
             }
         }
     }

@@ -18,5 +18,6 @@ namespace Dominio
         public Domicilio Domicilio { get; set; }
         public List<Mail> Mails { get; set; }
         public List<Telefono> Telefonos { get; set; }
+        public bool Estado { get; set; }
     }
 }

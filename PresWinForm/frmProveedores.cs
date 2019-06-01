@@ -32,6 +32,10 @@ namespace PresWinForm
             try
             {
                 listaProv = negocio.listarProveedores();
+                if (chbEstado.Checked == false)
+                {
+                    listaProv = listaProv.FindAll(X => X.Estado == true);
+                }
                 dgvProveedores.DataSource = listaProv;
                 dgvProveedores.Columns["Usuario"].Visible = false;
                 dgvProveedores.Columns["ID"].DisplayIndex = 0;
@@ -42,6 +46,16 @@ namespace PresWinForm
                 dgvProveedores.Columns["CUIT"].DisplayIndex = 5;
                 dgvProveedores.Columns["FechaNacimiento"].DisplayIndex = 6;
                 dgvProveedores.Columns["TipoPersona"].DisplayIndex = 7;
+                dgvProveedores.Columns["Estado"].Visible = false;
+
+                foreach (DataGridViewRow row in dgvProveedores.Rows)
+                {
+                    Proveedor prov = (Proveedor)row.DataBoundItem;
+                    if (prov.Estado == false)
+                    {
+                        row.DefaultCellStyle.BackColor = Color.LightGray;
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -96,6 +110,32 @@ namespace PresWinForm
                                               X.RazonSocial != null && X.RazonSocial.ToUpper().Contains(txtBusqueda.Text.ToUpper()));
                     dgvProveedores.DataSource = lista;
                 }
+            }
+        }
+
+        private void chbEstado_CheckedChanged(object sender, EventArgs e)
+        {
+            cargarGrilla();
+        }
+
+        private void btnHabilitar_Click(object sender, EventArgs e)
+        {
+            ProveedorNegocio negocio = new ProveedorNegocio();
+            Proveedor prov = (Proveedor)dgvProveedores.CurrentRow.DataBoundItem;
+            negocio.habilitarProveedor(prov);
+            cargarGrilla();
+        }
+
+        private void dgvProveedores_SelectionChanged(object sender, EventArgs e)
+        {
+            Proveedor prov = (Proveedor)dgvProveedores.CurrentRow.DataBoundItem;
+            if (prov.Estado == false)
+            {
+                btnHabilitar.Enabled = true;
+            }
+            else
+            {
+                btnHabilitar.Enabled = false;
             }
         }
     }

@@ -17,7 +17,7 @@ namespace Negocio
             Marca nueva;
             try
             {
-                accesoDatos.setearConsulta("SELECT ID, NOMBRE FROM MARCAS");
+                accesoDatos.setearConsulta("SELECT ID, NOMBRE, ESTADO FROM MARCAS");
                 accesoDatos.abrirConexion();
                 accesoDatos.ejecutarConsulta();
                 while (accesoDatos.Lector.Read())
@@ -25,6 +25,7 @@ namespace Negocio
                     nueva = new Marca();
                     nueva.ID = accesoDatos.Lector.GetInt32(0);
                     nueva.Nombre = accesoDatos.Lector.GetString(1);
+                    nueva.Estado = accesoDatos.Lector.GetBoolean(2);
                     listado.Add(nueva);
                 }
                 return listado;
@@ -64,6 +65,25 @@ namespace Negocio
             try
             {
                 accesoDatos.setearConsulta("DELETE FROM MARCAS WHERE ID = " + marca.ID);
+                accesoDatos.abrirConexion();
+                accesoDatos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+        }
+
+        public void habilitarMarca(Marca marca)
+        {
+            AccesoDatosManager accesoDatos = new AccesoDatosManager();
+            try
+            {
+                accesoDatos.setearConsulta("UPDATE MARCAS SET ESTADO = 1 WHERE ID = " + marca.ID);
                 accesoDatos.abrirConexion();
                 accesoDatos.ejecutarAccion();
             }

@@ -43,6 +43,8 @@
             this.btnVerProveedores = new System.Windows.Forms.Button();
             this.lblBusqueda = new System.Windows.Forms.Label();
             this.txtBusqueda = new System.Windows.Forms.TextBox();
+            this.chbEstado = new System.Windows.Forms.CheckBox();
+            this.btnHabilitar = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
             this.tspMenu.SuspendLayout();
             this.SuspendLayout();
@@ -61,6 +63,7 @@
             this.dgvProductos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvProductos.Size = new System.Drawing.Size(636, 330);
             this.dgvProductos.TabIndex = 0;
+            this.dgvProductos.SelectionChanged += new System.EventHandler(this.dgvProductos_SelectionChanged);
             // 
             // tspMenu
             // 
@@ -75,7 +78,8 @@
             this.toolStripSeparator1,
             this.btnMarcas,
             this.toolStripSeparator2,
-            this.btnCategorias});
+            this.btnCategorias,
+            this.btnHabilitar});
             this.tspMenu.Location = new System.Drawing.Point(0, 0);
             this.tspMenu.Name = "tspMenu";
             this.tspMenu.Padding = new System.Windows.Forms.Padding(0);
@@ -188,12 +192,41 @@
             this.txtBusqueda.TabIndex = 8;
             this.txtBusqueda.TextChanged += new System.EventHandler(this.txtBusqueda_TextChanged);
             // 
+            // chbEstado
+            // 
+            this.chbEstado.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.chbEstado.AutoSize = true;
+            this.chbEstado.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chbEstado.Location = new System.Drawing.Point(485, 378);
+            this.chbEstado.Name = "chbEstado";
+            this.chbEstado.Size = new System.Drawing.Size(144, 21);
+            this.chbEstado.TabIndex = 12;
+            this.chbEstado.Text = "Ver deshabilitados";
+            this.chbEstado.UseVisualStyleBackColor = true;
+            this.chbEstado.CheckedChanged += new System.EventHandler(this.chbEstado_CheckedChanged);
+            // 
+            // btnHabilitar
+            // 
+            this.btnHabilitar.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.btnHabilitar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnHabilitar.Enabled = false;
+            this.btnHabilitar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHabilitar.Image = ((System.Drawing.Image)(resources.GetObject("btnHabilitar.Image")));
+            this.btnHabilitar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnHabilitar.Margin = new System.Windows.Forms.Padding(5);
+            this.btnHabilitar.Name = "btnHabilitar";
+            this.btnHabilitar.Size = new System.Drawing.Size(110, 24);
+            this.btnHabilitar.Text = "Habilitar";
+            this.btnHabilitar.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
+            this.btnHabilitar.Click += new System.EventHandler(this.btnHabilitar_Click);
+            // 
             // frmProductos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(783, 413);
             this.ControlBox = false;
+            this.Controls.Add(this.chbEstado);
             this.Controls.Add(this.lblBusqueda);
             this.Controls.Add(this.txtBusqueda);
             this.Controls.Add(this.btnVerProveedores);
@@ -227,5 +260,7 @@
         private System.Windows.Forms.Button btnVerProveedores;
         private System.Windows.Forms.Label lblBusqueda;
         private System.Windows.Forms.TextBox txtBusqueda;
+        private System.Windows.Forms.ToolStripButton btnHabilitar;
+        private System.Windows.Forms.CheckBox chbEstado;
     }
 }

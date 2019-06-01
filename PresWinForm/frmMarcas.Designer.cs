@@ -36,6 +36,8 @@
             this.btnEliminar = new System.Windows.Forms.ToolStripButton();
             this.lblBusqueda = new System.Windows.Forms.Label();
             this.txtBusqueda = new System.Windows.Forms.TextBox();
+            this.btnHabilitar = new System.Windows.Forms.ToolStripButton();
+            this.chbEstado = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMarca)).BeginInit();
             this.tspMenu.SuspendLayout();
             this.SuspendLayout();
@@ -48,12 +50,13 @@
             this.dgvMarca.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvMarca.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvMarca.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgvMarca.Location = new System.Drawing.Point(100, 35);
+            this.dgvMarca.Location = new System.Drawing.Point(100, 29);
             this.dgvMarca.MultiSelect = false;
             this.dgvMarca.Name = "dgvMarca";
             this.dgvMarca.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvMarca.Size = new System.Drawing.Size(339, 249);
+            this.dgvMarca.Size = new System.Drawing.Size(339, 241);
             this.dgvMarca.TabIndex = 0;
+            this.dgvMarca.SelectionChanged += new System.EventHandler(this.dgvMarca_SelectionChanged);
             // 
             // tspMenu
             // 
@@ -64,12 +67,13 @@
             this.tspMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnAgregar,
             this.btnModificar,
-            this.btnEliminar});
+            this.btnEliminar,
+            this.btnHabilitar});
             this.tspMenu.Location = new System.Drawing.Point(0, 0);
             this.tspMenu.Name = "tspMenu";
             this.tspMenu.Padding = new System.Windows.Forms.Padding(0);
             this.tspMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.tspMenu.Size = new System.Drawing.Size(87, 296);
+            this.tspMenu.Size = new System.Drawing.Size(87, 309);
             this.tspMenu.TabIndex = 6;
             this.tspMenu.Text = "tspMenu";
             // 
@@ -130,11 +134,39 @@
             this.txtBusqueda.TabIndex = 10;
             this.txtBusqueda.TextChanged += new System.EventHandler(this.txtBusqueda_TextChanged);
             // 
+            // btnHabilitar
+            // 
+            this.btnHabilitar.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.btnHabilitar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnHabilitar.Enabled = false;
+            this.btnHabilitar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHabilitar.Image = ((System.Drawing.Image)(resources.GetObject("btnHabilitar.Image")));
+            this.btnHabilitar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnHabilitar.Margin = new System.Windows.Forms.Padding(5);
+            this.btnHabilitar.Name = "btnHabilitar";
+            this.btnHabilitar.Size = new System.Drawing.Size(76, 24);
+            this.btnHabilitar.Text = "Habilitar";
+            this.btnHabilitar.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
+            this.btnHabilitar.Click += new System.EventHandler(this.btnHabilitar_Click);
+            // 
+            // chbEstado
+            // 
+            this.chbEstado.AutoSize = true;
+            this.chbEstado.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chbEstado.Location = new System.Drawing.Point(295, 276);
+            this.chbEstado.Name = "chbEstado";
+            this.chbEstado.Size = new System.Drawing.Size(144, 21);
+            this.chbEstado.TabIndex = 12;
+            this.chbEstado.Text = "Ver deshabilitadas";
+            this.chbEstado.UseVisualStyleBackColor = true;
+            this.chbEstado.CheckedChanged += new System.EventHandler(this.chbEstado_CheckedChanged);
+            // 
             // frmMarcas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(451, 296);
+            this.ClientSize = new System.Drawing.Size(451, 309);
+            this.Controls.Add(this.chbEstado);
             this.Controls.Add(this.lblBusqueda);
             this.Controls.Add(this.txtBusqueda);
             this.Controls.Add(this.tspMenu);
@@ -160,5 +192,7 @@
         private System.Windows.Forms.ToolStripButton btnEliminar;
         private System.Windows.Forms.Label lblBusqueda;
         private System.Windows.Forms.TextBox txtBusqueda;
+        private System.Windows.Forms.ToolStripButton btnHabilitar;
+        private System.Windows.Forms.CheckBox chbEstado;
     }
 }

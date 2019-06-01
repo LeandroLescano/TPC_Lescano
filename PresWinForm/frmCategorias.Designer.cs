@@ -29,34 +29,65 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCategorias));
-            this.tspMenu = new System.Windows.Forms.ToolStrip();
-            this.btnAgregar = new System.Windows.Forms.ToolStripButton();
-            this.btnModificar = new System.Windows.Forms.ToolStripButton();
-            this.btnEliminar = new System.Windows.Forms.ToolStripButton();
             this.dgvCategoria = new System.Windows.Forms.DataGridView();
             this.lblBusqueda = new System.Windows.Forms.Label();
             this.txtBusqueda = new System.Windows.Forms.TextBox();
-            this.tspMenu.SuspendLayout();
+            this.chbEstado = new System.Windows.Forms.CheckBox();
+            this.btnAgregar = new System.Windows.Forms.ToolStripButton();
+            this.btnModificar = new System.Windows.Forms.ToolStripButton();
+            this.btnEliminar = new System.Windows.Forms.ToolStripButton();
+            this.btnHabilitar = new System.Windows.Forms.ToolStripButton();
+            this.tspMenu = new System.Windows.Forms.ToolStrip();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCategoria)).BeginInit();
+            this.tspMenu.SuspendLayout();
             this.SuspendLayout();
             // 
-            // tspMenu
+            // dgvCategoria
             // 
-            this.tspMenu.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.tspMenu.CanOverflow = false;
-            this.tspMenu.Dock = System.Windows.Forms.DockStyle.Left;
-            this.tspMenu.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.tspMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnAgregar,
-            this.btnModificar,
-            this.btnEliminar});
-            this.tspMenu.Location = new System.Drawing.Point(0, 0);
-            this.tspMenu.Name = "tspMenu";
-            this.tspMenu.Padding = new System.Windows.Forms.Padding(0);
-            this.tspMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.tspMenu.Size = new System.Drawing.Size(87, 296);
-            this.tspMenu.TabIndex = 8;
-            this.tspMenu.Text = "tspMenu";
+            this.dgvCategoria.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvCategoria.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvCategoria.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCategoria.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dgvCategoria.Location = new System.Drawing.Point(113, 35);
+            this.dgvCategoria.MultiSelect = false;
+            this.dgvCategoria.Name = "dgvCategoria";
+            this.dgvCategoria.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvCategoria.Size = new System.Drawing.Size(388, 275);
+            this.dgvCategoria.TabIndex = 7;
+            this.dgvCategoria.SelectionChanged += new System.EventHandler(this.dgvCategoria_SelectionChanged);
+            // 
+            // lblBusqueda
+            // 
+            this.lblBusqueda.AutoSize = true;
+            this.lblBusqueda.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBusqueda.Location = new System.Drawing.Point(110, 9);
+            this.lblBusqueda.Name = "lblBusqueda";
+            this.lblBusqueda.Size = new System.Drawing.Size(76, 17);
+            this.lblBusqueda.TabIndex = 9;
+            this.lblBusqueda.Text = "Busqueda:";
+            // 
+            // txtBusqueda
+            // 
+            this.txtBusqueda.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBusqueda.Location = new System.Drawing.Point(192, 6);
+            this.txtBusqueda.Name = "txtBusqueda";
+            this.txtBusqueda.Size = new System.Drawing.Size(112, 23);
+            this.txtBusqueda.TabIndex = 10;
+            this.txtBusqueda.TextChanged += new System.EventHandler(this.txtBusqueda_TextChanged);
+            // 
+            // chbEstado
+            // 
+            this.chbEstado.AutoSize = true;
+            this.chbEstado.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chbEstado.Location = new System.Drawing.Point(357, 316);
+            this.chbEstado.Name = "chbEstado";
+            this.chbEstado.Size = new System.Drawing.Size(144, 21);
+            this.chbEstado.TabIndex = 11;
+            this.chbEstado.Text = "Ver deshabilitadas";
+            this.chbEstado.UseVisualStyleBackColor = true;
+            this.chbEstado.CheckedChanged += new System.EventHandler(this.chbEstado_CheckedChanged);
             // 
             // btnAgregar
             // 
@@ -68,7 +99,7 @@
             this.btnAgregar.Margin = new System.Windows.Forms.Padding(5, 10, 5, 5);
             this.btnAgregar.MergeIndex = 0;
             this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(76, 24);
+            this.btnAgregar.Size = new System.Drawing.Size(96, 24);
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
@@ -80,7 +111,7 @@
             this.btnModificar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnModificar.Margin = new System.Windows.Forms.Padding(5);
             this.btnModificar.Name = "btnModificar";
-            this.btnModificar.Size = new System.Drawing.Size(76, 24);
+            this.btnModificar.Size = new System.Drawing.Size(96, 24);
             this.btnModificar.Text = "Modificar";
             this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
@@ -92,49 +123,50 @@
             this.btnEliminar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnEliminar.Margin = new System.Windows.Forms.Padding(5);
             this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(76, 24);
-            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(96, 24);
+            this.btnEliminar.Text = "Deshabilitar";
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
-            // dgvCategoria
+            // btnHabilitar
             // 
-            this.dgvCategoria.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvCategoria.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvCategoria.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvCategoria.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgvCategoria.Location = new System.Drawing.Point(100, 35);
-            this.dgvCategoria.MultiSelect = false;
-            this.dgvCategoria.Name = "dgvCategoria";
-            this.dgvCategoria.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvCategoria.Size = new System.Drawing.Size(339, 249);
-            this.dgvCategoria.TabIndex = 7;
+            this.btnHabilitar.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.btnHabilitar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnHabilitar.Enabled = false;
+            this.btnHabilitar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHabilitar.Image = ((System.Drawing.Image)(resources.GetObject("btnHabilitar.Image")));
+            this.btnHabilitar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnHabilitar.Margin = new System.Windows.Forms.Padding(5);
+            this.btnHabilitar.Name = "btnHabilitar";
+            this.btnHabilitar.Size = new System.Drawing.Size(96, 24);
+            this.btnHabilitar.Text = "Habilitar";
+            this.btnHabilitar.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
+            this.btnHabilitar.Click += new System.EventHandler(this.btnHabilitar_Click);
             // 
-            // lblBusqueda
+            // tspMenu
             // 
-            this.lblBusqueda.AutoSize = true;
-            this.lblBusqueda.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBusqueda.Location = new System.Drawing.Point(97, 9);
-            this.lblBusqueda.Name = "lblBusqueda";
-            this.lblBusqueda.Size = new System.Drawing.Size(76, 17);
-            this.lblBusqueda.TabIndex = 9;
-            this.lblBusqueda.Text = "Busqueda:";
-            // 
-            // txtBusqueda
-            // 
-            this.txtBusqueda.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBusqueda.Location = new System.Drawing.Point(179, 6);
-            this.txtBusqueda.Name = "txtBusqueda";
-            this.txtBusqueda.Size = new System.Drawing.Size(112, 23);
-            this.txtBusqueda.TabIndex = 10;
-            this.txtBusqueda.TextChanged += new System.EventHandler(this.txtBusqueda_TextChanged);
+            this.tspMenu.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.tspMenu.CanOverflow = false;
+            this.tspMenu.Dock = System.Windows.Forms.DockStyle.Left;
+            this.tspMenu.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.tspMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnAgregar,
+            this.btnModificar,
+            this.btnEliminar,
+            this.btnHabilitar});
+            this.tspMenu.Location = new System.Drawing.Point(0, 0);
+            this.tspMenu.Name = "tspMenu";
+            this.tspMenu.Padding = new System.Windows.Forms.Padding(0);
+            this.tspMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            this.tspMenu.Size = new System.Drawing.Size(107, 346);
+            this.tspMenu.TabIndex = 8;
+            this.tspMenu.Text = "tspMenu";
             // 
             // frmCategorias
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(451, 296);
+            this.ClientSize = new System.Drawing.Size(513, 346);
+            this.Controls.Add(this.chbEstado);
             this.Controls.Add(this.txtBusqueda);
             this.Controls.Add(this.lblBusqueda);
             this.Controls.Add(this.tspMenu);
@@ -143,22 +175,23 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmCategorias";
             this.Load += new System.EventHandler(this.frmCategorias_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCategoria)).EndInit();
             this.tspMenu.ResumeLayout(false);
             this.tspMenu.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCategoria)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.ToolStrip tspMenu;
-        private System.Windows.Forms.ToolStripButton btnAgregar;
-        private System.Windows.Forms.ToolStripButton btnModificar;
-        private System.Windows.Forms.ToolStripButton btnEliminar;
         private System.Windows.Forms.DataGridView dgvCategoria;
         private System.Windows.Forms.Label lblBusqueda;
         private System.Windows.Forms.TextBox txtBusqueda;
+        private System.Windows.Forms.CheckBox chbEstado;
+        private System.Windows.Forms.ToolStripButton btnAgregar;
+        private System.Windows.Forms.ToolStripButton btnModificar;
+        private System.Windows.Forms.ToolStripButton btnEliminar;
+        private System.Windows.Forms.ToolStripButton btnHabilitar;
+        private System.Windows.Forms.ToolStrip tspMenu;
     }
 }
