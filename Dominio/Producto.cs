@@ -24,5 +24,11 @@ namespace Dominio
         {
             return Nombre;
         }
+
+        public decimal calcularPrecio()
+        {
+            return Math.Round(PrecioUnitario +((PrecioUnitario*PorcentajeGanancia)/100),2);
+        }
+
     }
 }

@@ -100,10 +100,26 @@ namespace PresWinForm
             {
                 local.TipoEmpleado.Vendedor = true;
             }
-            local.Apellido = txtApellido.Text;
-            local.Nombre = txtNombre.Text;
-            local.DNI = txtDNI.Text;
-            local.CUIL = txtCUIL.Text;
+            if(txtApellido.Text != "" && txtNombre.Text != "")
+            {
+                local.Apellido = txtApellido.Text;
+                local.Nombre = txtNombre.Text;
+            }
+            else
+            {
+                MessageBox.Show("No puedes agregar un empleado sin nombre y/o apellido.", "Cuidado!");
+                return false;
+            }
+            if(txtDNI.Text !=  "" || txtCUIL.Text != "")
+            {
+                local.DNI = txtDNI.Text;
+                local.CUIL = txtCUIL.Text;
+            }
+            else
+            {
+                MessageBox.Show("No puedes agregar un empleado sin DNI y/o CUIT.", "Cuidado!");
+                return false;
+            }
             local.FechaNacimiento = (DateTime)dtpFechaNac.Value;
             local.Usuario.Nombre = txtUsuario.Text;
             local.Usuario.Contraseña = txtContraseña.Text;

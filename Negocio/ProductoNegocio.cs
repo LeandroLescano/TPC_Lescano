@@ -29,8 +29,6 @@ namespace Negocio
                     nuevo.Marca = new Marca();
                     if (!Convert.IsDBNull(accesoDatos.Lector["MARCA"]))
                         nuevo.Marca.Nombre = accesoDatos.Lector.GetString(2);
-
-                    //nuevo.Marca.Nombre = accesoDatos.Lector["MARCA"].ToString();
                     nuevo.PrecioUnitario = accesoDatos.Lector.GetDecimal(3);
                     nuevo.Categoria = new Categoria();
                     nuevo.Categoria.Nombre = accesoDatos.Lector["CATEGORIA"].ToString();
@@ -183,7 +181,7 @@ namespace Negocio
             try
             {
                 nuevo.Proveedor = new List<Proveedor>();
-                accesoDatos.setearConsulta("Select P.* from PROVEEDORES as P INNER JOIN PROVEEDORES_X_PRODUCTO as PP on PP.IDPROVEEDOR = P.ID INNER JOIN PRODUCTOS as PROD ON PROD.ID = PP.IDPRODUCTO WHERE PROD.ID = " + nuevo.ID);
+                accesoDatos.setearConsulta("Select P.* from PROVEEDORES as P INNER JOIN PROVEEDORES_X_PRODUCTO as PP on PP.IDPROVEEDOR = P.ID WHERE PP.IDPRODUCTO = " + nuevo.ID);
                 accesoDatos.abrirConexion();
                 accesoDatos.ejecutarConsulta();
                 while (accesoDatos.Lector.Read())
@@ -207,5 +205,27 @@ namespace Negocio
                 accesoDatos.cerrarConexion();
             }
         }
+
+        //PRODUCTOS X COMBO
+
+        public void agregarProdXCombo(Combo cmb, Producto prod)
+        {
+            AccesoDatosManager accesoDatos = new AccesoDatosManager();
+            try
+            {
+                accesoDatos.setearConsulta("INSERT INTO PRODUCTOS_X_COMBO (IDCOMBO, IDPRODUCTO) VALUES ("+cmb.ID+", "+prod.ID+")");
+                accesoDatos.abrirConexion();
+                accesoDatos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+        }
+
     }
 }

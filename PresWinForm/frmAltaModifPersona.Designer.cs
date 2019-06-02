@@ -87,9 +87,9 @@
             // txtTel
             // 
             this.txtTel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTel.Location = new System.Drawing.Point(476, 28);
+            this.txtTel.Location = new System.Drawing.Point(522, 28);
             this.txtTel.Name = "txtTel";
-            this.txtTel.Size = new System.Drawing.Size(111, 23);
+            this.txtTel.Size = new System.Drawing.Size(116, 23);
             this.txtTel.TabIndex = 1;
             // 
             // txtMail
@@ -97,19 +97,19 @@
             this.txtMail.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMail.Location = new System.Drawing.Point(57, 30);
             this.txtMail.Name = "txtMail";
-            this.txtMail.Size = new System.Drawing.Size(159, 23);
+            this.txtMail.Size = new System.Drawing.Size(195, 23);
             this.txtMail.TabIndex = 0;
             this.txtMail.TextChanged += new System.EventHandler(this.txtMail_TextChanged);
             // 
             // dtpFechaNac
             // 
-            this.dtpFechaNac.CustomFormat = "\'  \'dd \'de \'MMM\' del\' yyyy";
+            this.dtpFechaNac.CustomFormat = "\'  \'dd \' de \'MMMMM\' del \' yyyy";
             this.dtpFechaNac.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpFechaNac.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpFechaNac.Location = new System.Drawing.Point(178, 230);
             this.dtpFechaNac.MaxDate = new System.DateTime(2500, 12, 31, 0, 0, 0, 0);
             this.dtpFechaNac.Name = "dtpFechaNac";
-            this.dtpFechaNac.Size = new System.Drawing.Size(161, 23);
+            this.dtpFechaNac.Size = new System.Drawing.Size(214, 23);
             this.dtpFechaNac.TabIndex = 6;
             // 
             // txtDNI
@@ -117,7 +117,7 @@
             this.txtDNI.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDNI.Location = new System.Drawing.Point(131, 167);
             this.txtDNI.Name = "txtDNI";
-            this.txtDNI.Size = new System.Drawing.Size(208, 23);
+            this.txtDNI.Size = new System.Drawing.Size(261, 23);
             this.txtDNI.TabIndex = 4;
             // 
             // lblID
@@ -134,7 +134,7 @@
             // 
             this.lblTelLinea.AutoSize = true;
             this.lblTelLinea.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTelLinea.Location = new System.Drawing.Point(311, 31);
+            this.lblTelLinea.Location = new System.Drawing.Point(357, 31);
             this.lblTelLinea.Name = "lblTelLinea";
             this.lblTelLinea.Size = new System.Drawing.Size(68, 17);
             this.lblTelLinea.TabIndex = 52;
@@ -144,7 +144,7 @@
             // 
             this.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.Location = new System.Drawing.Point(692, 356);
+            this.btnCancelar.Location = new System.Drawing.Point(744, 356);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(85, 30);
             this.btnCancelar.TabIndex = 10;
@@ -156,7 +156,7 @@
             // 
             this.btnAgregar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAgregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAgregar.Location = new System.Drawing.Point(690, 307);
+            this.btnAgregar.Location = new System.Drawing.Point(742, 307);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(87, 30);
             this.btnAgregar.TabIndex = 9;
@@ -169,7 +169,7 @@
             this.txtApellido.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtApellido.Location = new System.Drawing.Point(131, 71);
             this.txtApellido.Name = "txtApellido";
-            this.txtApellido.Size = new System.Drawing.Size(208, 23);
+            this.txtApellido.Size = new System.Drawing.Size(261, 23);
             this.txtApellido.TabIndex = 1;
             // 
             // txtCUIT
@@ -177,7 +177,7 @@
             this.txtCUIT.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCUIT.Location = new System.Drawing.Point(131, 199);
             this.txtCUIT.Name = "txtCUIT";
-            this.txtCUIT.Size = new System.Drawing.Size(208, 23);
+            this.txtCUIT.Size = new System.Drawing.Size(261, 23);
             this.txtCUIT.TabIndex = 5;
             // 
             // txtNombre
@@ -185,7 +185,7 @@
             this.txtNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNombre.Location = new System.Drawing.Point(131, 103);
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(208, 23);
+            this.txtNombre.Size = new System.Drawing.Size(261, 23);
             this.txtNombre.TabIndex = 2;
             // 
             // txtID
@@ -195,7 +195,7 @@
             this.txtID.Location = new System.Drawing.Point(131, 39);
             this.txtID.Name = "txtID";
             this.txtID.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtID.Size = new System.Drawing.Size(208, 23);
+            this.txtID.Size = new System.Drawing.Size(261, 23);
             this.txtID.TabIndex = 0;
             // 
             // lblMail
@@ -263,7 +263,7 @@
             this.rbtParticular.AutoSize = true;
             this.rbtParticular.Checked = true;
             this.rbtParticular.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbtParticular.Location = new System.Drawing.Point(43, 4);
+            this.rbtParticular.Location = new System.Drawing.Point(69, 4);
             this.rbtParticular.Name = "rbtParticular";
             this.rbtParticular.Size = new System.Drawing.Size(86, 21);
             this.rbtParticular.TabIndex = 63;
@@ -276,7 +276,7 @@
             // 
             this.rbtEmpresa.AutoSize = true;
             this.rbtEmpresa.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbtEmpresa.Location = new System.Drawing.Point(216, 4);
+            this.rbtEmpresa.Location = new System.Drawing.Point(242, 4);
             this.rbtEmpresa.Name = "rbtEmpresa";
             this.rbtEmpresa.Size = new System.Drawing.Size(82, 21);
             this.rbtEmpresa.TabIndex = 64;
@@ -291,7 +291,7 @@
             this.pnlTipo.Controls.Add(this.rbtParticular);
             this.pnlTipo.Location = new System.Drawing.Point(12, 6);
             this.pnlTipo.Name = "pnlTipo";
-            this.pnlTipo.Size = new System.Drawing.Size(341, 28);
+            this.pnlTipo.Size = new System.Drawing.Size(393, 28);
             this.pnlTipo.TabIndex = 65;
             // 
             // txtRazonSocial
@@ -299,7 +299,7 @@
             this.txtRazonSocial.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtRazonSocial.Location = new System.Drawing.Point(131, 135);
             this.txtRazonSocial.Name = "txtRazonSocial";
-            this.txtRazonSocial.Size = new System.Drawing.Size(208, 23);
+            this.txtRazonSocial.Size = new System.Drawing.Size(261, 23);
             this.txtRazonSocial.TabIndex = 3;
             // 
             // lblRazonSocial
@@ -329,7 +329,7 @@
             this.gpbDireccion.Controls.Add(this.lblCalle);
             this.gpbDireccion.Controls.Add(this.groupBox1);
             this.gpbDireccion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gpbDireccion.Location = new System.Drawing.Point(359, 6);
+            this.gpbDireccion.Location = new System.Drawing.Point(411, 6);
             this.gpbDireccion.Name = "gpbDireccion";
             this.gpbDireccion.Size = new System.Drawing.Size(419, 256);
             this.gpbDireccion.TabIndex = 7;
@@ -528,7 +528,7 @@
             this.gpbContacto.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gpbContacto.Location = new System.Drawing.Point(13, 265);
             this.gpbContacto.Name = "gpbContacto";
-            this.gpbContacto.Size = new System.Drawing.Size(671, 140);
+            this.gpbContacto.Size = new System.Drawing.Size(723, 140);
             this.gpbContacto.TabIndex = 8;
             this.gpbContacto.TabStop = false;
             this.gpbContacto.Text = "Contacto";
@@ -536,7 +536,7 @@
             // btnEliminarTel
             // 
             this.btnEliminarTel.AutoSize = true;
-            this.btnEliminarTel.Location = new System.Drawing.Point(593, 100);
+            this.btnEliminarTel.Location = new System.Drawing.Point(644, 100);
             this.btnEliminarTel.Name = "btnEliminarTel";
             this.btnEliminarTel.Size = new System.Drawing.Size(68, 27);
             this.btnEliminarTel.TabIndex = 60;
@@ -547,7 +547,7 @@
             // brnEliminarMail
             // 
             this.brnEliminarMail.AutoSize = true;
-            this.brnEliminarMail.Location = new System.Drawing.Point(222, 100);
+            this.brnEliminarMail.Location = new System.Drawing.Point(258, 100);
             this.brnEliminarMail.Name = "brnEliminarMail";
             this.brnEliminarMail.Size = new System.Drawing.Size(68, 27);
             this.brnEliminarMail.TabIndex = 59;
@@ -557,7 +557,7 @@
             // 
             // btnAñadirTel
             // 
-            this.btnAñadirTel.Location = new System.Drawing.Point(593, 28);
+            this.btnAñadirTel.Location = new System.Drawing.Point(644, 26);
             this.btnAñadirTel.Name = "btnAñadirTel";
             this.btnAñadirTel.Size = new System.Drawing.Size(59, 25);
             this.btnAñadirTel.TabIndex = 58;
@@ -568,7 +568,7 @@
             // btnAñadirMail
             // 
             this.btnAñadirMail.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAñadirMail.Location = new System.Drawing.Point(222, 29);
+            this.btnAñadirMail.Location = new System.Drawing.Point(258, 29);
             this.btnAñadirMail.Name = "btnAñadirMail";
             this.btnAñadirMail.Size = new System.Drawing.Size(59, 25);
             this.btnAñadirMail.TabIndex = 57;
@@ -580,7 +580,7 @@
             // 
             this.listaTelefonos.FormattingEnabled = true;
             this.listaTelefonos.ItemHeight = 16;
-            this.listaTelefonos.Location = new System.Drawing.Point(314, 59);
+            this.listaTelefonos.Location = new System.Drawing.Point(360, 59);
             this.listaTelefonos.Name = "listaTelefonos";
             this.listaTelefonos.Size = new System.Drawing.Size(278, 68);
             this.listaTelefonos.TabIndex = 56;
@@ -589,7 +589,7 @@
             // 
             this.cmbTel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTel.FormattingEnabled = true;
-            this.cmbTel.Location = new System.Drawing.Point(385, 27);
+            this.cmbTel.Location = new System.Drawing.Point(431, 27);
             this.cmbTel.Name = "cmbTel";
             this.cmbTel.Size = new System.Drawing.Size(85, 24);
             this.cmbTel.TabIndex = 55;
@@ -600,14 +600,14 @@
             this.listaMails.ItemHeight = 16;
             this.listaMails.Location = new System.Drawing.Point(17, 59);
             this.listaMails.Name = "listaMails";
-            this.listaMails.Size = new System.Drawing.Size(199, 68);
+            this.listaMails.Size = new System.Drawing.Size(235, 68);
             this.listaMails.TabIndex = 54;
             // 
             // frmAltaModifPersona
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(789, 411);
+            this.ClientSize = new System.Drawing.Size(842, 411);
             this.Controls.Add(this.txtRazonSocial);
             this.Controls.Add(this.lblRazonSocial);
             this.Controls.Add(this.gpbContacto);

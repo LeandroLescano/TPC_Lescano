@@ -11,8 +11,10 @@ namespace Dominio
         public int ID { get; set; }
         public string Nombre { get; set; }
         public List<Producto> Productos { get; set; }
-        public string Descripción { get; set; }
+        public string Descripcion { get; set; }
         public int DiasAnticipo { get; set; }
         public decimal Precio { get; set; }
+        public string RutaImagen { get; set; }
+        public bool Estado { get; set; }
     }
 }
