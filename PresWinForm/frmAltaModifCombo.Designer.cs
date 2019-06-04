@@ -136,7 +136,7 @@
             this.txtDescripcion.Multiline = true;
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(222, 40);
-            this.txtDescripcion.TabIndex = 0;
+            this.txtDescripcion.TabIndex = 1;
             // 
             // txtDiasAnticipo
             // 
@@ -144,7 +144,7 @@
             this.txtDiasAnticipo.Location = new System.Drawing.Point(132, 155);
             this.txtDiasAnticipo.Name = "txtDiasAnticipo";
             this.txtDiasAnticipo.Size = new System.Drawing.Size(105, 23);
-            this.txtDiasAnticipo.TabIndex = 1;
+            this.txtDiasAnticipo.TabIndex = 2;
             this.txtDiasAnticipo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDiasAnticipo_KeyPress);
             // 
             // clbProductos
@@ -154,7 +154,7 @@
             this.clbProductos.Location = new System.Drawing.Point(132, 235);
             this.clbProductos.Name = "clbProductos";
             this.clbProductos.Size = new System.Drawing.Size(222, 94);
-            this.clbProductos.TabIndex = 3;
+            this.clbProductos.TabIndex = 4;
             // 
             // btnAgregar
             // 
@@ -163,7 +163,7 @@
             this.btnAgregar.Location = new System.Drawing.Point(78, 337);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(75, 27);
-            this.btnAgregar.TabIndex = 5;
+            this.btnAgregar.TabIndex = 6;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = true;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
@@ -175,7 +175,7 @@
             this.btnCancelar.Location = new System.Drawing.Point(205, 337);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(94, 27);
-            this.btnCancelar.TabIndex = 6;
+            this.btnCancelar.TabIndex = 7;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
@@ -206,7 +206,7 @@
             this.btnBuscar.Location = new System.Drawing.Point(374, 337);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(75, 27);
-            this.btnBuscar.TabIndex = 4;
+            this.btnBuscar.TabIndex = 5;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
@@ -235,9 +235,14 @@
             this.nudPrecio.DecimalPlaces = 2;
             this.nudPrecio.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nudPrecio.Location = new System.Drawing.Point(132, 200);
+            this.nudPrecio.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
             this.nudPrecio.Name = "nudPrecio";
             this.nudPrecio.Size = new System.Drawing.Size(120, 23);
-            this.nudPrecio.TabIndex = 11;
+            this.nudPrecio.TabIndex = 3;
             // 
             // frmAltaModifCombo
             // 

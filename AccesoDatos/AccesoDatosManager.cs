@@ -9,7 +9,7 @@ namespace AccesoDatos
 {
     public class AccesoDatosManager
     {
-        public static string cadenaConexion = "data source=DESKTOP-F00MMUV\\SQLEXPRESS; initial catalog=LESCANO_DB; integrated security=sspi";
+        public static string cadenaConexion = "data source=(local)\\SQLEXPRESS; initial catalog=LESCANO_DB; integrated security=sspi";
         private SqlCommand comando;
         private SqlConnection conexion;
         private SqlDataReader lector;

@@ -280,7 +280,7 @@ namespace Negocio
             }
         }
 
-        //MAILS POR PROVEEDOR
+        //MAILS POR PROVEEDOR (PONER EN MAILNEGOCIO)
         public List<Mail> listarMailsXProveedor(Proveedor prov)
         {
             AccesoDatosManager accesoDatos = new AccesoDatosManager();
@@ -349,7 +349,7 @@ namespace Negocio
             }
         }
 
-        //TELEFONOS POR PROVEEDOR
+        //TELEFONOS POR PROVEEDOR (PONER EN TELEFONONEGOCIO)
         public List<Telefono> listarTelefonosXProveedor(Proveedor prov)
         {
             AccesoDatosManager accesoDatos = new AccesoDatosManager();

@@ -96,6 +96,29 @@ namespace Negocio
             }
         }
 
+        public void modificarCombo(Combo cmb)
+        {
+            AccesoDatosManager accesoDatos = new AccesoDatosManager();
+            try
+            {
+                accesoDatos.setearConsulta("UPDATE COMBOS SET NOMBRE=@Nombre, DESCRIPCION=@Descripcion, DIASANTICIPO=@DiasAnticipo, PRECIO=@Precio");
+                accesoDatos.Comando.Parameters.AddWithValue("@Nombre", cmb.Nombre);
+                accesoDatos.Comando.Parameters.AddWithValue("@Descripcion", cmb.Descripcion);
+                accesoDatos.Comando.Parameters.AddWithValue("@DiasAnticipo", cmb.DiasAnticipo);
+                accesoDatos.Comando.Parameters.AddWithValue("@Precio", cmb.Precio);
+                accesoDatos.abrirConexion();
+                accesoDatos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+        }
+
         public void eliminarCombo(Combo comb)
         {
             AccesoDatosManager accesoDatos = new AccesoDatosManager();

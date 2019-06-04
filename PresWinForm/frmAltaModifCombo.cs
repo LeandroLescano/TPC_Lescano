@@ -98,10 +98,22 @@ namespace PresWinForm
                 ComboNegocio negocio = new ComboNegocio();
                 ProductoNegocio negocioProd = new ProductoNegocio();
                 llenarCombo();
-                local.ID = negocio.agregarCombo(local);
-                foreach (object item in clbProductos.CheckedItems)
+                if(btnAgregar.Text == "Agregar")
                 {
-                    negocioProd.agregarProdXCombo(local, (Producto)item);
+                    local.ID = negocio.agregarCombo(local);
+                    foreach (object item in clbProductos.CheckedItems)
+                    {
+                        negocioProd.agregarProdXCombo(local, (Producto)item);
+                    }
+                }
+                else
+                {
+                    negocio.modificarCombo(local);
+                    negocioProd.eliminarProdXCombo(local.ID);
+                    foreach (object item in clbProductos.CheckedItems)
+                    {
+                        negocioProd.agregarProdXCombo(local, (Producto)item);
+                    }
                 }
                 this.Close();
             }
@@ -120,7 +132,7 @@ namespace PresWinForm
                 local.Nombre = txtNombre.Text;
                 local.Descripcion = txtDescripcion.Text;
                 local.DiasAnticipo = Convert.ToInt32(txtDiasAnticipo.Text);
-                local.Precio = nudPrecio.Value;
+                local.Precio = Decimal.Round(nudPrecio.Value,2);
             }
             catch (Exception ex)
             {

@@ -227,5 +227,24 @@ namespace Negocio
             }
         }
 
+        public void eliminarProdXCombo(int IDCombo)
+        {
+            AccesoDatosManager accesoDatos = new AccesoDatosManager();
+            try
+            {
+                accesoDatos.abrirConexion();
+                accesoDatos.setearConsulta("DELETE FROM PRODUCTOS_X_COMBO WHERE IDCOMBO = " + IDCombo);
+                accesoDatos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+        }
+
     }
 }
