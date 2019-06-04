@@ -54,6 +54,7 @@ namespace PresWinForm
             }
             else
             {
+                local = new Combo();
                 local.Productos = new List<Producto>();
             }
         }
