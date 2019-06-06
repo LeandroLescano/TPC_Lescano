@@ -15,7 +15,8 @@ namespace PresWinForm
     public partial class frmAltaModifCombo : Form
     {
         Combo local = null;
-
+        private List<Producto> listaProd = new List<Producto>();
+        private List<Categoria> listaCat;
         public frmAltaModifCombo()
         {
             InitializeComponent();
@@ -30,7 +31,11 @@ namespace PresWinForm
         private void frmAltaModifCombo_Load(object sender, EventArgs e)
         {
             ProductoNegocio negocio = new ProductoNegocio();
-            clbProductos.DataSource = negocio.listarProductos();
+            cargarComboCategorias();
+            cmbCategoria.AutoCompleteMode = AutoCompleteMode.Append;
+            cmbCategoria.AutoCompleteSource = AutoCompleteSource.ListItems;
+            listaProd = negocio.listarProductos();
+            clbProductos.DataSource = listaProd;
             nudPrecio.Controls.RemoveAt(0);
             if(local != null)
             {
@@ -138,6 +143,34 @@ namespace PresWinForm
             {
                 MessageBox.Show(ex.ToString());     
             }
+        }
+
+        private void cmbCategoria_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(cmbCategoria.SelectedIndex > 0 && cmbCategoria.SelectedItem != null)
+            {
+                List<Producto> lista;
+                Categoria cat = (Categoria)cmbCategoria.SelectedItem;
+                lista = listaProd.FindAll(X => X.Categoria.Nombre == cat.Nombre);
+                clbProductos.DataSource = lista;
+            }
+            else
+            {
+                clbProductos.DataSource = listaProd;
+            }
+        }
+
+        private void txtBusqueda_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cargarComboCategorias()
+        {
+            CategoriaNegocio negocioCat = new CategoriaNegocio();
+            listaCat = negocioCat.listarCategorias();
+            listaCat.Insert(0, new Categoria { Nombre = "Todos", ID = -1 });
+            cmbCategoria.DataSource = listaCat;
         }
     }
 }

@@ -32,7 +32,6 @@
             this.lblCodigo = new System.Windows.Forms.Label();
             this.lblNombre = new System.Windows.Forms.Label();
             this.lblDescripción = new System.Windows.Forms.Label();
-            this.lblProductos = new System.Windows.Forms.Label();
             this.lblDiasAnticipo = new System.Windows.Forms.Label();
             this.lblPrecio = new System.Windows.Forms.Label();
             this.txtID = new System.Windows.Forms.TextBox();
@@ -48,6 +47,10 @@
             this.txtRuta = new System.Windows.Forms.TextBox();
             this.lblRuta = new System.Windows.Forms.Label();
             this.nudPrecio = new System.Windows.Forms.NumericUpDown();
+            this.cmbCategoria = new System.Windows.Forms.ComboBox();
+            this.txtBusqueda = new System.Windows.Forms.TextBox();
+            this.lblBusquedaNombre = new System.Windows.Forms.Label();
+            this.lblCategoria = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picImagen)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudPrecio)).BeginInit();
             this.SuspendLayout();
@@ -81,16 +84,6 @@
             this.lblDescripción.Size = new System.Drawing.Size(86, 17);
             this.lblDescripción.TabIndex = 2;
             this.lblDescripción.Text = "Descripción:";
-            // 
-            // lblProductos
-            // 
-            this.lblProductos.AutoSize = true;
-            this.lblProductos.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProductos.Location = new System.Drawing.Point(12, 244);
-            this.lblProductos.Name = "lblProductos";
-            this.lblProductos.Size = new System.Drawing.Size(76, 17);
-            this.lblProductos.TabIndex = 3;
-            this.lblProductos.Text = "Productos:";
             // 
             // lblDiasAnticipo
             // 
@@ -135,7 +128,7 @@
             this.txtDescripcion.Location = new System.Drawing.Point(132, 96);
             this.txtDescripcion.Multiline = true;
             this.txtDescripcion.Name = "txtDescripcion";
-            this.txtDescripcion.Size = new System.Drawing.Size(222, 40);
+            this.txtDescripcion.Size = new System.Drawing.Size(190, 40);
             this.txtDescripcion.TabIndex = 1;
             // 
             // txtDiasAnticipo
@@ -151,16 +144,16 @@
             // 
             this.clbProductos.CheckOnClick = true;
             this.clbProductos.FormattingEnabled = true;
-            this.clbProductos.Location = new System.Drawing.Point(132, 235);
+            this.clbProductos.Location = new System.Drawing.Point(340, 58);
             this.clbProductos.Name = "clbProductos";
-            this.clbProductos.Size = new System.Drawing.Size(222, 94);
+            this.clbProductos.Size = new System.Drawing.Size(335, 229);
             this.clbProductos.TabIndex = 4;
             // 
             // btnAgregar
             // 
             this.btnAgregar.AutoSize = true;
             this.btnAgregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAgregar.Location = new System.Drawing.Point(78, 337);
+            this.btnAgregar.Location = new System.Drawing.Point(50, 261);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(75, 27);
             this.btnAgregar.TabIndex = 6;
@@ -172,7 +165,7 @@
             // 
             this.btnCancelar.AutoSize = true;
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.Location = new System.Drawing.Point(205, 337);
+            this.btnCancelar.Location = new System.Drawing.Point(177, 261);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(94, 27);
             this.btnCancelar.TabIndex = 7;
@@ -187,10 +180,10 @@
             this.picImagen.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.picImagen.Image = ((System.Drawing.Image)(resources.GetObject("picImagen.Image")));
             this.picImagen.InitialImage = null;
-            this.picImagen.Location = new System.Drawing.Point(374, 12);
+            this.picImagen.Location = new System.Drawing.Point(698, 9);
             this.picImagen.MaximumSize = new System.Drawing.Size(517, 319);
             this.picImagen.Name = "picImagen";
-            this.picImagen.Size = new System.Drawing.Size(517, 319);
+            this.picImagen.Size = new System.Drawing.Size(342, 246);
             this.picImagen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picImagen.TabIndex = 7;
             this.picImagen.TabStop = false;
@@ -203,7 +196,7 @@
             // 
             this.btnBuscar.AutoSize = true;
             this.btnBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBuscar.Location = new System.Drawing.Point(374, 337);
+            this.btnBuscar.Location = new System.Drawing.Point(698, 261);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(75, 27);
             this.btnBuscar.TabIndex = 5;
@@ -214,17 +207,17 @@
             // txtRuta
             // 
             this.txtRuta.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRuta.Location = new System.Drawing.Point(503, 339);
+            this.txtRuta.Location = new System.Drawing.Point(827, 263);
             this.txtRuta.Name = "txtRuta";
             this.txtRuta.ReadOnly = true;
-            this.txtRuta.Size = new System.Drawing.Size(388, 23);
+            this.txtRuta.Size = new System.Drawing.Size(213, 23);
             this.txtRuta.TabIndex = 9;
             // 
             // lblRuta
             // 
             this.lblRuta.AutoSize = true;
             this.lblRuta.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRuta.Location = new System.Drawing.Point(461, 342);
+            this.lblRuta.Location = new System.Drawing.Point(785, 266);
             this.lblRuta.Name = "lblRuta";
             this.lblRuta.Size = new System.Drawing.Size(42, 17);
             this.lblRuta.TabIndex = 10;
@@ -244,11 +237,54 @@
             this.nudPrecio.Size = new System.Drawing.Size(120, 23);
             this.nudPrecio.TabIndex = 3;
             // 
+            // cmbCategoria
+            // 
+            this.cmbCategoria.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbCategoria.FormattingEnabled = true;
+            this.cmbCategoria.Location = new System.Drawing.Point(554, 28);
+            this.cmbCategoria.Name = "cmbCategoria";
+            this.cmbCategoria.Size = new System.Drawing.Size(121, 24);
+            this.cmbCategoria.TabIndex = 11;
+            this.cmbCategoria.SelectedIndexChanged += new System.EventHandler(this.cmbCategoria_SelectedIndexChanged);
+            // 
+            // txtBusqueda
+            // 
+            this.txtBusqueda.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBusqueda.Location = new System.Drawing.Point(340, 29);
+            this.txtBusqueda.Name = "txtBusqueda";
+            this.txtBusqueda.Size = new System.Drawing.Size(160, 23);
+            this.txtBusqueda.TabIndex = 12;
+            this.txtBusqueda.TextChanged += new System.EventHandler(this.txtBusqueda_TextChanged);
+            // 
+            // lblBusquedaNombre
+            // 
+            this.lblBusquedaNombre.AutoSize = true;
+            this.lblBusquedaNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBusquedaNombre.Location = new System.Drawing.Point(337, 9);
+            this.lblBusquedaNombre.Name = "lblBusquedaNombre";
+            this.lblBusquedaNombre.Size = new System.Drawing.Size(149, 17);
+            this.lblBusquedaNombre.TabIndex = 13;
+            this.lblBusquedaNombre.Text = "Busqueda por nombre";
+            // 
+            // lblCategoria
+            // 
+            this.lblCategoria.AutoSize = true;
+            this.lblCategoria.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCategoria.Location = new System.Drawing.Point(551, 6);
+            this.lblCategoria.Name = "lblCategoria";
+            this.lblCategoria.Size = new System.Drawing.Size(69, 17);
+            this.lblCategoria.TabIndex = 14;
+            this.lblCategoria.Text = "Categoria";
+            // 
             // frmAltaModifCombo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(900, 370);
+            this.ClientSize = new System.Drawing.Size(1052, 298);
+            this.Controls.Add(this.lblCategoria);
+            this.Controls.Add(this.lblBusquedaNombre);
+            this.Controls.Add(this.txtBusqueda);
+            this.Controls.Add(this.cmbCategoria);
             this.Controls.Add(this.nudPrecio);
             this.Controls.Add(this.lblRuta);
             this.Controls.Add(this.txtRuta);
@@ -263,10 +299,11 @@
             this.Controls.Add(this.txtID);
             this.Controls.Add(this.lblPrecio);
             this.Controls.Add(this.lblDiasAnticipo);
-            this.Controls.Add(this.lblProductos);
             this.Controls.Add(this.lblDescripción);
             this.Controls.Add(this.lblNombre);
             this.Controls.Add(this.lblCodigo);
+            this.MaximumSize = new System.Drawing.Size(1068, 337);
+            this.MinimumSize = new System.Drawing.Size(1068, 337);
             this.Name = "frmAltaModifCombo";
             this.Text = "frmAltaModifCombos";
             this.Load += new System.EventHandler(this.frmAltaModifCombo_Load);
@@ -282,7 +319,6 @@
         private System.Windows.Forms.Label lblCodigo;
         private System.Windows.Forms.Label lblNombre;
         private System.Windows.Forms.Label lblDescripción;
-        private System.Windows.Forms.Label lblProductos;
         private System.Windows.Forms.Label lblDiasAnticipo;
         private System.Windows.Forms.Label lblPrecio;
         private System.Windows.Forms.TextBox txtID;
@@ -298,5 +334,9 @@
         private System.Windows.Forms.TextBox txtRuta;
         private System.Windows.Forms.Label lblRuta;
         private System.Windows.Forms.NumericUpDown nudPrecio;
+        private System.Windows.Forms.ComboBox cmbCategoria;
+        private System.Windows.Forms.TextBox txtBusqueda;
+        private System.Windows.Forms.Label lblBusquedaNombre;
+        private System.Windows.Forms.Label lblCategoria;
     }
 }

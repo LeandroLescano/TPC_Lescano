@@ -15,6 +15,7 @@ namespace PresWinForm
     public partial class frmCombos : Form
     {
         private List<Combo> listaCombo;
+        private ComboNegocio negocio = new ComboNegocio();
 
         public frmCombos()
         {
@@ -30,7 +31,6 @@ namespace PresWinForm
 
         private void cargarGrilla()
         {
-            ComboNegocio negocio = new ComboNegocio();
             try
             {
                 listaCombo = negocio.listarCombos();
@@ -81,7 +81,6 @@ namespace PresWinForm
 
         private void btnHabilitar_Click(object sender, EventArgs e)
         {
-            ComboNegocio negocio = new ComboNegocio();
             Combo cmb = (Combo)dgvCombos.CurrentRow.DataBoundItem;
             negocio.habilitarCombo(cmb);
             cargarGrilla();
@@ -111,6 +110,16 @@ namespace PresWinForm
             frmAltaModifCombo modif = new frmAltaModifCombo(cModif);
             modif.ShowDialog();
             cargarGrilla();
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            Combo cEliminar = (Combo)dgvCombos.CurrentRow.DataBoundItem;
+            if (MessageBox.Show("Está a punto de eliminar el combo: " + cEliminar.Nombre + ".\n\n¿Desea eliminarlo?", "Atención!", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                negocio.eliminarCombo(cEliminar);
+                cargarGrilla();
+            }
         }
     }
 }
