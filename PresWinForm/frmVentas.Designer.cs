@@ -38,8 +38,8 @@
             this.txtNumeroCompra = new System.Windows.Forms.TextBox();
             this.lblNumero = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnEliminar = new System.Windows.Forms.Button();
             this.lblPeso = new System.Windows.Forms.Label();
-            this.nudPrecio = new System.Windows.Forms.NumericUpDown();
             this.lblPrecio = new System.Windows.Forms.Label();
             this.lblTotal = new System.Windows.Forms.Label();
             this.btnAgregar = new System.Windows.Forms.Button();
@@ -52,10 +52,9 @@
             this.dgvCompras = new System.Windows.Forms.DataGridView();
             this.lblCliente = new System.Windows.Forms.Label();
             this.cmbClientes = new System.Windows.Forms.ComboBox();
-            this.btnEliminar = new System.Windows.Forms.Button();
+            this.txtPrecio = new System.Windows.Forms.TextBox();
             this.tspMenu.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudPrecio)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetalle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudCantidad)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCompras)).BeginInit();
@@ -160,9 +159,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.txtPrecio);
             this.panel1.Controls.Add(this.btnEliminar);
             this.panel1.Controls.Add(this.lblPeso);
-            this.panel1.Controls.Add(this.nudPrecio);
             this.panel1.Controls.Add(this.lblPrecio);
             this.panel1.Controls.Add(this.lblTotal);
             this.panel1.Controls.Add(this.btnAgregar);
@@ -177,6 +176,18 @@
             this.panel1.Size = new System.Drawing.Size(809, 299);
             this.panel1.TabIndex = 0;
             // 
+            // btnEliminar
+            // 
+            this.btnEliminar.AutoSize = true;
+            this.btnEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEliminar.Location = new System.Drawing.Point(383, 130);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(75, 30);
+            this.btnEliminar.TabIndex = 26;
+            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
+            // 
             // lblPeso
             // 
             this.lblPeso.AutoSize = true;
@@ -186,15 +197,6 @@
             this.lblPeso.Size = new System.Drawing.Size(18, 20);
             this.lblPeso.TabIndex = 3;
             this.lblPeso.Text = "$";
-            // 
-            // nudPrecio
-            // 
-            this.nudPrecio.DecimalPlaces = 2;
-            this.nudPrecio.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nudPrecio.Location = new System.Drawing.Point(162, 96);
-            this.nudPrecio.Name = "nudPrecio";
-            this.nudPrecio.Size = new System.Drawing.Size(120, 26);
-            this.nudPrecio.TabIndex = 5;
             // 
             // lblPrecio
             // 
@@ -271,7 +273,7 @@
             this.nudCantidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nudCantidad.Location = new System.Drawing.Point(163, 53);
             this.nudCantidad.Name = "nudCantidad";
-            this.nudCantidad.Size = new System.Drawing.Size(120, 26);
+            this.nudCantidad.Size = new System.Drawing.Size(99, 26);
             this.nudCantidad.TabIndex = 1;
             this.nudCantidad.Value = new decimal(new int[] {
             1,
@@ -335,17 +337,13 @@
             this.cmbClientes.Size = new System.Drawing.Size(260, 28);
             this.cmbClientes.TabIndex = 2;
             // 
-            // btnEliminar
+            // txtPrecio
             // 
-            this.btnEliminar.AutoSize = true;
-            this.btnEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEliminar.Location = new System.Drawing.Point(383, 130);
-            this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(75, 30);
-            this.btnEliminar.TabIndex = 26;
-            this.btnEliminar.Text = "Eliminar";
-            this.btnEliminar.UseVisualStyleBackColor = true;
-            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
+            this.txtPrecio.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPrecio.Location = new System.Drawing.Point(162, 94);
+            this.txtPrecio.Name = "txtPrecio";
+            this.txtPrecio.Size = new System.Drawing.Size(100, 26);
+            this.txtPrecio.TabIndex = 27;
             // 
             // frmVentas
             // 
@@ -371,7 +369,6 @@
             this.tspMenu.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudPrecio)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetalle)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudCantidad)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCompras)).EndInit();
@@ -403,8 +400,8 @@
         private System.Windows.Forms.DataGridView dgvCompras;
         private System.Windows.Forms.Label lblCliente;
         private System.Windows.Forms.ComboBox cmbClientes;
-        private System.Windows.Forms.NumericUpDown nudPrecio;
         private System.Windows.Forms.Label lblPeso;
         private System.Windows.Forms.Button btnEliminar;
+        private System.Windows.Forms.TextBox txtPrecio;
     }
 }

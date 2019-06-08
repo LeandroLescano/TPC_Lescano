@@ -90,7 +90,7 @@ namespace PresWinForm
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             Producto peliminar = (Producto)dgvProductos.CurrentRow.DataBoundItem;
-            if(MessageBox.Show("Está a punto de eliminar el producto: "+ peliminar.Nombre + ".\n\n¿Desea eliminarlo?", "Atención!", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (MessageBox.Show("Está a punto de eliminar el producto: " + peliminar.Nombre + ".\n\n¿Desea eliminarlo?", "Atención!", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 ProductoNegocio negocio = new ProductoNegocio();
                 negocio.eliminarProducto(peliminar);
@@ -138,6 +138,35 @@ namespace PresWinForm
             else
             {
                 btnHabilitar.Enabled = false;
+            }
+        }
+
+        private void dgvProductos_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                int currentRow = dgvProductos.HitTest(e.X, e.Y).RowIndex;
+                int currentColumn = dgvProductos.HitTest(e.X, e.Y).ColumnIndex;
+
+                if (currentRow >= 0)
+                {
+                    dgvProductos[currentColumn, currentRow].Selected = true;
+                    Producto pSelect = (Producto)dgvProductos.CurrentRow.DataBoundItem;
+
+                    ContextMenu m = new ContextMenu();
+                    m.MenuItems.Add(new MenuItem("Modificar", btnModificar_Click));
+                    m.MenuItems.Add(new MenuItem("Ver proveedores", btnVerProveedores_Click));
+                    if (pSelect.Estado == true)
+                    {
+                        m.MenuItems.Add(new MenuItem("Eliminar", btnEliminar_Click));
+                    }
+                    else
+                    {
+                        m.MenuItems.Add(new MenuItem("Habilitar", btnHabilitar_Click));
+                    }
+
+                    m.Show(dgvProductos, new Point(e.X, e.Y));
+                }
             }
         }
     }

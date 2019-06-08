@@ -17,7 +17,7 @@ namespace Negocio
             Combo nuevo;
             try
             {
-                accesoDatos.setearConsulta("SELECT * FROM COMBOS");
+                accesoDatos.setearConsulta("SELECT ID, NOMBRE, DESCRIPCION, DIASANTICIPO, PRECIO, RUTA, ESTADO FROM COMBOS");
                 accesoDatos.abrirConexion();
                 accesoDatos.ejecutarConsulta();
                 while (accesoDatos.Lector.Read())
