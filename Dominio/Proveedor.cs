@@ -13,8 +13,7 @@ namespace Dominio
 
         public override string ToString()
         {
-            TipoPersona = new TipoPersona();
-            if (TipoPersona.Fisica)
+            if (this.TipoPersona.Fisica == true)
             {
                 return Apellido + ", " + Nombre;
             }

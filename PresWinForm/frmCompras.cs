@@ -14,20 +14,34 @@ namespace PresWinForm
 {
     public partial class frmCompras : Form
     {
+
+        private BindingList<DetalleCompra> Detalle = new BindingList<DetalleCompra>();
+        private decimal PrecioFinal;
+
         public frmCompras()
         {
             InitializeComponent();
+            nudPrecio.Controls.RemoveAt(0);
         }
 
         private void frmCompras_Load(object sender, EventArgs e)
         {
             dgvDetalle.DataSource = new List<DetalleVenta>();
             ProductoNegocio nombresProd = new ProductoNegocio();
-            cmbProducto.DataSource = nombresProd.listarProductos();
+            List<Producto> listaProd = new List<Producto>();
+            listaProd = nombresProd.listarProductos();
+            listaProd = listaProd.FindAll(X => X.Estado == true);
+            cmbProducto.DataSource = listaProd;
             ComboStyle(cmbProducto);
             ProveedorNegocio nombresProv = new ProveedorNegocio();
-            cmbProveedores.DataSource = nombresProv.listarProveedores();
+            List<Proveedor> listaProv = new List<Proveedor>();
+            listaProv = nombresProv.listarProveedores();
+            listaProv = listaProv.FindAll(X => X.Estado == true);
+            cmbProveedores.DataSource = listaProv;
             ComboStyle(cmbProveedores);
+            nudPrecio.ReadOnly = true;
+            nudPrecio.BackColor = Color.White;
+            nudPrecio.Value = 0;
         }
 
         private void btnListar_Click(object sender, EventArgs e)
@@ -65,5 +79,46 @@ namespace PresWinForm
             nudCantidad.Select(0, 2);
         }
 
+        private void cargarGrilla()
+        {
+            dgvDetalle.DataSource = Detalle;
+        }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            if(cmbProducto.Text != "Elige una opción...")
+            {
+                DetalleCompra nuevo = new DetalleCompra();
+                nuevo.Producto = (Producto)cmbProducto.SelectedItem;
+                nuevo.Cantidad = Convert.ToInt32(nudCantidad.Value);
+                nuevo.PrecioUnitario = nudPrecio.Value;
+                nuevo.PrecioParcial = nuevo.PrecioUnitario * nuevo.Cantidad;
+                Detalle.Add(nuevo);
+                cargarGrilla();
+                PrecioFinal += Math.Round(nuevo.PrecioParcial, 2);
+                lblTotal.Text = "Total: " + PrecioFinal;
+                cmbProducto.Focus();
+            }
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            int index = dgvDetalle.CurrentRow.Index;
+            Detalle.RemoveAt(index);
+        }
+
+        private void nudCantidad_Enter_1(object sender, EventArgs e)
+        {
+            nudCantidad.Select(0, nudCantidad.Text.Length);
+        }
+
+        private void cmbProducto_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if ((Producto)cmbProducto.SelectedItem != null)
+            {
+                Producto prod = (Producto)cmbProducto.SelectedItem;
+                nudPrecio.Value = prod.calcularPrecio();
+            }
+        }
     }
 }

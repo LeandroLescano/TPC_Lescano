@@ -35,6 +35,7 @@ namespace PresWinForm
             cmbCategoria.AutoCompleteMode = AutoCompleteMode.Append;
             cmbCategoria.AutoCompleteSource = AutoCompleteSource.ListItems;
             listaProd = negocio.listarProductos();
+            listaProd = listaProd.FindAll(X => X.Estado == true);
             clbProductos.DataSource = listaProd;
             nudPrecio.Controls.RemoveAt(0);
             if(local != null)
@@ -42,7 +43,8 @@ namespace PresWinForm
                 btnAgregar.Text = "Modificar";
                 txtID.Text = local.ID.ToString();
                 txtRuta.Text = local.RutaImagen;
-                picImagen.Image = Image.FromFile(local.RutaImagen);
+                if(local.RutaImagen != null)
+                    picImagen.Image = Image.FromFile(local.RutaImagen);
                 txtNombre.Text = local.Nombre;
                 txtDescripcion.Text = local.Descripcion;
                 txtDiasAnticipo.Text = local.DiasAnticipo.ToString();

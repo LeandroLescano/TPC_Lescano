@@ -11,6 +11,6 @@ namespace Dominio
         public Producto Producto { get; set; }
         public int Cantidad { get; set; }
         public decimal PrecioUnitario { get; set; }
-        public decimal PrecioFinal { get; set; }
+        public decimal PrecioParcial { get; set; }
     }
 }

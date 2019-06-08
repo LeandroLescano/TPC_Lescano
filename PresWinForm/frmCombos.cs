@@ -81,9 +81,16 @@ namespace PresWinForm
 
         private void btnHabilitar_Click(object sender, EventArgs e)
         {
-            Combo cmb = (Combo)dgvCombos.CurrentRow.DataBoundItem;
-            negocio.habilitarCombo(cmb);
-            cargarGrilla();
+            try
+            {
+                Combo cmb = (Combo)dgvCombos.CurrentRow.DataBoundItem;
+                negocio.habilitarCombo(cmb);
+                cargarGrilla();
+            }
+            catch (Exception ex )
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
 
         private void dgvCombos_SelectionChanged(object sender, EventArgs e)
@@ -92,10 +99,12 @@ namespace PresWinForm
             if (cmb.Estado == false)
             {
                 btnHabilitar.Enabled = true;
+                btnEliminar.Enabled = false;
             }
             else
             {
                 btnHabilitar.Enabled = false;
+                btnEliminar.Enabled = true;
             }
         }
 
@@ -114,11 +123,14 @@ namespace PresWinForm
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            Combo cEliminar = (Combo)dgvCombos.CurrentRow.DataBoundItem;
-            if (MessageBox.Show("Está a punto de eliminar el combo: " + cEliminar.Nombre + ".\n\n¿Desea eliminarlo?", "Atención!", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if(dgvCombos.CurrentRow != null)
             {
-                negocio.eliminarCombo(cEliminar);
-                cargarGrilla();
+                Combo cEliminar = (Combo)dgvCombos.CurrentRow.DataBoundItem;    
+                if (MessageBox.Show("Está a punto de eliminar el combo: " + cEliminar.Nombre + ".\n\n¿Desea eliminarlo?", "Atención!", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    negocio.eliminarCombo(cEliminar);
+                    cargarGrilla();
+                }
             }
         }
     }

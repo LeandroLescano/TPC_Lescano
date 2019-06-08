@@ -15,22 +15,30 @@ namespace PresWinForm
     {
         private BindingList<DetalleVenta> Detalle = new BindingList<DetalleVenta>();
         private decimal PrecioFinal;
+
         public frmVentas()
         {
             InitializeComponent();
+            nudPrecio.Controls.RemoveAt(0);
         }
 
         private void frmVentas_Load(object sender, EventArgs e)
         {
-            dgvDetalle.DataSource = new List<DetalleVenta>();
             ProductoNegocio nombresProd = new ProductoNegocio();
-            cmbProducto.DataSource = nombresProd.listarProductos();
             ClienteNegocio nombresClient = new ClienteNegocio();
-            cmbClientes.DataSource = nombresClient.listarClientes();
+            dgvDetalle.DataSource = new List<DetalleVenta>();
+            List<Cliente> listaClientes = new List<Cliente>();
+            List<Producto> listaProd = new List<Producto>();
+            listaProd = nombresProd.listarProductos();
+            listaProd = listaProd.FindAll(X => X.Estado == true);
+            cmbProducto.DataSource = listaProd;
+            listaClientes = nombresClient.listarClientes();
+            listaClientes = listaClientes.FindAll(X => X.Estado == true);
+            cmbClientes.DataSource = listaClientes;
             restablecerControles();
-            nudPrecio.Controls.RemoveAt(0);
             nudPrecio.ReadOnly = true;
             nudPrecio.BackColor = Color.White;
+            nudPrecio.Value = 0;
         }
 
         private void cargarGrilla()
@@ -90,6 +98,12 @@ namespace PresWinForm
         private void nudCantidad_Enter(object sender, EventArgs e)
         {
             nudCantidad.Select(0,nudCantidad.Text.Length);
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            int index = dgvDetalle.CurrentRow.Index;
+            Detalle.RemoveAt(index);
         }
     }
 }

@@ -4,3 +4,9 @@ C:\Users\Tateh\Desktop\Repos Git\TPC_Lescano\Dominio\obj\Debug\Dominio.csprojAss
 C:\Users\Tateh\Desktop\Repos Git\TPC_Lescano\Dominio\obj\Debug\Dominio.csproj.CoreCompileInputs.cache
 C:\Users\Tateh\Desktop\Repos Git\TPC_Lescano\Dominio\obj\Debug\Dominio.dll
 C:\Users\Tateh\Desktop\Repos Git\TPC_Lescano\Dominio\obj\Debug\Dominio.pdb
+C:\Users\tatil\Desktop\Repos git\TPC_Lescano\Dominio\bin\Debug\Dominio.dll
+C:\Users\tatil\Desktop\Repos git\TPC_Lescano\Dominio\bin\Debug\Dominio.pdb
+C:\Users\tatil\Desktop\Repos git\TPC_Lescano\Dominio\obj\Debug\Dominio.csprojAssemblyReference.cache
+C:\Users\tatil\Desktop\Repos git\TPC_Lescano\Dominio\obj\Debug\Dominio.csproj.CoreCompileInputs.cache
+C:\Users\tatil\Desktop\Repos git\TPC_Lescano\Dominio\obj\Debug\Dominio.dll
+C:\Users\tatil\Desktop\Repos git\TPC_Lescano\Dominio\obj\Debug\Dominio.pdb

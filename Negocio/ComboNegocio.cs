@@ -28,9 +28,9 @@ namespace Negocio
                     nuevo.Descripcion = accesoDatos.Lector.GetString(2);
                     nuevo.DiasAnticipo = accesoDatos.Lector.GetInt32(3);
                     nuevo.Precio = accesoDatos.Lector.GetDecimal(4);
-                    nuevo.Estado = accesoDatos.Lector.GetBoolean(5);
+                    nuevo.Estado = accesoDatos.Lector.GetBoolean(6);
                     if(!Convert.IsDBNull(accesoDatos.Lector["RUTA"]))
-                        nuevo.RutaImagen = accesoDatos.Lector.GetString(6);
+                        nuevo.RutaImagen = accesoDatos.Lector.GetString(5);
                     listarProductos(nuevo);
                     listado.Add(nuevo);
                 }
