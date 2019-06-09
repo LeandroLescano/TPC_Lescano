@@ -50,8 +50,9 @@
             this.btnNuevoProd = new System.Windows.Forms.Button();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblPrecioTotal = new System.Windows.Forms.Label();
+            this.txtPrecio = new System.Windows.Forms.TextBox();
             this.lblPeso = new System.Windows.Forms.Label();
-            this.nudPrecio = new System.Windows.Forms.NumericUpDown();
             this.nudCantidad = new System.Windows.Forms.NumericUpDown();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.lblPrecio = new System.Windows.Forms.Label();
@@ -59,7 +60,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvCompras)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetalle)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudPrecio)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudCantidad)).BeginInit();
             this.SuspendLayout();
             // 
@@ -160,14 +160,14 @@
             this.cmbProveedores.FormattingEnabled = true;
             this.cmbProveedores.Location = new System.Drawing.Point(311, 90);
             this.cmbProveedores.Name = "cmbProveedores";
-            this.cmbProveedores.Size = new System.Drawing.Size(260, 28);
+            this.cmbProveedores.Size = new System.Drawing.Size(261, 28);
             this.cmbProveedores.TabIndex = 2;
             // 
             // btnNuevoProv
             // 
             this.btnNuevoProv.AutoSize = true;
             this.btnNuevoProv.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNuevoProv.Location = new System.Drawing.Point(628, 90);
+            this.btnNuevoProv.Location = new System.Drawing.Point(582, 90);
             this.btnNuevoProv.Name = "btnNuevoProv";
             this.btnNuevoProv.Size = new System.Drawing.Size(75, 30);
             this.btnNuevoProv.TabIndex = 2;
@@ -236,11 +236,11 @@
             this.lblTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTotal.AutoSize = true;
             this.lblTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotal.Location = new System.Drawing.Point(487, 270);
+            this.lblTotal.Location = new System.Drawing.Point(453, 270);
             this.lblTotal.Name = "lblTotal";
-            this.lblTotal.Size = new System.Drawing.Size(62, 25);
+            this.lblTotal.Size = new System.Drawing.Size(78, 25);
             this.lblTotal.TabIndex = 18;
-            this.lblTotal.Text = "Total:";
+            this.lblTotal.Text = "Total: $";
             // 
             // lblProducto
             // 
@@ -276,7 +276,7 @@
             // 
             this.btnNuevoProd.AutoSize = true;
             this.btnNuevoProd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNuevoProd.Location = new System.Drawing.Point(491, 12);
+            this.btnNuevoProd.Location = new System.Drawing.Point(445, 12);
             this.btnNuevoProd.Name = "btnNuevoProd";
             this.btnNuevoProd.Size = new System.Drawing.Size(75, 30);
             this.btnNuevoProd.TabIndex = 23;
@@ -303,8 +303,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.lblPrecioTotal);
+            this.panel1.Controls.Add(this.txtPrecio);
             this.panel1.Controls.Add(this.lblPeso);
-            this.panel1.Controls.Add(this.nudPrecio);
             this.panel1.Controls.Add(this.nudCantidad);
             this.panel1.Controls.Add(this.btnEliminar);
             this.panel1.Controls.Add(this.lblPrecio);
@@ -321,31 +322,47 @@
             this.panel1.Size = new System.Drawing.Size(637, 299);
             this.panel1.TabIndex = 3;
             // 
+            // lblPrecioTotal
+            // 
+            this.lblPrecioTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblPrecioTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPrecioTotal.Location = new System.Drawing.Point(526, 270);
+            this.lblPrecioTotal.Name = "lblPrecioTotal";
+            this.lblPrecioTotal.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.lblPrecioTotal.Size = new System.Drawing.Size(94, 23);
+            this.lblPrecioTotal.TabIndex = 30;
+            this.lblPrecioTotal.Text = "0,00";
+            // 
+            // txtPrecio
+            // 
+            this.txtPrecio.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPrecio.Location = new System.Drawing.Point(174, 94);
+            this.txtPrecio.Name = "txtPrecio";
+            this.txtPrecio.ReadOnly = true;
+            this.txtPrecio.Size = new System.Drawing.Size(100, 26);
+            this.txtPrecio.TabIndex = 29;
+            // 
             // lblPeso
             // 
             this.lblPeso.AutoSize = true;
             this.lblPeso.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPeso.Location = new System.Drawing.Point(154, 99);
+            this.lblPeso.Location = new System.Drawing.Point(154, 97);
             this.lblPeso.Name = "lblPeso";
             this.lblPeso.Size = new System.Drawing.Size(18, 20);
             this.lblPeso.TabIndex = 28;
             this.lblPeso.Text = "$";
             // 
-            // nudPrecio
-            // 
-            this.nudPrecio.DecimalPlaces = 2;
-            this.nudPrecio.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nudPrecio.Location = new System.Drawing.Point(174, 97);
-            this.nudPrecio.Name = "nudPrecio";
-            this.nudPrecio.Size = new System.Drawing.Size(120, 26);
-            this.nudPrecio.TabIndex = 29;
-            // 
             // nudCantidad
             // 
             this.nudCantidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nudCantidad.Location = new System.Drawing.Point(174, 53);
+            this.nudCantidad.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
             this.nudCantidad.Name = "nudCantidad";
-            this.nudCantidad.Size = new System.Drawing.Size(120, 26);
+            this.nudCantidad.Size = new System.Drawing.Size(100, 26);
             this.nudCantidad.TabIndex = 1;
             this.nudCantidad.Value = new decimal(new int[] {
             1,
@@ -397,6 +414,7 @@
             this.Name = "frmCompras";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Compras";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmCompras_FormClosing);
             this.Load += new System.EventHandler(this.frmCompras_Load);
             this.tspMenu.ResumeLayout(false);
             this.tspMenu.PerformLayout();
@@ -404,7 +422,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetalle)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudPrecio)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudCantidad)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -437,7 +454,8 @@
         private System.Windows.Forms.Label lblPrecio;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Label lblPeso;
-        private System.Windows.Forms.NumericUpDown nudPrecio;
         private System.Windows.Forms.NumericUpDown nudCantidad;
+        private System.Windows.Forms.TextBox txtPrecio;
+        private System.Windows.Forms.Label lblPrecioTotal;
     }
 }

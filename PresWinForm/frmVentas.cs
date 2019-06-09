@@ -61,27 +61,30 @@ namespace PresWinForm
 
         private void btnNueva_Click(object sender, EventArgs e)
         {
-            dgvCompras.Visible = false;
+            dgvVentas.Visible = false;
         }
 
         private void btnListar_Click(object sender, EventArgs e)
         {
-            dgvCompras.BringToFront();
-            dgvCompras.Visible = true;
+            dgvVentas.BringToFront();
+            dgvVentas.Visible = true;
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            DetalleVenta nuevo = new DetalleVenta();
-            nuevo.Producto = (Producto)cmbProducto.SelectedItem;
-            nuevo.Cantidad = Convert.ToInt32(nudCantidad.Value);
-            nuevo.PrecioUnitario = Convert.ToDecimal(txtPrecio.Text);
-            nuevo.PrecioParcial = nuevo.PrecioUnitario * nuevo.Cantidad;
-            Detalle.Add(nuevo);
-            cargarGrilla();
-            PrecioFinal += Math.Round(nuevo.PrecioParcial, 2);
-            lblTotal.Text = "Total: " + PrecioFinal;
-            cmbProducto.Focus();
+            if (cmbProducto.Text != "Elige una opción...")
+            {
+                DetalleVenta nuevo = new DetalleVenta();
+                nuevo.Producto = (Producto)cmbProducto.SelectedItem;
+                nuevo.Cantidad = Convert.ToInt32(nudCantidad.Value);
+                nuevo.PrecioUnitario = Convert.ToDecimal(txtPrecio.Text);
+                nuevo.PrecioParcial = nuevo.PrecioUnitario * nuevo.Cantidad;
+                Detalle.Add(nuevo);
+                cargarGrilla();
+                PrecioFinal += Math.Round(nuevo.PrecioParcial, 2);
+                lblPrecioTotal.Text = PrecioFinal.ToString();
+                cmbProducto.Focus();
+            }
         }
 
         private void cmbProducto_SelectedIndexChanged(object sender, EventArgs e)
@@ -95,7 +98,7 @@ namespace PresWinForm
 
         private void nudCantidad_Enter(object sender, EventArgs e)
         {
-            nudCantidad.Select(0,nudCantidad.Text.Length);
+            nudCantidad.Select(0, nudCantidad.Text.Length);
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)

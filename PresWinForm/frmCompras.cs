@@ -21,7 +21,6 @@ namespace PresWinForm
         public frmCompras()
         {
             InitializeComponent();
-            nudPrecio.Controls.RemoveAt(0);
         }
 
         private void frmCompras_Load(object sender, EventArgs e)
@@ -39,9 +38,8 @@ namespace PresWinForm
             listaProv = listaProv.FindAll(X => X.Estado == true);
             cmbProveedores.DataSource = listaProv;
             ComboStyle(cmbProveedores);
-            nudPrecio.ReadOnly = true;
-            nudPrecio.BackColor = Color.White;
-            nudPrecio.Value = 0;
+            txtPrecio.BackColor = Color.White;
+            txtPrecio.Text = "0,00";
         }
 
         private void btnListar_Click(object sender, EventArgs e)
@@ -91,7 +89,7 @@ namespace PresWinForm
                 DetalleCompra nuevo = new DetalleCompra();
                 nuevo.Producto = (Producto)cmbProducto.SelectedItem;
                 nuevo.Cantidad = Convert.ToInt32(nudCantidad.Value);
-                nuevo.PrecioUnitario = nudPrecio.Value;
+                nuevo.PrecioUnitario = Convert.ToDecimal(txtPrecio.Text);
                 nuevo.PrecioParcial = nuevo.PrecioUnitario * nuevo.Cantidad;
                 Detalle.Add(nuevo);
                 cargarGrilla();
@@ -117,8 +115,13 @@ namespace PresWinForm
             if ((Producto)cmbProducto.SelectedItem != null)
             {
                 Producto prod = (Producto)cmbProducto.SelectedItem;
-                nudPrecio.Value = prod.calcularPrecio();
+                txtPrecio.Text = prod.calcularPrecio().ToString();
             }
+        }
+
+        private void frmCompras_FormClosing(object sender, FormClosingEventArgs e)
+        {
+
         }
     }
 }

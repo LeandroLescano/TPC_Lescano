@@ -88,8 +88,11 @@ namespace PresWinForm
                 openFileDialog.RestoreDirectory = true;
                 openFileDialog.Title = "Selecciona la imagen del combo";
                 openFileDialog.ShowDialog();
-                txtRuta.Text = openFileDialog.FileName;
-                picImagen.Image = Image.FromFile(txtRuta.Text);
+                if(openFileDialog.FileName != "")
+                {
+                    txtRuta.Text = openFileDialog.FileName;
+                    picImagen.Image = Image.FromFile(txtRuta.Text);
+                }
             }
             catch (Exception ex)
             {
@@ -135,7 +138,14 @@ namespace PresWinForm
         {
             try
             {
-                local.RutaImagen = txtRuta.Text;
+                if(txtRuta.Text != "")
+                {
+                    local.RutaImagen = txtRuta.Text;
+                }
+                else
+                {
+                    local.RutaImagen = "Desktop\\Repos Git\\TPC_Lescano\\PresWebForm\\img\\img-default.jpg";
+                }
                 local.Nombre = txtNombre.Text;
                 local.Descripcion = txtDescripcion.Text;
                 local.DiasAnticipo = Convert.ToInt32(txtDiasAnticipo.Text);
