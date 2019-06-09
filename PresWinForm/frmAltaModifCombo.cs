@@ -144,7 +144,7 @@ namespace PresWinForm
                 }
                 else
                 {
-                    local.RutaImagen = "Desktop\\Repos Git\\TPC_Lescano\\PresWebForm\\img\\img-default.jpg";
+                    local.RutaImagen = "c:\\Desktop\\Repos Git\\TPC_Lescano\\PresWebForm\\img\\img-default.jpg";
                 }
                 local.Nombre = txtNombre.Text;
                 local.Descripcion = txtDescripcion.Text;

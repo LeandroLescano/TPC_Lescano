@@ -10,8 +10,9 @@ namespace Dominio
     {
         public int ID { get; set; }
         public Combo Combo { get; set; }
-        public string Descripcion { get; set; }
+        public string Observacion { get; set; }
         public Cliente Cliente { get; set; }
+        public DateTime FechaEntrega { get; set; }
         public decimal PrecioFinal { get; set; }
         public string Estado { get; set; }
     }

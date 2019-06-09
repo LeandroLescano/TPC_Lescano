@@ -46,6 +46,40 @@ namespace Negocio
             }
         }
 
+        public Combo listarCombo(int ID)
+        {
+            AccesoDatosManager accesoDatos = new AccesoDatosManager();
+            Combo nuevo = new Combo();
+            try
+            {
+                accesoDatos.setearConsulta("SELECT ID, NOMBRE, DESCRIPCION, DIASANTICIPO, PRECIO, RUTA, ESTADO FROM COMBOS WHERE ID = " + ID);
+                accesoDatos.abrirConexion();
+                accesoDatos.ejecutarConsulta();
+                while (accesoDatos.Lector.Read())
+                {
+                    nuevo = new Combo();
+                    nuevo.ID = accesoDatos.Lector.GetInt32(0);
+                    nuevo.Nombre = accesoDatos.Lector.GetString(1);
+                    nuevo.Descripcion = accesoDatos.Lector.GetString(2);
+                    nuevo.DiasAnticipo = accesoDatos.Lector.GetInt32(3);
+                    nuevo.Precio = accesoDatos.Lector.GetDecimal(4);
+                    nuevo.Estado = accesoDatos.Lector.GetBoolean(6);
+                    if (!Convert.IsDBNull(accesoDatos.Lector["RUTA"]))
+                        nuevo.RutaImagen = accesoDatos.Lector.GetString(5);
+                    listarProductos(nuevo);
+                }
+                return nuevo;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+        }
+
         private void listarProductos(Combo cmb)
         {
             AccesoDatosManager accesoDatos = new AccesoDatosManager();
@@ -82,7 +116,7 @@ namespace Negocio
                 accesoDatos.Comando.Parameters.AddWithValue("@Nombre", nuevo.Nombre);
                 accesoDatos.Comando.Parameters.AddWithValue("@Descripcion", nuevo.Descripcion);
                 accesoDatos.Comando.Parameters.AddWithValue("@DiasAnticipo", nuevo.DiasAnticipo);
-                accesoDatos.Comando.Parameters.AddWithValue("@Precio", nuevo.Precio.ToString().Replace('.',','));
+                accesoDatos.Comando.Parameters.AddWithValue("@Precio", nuevo.Precio);
                 accesoDatos.Comando.Parameters.AddWithValue("@RutaImg", nuevo.RutaImagen);
                 accesoDatos.abrirConexion();
                 return accesoDatos.ejecutarAccionReturn();
@@ -148,41 +182,6 @@ namespace Negocio
                 accesoDatos.setearConsulta("UPDATE COMBOS SET ESTADO = 1 WHERE ID = " + comb.ID);
                 accesoDatos.abrirConexion();
                 accesoDatos.ejecutarAccion();
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                accesoDatos.cerrarConexion();
-            }
-        }
-
-        public List<Combo> listarCombosWeb()
-        {
-            AccesoDatosManager accesoDatos = new AccesoDatosManager();
-            List<Combo> listado = new List<Combo>();
-            Combo nuevo;
-            try
-            {
-                accesoDatos.setearConsulta("SELECT ID, NOMBRE, DESCRIPCION, DIASANTICIPO, PRECIO, RUTA, ESTADO FROM COMBOS");
-                accesoDatos.abrirConexion();
-                accesoDatos.ejecutarConsulta();
-                while (accesoDatos.Lector.Read())
-                {
-                    nuevo = new Combo();
-                    nuevo.ID = accesoDatos.Lector.GetInt32(0);
-                    nuevo.Nombre = accesoDatos.Lector.GetString(1);
-                    nuevo.Descripcion = accesoDatos.Lector.GetString(2);
-                    nuevo.DiasAnticipo = accesoDatos.Lector.GetInt32(3);
-                    nuevo.Precio = accesoDatos.Lector.GetDecimal(4);
-                    nuevo.Estado = accesoDatos.Lector.GetBoolean(6);
-                    if (!Convert.IsDBNull(accesoDatos.Lector["RUTA"]))
-                        nuevo.RutaImagen = accesoDatos.Lector.GetString(5);
-                    listado.Add(nuevo);
-                }
-                return listado;
             }
             catch (Exception ex)
             {

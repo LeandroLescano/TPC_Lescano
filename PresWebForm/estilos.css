@@ -1,0 +1,82 @@
+﻿body {
+    background-color: rgb(244, 174, 0);
+}
+
+.navbar-dark {
+    background-color: rgb(122, 22, 0);
+}
+
+.body-content {
+    -webkit-box-shadow: 0 0 44px -10px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0 0 44px -10px rgba(0,0,0,0.75);
+    box-shadow: 0 0 44px -10px rgba(0,0,0,0.75);
+    overflow: hidden;
+}
+
+#MainContent_btnPedido {
+    background-color: rgb(122, 22, 0);
+    color: white;
+}
+
+    #MainContent_btnPedido:hover {
+        background-color: rgb(99, 19, 1);
+    }
+
+
+
+#MainContent_lblPrecio {
+    font-size: 30px;
+}
+
+#MainContent_lblDias {
+    font-size: 20px;
+}
+
+#MainContent_lblObservacion {
+    font-size: 20px;
+}
+
+.carousel-inner {
+    border: solid;
+    border-width: 1px;
+    border-radius: 5px;
+    border-color: rgba(0,0,0,0.2);
+}
+
+
+/* MODAL */
+.md-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 50%;
+    max-width: 630px;
+    min-width: 320px;
+    height: auto;
+    z-index: 2000;
+    visibility: hidden;
+    backface-visibility: hidden;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+.md-show {
+    visibility: visible;
+}
+
+.md-overlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    visibility: hidden;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    opacity: 0;
+    background: rgba(143,27,15,0.8);
+    transition: all 0.3s;
+}
+
+.md-show ~ .md-overlay {
+    opacity: 1;
+    visibility: visible;
+}

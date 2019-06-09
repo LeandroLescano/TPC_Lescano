@@ -15,7 +15,7 @@ namespace PresWebForm
         protected void Page_Load(object sender, EventArgs e)
         {
             ComboNegocio negocio = new ComboNegocio();
-            List<Combo> combosActivos = negocio.listarCombosWeb();
+            List<Combo> combosActivos = negocio.listarCombos();
             combosActivos = combosActivos.FindAll(X => X.Estado == true);
             combos = combosActivos;
             for (int i = 1; i < combos.Count; i++)
@@ -30,18 +30,31 @@ namespace PresWebForm
                 string divClass;
                 if (i == 0)
                 {
-                    divClass = "<div class='carousel-item active border'>";
+                    divClass = "<div class='carousel-item active'>";
                 }
                 else
                 {
-                    divClass = "<div class='carousel-item border'>";
+                    divClass = "<div class='carousel-item'>";
                 }
                 ContenedorImg.InnerHtml += "\n" + divClass + "\n" +
-                                 "<img id='img" + i + "' alt='Imagen' class='mx-auto d-block img-fluid' src='" + combos[i].RutaImagen + "'/></img>\n" +
+                                 "<img id='img" + i + "' alt='Imagen' class='mx-auto d-block img-fluid'  style='max-height:300px;' src='" + combos[i].RutaImagen + "'/></img>\n" +
                                  "<div class='carousel-caption' style='filter: invert(100%)'>\n" +
                                 "<h3>" + combos[i].Nombre + "</h3>\n</div>\n</div>\n\n";
 
             }
+        }
+
+        protected void btnPedido_Click(object sender, EventArgs e)
+        {
+            PedidoNegocio negocio = new PedidoNegocio();
+            Pedido nuevo = new Pedido();
+            //nuevo.Cliente.ID
+            //nuevo.Combo.ID
+            nuevo.Observacion = lblObservacion.Text;
+            //nuevo.FechaEntrega
+            //nuevo.PrecioFinal =  
+            nuevo.Estado = "A revisar";
+            negocio.cargarPedido(nuevo);
         }
     }
 }
