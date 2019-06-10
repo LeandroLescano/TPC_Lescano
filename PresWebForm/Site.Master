@@ -22,7 +22,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <link href="estilos.css" rel="stylesheet" />
 </head>
-<body >
+<body>
     <form runat="server">
         <asp:ScriptManager runat="server">
             <Scripts>
@@ -40,24 +40,129 @@
                     <a class="nav-item nav-link ml-auto" href="Pedido">Hace tu pedido</a>
                     <a class="nav-item nav-link ml-auto" href="MisPedidos">Mis pedidos</a>
                     <a class="nav-item nav-link ml-auto" href="Contact">Contactanos</a>
-<%--                    <ul class="nav navbar-nav ml-auto">
+                    <%--                    <ul class="nav navbar-nav ml-auto">
                         <li>
                             <button type="button" class="btn btn-dark" style="float: right">Ingresa</button></li>
                     </ul>--%>
-
                 </div>
-                    <div class="nav navbar-right">
-                        <li>
-                            <div class="btn-nav">
-                                <button type="button" class="btn btn-dark" style="float: right">Ingresa</button>
-                            </div>
-                        </li>
-                    </div>
+                <div class="nav navbar-nav ml-auto">
+                    <li>
+                        <div class="btn-nav">
+                            <button id="btnIngresar" type="button" class="btn" data-toggle="modal" data-target=".bd-example-modal-sm">Ingresa</button>
+                        </div>
+                    </li>
+                </div>
 
             </div>
         </nav>
         <!-- FIN HEADER -->
-        <div class="container body-content bg-light"  style="font-family:'Roboto', sans-serif;">
+        <script>
+
+            $('#myModal').on('shown.bs.modal', function () {
+                $('#myInput').trigger('focus')
+            })
+
+            $('form').keyup(function txtLlenos() {
+                var objeto = [document.getElementById("txtNombre"),
+                document.getElementById("txtApellido")];
+                var valueForm = [objeto[0].value, objeto[1].value];
+                if (valueForm[0].length >= 3 && valueForm[1].length >= 3) {
+                    document.getElementById("txtUsuarioR").placeholder = valueForm[0].substring(0, 1) + valueForm[1] + " (Sugerido)";
+                }
+                else {
+                    document.getElementById("txtUsuarioR").placeholder = "Usuario";
+                }
+            });
+
+        </script>
+        <!--    MODAL   -->
+        <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Ingresá o registrate!</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="#ingresar" role="tab" data-toggle="tab">Ingresar</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#registrarse" role="tab" data-toggle="tab">Registrarse</a>
+                            </li>
+                        </ul>
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <!-- PESTAÑA INGRESAR -->
+                            <div role="tabpanel" class="tab-pane fade in active" id="ingresar">
+                                <div class="form-group">
+                                    <label for="txtUsuario" class="col-form-label">Usuario:</label>
+                                    <input type="text" class="form-control" id="txtUsuario">
+                                </div>
+                                <div class="form-group">
+                                    <label for="txtContraseña" class="col-form-label">Contraseña:</label>
+                                    <input type="text" class="form-control" id="txtContraseña">
+                                </div>
+                            </div>
+                            <!-- PESTAÑA REGISTRARSE -->
+                            <div role="tabpanel" class="tab-pane fade" id="registrarse">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label for="txtNombre" class="col-form-label">Nombre:</label>
+                                            <input type="text" class="form-control" id="txtNombre" placeholder="Juan">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="txtUsuarioR" class="col-form-label">Usuario:</label>
+                                            <input type="text" class="form-control" id="txtUsuarioR" placeholder="Usuario">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="txtMail" class="col-form-label">Mail:</label>
+                                            <input type="email" aria-describedby="emailHelp" class="form-control" id="txtMail" placeholder="email@ejemplo.com">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label for="txtApellido" class="col-form-label">Apellido:</label>
+                                            <input type="text" class="form-control" id="txtApellido" placeholder="Gomez">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="txtContraseñaR" class="col-form-label">Contraseña:</label>
+                                            <input type="password" class="form-control" id="txtContraseñaR" placeholder="Contraseña">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="txtTelefono" class="col-form-label">Telefono:</label>
+                                            <input type="password" class="form-control" id="txtTelefono" placeholder="12345678">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label for="txtDNI" class="col-form-label">DNI:</label>
+                                            <input type="text" class="form-control" id="txtDNI" placeholder="12345678">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="txtContraseñaRepetida" class="col-form-label">Repetir contraseña:</label>
+                                            <input type="text" class="form-control" id="txtContraseñaRepetida" placeholder="Repetir contraseña">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-primary">Ingresar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--  FIN MODAL  -->
+        <div class="container body-content bg-light" style="font-family: 'Roboto', sans-serif;">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
             <hr />

@@ -22,6 +22,16 @@
         background-color: rgb(99, 19, 1);
     }
 
+#btnIngresar {
+    background-color: rgb(244, 174, 0);
+    color: rgb(122, 22, 0);
+    font-weight: 500;
+}
+
+    #btnIngresar:hover {
+        background-color: rgb(204, 145, 0);
+    }
+
 
 
 #MainContent_lblPrecio {

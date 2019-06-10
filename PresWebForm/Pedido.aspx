@@ -21,7 +21,7 @@
                 document.getElementById("<%=lblPrecio.ClientID%>").innerText = "Precio: $" + combosJs[id].Precio;
                 document.getElementById("<%=lblDias.ClientID%>").innerText = "La podrás retirar en: " + combosJs[id].DiasAnticipo + " días";
             };
-          
+
             window.onload = cargarDesc();
         });
     </script>
@@ -55,7 +55,6 @@
                 <asp:Label ID="lblDias" runat="server" Text="La podrás retirar en:"></asp:Label>
                 <br />
                 <h4>Lo retiro el día</h4>
-                <asp:Calendar ID="dtpFechaEntrega" runat="server"></asp:Calendar>
             </div>
             <div class="col-sm-4 text-center align-middle" style="margin: auto;">
                 <asp:Label ID="lblPrecio" class="btn btn-success" runat="server" Text="Precio: $"></asp:Label>
