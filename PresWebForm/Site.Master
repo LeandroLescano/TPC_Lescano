@@ -163,6 +163,7 @@
         </div>
         <!--  FIN MODAL  -->
         <div class="container body-content bg-light" style="font-family: 'Roboto', sans-serif;">
+            <asp:HiddenField ID="ClienteID" runat="server" />
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
             <hr />

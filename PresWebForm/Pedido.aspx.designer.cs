@@ -13,6 +13,15 @@ namespace PresWebForm {
     public partial class About {
         
         /// <summary>
+        /// Control ComboID.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField ComboID;
+        
+        /// <summary>
         /// Control Indicador.
         /// </summary>
         /// <remarks>
@@ -47,6 +56,15 @@ namespace PresWebForm {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblDias;
+        
+        /// <summary>
+        /// Control dtpFechaEntrega.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox dtpFechaEntrega;
         
         /// <summary>
         /// Control lblPrecio.

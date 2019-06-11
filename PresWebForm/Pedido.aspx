@@ -20,12 +20,14 @@
                 document.getElementById("<%=lblDescripcion.ClientID%>").innerText = combosJs[id].Descripcion;
                 document.getElementById("<%=lblPrecio.ClientID%>").innerText = "Precio: $" + combosJs[id].Precio;
                 document.getElementById("<%=lblDias.ClientID%>").innerText = "La podrás retirar en: " + combosJs[id].DiasAnticipo + " días";
+                document.getElementById("<%=ComboID.ClientID%>").value = combosJs[id].ID;
             };
 
             window.onload = cargarDesc();
         });
     </script>
     <div class="container">
+        <asp:HiddenField ID="ComboID" runat="server" />
         <h3>Elegí la picada que más te guste</h3>
 
         <div class="row">
@@ -54,7 +56,14 @@
                 <br />
                 <asp:Label ID="lblDias" runat="server" Text="La podrás retirar en:"></asp:Label>
                 <br />
-                <h4>Lo retiro el día</h4>
+                <table style="height: 50px;">
+                    <tbody>
+                        <tr>
+                            <td class="align-middle"><h4 style="margin-bottom:0px;">Lo retiro el: </h4></td>
+                            <td><asp:TextBox ID="dtpFechaEntrega" type="date" runat="server" CssClass="float-left"></asp:TextBox></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
             <div class="col-sm-4 text-center align-middle" style="margin: auto;">
                 <asp:Label ID="lblPrecio" class="btn btn-success" runat="server" Text="Precio: $"></asp:Label>
@@ -66,7 +75,7 @@
         <asp:TextBox ID="txtObservaciones" runat="server" Height="100px" class="form-control" TextMode="MultiLine" placeholder="Algo que desees cambiar..."></asp:TextBox>
         <br />
         <div class="col align-items-center text-right" style="padding-right: 0px;">
-            <asp:Button class="btn" ID="btnPedido" runat="server" Text="Enviar pedido" OnClick="btnPedido_Click" />
+            <asp:Button class="btn" ID="btnPedido" runat="server" Text="Enviar pedido" OnClick="btnPedido_Click" value="" />
         </div>
     </div>
 </asp:Content>
