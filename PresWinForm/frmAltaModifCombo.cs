@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 using Negocio;
 using Dominio;
 
@@ -144,7 +145,8 @@ namespace PresWinForm
                 }
                 else
                 {
-                    local.RutaImagen = "c:\\Desktop\\Repos Git\\TPC_Lescano\\PresWebForm\\img\\img-default.jpg";
+                    local.RutaImagen = "..\\PresWebForm\\img\\img-default.jpg";
+                    
                 }
                 local.Nombre = txtNombre.Text;
                 local.Descripcion = txtDescripcion.Text;

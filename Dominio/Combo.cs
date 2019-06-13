@@ -16,5 +16,10 @@ namespace Dominio
         public decimal Precio { get; set; }
         public string RutaImagen { get; set; }
         public bool Estado { get; set; }
+
+        public override string ToString()
+        {
+            return Nombre;
+        }
     }
 }

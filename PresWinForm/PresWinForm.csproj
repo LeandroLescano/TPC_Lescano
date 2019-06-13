@@ -119,6 +119,12 @@
     <Compile Include="frmMarcas.Designer.cs">
       <DependentUpon>frmMarcas.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmModifPedidos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmModifPedidos.Designer.cs">
+      <DependentUpon>frmModifPedidos.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmPedidos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -192,6 +198,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmMarcas.resx">
       <DependentUpon>frmMarcas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmModifPedidos.resx">
+      <DependentUpon>frmModifPedidos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmPedidos.resx">
       <DependentUpon>frmPedidos.cs</DependentUpon>

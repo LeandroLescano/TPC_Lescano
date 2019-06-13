@@ -25,9 +25,11 @@ namespace Negocio
                 while (accesoDatos.Lector.Read())
                 {
                     nuevo = new Pedido();
+                    nuevo.Cliente = new Cliente();
+                    nuevo.Combo = new Combo();
                     nuevo.ID = accesoDatos.Lector.GetInt32(0);
-                    nuevo.Cliente.ID = accesoDatos.Lector.GetInt32(1);
-                    nuevo.Combo.ID = accesoDatos.Lector.GetInt32(2);
+                    nuevo.Cliente = negocioCli.listarCliente(accesoDatos.Lector.GetInt32(1));
+                    nuevo.Combo = negocioCom.listarCombo(accesoDatos.Lector.GetInt32(2));
                     nuevo.Observacion = accesoDatos.Lector.GetString(3);
                     nuevo.FechaEntrega = accesoDatos.Lector.GetDateTime(4);
                     nuevo.PrecioFinal = accesoDatos.Lector.GetDecimal(5);
@@ -72,5 +74,6 @@ namespace Negocio
                 accesoDatos.cerrarConexion();
             }
         }
+
     }
 }

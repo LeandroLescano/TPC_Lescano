@@ -11,6 +11,5 @@ namespace Dominio
         public string ID { get; set; }
         public Proveedor Proveedor { get; set; }
         public DetalleCompra Detalle { get; set; }
-
     }
 }

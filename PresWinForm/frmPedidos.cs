@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Negocio;
+using Dominio;
 
 namespace PresWinForm
 {
@@ -34,6 +35,13 @@ namespace PresWinForm
             {
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            Pedido pModif = (Pedido)dgvPedidos.CurrentRow.DataBoundItem;
+            frmModifPedidos modif = new frmModifPedidos(pModif);
+            modif.ShowDialog();
         }
     }
 }

@@ -51,7 +51,7 @@ namespace PresWebForm
             Pedido nuevo = new Pedido();
             nuevo.Cliente = new Cliente();
             nuevo.Combo = new Combo();
-            //nuevo.Cliente.ID =
+            nuevo.Cliente.ID = 1;
             nuevo.Combo = combos[Convert.ToInt32(ComboID.Value)];
             nuevo.Observacion = lblObservacion.Text;
             nuevo.FechaEntrega = Convert.ToDateTime(dtpFechaEntrega.Text);
