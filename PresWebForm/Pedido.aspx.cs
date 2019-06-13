@@ -20,13 +20,14 @@ namespace PresWebForm
             combos = combosActivos;
             for (int i = 1; i < combos.Count; i++)
             {
-                    Indicador.InnerHtml += "</li>\n\t<li data-target='#carousel' data-slide-to='"+i+"'>";
+                Indicador.InnerHtml += "</li>\n\t<li data-target='#carousel' data-slide-to='" + i + "'>";
             }
 
-                for (int i = 0; i < combos.Count; i++)
+            for (int i = 0; i < combos.Count; i++)
             {
                 string Ruta = combos[i].RutaImagen;
-                combos[i].RutaImagen = Ruta.Substring(Ruta.IndexOf("img"), Ruta.Length - Ruta.IndexOf("img")).Replace('\\', '/');
+                if(Ruta != null)
+                    combos[i].RutaImagen = Ruta.Substring(Ruta.IndexOf("img"), Ruta.Length - Ruta.IndexOf("img")).Replace('\\', '/');
                 string divClass;
                 if (i == 0)
                 {
@@ -54,7 +55,7 @@ namespace PresWebForm
             nuevo.Combo = combos[Convert.ToInt32(ComboID.Value)];
             nuevo.Observacion = lblObservacion.Text;
             nuevo.FechaEntrega = Convert.ToDateTime(dtpFechaEntrega.Text);
-            nuevo.PrecioFinal = nuevo.Combo.Precio;  
+            nuevo.PrecioFinal = nuevo.Combo.Precio;
             nuevo.Estado = "A revisar";
             negocio.cargarPedido(nuevo);
         }
