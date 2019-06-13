@@ -26,8 +26,10 @@ namespace PresWebForm
             for (int i = 0; i < combos.Count; i++)
             {
                 string Ruta = combos[i].RutaImagen;
-                if(Ruta != null)
+                if (Ruta != null)
                     combos[i].RutaImagen = Ruta.Substring(Ruta.IndexOf("img"), Ruta.Length - Ruta.IndexOf("img")).Replace('\\', '/');
+                else
+                    combos[i].RutaImagen = "https://www.igaxes.org/wp-content/uploads/2018/04/img-default.jpg";
                 string divClass;
                 if (i == 0)
                 {
@@ -51,9 +53,10 @@ namespace PresWebForm
             Pedido nuevo = new Pedido();
             nuevo.Cliente = new Cliente();
             nuevo.Combo = new Combo();
+            //Falta hacer el ingreso del Cliente a la página
             nuevo.Cliente.ID = 1;
             nuevo.Combo = combos[Convert.ToInt32(ComboID.Value)];
-            nuevo.Observacion = lblObservacion.Text;
+            nuevo.Observacion = txtObservaciones.Text;
             nuevo.FechaEntrega = Convert.ToDateTime(dtpFechaEntrega.Text);
             nuevo.PrecioFinal = nuevo.Combo.Precio;
             nuevo.Estado = "A revisar";

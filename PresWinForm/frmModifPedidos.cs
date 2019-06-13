@@ -27,12 +27,18 @@ namespace PresWinForm
             cmbEstado.Items.Add("Aceptado");
             cmbEstado.Items.Add("Rechazado");
             cmbEstado.SelectedIndex = cmbEstado.FindString(local.Estado);
+            txtEstado.Text = local.Estado;
             txtID.Text = local.ID.ToString();
             txtCliente.Text = local.Cliente.Apellido + ", " + local.Cliente.Nombre;
             dtpFechRetiro.Value = local.FechaEntrega;
             txtCombo.Text = local.Combo.Nombre;
             txtPrecio.Text = local.PrecioFinal.ToString();
             txtObservaciones.Text = local.Observacion;
+        }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            //Enviar mail con comentarios y el estado del pedido al cliente
         }
     }
 }

@@ -143,11 +143,6 @@ namespace PresWinForm
                 {
                     local.RutaImagen = txtRuta.Text;
                 }
-                else
-                {
-                    local.RutaImagen = "..\\PresWebForm\\img\\img-default.jpg";
-                    
-                }
                 local.Nombre = txtNombre.Text;
                 local.Descripcion = txtDescripcion.Text;
                 local.DiasAnticipo = Convert.ToInt32(txtDiasAnticipo.Text);

@@ -33,7 +33,6 @@
             this.lblPrecio = new System.Windows.Forms.Label();
             this.lblFechRetiro = new System.Windows.Forms.Label();
             this.lblEstado = new System.Windows.Forms.Label();
-            this.cmbEstado = new System.Windows.Forms.ComboBox();
             this.lblID = new System.Windows.Forms.Label();
             this.lblObservacion = new System.Windows.Forms.Label();
             this.txtID = new System.Windows.Forms.TextBox();
@@ -42,6 +41,12 @@
             this.txtCliente = new System.Windows.Forms.TextBox();
             this.txtObservaciones = new System.Windows.Forms.TextBox();
             this.dtpFechRetiro = new System.Windows.Forms.DateTimePicker();
+            this.btnCancelar = new System.Windows.Forms.Button();
+            this.btnModificar = new System.Windows.Forms.Button();
+            this.txtEstado = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.lblComentario = new System.Windows.Forms.Label();
+            this.cmbEstado = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // lblCombo
@@ -93,16 +98,6 @@
             this.lblEstado.Size = new System.Drawing.Size(56, 17);
             this.lblEstado.TabIndex = 4;
             this.lblEstado.Text = "Estado:";
-            // 
-            // cmbEstado
-            // 
-            this.cmbEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbEstado.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbEstado.FormattingEnabled = true;
-            this.cmbEstado.Location = new System.Drawing.Point(133, 247);
-            this.cmbEstado.Name = "cmbEstado";
-            this.cmbEstado.Size = new System.Drawing.Size(157, 24);
-            this.cmbEstado.TabIndex = 5;
             // 
             // lblID
             // 
@@ -167,12 +162,14 @@
             this.txtObservaciones.Location = new System.Drawing.Point(15, 320);
             this.txtObservaciones.Multiline = true;
             this.txtObservaciones.Name = "txtObservaciones";
+            this.txtObservaciones.ReadOnly = true;
             this.txtObservaciones.Size = new System.Drawing.Size(275, 52);
             this.txtObservaciones.TabIndex = 13;
             // 
             // dtpFechRetiro
             // 
             this.dtpFechRetiro.CustomFormat = "\'  \'dd \'de\'MMM\'del\' yyyy";
+            this.dtpFechRetiro.Enabled = false;
             this.dtpFechRetiro.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpFechRetiro.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpFechRetiro.Location = new System.Drawing.Point(132, 199);
@@ -181,11 +178,78 @@
             this.dtpFechRetiro.Size = new System.Drawing.Size(158, 23);
             this.dtpFechRetiro.TabIndex = 15;
             // 
+            // btnCancelar
+            // 
+            this.btnCancelar.AutoSize = true;
+            this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelar.Location = new System.Drawing.Point(518, 345);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(75, 27);
+            this.btnCancelar.TabIndex = 17;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = true;
+            // 
+            // btnModificar
+            // 
+            this.btnModificar.AutoSize = true;
+            this.btnModificar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnModificar.Location = new System.Drawing.Point(417, 345);
+            this.btnModificar.Name = "btnModificar";
+            this.btnModificar.Size = new System.Drawing.Size(75, 27);
+            this.btnModificar.TabIndex = 16;
+            this.btnModificar.Text = "Modificar";
+            this.btnModificar.UseVisualStyleBackColor = true;
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
+            // 
+            // txtEstado
+            // 
+            this.txtEstado.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEstado.Location = new System.Drawing.Point(132, 247);
+            this.txtEstado.Name = "txtEstado";
+            this.txtEstado.ReadOnly = true;
+            this.txtEstado.Size = new System.Drawing.Size(157, 23);
+            this.txtEstado.TabIndex = 18;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(351, 40);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(324, 92);
+            this.textBox1.TabIndex = 19;
+            // 
+            // lblComentario
+            // 
+            this.lblComentario.AutoSize = true;
+            this.lblComentario.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblComentario.Location = new System.Drawing.Point(348, 20);
+            this.lblComentario.Name = "lblComentario";
+            this.lblComentario.Size = new System.Drawing.Size(80, 17);
+            this.lblComentario.TabIndex = 20;
+            this.lblComentario.Text = "Comentario";
+            // 
+            // cmbEstado
+            // 
+            this.cmbEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbEstado.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbEstado.FormattingEnabled = true;
+            this.cmbEstado.Location = new System.Drawing.Point(351, 155);
+            this.cmbEstado.Name = "cmbEstado";
+            this.cmbEstado.Size = new System.Drawing.Size(324, 24);
+            this.cmbEstado.TabIndex = 21;
+            // 
             // frmModifPedidos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(310, 384);
+            this.ClientSize = new System.Drawing.Size(687, 382);
+            this.Controls.Add(this.cmbEstado);
+            this.Controls.Add(this.lblComentario);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtEstado);
+            this.Controls.Add(this.btnCancelar);
+            this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.dtpFechRetiro);
             this.Controls.Add(this.txtObservaciones);
             this.Controls.Add(this.txtCliente);
@@ -194,7 +258,6 @@
             this.Controls.Add(this.txtID);
             this.Controls.Add(this.lblObservacion);
             this.Controls.Add(this.lblID);
-            this.Controls.Add(this.cmbEstado);
             this.Controls.Add(this.lblEstado);
             this.Controls.Add(this.lblFechRetiro);
             this.Controls.Add(this.lblPrecio);
@@ -215,7 +278,6 @@
         private System.Windows.Forms.Label lblPrecio;
         private System.Windows.Forms.Label lblFechRetiro;
         private System.Windows.Forms.Label lblEstado;
-        private System.Windows.Forms.ComboBox cmbEstado;
         private System.Windows.Forms.Label lblID;
         private System.Windows.Forms.Label lblObservacion;
         private System.Windows.Forms.TextBox txtID;
@@ -224,5 +286,11 @@
         private System.Windows.Forms.TextBox txtCliente;
         private System.Windows.Forms.TextBox txtObservaciones;
         private System.Windows.Forms.DateTimePicker dtpFechRetiro;
+        private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.Button btnModificar;
+        private System.Windows.Forms.TextBox txtEstado;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label lblComentario;
+        private System.Windows.Forms.ComboBox cmbEstado;
     }
 }
