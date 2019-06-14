@@ -39,9 +39,12 @@ namespace PresWinForm
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            Pedido pModif = (Pedido)dgvPedidos.CurrentRow.DataBoundItem;
-            frmModifPedidos modif = new frmModifPedidos(pModif);
-            modif.ShowDialog();
+            if (dgvPedidos.RowCount > 0)
+            {
+                Pedido pModif = (Pedido)dgvPedidos.CurrentRow.DataBoundItem;
+                frmModifPedidos modif = new frmModifPedidos(pModif);
+                modif.ShowDialog();
+            }
         }
     }
 }
