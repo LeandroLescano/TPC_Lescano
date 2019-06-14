@@ -44,9 +44,10 @@
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnModificar = new System.Windows.Forms.Button();
             this.txtEstado = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtComentario = new System.Windows.Forms.TextBox();
             this.lblComentario = new System.Windows.Forms.Label();
             this.cmbEstado = new System.Windows.Forms.ComboBox();
+            this.lblMail = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblCombo
@@ -193,11 +194,11 @@
             // 
             this.btnModificar.AutoSize = true;
             this.btnModificar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnModificar.Location = new System.Drawing.Point(417, 345);
+            this.btnModificar.Location = new System.Drawing.Point(369, 345);
             this.btnModificar.Name = "btnModificar";
-            this.btnModificar.Size = new System.Drawing.Size(75, 27);
+            this.btnModificar.Size = new System.Drawing.Size(143, 27);
             this.btnModificar.TabIndex = 16;
-            this.btnModificar.Text = "Modificar";
+            this.btnModificar.Text = "Modificar e informar";
             this.btnModificar.UseVisualStyleBackColor = true;
             this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
@@ -210,14 +211,14 @@
             this.txtEstado.Size = new System.Drawing.Size(157, 23);
             this.txtEstado.TabIndex = 18;
             // 
-            // textBox1
+            // txtComentario
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(351, 40);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(324, 92);
-            this.textBox1.TabIndex = 19;
+            this.txtComentario.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtComentario.Location = new System.Drawing.Point(351, 40);
+            this.txtComentario.Multiline = true;
+            this.txtComentario.Name = "txtComentario";
+            this.txtComentario.Size = new System.Drawing.Size(324, 92);
+            this.txtComentario.TabIndex = 19;
             // 
             // lblComentario
             // 
@@ -239,14 +240,24 @@
             this.cmbEstado.Size = new System.Drawing.Size(324, 24);
             this.cmbEstado.TabIndex = 21;
             // 
+            // lblMail
+            // 
+            this.lblMail.AutoSize = true;
+            this.lblMail.Location = new System.Drawing.Point(351, 186);
+            this.lblMail.Name = "lblMail";
+            this.lblMail.Size = new System.Drawing.Size(83, 13);
+            this.lblMail.TabIndex = 22;
+            this.lblMail.Text = "Mail del cliente: ";
+            // 
             // frmModifPedidos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(687, 382);
+            this.Controls.Add(this.lblMail);
             this.Controls.Add(this.cmbEstado);
             this.Controls.Add(this.lblComentario);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtComentario);
             this.Controls.Add(this.txtEstado);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnModificar);
@@ -289,8 +300,9 @@
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnModificar;
         private System.Windows.Forms.TextBox txtEstado;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtComentario;
         private System.Windows.Forms.Label lblComentario;
         private System.Windows.Forms.ComboBox cmbEstado;
+        private System.Windows.Forms.Label lblMail;
     }
 }

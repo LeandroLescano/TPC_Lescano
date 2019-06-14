@@ -7,6 +7,8 @@ using System.Globalization;
 using System.Text.RegularExpressions;
 using Dominio;
 using AccesoDatos;
+using System.Net.Mail;
+using System.IO;
 
 namespace Negocio
 {
@@ -69,6 +71,43 @@ namespace Negocio
             {
                 return false;
             }
+        }
+
+        public bool mandarMail(string email, Pedido pedido, string Comentario)
+        {
+            try
+            {
+                MailMessage mail = new MailMessage();
+                SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
+                StreamReader reader = new StreamReader(Path.GetFullPath("Mail.html"));
+                if (Comentario != "")
+                {
+                    Comentario = "Comentario del vendedor: \n" + Comentario;
+                }
+                string body = reader.ReadToEnd();
+                body = body.Replace("{Nombre}", pedido.Cliente.Nombre);
+                body = body.Replace("{Comentario}", Comentario);
+                body = body.Replace("{Estado}", pedido.Estado);
+
+                mail.From = new MailAddress("promocode.noreply@gmail.com");
+                mail.To.Add(email);
+                mail.Subject = "Estado de tu pedido";
+                mail.IsBodyHtml = true;
+                //mail.Body = "Hola " + pedido.Cliente.Nombre + ", \n\nEl estado de tu pedido es: " + pedido.Estado + "\n\n" + Comentario;
+                mail.Body = body;
+
+                SmtpServer.Port = 587;
+                SmtpServer.Credentials = new System.Net.NetworkCredential("fiambreria.noreply@gmail.com", "fiambreria123");
+                SmtpServer.EnableSsl = true;
+
+                SmtpServer.Send(mail);
+                return true;
+            }
+            catch (SmtpFailedRecipientException)
+            {
+                return false;
+            }
+
         }
     }
 

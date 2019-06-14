@@ -23,6 +23,9 @@ namespace PresWinForm
 
         private void frmModifPedidos_Load(object sender, EventArgs e)
         {
+            ClienteNegocio negocioCli = new ClienteNegocio();
+            local.Cliente.Mails = negocioCli.listarMailsXCliente(local.Cliente);
+            lblMail.Text += local.Cliente.Mails[0].Direccion;
             cmbEstado.Items.Add("A revisar");
             cmbEstado.Items.Add("Aceptado");
             cmbEstado.Items.Add("Rechazado");
@@ -38,7 +41,12 @@ namespace PresWinForm
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            //Enviar mail con comentarios y el estado del pedido al cliente
+            local.Estado = cmbEstado.SelectedItem.ToString();
+            MailNegocio negocio = new MailNegocio();
+            if(negocio.mandarMail(local.Cliente.Mails[0].Direccion, local, txtComentario.Text))
+            {
+                MessageBox.Show("El mail ha sido enviado correctamente.","Confirmación");
+            }
         }
     }
 }
