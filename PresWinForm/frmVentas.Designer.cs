@@ -38,6 +38,7 @@
             this.txtNumeroCompra = new System.Windows.Forms.TextBox();
             this.lblNumero = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblPrecioTotal = new System.Windows.Forms.Label();
             this.txtPrecio = new System.Windows.Forms.TextBox();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.lblPeso = new System.Windows.Forms.Label();
@@ -53,7 +54,7 @@
             this.dgvVentas = new System.Windows.Forms.DataGridView();
             this.lblCliente = new System.Windows.Forms.Label();
             this.cmbClientes = new System.Windows.Forms.ComboBox();
-            this.lblPrecioTotal = new System.Windows.Forms.Label();
+            this.btnFinalizar = new System.Windows.Forms.Button();
             this.tspMenu.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetalle)).BeginInit();
@@ -75,7 +76,7 @@
             this.tspMenu.Name = "tspMenu";
             this.tspMenu.Padding = new System.Windows.Forms.Padding(0);
             this.tspMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.tspMenu.Size = new System.Drawing.Size(105, 450);
+            this.tspMenu.Size = new System.Drawing.Size(105, 491);
             this.tspMenu.TabIndex = 6;
             this.tspMenu.Text = "tspMenu";
             // 
@@ -175,8 +176,19 @@
             this.panel1.Controls.Add(this.lblDetalleVenta);
             this.panel1.Location = new System.Drawing.Point(135, 139);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(809, 299);
+            this.panel1.Size = new System.Drawing.Size(809, 304);
             this.panel1.TabIndex = 0;
+            // 
+            // lblPrecioTotal
+            // 
+            this.lblPrecioTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblPrecioTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPrecioTotal.Location = new System.Drawing.Point(698, 275);
+            this.lblPrecioTotal.Name = "lblPrecioTotal";
+            this.lblPrecioTotal.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.lblPrecioTotal.Size = new System.Drawing.Size(94, 23);
+            this.lblPrecioTotal.TabIndex = 28;
+            this.lblPrecioTotal.Text = "0,00";
             // 
             // txtPrecio
             // 
@@ -223,7 +235,7 @@
             this.lblTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTotal.AutoSize = true;
             this.lblTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotal.Location = new System.Drawing.Point(625, 270);
+            this.lblTotal.Location = new System.Drawing.Point(625, 275);
             this.lblTotal.Name = "lblTotal";
             this.lblTotal.Size = new System.Drawing.Size(78, 25);
             this.lblTotal.TabIndex = 18;
@@ -255,7 +267,7 @@
             this.dgvDetalle.MultiSelect = false;
             this.dgvDetalle.Name = "dgvDetalle";
             this.dgvDetalle.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDetalle.Size = new System.Drawing.Size(772, 101);
+            this.dgvDetalle.Size = new System.Drawing.Size(772, 106);
             this.dgvDetalle.TabIndex = 17;
             // 
             // lblProducto
@@ -329,7 +341,7 @@
             this.dgvVentas.MultiSelect = false;
             this.dgvVentas.Name = "dgvVentas";
             this.dgvVentas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvVentas.Size = new System.Drawing.Size(835, 426);
+            this.dgvVentas.Size = new System.Drawing.Size(835, 467);
             this.dgvVentas.TabIndex = 26;
             this.dgvVentas.Visible = false;
             // 
@@ -352,23 +364,25 @@
             this.cmbClientes.Size = new System.Drawing.Size(260, 28);
             this.cmbClientes.TabIndex = 2;
             // 
-            // lblPrecioTotal
+            // btnFinalizar
             // 
-            this.lblPrecioTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblPrecioTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPrecioTotal.Location = new System.Drawing.Point(698, 270);
-            this.lblPrecioTotal.Name = "lblPrecioTotal";
-            this.lblPrecioTotal.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.lblPrecioTotal.Size = new System.Drawing.Size(94, 23);
-            this.lblPrecioTotal.TabIndex = 28;
-            this.lblPrecioTotal.Text = "0,00";
+            this.btnFinalizar.AutoSize = true;
+            this.btnFinalizar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFinalizar.Location = new System.Drawing.Point(882, 449);
+            this.btnFinalizar.Name = "btnFinalizar";
+            this.btnFinalizar.Size = new System.Drawing.Size(78, 30);
+            this.btnFinalizar.TabIndex = 36;
+            this.btnFinalizar.Text = "Finalizar";
+            this.btnFinalizar.UseVisualStyleBackColor = true;
+            this.btnFinalizar.Click += new System.EventHandler(this.btnFinalizar_Click);
             // 
             // frmVentas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(972, 450);
+            this.ClientSize = new System.Drawing.Size(972, 491);
             this.ControlBox = false;
+            this.Controls.Add(this.btnFinalizar);
             this.Controls.Add(this.cmbClientes);
             this.Controls.Add(this.lblCliente);
             this.Controls.Add(this.dtpFechaCompra);
@@ -422,5 +436,6 @@
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.TextBox txtPrecio;
         private System.Windows.Forms.Label lblPrecioTotal;
+        private System.Windows.Forms.Button btnFinalizar;
     }
 }

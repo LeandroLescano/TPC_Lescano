@@ -46,6 +46,7 @@
     <Compile Include="ComboNegocio.cs" />
     <Compile Include="DomicilioNegocio.cs" />
     <Compile Include="EmpleadoNegocio.cs" />
+    <Compile Include="FacturaNegocio.cs" />
     <Compile Include="LocalidadNegocio.cs" />
     <Compile Include="MailNegocio.cs" />
     <Compile Include="MarcaNegocio.cs" />
@@ -55,6 +56,7 @@
     <Compile Include="ProveedorNegocio.cs" />
     <Compile Include="TelefonoNegocio.cs" />
     <Compile Include="UsuarioNegocio.cs" />
+    <Compile Include="VentaNegocio.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AccesoDatos\AccesoDatos.csproj">

@@ -105,6 +105,7 @@ namespace Negocio
                     IDTipoPersona = 2;
                 }
                 accesoDatos.setearConsulta("INSERT INTO PROVEEDORES (APELLIDOS, NOMBRES, RAZONSOCIAL, DNI, CUIT, IDDOMICILIO, IDTIPOPERSONA) VALUES (@Apellido, @Nombre, @RazonSocial, @DNi, @CUIT, @Domicilio, @TipoPersona)");
+                accesoDatos.Comando.Parameters.Clear();
                 accesoDatos.Comando.Parameters.AddWithValue("@Apellido", esNulo(nuevo.Apellido));
                 accesoDatos.Comando.Parameters.AddWithValue("@Nombre", esNulo(nuevo.Nombre));
                 accesoDatos.Comando.Parameters.AddWithValue("@RazonSocial", esNulo(nuevo.RazonSocial));

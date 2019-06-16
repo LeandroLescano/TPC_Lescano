@@ -11,7 +11,7 @@ namespace Dominio
         public string ID { get; set; }
         public Cliente Cliente { get; set; }
         public Factura Factura { get; set; }
-        public DetalleVenta Detalle { get; set; }
+        public List<DetalleVenta> Detalle { get; set; }
         public decimal Importe { get; set; }
     }
 }

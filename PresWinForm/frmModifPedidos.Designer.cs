@@ -114,7 +114,7 @@
             // 
             this.lblObservacion.AutoSize = true;
             this.lblObservacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblObservacion.Location = new System.Drawing.Point(12, 300);
+            this.lblObservacion.Location = new System.Drawing.Point(12, 288);
             this.lblObservacion.Name = "lblObservacion";
             this.lblObservacion.Size = new System.Drawing.Size(92, 17);
             this.lblObservacion.TabIndex = 7;
@@ -160,7 +160,7 @@
             // txtObservaciones
             // 
             this.txtObservaciones.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtObservaciones.Location = new System.Drawing.Point(15, 320);
+            this.txtObservaciones.Location = new System.Drawing.Point(12, 308);
             this.txtObservaciones.Multiline = true;
             this.txtObservaciones.Name = "txtObservaciones";
             this.txtObservaciones.ReadOnly = true;
@@ -183,7 +183,7 @@
             // 
             this.btnCancelar.AutoSize = true;
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.Location = new System.Drawing.Point(518, 345);
+            this.btnCancelar.Location = new System.Drawing.Point(542, 333);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 27);
             this.btnCancelar.TabIndex = 17;
@@ -194,7 +194,7 @@
             // 
             this.btnModificar.AutoSize = true;
             this.btnModificar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnModificar.Location = new System.Drawing.Point(369, 345);
+            this.btnModificar.Location = new System.Drawing.Point(368, 333);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(143, 27);
             this.btnModificar.TabIndex = 16;
@@ -253,7 +253,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(687, 382);
+            this.ClientSize = new System.Drawing.Size(687, 371);
             this.Controls.Add(this.lblMail);
             this.Controls.Add(this.cmbEstado);
             this.Controls.Add(this.lblComentario);
