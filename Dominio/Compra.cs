@@ -8,7 +8,7 @@ namespace Dominio
 {
     public class Compra
     {
-        public string ID { get; set; }
+        public int ID { get; set; }
         public Proveedor Proveedor { get; set; }
         public DetalleCompra Detalle { get; set; }
     }

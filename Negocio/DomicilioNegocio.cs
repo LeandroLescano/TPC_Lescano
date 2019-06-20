@@ -64,6 +64,61 @@ namespace Negocio
             }
         }
 
+        internal Domicilio listarDomicilio(int ID)
+        {
+            AccesoDatosManager accesoDatos = new AccesoDatosManager();
+            List<Domicilio> listado = new List<Domicilio>();
+            Domicilio dom = new Domicilio();
+            try
+            {
+                accesoDatos.setearConsulta("SELECT * FROM DOMICILIOS AS D LEFT JOIN LOCALIDADES AS L ON L.ID = D.IDLOCALIDAD WHERE D.ID = " + ID);
+                accesoDatos.abrirConexion();
+                accesoDatos.ejecutarConsulta();
+                while (accesoDatos.Lector.Read())
+                {
+                    dom = new Domicilio();
+                    dom.Edificio = new Edificio();
+                    dom.Localidad = new Localidad();
+
+                    if (!Convert.IsDBNull(accesoDatos.Lector["ID"]))
+                       dom.ID = (int)accesoDatos.Lector["ID"];
+                    if (!Convert.IsDBNull(accesoDatos.Lector["CALLE"]))
+                       dom.Calle = (string)accesoDatos.Lector["CALLE"];
+                    if (!Convert.IsDBNull(accesoDatos.Lector["ALTURA"]))
+                       dom.Altura = (int)accesoDatos.Lector["ALTURA"];
+                    if (!Convert.IsDBNull(accesoDatos.Lector["ENTRECALLE1"]))
+                       dom.EntreCalle1 = (string)accesoDatos.Lector["ENTRECALLE1"];
+                    if (!Convert.IsDBNull(accesoDatos.Lector["ENTRECALLE2"]))
+                       dom.EntreCalle2 = (string)accesoDatos.Lector["ENTRECALLE2"];
+
+                    //Edificio
+                    if (!Convert.IsDBNull(accesoDatos.Lector["PISO"]))
+                       dom.Edificio.Piso = (int)accesoDatos.Lector["PISO"];
+                    if (!Convert.IsDBNull(accesoDatos.Lector["DEPARTAMENTO"]))
+                       dom.Edificio.Departamento = (string)accesoDatos.Lector["DEPARTAMENTO"];
+
+                    //Localidad
+                    if (!Convert.IsDBNull(accesoDatos.Lector["NOMBRE"]))
+                       dom.Localidad.Nombre = (string)accesoDatos.Lector["NOMBRE"];
+                    if (!Convert.IsDBNull(accesoDatos.Lector["CODPOSTAL"]))
+                       dom.Localidad.CPostal = (string)accesoDatos.Lector["CODPOSTAL"];
+                    if (!Convert.IsDBNull(accesoDatos.Lector["PARTIDO"]))
+                       dom.Localidad.Partido = (string)accesoDatos.Lector["PARTIDO"];
+                    if (!Convert.IsDBNull(accesoDatos.Lector["IDLOCALIDAD"]))
+                       dom.Localidad.ID = (int)accesoDatos.Lector["IDLOCALIDAD"];
+                }
+                return dom;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+        }
+
         public void eliminarDomicilio(Domicilio dom)
         {
             AccesoDatosManager accesoDatos = new AccesoDatosManager();

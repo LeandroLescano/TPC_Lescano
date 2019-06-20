@@ -206,6 +206,43 @@ namespace Negocio
             }
         }
 
+        public Producto listarProducto(int ID)
+        {
+            AccesoDatosManager accesoDatos = new AccesoDatosManager();
+            try
+            {
+                accesoDatos.setearConsulta("Select P.ID, P.NOMBRE, M.NOMBRE as MARCA ,P.PRECIOUNITARIO ,P.STOCK, C.NOMBRE AS CATEGORIA, P.FRACCIONABLE, P.PESO, P.PORCENTAJEGANANCIA, P.ESTADO from PRODUCTOS AS P LEFT JOIN MARCAS AS M ON M.ID = P.IDMARCA LEFT JOIN CATEGORIAS AS C ON C.ID = P.IDCATEGORIA WHERE P.ID = " + ID);
+                accesoDatos.abrirConexion();
+                accesoDatos.ejecutarConsulta();
+                Producto nuevo = new Producto();
+                while (accesoDatos.Lector.Read())
+                {                   
+                    nuevo.ID = accesoDatos.Lector.GetInt32(0);
+                    nuevo.Nombre = accesoDatos.Lector.GetString(1);
+                    nuevo.Marca = new Marca();
+                    if (!Convert.IsDBNull(accesoDatos.Lector["MARCA"]))
+                        nuevo.Marca.Nombre = accesoDatos.Lector.GetString(2);
+                    nuevo.PrecioUnitario = accesoDatos.Lector.GetDecimal(3);
+                    nuevo.Categoria = new Categoria();
+                    nuevo.Categoria.Nombre = accesoDatos.Lector["CATEGORIA"].ToString();
+                    nuevo.Fraccionable = accesoDatos.Lector.GetBoolean(6);
+                    nuevo.Peso = Convert.ToDecimal(accesoDatos.Lector.GetString(7).Replace('.', ','));
+                    nuevo.PorcentajeGanancia = Convert.ToDecimal(accesoDatos.Lector.GetString(8).Replace('.', ','));
+                    nuevo.Estado = accesoDatos.Lector.GetBoolean(9);
+                    agregarProveedores(nuevo);
+                }
+                return nuevo;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+        }
+
         //PRODUCTOS X COMBO
 
         public void agregarProdXCombo(Combo cmb, Producto prod)

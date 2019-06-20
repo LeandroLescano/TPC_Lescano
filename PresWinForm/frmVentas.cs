@@ -15,6 +15,7 @@ namespace PresWinForm
     {
         private BindingList<DetalleVenta> Detalle = new BindingList<DetalleVenta>();
         private decimal PrecioFinal;
+        private List<Venta> listado;
 
         public frmVentas()
         {
@@ -66,8 +67,11 @@ namespace PresWinForm
 
         private void btnListar_Click(object sender, EventArgs e)
         {
+            VentaNegocio negocio = new VentaNegocio();
             dgvVentas.BringToFront();
             dgvVentas.Visible = true;
+            listado = negocio.listarVentas();
+            dgvVentas.DataSource = listado;
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -109,23 +113,37 @@ namespace PresWinForm
 
         private void btnFinalizar_Click(object sender, EventArgs e)
         {
-            VentaNegocio negocioVen = new VentaNegocio();
-            FacturaNegocio negocioFact = new FacturaNegocio();
-            Venta nuevaVenta = new Venta();
-            nuevaVenta.Cliente = new Cliente();
-            nuevaVenta.Detalle = new List<DetalleVenta>();
-            nuevaVenta.Factura = new Factura();
+            if(cmbClientes.SelectedItem != null)
+            {
+                VentaNegocio negocioVen = new VentaNegocio();
+                FacturaNegocio negocioFact = new FacturaNegocio();
+                Venta nuevaVenta = new Venta();
+                nuevaVenta.Cliente = new Cliente();
+                nuevaVenta.Detalle = new List<DetalleVenta>();
+                nuevaVenta.Factura = new Factura();
 
-            nuevaVenta.Cliente = (Cliente)cmbClientes.SelectedItem;
-            nuevaVenta.Detalle = Detalle.ToList();
-            //nuevaVenta.Factura.Domicilio = ;
-            nuevaVenta.Factura.CUIT = nuevaVenta.Cliente.CUIT;
-            nuevaVenta.Factura.FechaActual = System.DateTime.Now;
-            nuevaVenta.Factura.ListadoProductos = nuevaVenta.Detalle;
-            nuevaVenta.Importe = Convert.ToDecimal(lblPrecioTotal.Text);
-            nuevaVenta.Factura.Importe = nuevaVenta.Importe;
-            //Agregar Factura negocioFact.agregarFactura(nuevaVenta.Factura);
-            //Agregar Venta negocioVen.agregarVenta(nuevaVenta);
+                nuevaVenta.Cliente = (Cliente)cmbClientes.SelectedItem;
+                nuevaVenta.Detalle = Detalle.ToList();
+                nuevaVenta.Factura.Domicilio = nuevaVenta.Cliente.Domicilio; //Como prueba asigno domicilio del cliente
+                nuevaVenta.Importe = Convert.ToDecimal(lblPrecioTotal.Text);
+                nuevaVenta.Factura.Numero = "0001-00000001";
+                nuevaVenta.Factura.CUIT = nuevaVenta.Cliente.CUIT;
+                nuevaVenta.Factura.IngresosBrutos = "1234567-08"; //Falta hacer una sección para poner los datos generales de la factura junto a Domicilio, Fecha de inicio
+                nuevaVenta.Factura.FechaInicio = System.DateTime.Now;
+                nuevaVenta.Factura.FechaActual = System.DateTime.Now;
+                nuevaVenta.Factura.ListadoProductos = nuevaVenta.Detalle;
+                nuevaVenta.Factura.ID = negocioFact.agregarFactura(nuevaVenta.Factura);
+                nuevaVenta.ID = negocioVen.agregarVenta(nuevaVenta);
+                foreach (DetalleVenta item in nuevaVenta.Detalle)
+                {
+                    negocioVen.agregarProductosXVenta(nuevaVenta.ID, item.Producto.ID, item.Cantidad);
+                }
+            }
+            else
+            {
+                MessageBox.Show("No hay cliente asignado", "Cuidado!");
+            }
         }
+
     }
 }
