@@ -4,6 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Dominio;
+using Negocio;
+
 
 namespace PresWebForm
 {
@@ -11,7 +14,10 @@ namespace PresWebForm
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["ClienteID"] != null)
+            {
+                ClienteID.Value = Session["ClienteID"].ToString();
+            }
         }
     }
 }

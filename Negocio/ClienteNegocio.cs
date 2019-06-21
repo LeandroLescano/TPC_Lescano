@@ -455,5 +455,30 @@ namespace Negocio
             else
                 return campo;
         }
+
+        public int verificarUsuario(string UDNI, string PASS)
+        {
+            AccesoDatosManager accesoDatos = new AccesoDatosManager();
+            try
+            {
+                accesoDatos.setearConsulta("SELECT C.ID, U.USUARIO, U.CONTRASEÑA FROM CLIENTES AS C INNER JOIN USUARIOS AS U ON U.ID = C.IDUSUARIO WHERE(U.USUARIO = '"+UDNI+"' OR C.DNI = '"+UDNI+"') AND U.CONTRASEÑA = '"+ PASS +"'");
+                accesoDatos.abrirConexion();
+                accesoDatos.ejecutarConsulta();
+                while(accesoDatos.Lector.Read())
+                {
+                    return accesoDatos.Lector.GetInt32(0);
+                }
+                return -1;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+
+        }
     }
 }

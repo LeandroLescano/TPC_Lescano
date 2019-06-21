@@ -14,6 +14,10 @@ namespace PresWebForm
         public List<Combo> combos;
         protected void Page_Load(object sender, EventArgs e)
         {
+            if(Session["ClienteID"] != null)
+            {
+                ClienteID.Value = Session["ClienteID"].ToString();
+            }
             ComboNegocio negocio = new ComboNegocio();
             List<Combo> combosActivos = negocio.listarCombos();
             combosActivos = combosActivos.FindAll(X => X.Estado == true);
@@ -61,6 +65,23 @@ namespace PresWebForm
             nuevo.PrecioFinal = nuevo.Combo.Precio;
             nuevo.Estado = "A revisar";
             negocio.cargarPedido(nuevo);
+        }
+
+        [System.Web.Services.WebMethod]
+        public static string verificarUsuario(string UDNI, string Pass)
+        {
+            ClienteNegocio negocio = new ClienteNegocio();
+            int IDCliente = negocio.verificarUsuario(UDNI, Pass);
+            if (IDCliente != -1)
+            {
+                HttpContext.Current.Session.Add("ClienteID", IDCliente);
+                return "Existe";
+            }
+            else
+            {
+                return "No existe";
+            }
+
         }
     }
 }

@@ -28,6 +28,7 @@
     </script>
     <div class="container">
         <asp:HiddenField ID="ComboID" runat="server" />
+        <asp:HiddenField ID="ClienteID" runat="server" />
         <h3>Elegí la picada que más te guste</h3>
 
         <div class="row">
