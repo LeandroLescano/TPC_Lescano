@@ -30,6 +30,7 @@ namespace Negocio
                     if (!Convert.IsDBNull(accesoDatos.Lector["MARCA"]))
                         nuevo.Marca.Nombre = accesoDatos.Lector.GetString(2);
                     nuevo.PrecioUnitario = accesoDatos.Lector.GetDecimal(3);
+                    nuevo.Cantidad = accesoDatos.Lector.GetInt32(4);
                     nuevo.Categoria = new Categoria();
                     nuevo.Categoria.Nombre = accesoDatos.Lector["CATEGORIA"].ToString();
                     nuevo.Fraccionable = accesoDatos.Lector.GetBoolean(6);

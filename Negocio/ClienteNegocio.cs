@@ -53,6 +53,7 @@ namespace Negocio
 
                     if (!Convert.IsDBNull(accesoDatos.Lector["IDDOMICILIO"]))
                         nuevo.Domicilio = negocioD.listarDomicilio(accesoDatos.Lector.GetInt32(7));
+
                     ////Domicilio
                     //if (!Convert.IsDBNull(accesoDatos.Lector["IDDOMICILIO"]))
                     //    nuevo.Domicilio.ID = accesoDatos.Lector.GetInt32(7);

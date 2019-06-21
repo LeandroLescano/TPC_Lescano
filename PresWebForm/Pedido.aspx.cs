@@ -58,7 +58,7 @@ namespace PresWebForm
             nuevo.Cliente = new Cliente();
             nuevo.Combo = new Combo();
             //Falta hacer el ingreso del Cliente a la página
-            nuevo.Cliente.ID = 1;
+            nuevo.Cliente.ID = Convert.ToInt32(ClienteID.Value);
             nuevo.Combo = combos[Convert.ToInt32(ComboID.Value)];
             nuevo.Observacion = txtObservaciones.Text;
             nuevo.FechaEntrega = Convert.ToDateTime(dtpFechaEntrega.Text);
@@ -71,11 +71,13 @@ namespace PresWebForm
         public static string verificarUsuario(string UDNI, string Pass)
         {
             ClienteNegocio negocio = new ClienteNegocio();
+            Cliente cliente = new Cliente();
             int IDCliente = negocio.verificarUsuario(UDNI, Pass);
             if (IDCliente != -1)
             {
                 HttpContext.Current.Session.Add("ClienteID", IDCliente);
-                return "Existe";
+                cliente = negocio.listarCliente(IDCliente);
+                return cliente.Nombre;
             }
             else
             {

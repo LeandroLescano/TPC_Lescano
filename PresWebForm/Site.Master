@@ -46,7 +46,8 @@
                 <div class="nav navbar-nav ml-auto">
                     <li>
                         <div class="btn-nav">
-                            <button id="btnIngresar" type="button" class="btn" data-toggle="modal" data-target=".bd-example-modal-sm">Ingresa</button>
+                            <p id="lblNombreCliente"></p>
+                            <button id="btnIngresar" type="button" class="btn" data-toggle="" data-target=".bd-example-modal-sm" onclick="IngresarSalir()">Ingresar</button>
                         </div>
                     </li>
                 </div>
@@ -74,7 +75,7 @@
 
         </script>
         <!--    MODAL   -->
-        <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" onkeyup="txtLlenos()">
+        <div id="ModalRegistro" class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" onkeyup="txtLlenos()">
             <div class="modal-dialog modal-xl">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -153,7 +154,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="button" id="btnCancelar" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                         <button type="button" id="btnIngresarU" class="btn btn-primary" disabled onclick="verificarUsuario(); return false;">Ingresar</button>
                     </div>
                 </div>

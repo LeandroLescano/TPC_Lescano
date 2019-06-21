@@ -74,12 +74,11 @@ namespace Negocio
                 accesoDatos.setearConsulta("SELECT * FROM DOMICILIOS AS D LEFT JOIN LOCALIDADES AS L ON L.ID = D.IDLOCALIDAD WHERE D.ID = " + ID);
                 accesoDatos.abrirConexion();
                 accesoDatos.ejecutarConsulta();
+                dom.Edificio = new Edificio();
+                dom.Localidad = new Localidad();
+                dom.Coordenadas = new Coordenada();
                 while (accesoDatos.Lector.Read())
                 {
-                    dom = new Domicilio();
-                    dom.Edificio = new Edificio();
-                    dom.Localidad = new Localidad();
-
                     if (!Convert.IsDBNull(accesoDatos.Lector["ID"]))
                        dom.ID = (int)accesoDatos.Lector["ID"];
                     if (!Convert.IsDBNull(accesoDatos.Lector["CALLE"]))

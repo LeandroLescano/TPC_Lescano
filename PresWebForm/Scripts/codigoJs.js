@@ -31,12 +31,25 @@ function verificarUsuario() {
                 alert("El usuario o contraseña ingresado no son válidos.");
             }
             else {
-                alert(salida.d);
+                ingresarCliente(salida.d);
             }
         }
     });
 };
 
-function ingresarCliente() {
-    //Agregar label al lado del boton de Ingresar para colocar el nombre del cliente
-};
+function ingresarCliente(nombre) {
+    document.getElementById("lblNombreCliente").innerText = "Bievenido " + nombre + "!";
+    document.getElementById("btnIngresar").innerText = "Salir";
+    $("#ModalRegistro").modal('hide');
+}
+
+function IngresarSalir() {
+    var boton = document.getElementById("btnIngresar");
+    if (boton.innerText == "Salir") {
+        document.getElementById("lblNombreCliente").innerText = "";
+        document.getElementById("btnIngresar").innerText = "Ingresar";
+    }
+    else {
+        $("#ModalRegistro").modal('show');
+    }
+}

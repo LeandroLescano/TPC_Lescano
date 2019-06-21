@@ -32,6 +32,13 @@
         background-color: rgb(204, 145, 0);
     }
 
+#lblNombreCliente {
+    float: left;
+    color: white;
+    padding: 10px;
+    margin: 0px;
+}
+
 
 
 #MainContent_lblPrecio {
