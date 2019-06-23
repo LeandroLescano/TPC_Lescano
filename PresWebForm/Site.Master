@@ -17,10 +17,16 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
+
     <%--<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>--%>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <link href="https://unpkg.com/bootstrap-datepicker@1.9.0/dist/css/bootstrap-datepicker3.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/bootstrap-datepicker@1.9.0/dist/js/bootstrap-datepicker.min.js"></script>
+    <script src="https://unpkg.com/bootstrap-datepicker@1.9.0/dist/locales/bootstrap-datepicker.es.min.js" charset="UTF-8"></script>
+
     <script src="Scripts/codigoJs.js"></script>
     <link href="estilos.css" rel="stylesheet" />
 </head>
@@ -55,13 +61,26 @@
             </div>
         </nav>
         <!-- FIN HEADER -->
-        <script>
+        <script type="text/javascript">
+            $(function () {
+                var hoy = new Date();
+                var dd = String(hoy.getDate()).padStart(2, '0');
+                var mm = String(hoy.getMonth() + 1).padStart(2, '0');
+                var yyyy = hoy.getFullYear();
+
+                hoy = dd + '/' + mm + '/' + yyyy;
+
+                $('#dtpFechNac').datepicker({
+                    language: "es",
+                    endDate: hoy
+                });
+            });
 
             $('#myModal').on('shown.bs.modal', function () {
                 $('#myInput').trigger('focus')
             })
 
-            $('form').keyup(function txtLlenos() {
+            $('form').keyup(function usuarioSugerido() {
                 var objeto = [document.getElementById("txtNombre"),
                 document.getElementById("txtApellido")];
                 var valueForm = [objeto[0].value, objeto[1].value];
@@ -75,7 +94,7 @@
 
         </script>
         <!--    MODAL   -->
-        <div id="ModalRegistro" class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" onkeyup="txtLlenos()">
+        <div id="ModalRegistro" class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" onchange="txtLlenos()" onkeyup="txtLlenos()">
             <div class="modal-dialog modal-xl">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -88,10 +107,10 @@
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs" role="tablist">
                             <li class="nav-item">
-                                <a class="nav-link active" href="#ingresar" role="tab" data-toggle="tab">Ingresar</a>
+                                <a class="nav-link active" href="#ingresar" role="tab" data-toggle="tab" onclick="cambiarBtnIngresar()">Ingresar</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#registrarse" role="tab" data-toggle="tab">Registrarse</a>
+                                <a id="tabR" class="nav-link" href="#registrarse" role="tab" data-toggle="tab" onclick="cambiarBtnIngresar('Registro')">Registrarse</a>
                             </li>
                         </ul>
                         <!-- Tab panes -->
@@ -113,40 +132,44 @@
                                     <div class="col-sm-4">
                                         <div class="form-group">
                                             <label for="txtNombre" class="col-form-label">Nombre:</label>
-                                            <input type="text" class="form-control" id="txtNombre" placeholder="Juan">
+                                            <input type="text" class="form-control" id="txtNombre" placeholder="Juan" tabindex="1" onkeyup="validarVacio(this.id)" onblur="sacarFoco(this.id)" onfocus="enFoco(this.id)">
                                         </div>
 
                                         <div class="form-group">
                                             <label for="txtUsuarioR" class="col-form-label">Usuario:</label>
-                                            <input type="text" class="form-control" id="txtUsuarioR" placeholder="Usuario">
+                                            <input type="text" class="form-control" id="txtUsuarioR" placeholder="Usuario" tabindex="4" onkeyup="validarVacio(this.id)" onblur="sacarFoco(this.id)" onfocus="enFoco(this.id)">
                                         </div>
                                         <div class="form-group">
                                             <label for="txtMail" class="col-form-label">Mail:</label>
-                                            <input type="email" aria-describedby="emailHelp" class="form-control" id="txtMail" placeholder="email@ejemplo.com">
+                                            <input type="email" aria-describedby="emailHelp" class="form-control" id="txtMail" placeholder="email@ejemplo.com" tabindex="7" onkeyup="validarEmail()" onblur="sacarFoco(this.id)">
                                         </div>
                                     </div>
                                     <div class="col-sm-4">
                                         <div class="form-group">
                                             <label for="txtApellido" class="col-form-label">Apellido:</label>
-                                            <input type="text" class="form-control" id="txtApellido" placeholder="Gomez">
+                                            <input type="text" class="form-control" id="txtApellido" placeholder="Gomez" tabindex="2" onkeyup="validarVacio(this.id)" onblur="sacarFoco(this.id)" onfocus="enFoco(this.id)">
                                         </div>
                                         <div class="form-group">
                                             <label for="txtContraseñaR" class="col-form-label">Contraseña:</label>
-                                            <input type="password" class="form-control" id="txtContraseñaR" placeholder="Contraseña">
+                                            <input type="password" class="form-control" id="txtContraseñaR" placeholder="Contraseña" tabindex="5" onkeyup="validarVacio(this.id)" onblur="sacarFoco(this.id)" onfocus="enFoco(this.id)">
                                         </div>
                                         <div class="form-group">
                                             <label for="txtTelefono" class="col-form-label">Telefono:</label>
-                                            <input type="password" class="form-control" id="txtTelefono" placeholder="12345678">
+                                            <input type="number" class="form-control" id="txtTelefono" placeholder="12345678" tabindex="8" onkeyup="validarNumero()" onblur="sacarFoco(this.id)" onfocus="enFoco(this.id)">
                                         </div>
                                     </div>
                                     <div class="col-sm-4">
                                         <div class="form-group">
                                             <label for="txtDNI" class="col-form-label">DNI:</label>
-                                            <input type="text" class="form-control" id="txtDNI" placeholder="12345678">
+                                            <input type="number" class="form-control" id="txtDNI" placeholder="12345678" tabindex="3" onfocus="enFoco(this.id)" onkeyup="validarDNI()" oninput="maxNumeros(this.id)" onblur="sacarFoco(this.id)">
                                         </div>
                                         <div class="form-group">
                                             <label for="txtContraseñaRepetida" class="col-form-label">Repetir contraseña:</label>
-                                            <input type="text" class="form-control" id="txtContraseñaRepetida" placeholder="Repetir contraseña">
+                                            <input type="password" class="form-control" id="txtContraseñaRepetida" placeholder="Repetir contraseña" tabindex="6" onkeyup="validarContraseña()" onblur="sacarFoco(this.id)" onfocus="enFoco(this.id)">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="txtDNI" class="col-form-label">Fecha de nacimiento:</label>
+                                            <input type='text' class="form-control" id='dtpFechNac' placeholder="DD/MM/YYYY" tabindex="9" onkeyup="validarVacio(this.id)" onchange="validarVacio(this.id)" onblur="sacarFoco(this.id)" onfocus="enFoco(this.id)" />
                                         </div>
                                     </div>
                                 </div>
@@ -155,13 +178,14 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" id="btnCancelar" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                        <button type="button" id="btnIngresarU" class="btn btn-primary" disabled onclick="verificarUsuario(); return false;">Ingresar</button>
+                        <button type="button" id="btnIngresarU" class="btn btn-primary" disabled onclick="verificarUsuario(); return false;" tabindex="9">Ingresar</button>
+                        <button type="button" id="btnRegistrarse" class="btn btn-primary" disabled style="display: none" tabindex="9" onclick="registrarCliente()">Registrarse</button>
                     </div>
                 </div>
             </div>
         </div>
         <!--  FIN MODAL  -->
-            <asp:HiddenField ID="ClienteID" runat="server" />
+        <asp:HiddenField ID="ClienteID" runat="server" />
         <div class="container body-content bg-light" style="font-family: 'Roboto', sans-serif;">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>

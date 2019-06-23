@@ -10,7 +10,7 @@ namespace Dominio
     {
         public int ID { get; set; }
         public string Nombre { get; set; }
-        public List<Producto> Productos { get; set; }
+        public List<DetalleCombo> Productos { get; set; }
         public string Descripcion { get; set; }
         public int DiasAnticipo { get; set; }
         public decimal Precio { get; set; }

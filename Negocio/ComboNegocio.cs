@@ -23,6 +23,7 @@ namespace Negocio
                 while (accesoDatos.Lector.Read())
                 {
                     nuevo = new Combo();
+                    nuevo.Productos = new List<DetalleCombo>();
                     nuevo.ID = accesoDatos.Lector.GetInt32(0);
                     nuevo.Nombre = accesoDatos.Lector.GetString(1);
                     nuevo.Descripcion = accesoDatos.Lector.GetString(2);
@@ -31,7 +32,7 @@ namespace Negocio
                     nuevo.Estado = accesoDatos.Lector.GetBoolean(6);
                     if(!Convert.IsDBNull(accesoDatos.Lector["RUTA"]))
                         nuevo.RutaImagen = accesoDatos.Lector.GetString(5);
-                    listarProductos(nuevo);
+                    listarProductosXCombo(nuevo);
                     listado.Add(nuevo);
                 }
                 return listado;
@@ -58,6 +59,7 @@ namespace Negocio
                 while (accesoDatos.Lector.Read())
                 {
                     nuevo = new Combo();
+                    nuevo.Productos = new List<DetalleCombo>();
                     nuevo.ID = accesoDatos.Lector.GetInt32(0);
                     nuevo.Nombre = accesoDatos.Lector.GetString(1);
                     nuevo.Descripcion = accesoDatos.Lector.GetString(2);
@@ -66,7 +68,7 @@ namespace Negocio
                     nuevo.Estado = accesoDatos.Lector.GetBoolean(6);
                     if (!Convert.IsDBNull(accesoDatos.Lector["RUTA"]))
                         nuevo.RutaImagen = accesoDatos.Lector.GetString(5);
-                    listarProductos(nuevo);
+                    listarProductosXCombo(nuevo);
                 }
                 return nuevo;
             }
@@ -80,20 +82,25 @@ namespace Negocio
             }
         }
 
-        private void listarProductos(Combo cmb)
+        private void listarProductosXCombo(Combo cmb)
         {
             AccesoDatosManager accesoDatos = new AccesoDatosManager();
+            ProductoNegocio negocioP = new ProductoNegocio();
             try
             {
-                accesoDatos.setearConsulta("SELECT P.* FROM PRODUCTOS AS P INNER JOIN PRODUCTOS_X_COMBO AS PC ON PC.IDPRODUCTO = P.ID WHERE PC.IDCOMBO = " + cmb.ID);
+                accesoDatos.setearConsulta("SELECT PC.* FROM PRODUCTOS AS P INNER JOIN PRODUCTOS_X_COMBO AS PC ON PC.IDPRODUCTO = P.ID WHERE  PC.IDCOMBO = " + cmb.ID);
                 accesoDatos.abrirConexion();
                 accesoDatos.ejecutarConsulta();
-                cmb.Productos = new List<Producto>();
+                DetalleCombo nuevo;
                 while(accesoDatos.Lector.Read())
                 {
-                    Producto nuevo = new Producto();
-                    nuevo.ID = accesoDatos.Lector.GetInt32(0);
-                    nuevo.Nombre= accesoDatos.Lector.GetString(2);
+                    nuevo = new DetalleCombo();
+                    nuevo.Producto = new Producto();
+                    nuevo.Producto = negocioP.listarProducto(accesoDatos.Lector.GetInt32(1));
+                    if (!Convert.IsDBNull(accesoDatos.Lector["UNIDADES"]))
+                        nuevo.Unidades = accesoDatos.Lector.GetInt32(2);
+                    if (!Convert.IsDBNull(accesoDatos.Lector["KILOS"]))
+                        nuevo.Kilos = accesoDatos.Lector.GetDecimal(3);
                     cmb.Productos.Add(nuevo);
                 }
             }
@@ -117,7 +124,7 @@ namespace Negocio
                 accesoDatos.Comando.Parameters.AddWithValue("@Descripcion", nuevo.Descripcion);
                 accesoDatos.Comando.Parameters.AddWithValue("@DiasAnticipo", nuevo.DiasAnticipo);
                 accesoDatos.Comando.Parameters.AddWithValue("@Precio", nuevo.Precio);
-                accesoDatos.Comando.Parameters.AddWithValue("@RutaImg", nuevo.RutaImagen);
+                accesoDatos.Comando.Parameters.AddWithValue("@RutaImg", esNulo(nuevo.RutaImagen));
                 accesoDatos.abrirConexion();
                 return accesoDatos.ejecutarAccionReturn();
             }
@@ -141,7 +148,7 @@ namespace Negocio
                 accesoDatos.Comando.Parameters.AddWithValue("@Descripcion", cmb.Descripcion);
                 accesoDatos.Comando.Parameters.AddWithValue("@DiasAnticipo", cmb.DiasAnticipo);
                 accesoDatos.Comando.Parameters.AddWithValue("@Precio", cmb.Precio);
-                accesoDatos.Comando.Parameters.AddWithValue("@RutaImg", cmb.RutaImagen);
+                accesoDatos.Comando.Parameters.AddWithValue("@RutaImg", esNulo(cmb.RutaImagen));
                 accesoDatos.abrirConexion();
                 accesoDatos.ejecutarAccion();
             }
@@ -190,6 +197,18 @@ namespace Negocio
             finally
             {
                 accesoDatos.cerrarConexion();
+            }
+        }
+
+        private object esNulo(object campo)
+        {
+            if(campo == null)
+            {
+                return DBNull.Value;
+            }
+            else
+            {
+                return campo;
             }
         }
 

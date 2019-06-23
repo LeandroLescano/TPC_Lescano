@@ -30,14 +30,18 @@ namespace Negocio
                     if (!Convert.IsDBNull(accesoDatos.Lector["MARCA"]))
                         nuevo.Marca.Nombre = accesoDatos.Lector.GetString(2);
                     nuevo.PrecioUnitario = accesoDatos.Lector.GetDecimal(3);
-                    nuevo.Cantidad = accesoDatos.Lector.GetInt32(4);
+                    nuevo.Cantidad = accesoDatos.Lector.GetDecimal(4);
                     nuevo.Categoria = new Categoria();
                     nuevo.Categoria.Nombre = accesoDatos.Lector["CATEGORIA"].ToString();
                     nuevo.Fraccionable = accesoDatos.Lector.GetBoolean(6);
-                    nuevo.Peso = Convert.ToDecimal(accesoDatos.Lector.GetString(7).Replace('.', ','));
+                    nuevo.Peso = accesoDatos.Lector.GetDecimal(7);
                     nuevo.PorcentajeGanancia = Convert.ToDecimal(accesoDatos.Lector.GetString(8).Replace('.', ','));
                     nuevo.Estado = accesoDatos.Lector.GetBoolean(9);
                     agregarProveedores(nuevo);
+                    if (!nuevo.Fraccionable)
+                    {
+                        nuevo.Cantidad = Math.Round(nuevo.Cantidad, 0);
+                    }
                     listado.Add(nuevo);
                 }
                 return listado;
@@ -60,7 +64,7 @@ namespace Negocio
                 int Fraccionable = 0;
                 if (nuevo.Fraccionable)
                     Fraccionable = 1;
-                accesoDatos.setearConsulta("INSERT INTO PRODUCTOS (NOMBRE, PRECIOUNITARIO, STOCK, IDCATEGORIA, IDMARCA, FRACCIONABLE, PESO, PORCENTAJEGANANCIA) VALUES ('" + nuevo.Nombre + "'," + nuevo.PrecioUnitario + ", " + nuevo.Cantidad + ", " + IDCategoria + ", " + IDMarca + ", " + Fraccionable + ", replace('" + nuevo.Peso.ToString() + "',',','.'), replace('" + nuevo.PorcentajeGanancia.ToString() + "',',','.'))");
+                accesoDatos.setearConsulta("INSERT INTO PRODUCTOS (NOMBRE, PRECIOUNITARIO, STOCK, IDCATEGORIA, IDMARCA, FRACCIONABLE, PESO, PORCENTAJEGANANCIA) VALUES ('" + nuevo.Nombre + "'," + nuevo.PrecioUnitario + ", replace('" + nuevo.Cantidad + "',',','.'), " + IDCategoria + ", " + IDMarca + ", " + Fraccionable + ", replace('" + nuevo.Peso.ToString() + "',',','.'), replace('" + nuevo.PorcentajeGanancia.ToString() + "',',','.'))");
                 accesoDatos.abrirConexion();
                 accesoDatos.ejecutarAccion();
             }
@@ -92,7 +96,7 @@ namespace Negocio
                 accesoDatos.Comando.Parameters.Clear();
                 accesoDatos.Comando.Parameters.AddWithValue("@Nombre", modif.Nombre);
                 accesoDatos.Comando.Parameters.AddWithValue("@PrecioUnit", modif.PrecioUnitario);
-                accesoDatos.Comando.Parameters.AddWithValue("@Stock", modif.Cantidad);
+                accesoDatos.Comando.Parameters.AddWithValue("@Stock", modif.Cantidad.ToString().Replace(',','.'));
                 accesoDatos.Comando.Parameters.AddWithValue("@IDCat", IDCategoria);
                 accesoDatos.Comando.Parameters.AddWithValue("@IDMarca", IDMarca);
                 accesoDatos.Comando.Parameters.AddWithValue("@Fraccionable", Fraccionable);
@@ -224,12 +228,17 @@ namespace Negocio
                     if (!Convert.IsDBNull(accesoDatos.Lector["MARCA"]))
                         nuevo.Marca.Nombre = accesoDatos.Lector.GetString(2);
                     nuevo.PrecioUnitario = accesoDatos.Lector.GetDecimal(3);
+                    nuevo.Cantidad = (decimal)accesoDatos.Lector["STOCK"];
                     nuevo.Categoria = new Categoria();
                     nuevo.Categoria.Nombre = accesoDatos.Lector["CATEGORIA"].ToString();
                     nuevo.Fraccionable = accesoDatos.Lector.GetBoolean(6);
-                    nuevo.Peso = Convert.ToDecimal(accesoDatos.Lector.GetString(7).Replace('.', ','));
+                    nuevo.Peso = accesoDatos.Lector.GetDecimal(7);
                     nuevo.PorcentajeGanancia = Convert.ToDecimal(accesoDatos.Lector.GetString(8).Replace('.', ','));
                     nuevo.Estado = accesoDatos.Lector.GetBoolean(9);
+                    if(nuevo.Fraccionable)
+                    {
+                        Math.Round(nuevo.Cantidad, 0);
+                    }
                     agregarProveedores(nuevo);
                 }
                 return nuevo;
@@ -244,14 +253,44 @@ namespace Negocio
             }
         }
 
-        //PRODUCTOS X COMBO
-
-        public void agregarProdXCombo(Combo cmb, Producto prod)
+        public void descontarStock(Producto prod, int unidades, decimal kilos)
         {
             AccesoDatosManager accesoDatos = new AccesoDatosManager();
             try
             {
-                accesoDatos.setearConsulta("INSERT INTO PRODUCTOS_X_COMBO (IDCOMBO, IDPRODUCTO) VALUES ("+cmb.ID+", "+prod.ID+")");
+                decimal stockActual;
+                if (prod.Fraccionable)
+                {
+                    stockActual = prod.Cantidad - unidades - kilos;
+                }
+                else
+                {
+                    stockActual = prod.Cantidad - kilos;
+                }
+                accesoDatos.setearConsulta("UPDATE PRODUCTOS Set STOCK=@Stock WHERE ID=" + prod.ID.ToString());
+                accesoDatos.Comando.Parameters.Clear();
+                accesoDatos.Comando.Parameters.AddWithValue("@Stock", stockActual.ToString().Replace(',', '.'));
+                accesoDatos.abrirConexion();
+                accesoDatos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+        }
+
+        //PRODUCTOS X COMBO
+
+        public void agregarProdXCombo(Combo cmb, DetalleCombo prod)
+        {
+            AccesoDatosManager accesoDatos = new AccesoDatosManager();
+            try
+            {
+                accesoDatos.setearConsulta("INSERT INTO PRODUCTOS_X_COMBO (IDCOMBO, IDPRODUCTO, UNIDADES, KILOS) VALUES ("+cmb.ID+", "+prod.Producto.ID+", "+prod.Unidades+ ", "+prod.Kilos+")");
                 accesoDatos.abrirConexion();
                 accesoDatos.ejecutarAccion();
             }

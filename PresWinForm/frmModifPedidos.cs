@@ -29,6 +29,9 @@ namespace PresWinForm
             cmbEstado.Items.Add("A revisar");
             cmbEstado.Items.Add("Aceptado");
             cmbEstado.Items.Add("Rechazado");
+            cmbEstado.Items.Add("En preparación");
+            cmbEstado.Items.Add("Listo para retirar");
+            cmbEstado.Items.Add("Entregado");
             cmbEstado.SelectedIndex = cmbEstado.FindString(local.Estado);
             txtEstado.Text = local.Estado;
             txtID.Text = local.ID.ToString();
@@ -41,12 +44,34 @@ namespace PresWinForm
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
+            ProductoNegocio negocioP = new ProductoNegocio();
             local.Estado = cmbEstado.SelectedItem.ToString();
-            MailNegocio negocio = new MailNegocio();
-            if(negocio.mandarMail(local.Cliente.Mails[0].Direccion, local, txtComentario.Text))
+            if(local.Estado == "Entregado")
             {
+                foreach (DetalleCombo item in local.Combo.Productos)
+                {
+                    negocioP.descontarStock(item.Producto, item.Unidades, item.Kilos);
+                }
+            }
+            Cursor.Current = Cursors.WaitCursor;
+            MailNegocio negocio = new MailNegocio();
+            if (negocio.mandarMail(local.Cliente.Mails[0].Direccion, local, txtComentario.Text))
+            {
+                Cursor.Current = Cursors.Default;
                 MessageBox.Show("El mail ha sido enviado correctamente.","Confirmación");
             }
+            this.Close();
+        }
+
+        private void btnDetalles_Click(object sender, EventArgs e)
+        {
+            frmAltaModifCombo verCombo = new frmAltaModifCombo(local.Combo, true);
+            verCombo.ShowDialog();
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

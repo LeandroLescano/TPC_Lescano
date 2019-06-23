@@ -48,6 +48,7 @@
             this.lblComentario = new System.Windows.Forms.Label();
             this.cmbEstado = new System.Windows.Forms.ComboBox();
             this.lblMail = new System.Windows.Forms.Label();
+            this.btnDetalles = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblCombo
@@ -183,18 +184,19 @@
             // 
             this.btnCancelar.AutoSize = true;
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.Location = new System.Drawing.Point(542, 333);
+            this.btnCancelar.Location = new System.Drawing.Point(607, 333);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 27);
             this.btnCancelar.TabIndex = 17;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnModificar
             // 
             this.btnModificar.AutoSize = true;
             this.btnModificar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnModificar.Location = new System.Drawing.Point(368, 333);
+            this.btnModificar.Location = new System.Drawing.Point(433, 333);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(143, 27);
             this.btnModificar.TabIndex = 16;
@@ -214,7 +216,7 @@
             // txtComentario
             // 
             this.txtComentario.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtComentario.Location = new System.Drawing.Point(351, 40);
+            this.txtComentario.Location = new System.Drawing.Point(416, 40);
             this.txtComentario.Multiline = true;
             this.txtComentario.Name = "txtComentario";
             this.txtComentario.Size = new System.Drawing.Size(324, 92);
@@ -224,7 +226,7 @@
             // 
             this.lblComentario.AutoSize = true;
             this.lblComentario.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblComentario.Location = new System.Drawing.Point(348, 20);
+            this.lblComentario.Location = new System.Drawing.Point(413, 20);
             this.lblComentario.Name = "lblComentario";
             this.lblComentario.Size = new System.Drawing.Size(80, 17);
             this.lblComentario.TabIndex = 20;
@@ -235,7 +237,7 @@
             this.cmbEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbEstado.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbEstado.FormattingEnabled = true;
-            this.cmbEstado.Location = new System.Drawing.Point(351, 155);
+            this.cmbEstado.Location = new System.Drawing.Point(416, 155);
             this.cmbEstado.Name = "cmbEstado";
             this.cmbEstado.Size = new System.Drawing.Size(324, 24);
             this.cmbEstado.TabIndex = 21;
@@ -243,17 +245,30 @@
             // lblMail
             // 
             this.lblMail.AutoSize = true;
-            this.lblMail.Location = new System.Drawing.Point(351, 186);
+            this.lblMail.Location = new System.Drawing.Point(416, 186);
             this.lblMail.Name = "lblMail";
             this.lblMail.Size = new System.Drawing.Size(83, 13);
             this.lblMail.TabIndex = 22;
             this.lblMail.Text = "Mail del cliente: ";
             // 
+            // btnDetalles
+            // 
+            this.btnDetalles.AutoSize = true;
+            this.btnDetalles.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDetalles.Location = new System.Drawing.Point(296, 61);
+            this.btnDetalles.Name = "btnDetalles";
+            this.btnDetalles.Size = new System.Drawing.Size(69, 27);
+            this.btnDetalles.TabIndex = 23;
+            this.btnDetalles.Text = "Detalles";
+            this.btnDetalles.UseVisualStyleBackColor = true;
+            this.btnDetalles.Click += new System.EventHandler(this.btnDetalles_Click);
+            // 
             // frmModifPedidos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(687, 371);
+            this.ClientSize = new System.Drawing.Size(751, 371);
+            this.Controls.Add(this.btnDetalles);
             this.Controls.Add(this.lblMail);
             this.Controls.Add(this.cmbEstado);
             this.Controls.Add(this.lblComentario);
@@ -304,5 +319,6 @@
         private System.Windows.Forms.Label lblComentario;
         private System.Windows.Forms.ComboBox cmbEstado;
         private System.Windows.Forms.Label lblMail;
+        private System.Windows.Forms.Button btnDetalles;
     }
 }

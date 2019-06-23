@@ -51,6 +51,8 @@
             this.txtBusqueda = new System.Windows.Forms.TextBox();
             this.lblBusquedaNombre = new System.Windows.Forms.Label();
             this.lblCategoria = new System.Windows.Forms.Label();
+            this.btnCantidades = new System.Windows.Forms.Button();
+            this.lblCosto = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picImagen)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudPrecio)).BeginInit();
             this.SuspendLayout();
@@ -144,10 +146,11 @@
             // 
             this.clbProductos.CheckOnClick = true;
             this.clbProductos.FormattingEnabled = true;
-            this.clbProductos.Location = new System.Drawing.Point(340, 58);
+            this.clbProductos.Location = new System.Drawing.Point(340, 56);
             this.clbProductos.Name = "clbProductos";
-            this.clbProductos.Size = new System.Drawing.Size(335, 229);
+            this.clbProductos.Size = new System.Drawing.Size(335, 199);
             this.clbProductos.TabIndex = 4;
+            this.clbProductos.Click += new System.EventHandler(this.clbProductos_Click);
             // 
             // btnAgregar
             // 
@@ -276,11 +279,34 @@
             this.lblCategoria.TabIndex = 14;
             this.lblCategoria.Text = "Categoria";
             // 
+            // btnCantidades
+            // 
+            this.btnCantidades.AutoSize = true;
+            this.btnCantidades.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCantidades.Location = new System.Drawing.Point(340, 261);
+            this.btnCantidades.Name = "btnCantidades";
+            this.btnCantidades.Size = new System.Drawing.Size(89, 27);
+            this.btnCantidades.TabIndex = 15;
+            this.btnCantidades.Text = "Cantidades";
+            this.btnCantidades.UseVisualStyleBackColor = true;
+            this.btnCantidades.Click += new System.EventHandler(this.btnCantidades_Click);
+            // 
+            // lblCosto
+            // 
+            this.lblCosto.AutoSize = true;
+            this.lblCosto.Location = new System.Drawing.Point(129, 226);
+            this.lblCosto.Name = "lblCosto";
+            this.lblCosto.Size = new System.Drawing.Size(49, 13);
+            this.lblCosto.TabIndex = 16;
+            this.lblCosto.Text = "Costo : $";
+            // 
             // frmAltaModifCombo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1052, 298);
+            this.Controls.Add(this.lblCosto);
+            this.Controls.Add(this.btnCantidades);
             this.Controls.Add(this.lblCategoria);
             this.Controls.Add(this.lblBusquedaNombre);
             this.Controls.Add(this.txtBusqueda);
@@ -338,5 +364,7 @@
         private System.Windows.Forms.TextBox txtBusqueda;
         private System.Windows.Forms.Label lblBusquedaNombre;
         private System.Windows.Forms.Label lblCategoria;
+        private System.Windows.Forms.Button btnCantidades;
+        private System.Windows.Forms.Label lblCosto;
     }
 }

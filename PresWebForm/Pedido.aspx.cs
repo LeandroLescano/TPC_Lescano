@@ -14,7 +14,7 @@ namespace PresWebForm
         public List<Combo> combos;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(Session["ClienteID"] != null)
+            if (Session["ClienteID"] != null)
             {
                 ClienteID.Value = Session["ClienteID"].ToString();
             }
@@ -57,7 +57,6 @@ namespace PresWebForm
             Pedido nuevo = new Pedido();
             nuevo.Cliente = new Cliente();
             nuevo.Combo = new Combo();
-            //Falta hacer el ingreso del Cliente a la página
             nuevo.Cliente.ID = Convert.ToInt32(ClienteID.Value);
             nuevo.Combo = combos[Convert.ToInt32(ComboID.Value)];
             nuevo.Observacion = txtObservaciones.Text;
@@ -84,6 +83,52 @@ namespace PresWebForm
                 return "No existe";
             }
 
+        }
+
+        [System.Web.Services.WebMethod]
+        public static string registrarCliente(string Nom, string Ape, string DNI, string Usuario, string Pass, string Mail, string Tel, string fechaNac)
+        {
+            ClienteNegocio negocioC = new ClienteNegocio();
+            MailNegocio negocioM = new MailNegocio();
+            TelefonoNegocio negocioT = new TelefonoNegocio();
+            UsuarioNegocio negocioU = new UsuarioNegocio();
+
+            Cliente nuevo = new Cliente();
+            nuevo.TipoPersona = new TipoPersona();
+            nuevo.TipoPersona.Fisica = true;
+            nuevo.Domicilio = new Domicilio();
+            nuevo.Usuario = new Usuario();
+            nuevo.Telefonos = new List<Telefono>();
+            nuevo.Mails = new List<Mail>();
+
+            nuevo.Nombre = Nom;
+            nuevo.Apellido = Ape;
+            nuevo.DNI = DNI;
+            nuevo.FechaNacimiento = Convert.ToDateTime(fechaNac);
+            nuevo.Usuario.Nombre = Usuario;
+            nuevo.Usuario.Contraseña = Pass;
+
+            Telefono telefono = new Telefono();
+            telefono.Numero = Tel;
+            nuevo.Telefonos.Add(telefono);
+
+            Mail mail = new Mail();
+            mail.Descripcion = Nom + ", " + Ape;
+            mail.Direccion = Mail;
+            nuevo.Mails.Add(mail);
+
+            nuevo.Usuario.ID = negocioU.agregarUsuario(nuevo.Usuario);
+
+            negocioC.agregarCliente(nuevo);
+
+            int idMail = negocioM.agregarMail(nuevo.Mails[0]);
+            negocioC.agregarMailXCliente(nuevo, idMail);
+
+            int idTel = negocioT.agregarTelefono(nuevo.Telefonos[0]);
+            negocioC.agregarTelefonoXCliente(nuevo, idTel);
+
+            HttpContext.Current.Session.Add("ClienteID", nuevo.ID);
+            return nuevo.Nombre;
         }
     }
 }

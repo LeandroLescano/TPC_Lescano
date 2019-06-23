@@ -60,23 +60,35 @@
     border-color: rgba(0,0,0,0.2);
 }
 
-/*DATEPICKER*/
-/* Removes the clear button from date inputs */
+/*INPUT: NUMBER*/
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+
+/*DATEPICKER
+#dtpFechaEntrega {
+    display: inline-block;
+    margin: .5em .5em;
+    vertical-align: middle;
+}
+
 input[type="date"]::-webkit-clear-button {
     display: none;
 }
 
-/* Removes the spin button */
+
 input[type="date"]::-webkit-inner-spin-button {
     display: none;
 }
 
-/* Always display the drop down caret */
+
 input[type="date"]::-webkit-calendar-picker-indicator {
     color: #2c3e50;
 }
 
-/* A few custom styles for date inputs */
 input[type="date"] {
     appearance: none;
     -webkit-appearance: none;
@@ -85,7 +97,7 @@ input[type="date"] {
     font-size: 15px;
     border: 1px solid #ecf0f1;
     background: #721c24;
-    border-radius: 8px;
+    border-radius: 5px;
     padding: 5px;
     display: inline-block !important;
     visibility: visible !important;
@@ -96,7 +108,7 @@ input[type="date"], focus {
     box-shadow: none;
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
-}
+} */
 
 
 /* MODAL */

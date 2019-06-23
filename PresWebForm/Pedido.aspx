@@ -20,10 +20,30 @@
                 document.getElementById("<%=lblDescripcion.ClientID%>").innerText = combosJs[id].Descripcion;
                 document.getElementById("<%=lblPrecio.ClientID%>").innerText = "Precio: $" + combosJs[id].Precio;
                 document.getElementById("<%=lblDias.ClientID%>").innerText = "La podrás retirar en: " + combosJs[id].DiasAnticipo + " días";
-                document.getElementById("<%=ComboID.ClientID%>").value = combosJs[id].ID;
+                document.getElementById("<%=ComboID.ClientID%>").value = id;
+
+                var hoy = new Date();
+                var dd = String(hoy.getDate()).padStart(2, '0');
+                var mm = String(hoy.getMonth() + 1).padStart(2, '0');
+                var yyyy = hoy.getFullYear();
+                var diasAnticipo = Number(combosJs[id].DiasAnticipo);
+
+                dd = String(Number(dd) + diasAnticipo);
+
+                hoy = dd + '/' + mm + '/' + yyyy;
+
+                $('#MainContent_dtpFechaEntrega').datepicker('destroy');
+
+                $('#MainContent_dtpFechaEntrega').datepicker({
+                    language: "es",
+                    daysOfWeekDisabled: "0",
+                    startDate: hoy
+                });
             };
 
             window.onload = cargarDesc();
+
+
         });
     </script>
     <div class="container">
@@ -60,8 +80,9 @@
                 <table style="height: 50px;">
                     <tbody>
                         <tr>
-                            <td class="align-middle"><h4 style="margin-bottom:0px;">Lo retiro el: </h4></td>
-                            <td><asp:TextBox ID="dtpFechaEntrega" type="date" runat="server" CssClass="float-left"></asp:TextBox></td>
+                            <td class="align-middle"><h4 style="margin-bottom: 0px;">Lo retiro el: </h4></td>
+                            <td><asp:TextBox ID="dtpFechaEntrega" runat="server" class="form-control" placeholder="DD/MM/YYYY"></asp:TextBox></td>
+                                <%--<input type='text' class="form-control" id='dtpFechaEntrega' placeholder="DD/MM/YYYY" />--%>
                         </tr>
                     </tbody>
                 </table>

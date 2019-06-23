@@ -190,18 +190,18 @@ namespace Negocio
                 {
                     IDTipoPersona = 2;
                 }
-                accesoDatos.setearConsulta("INSERT INTO CLIENTES (APELLIDOS, NOMBRES, RAZONSOCIAL, DNI, CUIT, FECHNAC, IDDOMICILIO, IDUSUARIO, IDTIPOPERSONA) VALUES (@Apellido, @Nombre, @RazonSocial, @DNI, @CUIT, @FechNac, @Domicilio, @Usuario, @TipoPersona)");
+                accesoDatos.setearConsulta("INSERT INTO CLIENTES (APELLIDOS, NOMBRES, RAZONSOCIAL, DNI, CUIT, FECHNAC, IDDOMICILIO, IDUSUARIO, IDTIPOPERSONA) VALUES (@Apellido, @Nombre, @RazonSocial, @DNI, @CUIT, @FechNac, @Domicilio, @Usuario, @TipoPersona) SELECT SCOPE_IDENTITY();");
                 accesoDatos.Comando.Parameters.AddWithValue("@Apellido", esNuloNT(nuevo.Apellido));
                 accesoDatos.Comando.Parameters.AddWithValue("@Nombre", esNuloNT(nuevo.Nombre));
                 accesoDatos.Comando.Parameters.AddWithValue("@RazonSocial", esNuloNT(nuevo.RazonSocial));
                 accesoDatos.Comando.Parameters.AddWithValue("@DNI", nuevo.DNI);
-                accesoDatos.Comando.Parameters.AddWithValue("@CUIT", nuevo.CUIT);
+                accesoDatos.Comando.Parameters.AddWithValue("@CUIT", esNuloNT(nuevo.CUIT));
                 accesoDatos.Comando.Parameters.AddWithValue("@FechNac", esNulo(nuevo.FechaNacimiento));
                 accesoDatos.Comando.Parameters.AddWithValue("@Domicilio", esNulo(nuevo.Domicilio.ID));
                 accesoDatos.Comando.Parameters.AddWithValue("@Usuario", esNulo(nuevo.Usuario.ID));
                 accesoDatos.Comando.Parameters.AddWithValue("@TipoPersona", IDTipoPersona);
                 accesoDatos.abrirConexion();
-                accesoDatos.ejecutarAccion();
+                nuevo.ID = accesoDatos.ejecutarAccionReturn();
             }
             catch (Exception ex)
             {
@@ -457,6 +457,7 @@ namespace Negocio
                 return campo;
         }
 
+        //USUARIO POR CLIENTE
         public int verificarUsuario(string UDNI, string PASS)
         {
             AccesoDatosManager accesoDatos = new AccesoDatosManager();

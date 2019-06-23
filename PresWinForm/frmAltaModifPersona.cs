@@ -375,6 +375,11 @@ namespace PresWinForm
                         local.Domicilio.ID = negocioDoc.agregarDomicilio(local.Domicilio);
                     }
 
+                    if (Tipo == 'P')
+                        negocioProv.agregarProveedor((Proveedor)local);
+                    else
+                        negocioCli.agregarCliente((Cliente)local);
+
                     //Mail
                     for (int i = 0; i < local.Mails.Count; i++)
                     {
@@ -394,11 +399,6 @@ namespace PresWinForm
                         else
                             negocioCli.agregarTelefonoXCliente((Cliente)local, idMail);
                     }
-
-                    if (Tipo == 'P')
-                        negocioProv.agregarProveedor((Proveedor)local);
-                    else
-                        negocioCli.agregarCliente((Cliente)local);
                     Close();
                 }
             }
