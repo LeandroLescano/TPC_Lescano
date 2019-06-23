@@ -19,6 +19,7 @@ namespace PresWinForm
         List<Producto> seleccionados = new List<Producto>();
         private List<Producto> listaProd = new List<Producto>();
         private List<Categoria> listaCat;
+
         public frmAltaModifCombo()
         {
             InitializeComponent();
@@ -71,6 +72,7 @@ namespace PresWinForm
                         if (clbProductos.SelectedItem.ToString() == prod.Producto.Nombre)
                         {
                             clbProductos.SetItemChecked(i, true);
+                            seleccionados.Add(prod.Producto);
                         }
 
                     }
@@ -231,6 +233,25 @@ namespace PresWinForm
             {
                 clbProductos.DataSource = listaProd;
             }
+
+            for (int i = 0; i <= clbProductos.Items.Count - 1; i++)
+            {
+                clbProductos.SetSelected(i, true);
+                clbProductos.SetItemChecked(i, false);
+
+            }
+
+            foreach (Producto prod in seleccionados)
+            {
+                for (int i = 0; i <= clbProductos.Items.Count - 1; i++)
+                {
+                    clbProductos.SetSelected(i, true);
+                    if (clbProductos.SelectedItem.ToString() == prod.Nombre)
+                    {
+                        clbProductos.SetItemChecked(i, true);
+                    }
+                }
+            }
         }
 
         private void cargarComboCategorias()
@@ -263,9 +284,17 @@ namespace PresWinForm
             int index = clbProductos.SelectedIndex;
             //Van al reves ya que apenas hace click el check del item no cambia de estado.
             //clbProductos_ItemChek no me sirve en este caso ya que cuando se refresca la grilla
-            //los chequeo con una función y me activa ese método
-            if (clbProductos.GetItemCheckState(index) == CheckState.Checked && seleccionados.Count > 0)
+            //les hago check con una función y me activa ese método
+            if (clbProductos.GetItemCheckState(index) == CheckState.Checked && seleccionados.Count >= 0)
             {
+                foreach (var item in seleccionados)
+                {
+                    if(item.Nombre == seleccionado.Nombre)
+                    {
+                        seleccionados.RemoveAt(seleccionados.IndexOf(item));
+                        return;
+                    }
+                }
                 seleccionados.RemoveAt(seleccionados.IndexOf(seleccionado));
             }
             else
