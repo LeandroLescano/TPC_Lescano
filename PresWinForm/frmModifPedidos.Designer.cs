@@ -49,13 +49,15 @@
             this.cmbEstado = new System.Windows.Forms.ComboBox();
             this.lblMail = new System.Windows.Forms.Label();
             this.btnDetalles = new System.Windows.Forms.Button();
+            this.dtpFechaSolicitud = new System.Windows.Forms.DateTimePicker();
+            this.lblFechaSolicitud = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblCombo
             // 
             this.lblCombo.AutoSize = true;
             this.lblCombo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCombo.Location = new System.Drawing.Point(12, 66);
+            this.lblCombo.Location = new System.Drawing.Point(12, 58);
             this.lblCombo.Name = "lblCombo";
             this.lblCombo.Size = new System.Drawing.Size(56, 17);
             this.lblCombo.TabIndex = 0;
@@ -65,7 +67,7 @@
             // 
             this.lblCliente.AutoSize = true;
             this.lblCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCliente.Location = new System.Drawing.Point(12, 158);
+            this.lblCliente.Location = new System.Drawing.Point(12, 134);
             this.lblCliente.Name = "lblCliente";
             this.lblCliente.Size = new System.Drawing.Size(55, 17);
             this.lblCliente.TabIndex = 1;
@@ -75,7 +77,7 @@
             // 
             this.lblPrecio.AutoSize = true;
             this.lblPrecio.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPrecio.Location = new System.Drawing.Point(12, 112);
+            this.lblPrecio.Location = new System.Drawing.Point(12, 96);
             this.lblPrecio.Name = "lblPrecio";
             this.lblPrecio.Size = new System.Drawing.Size(52, 17);
             this.lblPrecio.TabIndex = 2;
@@ -85,7 +87,7 @@
             // 
             this.lblFechRetiro.AutoSize = true;
             this.lblFechRetiro.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFechRetiro.Location = new System.Drawing.Point(12, 204);
+            this.lblFechRetiro.Location = new System.Drawing.Point(12, 212);
             this.lblFechRetiro.Name = "lblFechRetiro";
             this.lblFechRetiro.Size = new System.Drawing.Size(108, 17);
             this.lblFechRetiro.TabIndex = 3;
@@ -95,7 +97,7 @@
             // 
             this.lblEstado.AutoSize = true;
             this.lblEstado.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEstado.Location = new System.Drawing.Point(12, 250);
+            this.lblEstado.Location = new System.Drawing.Point(12, 248);
             this.lblEstado.Name = "lblEstado";
             this.lblEstado.Size = new System.Drawing.Size(56, 17);
             this.lblEstado.TabIndex = 4;
@@ -134,7 +136,7 @@
             // txtCombo
             // 
             this.txtCombo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCombo.Location = new System.Drawing.Point(133, 63);
+            this.txtCombo.Location = new System.Drawing.Point(133, 55);
             this.txtCombo.Name = "txtCombo";
             this.txtCombo.ReadOnly = true;
             this.txtCombo.Size = new System.Drawing.Size(157, 23);
@@ -143,7 +145,7 @@
             // txtPrecio
             // 
             this.txtPrecio.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPrecio.Location = new System.Drawing.Point(133, 109);
+            this.txtPrecio.Location = new System.Drawing.Point(133, 93);
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.ReadOnly = true;
             this.txtPrecio.Size = new System.Drawing.Size(157, 23);
@@ -152,7 +154,7 @@
             // txtCliente
             // 
             this.txtCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCliente.Location = new System.Drawing.Point(133, 155);
+            this.txtCliente.Location = new System.Drawing.Point(133, 131);
             this.txtCliente.Name = "txtCliente";
             this.txtCliente.ReadOnly = true;
             this.txtCliente.Size = new System.Drawing.Size(157, 23);
@@ -174,7 +176,7 @@
             this.dtpFechRetiro.Enabled = false;
             this.dtpFechRetiro.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpFechRetiro.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpFechRetiro.Location = new System.Drawing.Point(132, 199);
+            this.dtpFechRetiro.Location = new System.Drawing.Point(132, 207);
             this.dtpFechRetiro.MaxDate = new System.DateTime(2500, 12, 31, 0, 0, 0, 0);
             this.dtpFechRetiro.Name = "dtpFechRetiro";
             this.dtpFechRetiro.Size = new System.Drawing.Size(158, 23);
@@ -207,7 +209,7 @@
             // txtEstado
             // 
             this.txtEstado.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEstado.Location = new System.Drawing.Point(132, 247);
+            this.txtEstado.Location = new System.Drawing.Point(132, 245);
             this.txtEstado.Name = "txtEstado";
             this.txtEstado.ReadOnly = true;
             this.txtEstado.Size = new System.Drawing.Size(157, 23);
@@ -263,11 +265,35 @@
             this.btnDetalles.UseVisualStyleBackColor = true;
             this.btnDetalles.Click += new System.EventHandler(this.btnDetalles_Click);
             // 
+            // dtpFechaSolicitud
+            // 
+            this.dtpFechaSolicitud.CustomFormat = "\'  \'dd \'de\'MMM\'del\' yyyy";
+            this.dtpFechaSolicitud.Enabled = false;
+            this.dtpFechaSolicitud.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpFechaSolicitud.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpFechaSolicitud.Location = new System.Drawing.Point(132, 169);
+            this.dtpFechaSolicitud.MaxDate = new System.DateTime(2500, 12, 31, 0, 0, 0, 0);
+            this.dtpFechaSolicitud.Name = "dtpFechaSolicitud";
+            this.dtpFechaSolicitud.Size = new System.Drawing.Size(158, 23);
+            this.dtpFechaSolicitud.TabIndex = 25;
+            // 
+            // lblFechaSolicitud
+            // 
+            this.lblFechaSolicitud.AutoSize = true;
+            this.lblFechaSolicitud.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFechaSolicitud.Location = new System.Drawing.Point(12, 174);
+            this.lblFechaSolicitud.Name = "lblFechaSolicitud";
+            this.lblFechaSolicitud.Size = new System.Drawing.Size(106, 17);
+            this.lblFechaSolicitud.TabIndex = 24;
+            this.lblFechaSolicitud.Text = "Fecha solicitud:";
+            // 
             // frmModifPedidos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(751, 371);
+            this.Controls.Add(this.dtpFechaSolicitud);
+            this.Controls.Add(this.lblFechaSolicitud);
             this.Controls.Add(this.btnDetalles);
             this.Controls.Add(this.lblMail);
             this.Controls.Add(this.cmbEstado);
@@ -320,5 +346,7 @@
         private System.Windows.Forms.ComboBox cmbEstado;
         private System.Windows.Forms.Label lblMail;
         private System.Windows.Forms.Button btnDetalles;
+        private System.Windows.Forms.DateTimePicker dtpFechaSolicitud;
+        private System.Windows.Forms.Label lblFechaSolicitud;
     }
 }

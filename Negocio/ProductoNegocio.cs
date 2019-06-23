@@ -265,7 +265,7 @@ namespace Negocio
                 }
                 else
                 {
-                    stockActual = prod.Cantidad - kilos;
+                    stockActual = prod.Cantidad - unidades;
                 }
                 accesoDatos.setearConsulta("UPDATE PRODUCTOS Set STOCK=@Stock WHERE ID=" + prod.ID.ToString());
                 accesoDatos.Comando.Parameters.Clear();
@@ -290,7 +290,7 @@ namespace Negocio
             AccesoDatosManager accesoDatos = new AccesoDatosManager();
             try
             {
-                accesoDatos.setearConsulta("INSERT INTO PRODUCTOS_X_COMBO (IDCOMBO, IDPRODUCTO, UNIDADES, KILOS) VALUES ("+cmb.ID+", "+prod.Producto.ID+", "+prod.Unidades+ ", "+prod.Kilos+")");
+                accesoDatos.setearConsulta("INSERT INTO PRODUCTOS_X_COMBO (IDCOMBO, IDPRODUCTO, UNIDADES, KILOS) VALUES ("+cmb.ID+", "+prod.Producto.ID+", "+prod.Unidades+ ", "+prod.Kilos.ToString().Replace(',','.')+")");
                 accesoDatos.abrirConexion();
                 accesoDatos.ejecutarAccion();
             }

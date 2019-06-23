@@ -13,6 +13,7 @@ namespace Dominio
         public string Observacion { get; set; }
         public Cliente Cliente { get; set; }
         public DateTime FechaEntrega { get; set; }
+        public DateTime FechaSolicitud { get; set; }
         public decimal PrecioFinal { get; set; }
         public string Estado { get; set; }
     }

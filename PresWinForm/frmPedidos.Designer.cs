@@ -31,7 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPedidos));
             this.tspMenu = new System.Windows.Forms.ToolStrip();
             this.btnDetalles = new System.Windows.Forms.ToolStripButton();
-            this.btnModificar = new System.Windows.Forms.ToolStripButton();
             this.btnEliminar = new System.Windows.Forms.ToolStripButton();
             this.dgvPedidos = new System.Windows.Forms.DataGridView();
             this.tspMenu.SuspendLayout();
@@ -46,13 +45,12 @@
             this.tspMenu.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.tspMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnDetalles,
-            this.btnModificar,
             this.btnEliminar});
             this.tspMenu.Location = new System.Drawing.Point(0, 0);
             this.tspMenu.Name = "tspMenu";
             this.tspMenu.Padding = new System.Windows.Forms.Padding(0);
             this.tspMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.tspMenu.Size = new System.Drawing.Size(105, 450);
+            this.tspMenu.Size = new System.Drawing.Size(96, 450);
             this.tspMenu.TabIndex = 6;
             this.tspMenu.Text = "tspMenu";
             // 
@@ -66,20 +64,9 @@
             this.btnDetalles.Margin = new System.Windows.Forms.Padding(5, 10, 5, 5);
             this.btnDetalles.MergeIndex = 0;
             this.btnDetalles.Name = "btnDetalles";
-            this.btnDetalles.Size = new System.Drawing.Size(94, 29);
+            this.btnDetalles.Size = new System.Drawing.Size(85, 29);
             this.btnDetalles.Text = "Detalles";
-            // 
-            // btnModificar
-            // 
-            this.btnModificar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.btnModificar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnModificar.Image = ((System.Drawing.Image)(resources.GetObject("btnModificar.Image")));
-            this.btnModificar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnModificar.Margin = new System.Windows.Forms.Padding(5);
-            this.btnModificar.Name = "btnModificar";
-            this.btnModificar.Size = new System.Drawing.Size(94, 29);
-            this.btnModificar.Text = "Modificar";
-            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
+            this.btnDetalles.Click += new System.EventHandler(this.btnDetalles_Click);
             // 
             // btnEliminar
             // 
@@ -132,7 +119,6 @@
 
         private System.Windows.Forms.ToolStrip tspMenu;
         private System.Windows.Forms.ToolStripButton btnDetalles;
-        private System.Windows.Forms.ToolStripButton btnModificar;
         private System.Windows.Forms.ToolStripButton btnEliminar;
         private System.Windows.Forms.DataGridView dgvPedidos;
     }

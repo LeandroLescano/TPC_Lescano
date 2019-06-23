@@ -53,8 +53,22 @@
             this.lblCategoria = new System.Windows.Forms.Label();
             this.btnCantidades = new System.Windows.Forms.Button();
             this.lblCosto = new System.Windows.Forms.Label();
+            this.pnlCantidades = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnSiguiente = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.nudKilos = new System.Windows.Forms.NumericUpDown();
+            this.nudUnidades = new System.Windows.Forms.NumericUpDown();
+            this.txtNombreCant = new System.Windows.Forms.TextBox();
+            this.dgvProductos = new System.Windows.Forms.DataGridView();
+            this.btnAceptarCant = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picImagen)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudPrecio)).BeginInit();
+            this.pnlCantidades.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudKilos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudUnidades)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
             this.SuspendLayout();
             // 
             // lblCodigo
@@ -167,6 +181,7 @@
             // btnCancelar
             // 
             this.btnCancelar.AutoSize = true;
+            this.btnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.Location = new System.Drawing.Point(177, 261);
             this.btnCancelar.Name = "btnCancelar";
@@ -300,11 +315,141 @@
             this.lblCosto.TabIndex = 16;
             this.lblCosto.Text = "Costo : $";
             // 
+            // pnlCantidades
+            // 
+            this.pnlCantidades.Controls.Add(this.btnAceptarCant);
+            this.pnlCantidades.Controls.Add(this.label2);
+            this.pnlCantidades.Controls.Add(this.label1);
+            this.pnlCantidades.Controls.Add(this.btnSiguiente);
+            this.pnlCantidades.Controls.Add(this.label3);
+            this.pnlCantidades.Controls.Add(this.nudKilos);
+            this.pnlCantidades.Controls.Add(this.nudUnidades);
+            this.pnlCantidades.Controls.Add(this.txtNombreCant);
+            this.pnlCantidades.Controls.Add(this.dgvProductos);
+            this.pnlCantidades.Location = new System.Drawing.Point(340, 6);
+            this.pnlCantidades.Name = "pnlCantidades";
+            this.pnlCantidades.Size = new System.Drawing.Size(700, 282);
+            this.pnlCantidades.TabIndex = 17;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(361, 3);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(38, 17);
+            this.label2.TabIndex = 15;
+            this.label2.Text = "Kilos";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(229, 3);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(68, 17);
+            this.label1.TabIndex = 14;
+            this.label1.Text = "Unidades";
+            // 
+            // btnSiguiente
+            // 
+            this.btnSiguiente.AutoSize = true;
+            this.btnSiguiente.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSiguiente.Location = new System.Drawing.Point(490, 22);
+            this.btnSiguiente.Name = "btnSiguiente";
+            this.btnSiguiente.Size = new System.Drawing.Size(86, 30);
+            this.btnSiguiente.TabIndex = 13;
+            this.btnSiguiente.Text = "Siguiente";
+            this.btnSiguiente.UseVisualStyleBackColor = true;
+            this.btnSiguiente.Click += new System.EventHandler(this.btnSiguiente_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(31, 3);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(58, 17);
+            this.label3.TabIndex = 12;
+            this.label3.Text = "Nombre";
+            // 
+            // nudKilos
+            // 
+            this.nudKilos.DecimalPlaces = 4;
+            this.nudKilos.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nudKilos.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            65536});
+            this.nudKilos.Location = new System.Drawing.Point(364, 25);
+            this.nudKilos.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.nudKilos.Name = "nudKilos";
+            this.nudKilos.Size = new System.Drawing.Size(120, 23);
+            this.nudKilos.TabIndex = 11;
+            // 
+            // nudUnidades
+            // 
+            this.nudUnidades.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nudUnidades.Location = new System.Drawing.Point(237, 25);
+            this.nudUnidades.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
+            this.nudUnidades.Name = "nudUnidades";
+            this.nudUnidades.Size = new System.Drawing.Size(120, 23);
+            this.nudUnidades.TabIndex = 10;
+            // 
+            // txtNombreCant
+            // 
+            this.txtNombreCant.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNombreCant.Location = new System.Drawing.Point(35, 25);
+            this.txtNombreCant.Name = "txtNombreCant";
+            this.txtNombreCant.Size = new System.Drawing.Size(195, 23);
+            this.txtNombreCant.TabIndex = 9;
+            // 
+            // dgvProductos
+            // 
+            this.dgvProductos.AllowUserToAddRows = false;
+            this.dgvProductos.AllowUserToDeleteRows = false;
+            this.dgvProductos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvProductos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvProductos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dgvProductos.Location = new System.Drawing.Point(35, 54);
+            this.dgvProductos.MultiSelect = false;
+            this.dgvProductos.Name = "dgvProductos";
+            this.dgvProductos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvProductos.Size = new System.Drawing.Size(541, 223);
+            this.dgvProductos.TabIndex = 8;
+            this.dgvProductos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProductos_CellClick);
+            // 
+            // btnAceptarCant
+            // 
+            this.btnAceptarCant.AutoSize = true;
+            this.btnAceptarCant.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAceptarCant.Location = new System.Drawing.Point(605, 250);
+            this.btnAceptarCant.Name = "btnAceptarCant";
+            this.btnAceptarCant.Size = new System.Drawing.Size(67, 27);
+            this.btnAceptarCant.TabIndex = 16;
+            this.btnAceptarCant.Text = "Aceptar";
+            this.btnAceptarCant.UseVisualStyleBackColor = true;
+            this.btnAceptarCant.Click += new System.EventHandler(this.btnAceptarCant_Click);
+            // 
             // frmAltaModifCombo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.btnCancelar;
             this.ClientSize = new System.Drawing.Size(1052, 298);
+            this.Controls.Add(this.pnlCantidades);
             this.Controls.Add(this.lblCosto);
             this.Controls.Add(this.btnCantidades);
             this.Controls.Add(this.lblCategoria);
@@ -335,6 +480,11 @@
             this.Load += new System.EventHandler(this.frmAltaModifCombo_Load);
             ((System.ComponentModel.ISupportInitialize)(this.picImagen)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudPrecio)).EndInit();
+            this.pnlCantidades.ResumeLayout(false);
+            this.pnlCantidades.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudKilos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudUnidades)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -366,5 +516,15 @@
         private System.Windows.Forms.Label lblCategoria;
         private System.Windows.Forms.Button btnCantidades;
         private System.Windows.Forms.Label lblCosto;
+        private System.Windows.Forms.Panel pnlCantidades;
+        private System.Windows.Forms.Button btnAceptarCant;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnSiguiente;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.NumericUpDown nudKilos;
+        private System.Windows.Forms.NumericUpDown nudUnidades;
+        private System.Windows.Forms.TextBox txtNombreCant;
+        private System.Windows.Forms.DataGridView dgvProductos;
     }
 }

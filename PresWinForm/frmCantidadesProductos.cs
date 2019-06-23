@@ -25,51 +25,51 @@ namespace PresWinForm
 
         private void frmCantidadesProductos_Load(object sender, EventArgs e)
         {
-            txtNombre.Enabled = false;
-            llenarCampos();
-            dgvProductos.Columns["Unidades"].DisplayIndex = 1;
+            //txtNombre.Enabled = false;
+            //llenarCampos();
+            //dgvProductos.Columns["Unidades"].DisplayIndex = 1;
         }
 
         private void btnSiguiente_Click(object sender, EventArgs e)
         {
-            listaLocal[index].Unidades = Convert.ToInt32(nudUnidades.Value);
-            listaLocal[index].Kilos = nudKilos.Value;
-            if (index+1 < listaLocal.Count)
-            {
-                index++;
-            }
-            else
-            {
-                index = 0;
-            }
-            llenarCampos();
+            //    listaLocal[index].Unidades = Convert.ToInt32(nudUnidades.Value);
+            //    listaLocal[index].Kilos = nudKilos.Value;
+            //    if (index+1 < listaLocal.Count)
+            //    {
+            //        index++;
+            //    }
+            //    else
+            //    {
+            //        index = 0;
+            //    }
+            //    llenarCampos();
         }
 
-        private void llenarCampos()
+    private void llenarCampos()
         {
-            dgvProductos.DataSource = listaLocal;
-            dgvProductos.Refresh();
-            txtNombre.Text = listaLocal[index].Producto.Nombre;
-            nudUnidades.Value = listaLocal[index].Unidades;
-            if(listaLocal[index].Producto.Fraccionable)
-            {
-                nudKilos.Enabled = true;
-                nudKilos.Value = listaLocal[index].Kilos;
-            }
-            else
-            {
-                nudKilos.Enabled = false;
-                nudKilos.Value = 0;
-            }
-            dgvProductos.Rows[index].Selected = true;
+            //    dgvProductos.DataSource = listaLocal;
+            //    dgvProductos.Refresh();
+            //    txtNombre.Text = listaLocal[index].Producto.Nombre;
+            //    nudUnidades.Value = listaLocal[index].Unidades;
+            //    if(listaLocal[index].Producto.Fraccionable)
+            //    {
+            //        nudKilos.Enabled = true;
+            //        nudKilos.Value = listaLocal[index].Kilos;
+            //    }
+            //    else
+            //    {
+            //        nudKilos.Enabled = false;
+            //        nudKilos.Value = 0;
+            //    }
+            //    dgvProductos.Rows[index].Selected = true;
         }
 
-        private void dgvProductos_CellClick(object sender, DataGridViewCellEventArgs e)
+    private void dgvProductos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            listaLocal[index].Unidades = Convert.ToInt32(nudUnidades.Value);
-            listaLocal[index].Kilos = nudKilos.Value;
-            index = dgvProductos.CurrentRow.Index;
-            llenarCampos();
+            //listaLocal[index].Unidades = Convert.ToInt32(nudUnidades.Value);
+            //listaLocal[index].Kilos = nudKilos.Value;
+            //index = dgvProductos.CurrentRow.Index;
+            //llenarCampos();
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)

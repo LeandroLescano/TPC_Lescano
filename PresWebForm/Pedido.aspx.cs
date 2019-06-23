@@ -61,6 +61,7 @@ namespace PresWebForm
             nuevo.Combo = combos[Convert.ToInt32(ComboID.Value)];
             nuevo.Observacion = txtObservaciones.Text;
             nuevo.FechaEntrega = Convert.ToDateTime(dtpFechaEntrega.Text);
+            nuevo.FechaSolicitud = System.DateTime.Now;
             nuevo.PrecioFinal = nuevo.Combo.Precio;
             nuevo.Estado = "A revisar";
             negocio.cargarPedido(nuevo);
@@ -76,13 +77,21 @@ namespace PresWebForm
             {
                 HttpContext.Current.Session.Add("ClienteID", IDCliente);
                 cliente = negocio.listarCliente(IDCliente);
-                return cliente.Nombre;
+                return cliente.Nombre + "," + cliente.ID;
             }
             else
             {
                 return "No existe";
             }
+        }
 
+        [System.Web.Services.WebMethod]
+        public static string nombreCliente(int ID)
+        {
+            ClienteNegocio negocio = new ClienteNegocio();
+            Cliente cliente = new Cliente();
+            cliente = negocio.listarCliente(ID);
+            return cliente.Nombre;
         }
 
         [System.Web.Services.WebMethod]

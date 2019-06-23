@@ -36,6 +36,7 @@ namespace PresWinForm
             txtEstado.Text = local.Estado;
             txtID.Text = local.ID.ToString();
             txtCliente.Text = local.Cliente.Apellido + ", " + local.Cliente.Nombre;
+            dtpFechaSolicitud.Value = local.FechaSolicitud;
             dtpFechRetiro.Value = local.FechaEntrega;
             txtCombo.Text = local.Combo.Nombre;
             txtPrecio.Text = local.PrecioFinal.ToString();
@@ -45,6 +46,8 @@ namespace PresWinForm
         private void btnModificar_Click(object sender, EventArgs e)
         {
             ProductoNegocio negocioP = new ProductoNegocio();
+            MailNegocio negocioM = new MailNegocio();
+            PedidoNegocio negocioPed = new PedidoNegocio();
             local.Estado = cmbEstado.SelectedItem.ToString();
             if(local.Estado == "Entregado")
             {
@@ -54,12 +57,12 @@ namespace PresWinForm
                 }
             }
             Cursor.Current = Cursors.WaitCursor;
-            MailNegocio negocio = new MailNegocio();
-            if (negocio.mandarMail(local.Cliente.Mails[0].Direccion, local, txtComentario.Text))
+            if (negocioM.mandarMail(local.Cliente.Mails[0].Direccion, local, txtComentario.Text))
             {
                 Cursor.Current = Cursors.Default;
                 MessageBox.Show("El mail ha sido enviado correctamente.","Confirmación");
             }
+            negocioPed.modificarPedido(local);
             this.Close();
         }
 

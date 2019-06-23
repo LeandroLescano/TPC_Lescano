@@ -11,5 +11,23 @@ namespace PresWebForm {
     
     
     public partial class MisPedidos {
+        
+        /// <summary>
+        /// Control ClienteID.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField ClienteID;
+        
+        /// <summary>
+        /// Control dgvPedidos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView dgvPedidos;
     }
 }

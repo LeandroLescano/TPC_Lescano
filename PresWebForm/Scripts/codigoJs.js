@@ -1,4 +1,92 @@
-﻿function txtLlenos() {
+﻿function verificarUsuario() {
+    var Usuario = document.getElementById("txtUsuario").value;
+    var Password = document.getElementById("txtContraseña").value;
+    $.ajax({
+        type: "POST",
+        url: "pedido.aspx/verificarUsuario",
+        data: JSON.stringify({ UDNI: Usuario, Pass: Password }),
+        async: false,
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (salida) {
+            if (salida.d == "No existe") {
+                alert("El usuario o contraseña ingresado no son válidos.");
+            }
+            else {
+                document.getElementById("MainContent_ClienteID").value = salida.d.substring(salida.d.indexOf(",")+1, salida.d.length);
+                ingresarCliente(salida.d.substring(0, salida.d.indexOf(",")));
+            }
+        }
+    });
+};
+
+function ingresarCliente(nombre) {
+    document.getElementById("lblNombreCliente").innerText = "Bievenido " + nombre + "!";
+    document.getElementById("btnIngresar").innerText = "Salir";
+    var id = $("#MainContent_ClienteID").val();
+    $("#ModalRegistro").modal('hide');
+
+    //var url = window.location.pathname;
+    //if (url == "/misPedidos.aspx") {
+    //    var datagrid = document.getElementById("MainContent_dgvPedidos");
+
+    //    $.ajax({
+    //        type: "POST",
+    //        url: "misPedidos.aspx/actualizarGrilla",
+    //        data: JSON.stringify({ dgv: datagrid, ID: id}),
+    //        async: false,
+    //        contentType: "application/json; charset=utf-8",
+    //        dataType: "json",
+    //        success: function (dgv) {
+    //            datagrid.innerHTML = dgv;
+    //            datagrid.Bind();
+                
+    //        }
+    //    });
+    //}
+};
+
+function registrarCliente() {
+    nombre = document.getElementById("txtNombre").value;
+    apellido = document.getElementById("txtApellido").value;
+    dni = document.getElementById("txtDNI").value;
+    usuario = document.getElementById("txtUsuarioR").value;
+    contraseña = document.getElementById("txtContraseñaR").value;
+    mail = document.getElementById("txtMail").value;
+    telefono = document.getElementById("txtTelefono").value;
+    fechaNacimiento = document.getElementById("dtpFechNac").value;
+
+    $.ajax({
+        type: "POST",
+        url: "pedido.aspx/registrarCliente",
+        data: JSON.stringify({ Nom: nombre, Ape: apellido, DNI: dni, Usuario: usuario, Pass: contraseña, Mail: mail, Tel: telefono, fechaNac: fechaNacimiento }),
+        async: false,
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (salida) {
+            ingresarCliente(salida.d);
+        }
+    });
+};
+
+function nombreCliente(id) {
+    $.ajax({
+        type: "POST",
+        url: "pedido.aspx/nombreCliente",
+        data: JSON.stringify({ ID: id }),
+        async: false,
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (nombre) {
+            ingresarCliente(nombre.d);
+        }
+    });
+};
+
+
+//=========== VALIDACIONES ========================
+
+function txtLlenos() {
     objeto = document.getElementById("tabR");
     if ($(objeto).hasClass("active")) {
         habilitarRegistro();
@@ -19,33 +107,6 @@
             document.getElementById("btnIngresarU").disabled = true;
         }
     }
-};
-
-function verificarUsuario() {
-    var Usuario = document.getElementById("txtUsuario").value;
-    var Password = document.getElementById("txtContraseña").value;
-    $.ajax({
-        type: "POST",
-        url: "pedido.aspx/verificarUsuario",
-        data: JSON.stringify({ UDNI: Usuario, Pass: Password }),
-        async: false,
-        contentType: "application/json; charset=utf-8",
-        dataType: "json",
-        success: function (salida) {
-            if (salida.d == "No existe") {
-                alert("El usuario o contraseña ingresado no son válidos.");
-            }
-            else {
-                ingresarCliente(salida.d);
-            }
-        }
-    });
-};
-
-function ingresarCliente(nombre) {
-    document.getElementById("lblNombreCliente").innerText = "Bievenido " + nombre + "!";
-    document.getElementById("btnIngresar").innerText = "Salir";
-    $("#ModalRegistro").modal('hide');
 };
 
 function IngresarSalir() {
@@ -209,27 +270,4 @@ function validarNumero() {
         objeto.className = "form-control border border-success";
         objeto.style.boxShadow = "0 0 0 0.2rem rgba(79, 162, 51, 0.25)";
     }
-};
-
-function registrarCliente() {
-    nombre = document.getElementById("txtNombre").value;
-    apellido = document.getElementById("txtApellido").value;
-    dni = document.getElementById("txtDNI").value;
-    usuario = document.getElementById("txtUsuarioR").value;
-    contraseña = document.getElementById("txtContraseñaR").value;
-    mail = document.getElementById("txtMail").value;
-    telefono = document.getElementById("txtTelefono").value;
-    fechaNacimiento = document.getElementById("dtpFechNac").value;
-
-    $.ajax({
-        type: "POST",
-        url: "pedido.aspx/registrarCliente",
-        data: JSON.stringify({ Nom: nombre, Ape: apellido, DNI: dni, Usuario: usuario, Pass: contraseña, Mail: mail, Tel: telefono, fechaNac: fechaNacimiento }),
-        async: false,
-        contentType: "application/json; charset=utf-8",
-        dataType: "json",
-        success: function (salida) {
-            ingresarCliente(salida.d);
-        }
-    });
 };

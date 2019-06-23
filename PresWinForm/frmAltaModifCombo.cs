@@ -16,9 +16,10 @@ namespace PresWinForm
     public partial class frmAltaModifCombo : Form
     {
         Combo local = null;
-        List<Producto> seleccionados = new List<Producto>();
+        List<DetalleCombo> seleccionados = new List<DetalleCombo>();
         private List<Producto> listaProd = new List<Producto>();
         private List<Categoria> listaCat;
+        private int index = 0;
 
         public frmAltaModifCombo()
         {
@@ -45,6 +46,7 @@ namespace PresWinForm
 
         private void frmAltaModifCombo_Load(object sender, EventArgs e)
         {
+            pnlCantidades.Visible = false;
             ProductoNegocio negocio = new ProductoNegocio();
             cargarComboCategorias();
             cmbCategoria.AutoCompleteMode = AutoCompleteMode.Append;
@@ -72,7 +74,7 @@ namespace PresWinForm
                         if (clbProductos.SelectedItem.ToString() == prod.Producto.Nombre)
                         {
                             clbProductos.SetItemChecked(i, true);
-                            seleccionados.Add(prod.Producto);
+                            seleccionados.Add(prod);
                         }
 
                     }
@@ -173,11 +175,12 @@ namespace PresWinForm
                 }
                 local.Precio = Decimal.Round(nudPrecio.Value, 2);
                 local.Productos.Clear();
-                foreach (Producto item in clbProductos.CheckedItems)
+                foreach (DetalleCombo item in seleccionados)
                 {
                     DetalleCombo prod = new DetalleCombo();
-                    prod.Producto = item;
-                    prod.Unidades = 1;
+                    prod.Producto = item.Producto;
+                    prod.Unidades = item.Unidades;
+                    prod.Kilos = item.Kilos;
                     local.Productos.Add(prod);
                 }
             }
@@ -207,12 +210,12 @@ namespace PresWinForm
             else
             {
                 filtrarLista();
-                foreach (Producto prod in seleccionados)
+                foreach (DetalleCombo prod in seleccionados)
                 {
                     for (int i = 0; i <= clbProductos.Items.Count - 1; i++)
                     {
                         clbProductos.SetSelected(i, true);
-                        if (clbProductos.SelectedItem.ToString() == prod.Nombre)
+                        if (clbProductos.SelectedItem.ToString() == prod.Producto.Nombre)
                         {
                             clbProductos.SetItemChecked(i, true);
                         }
@@ -241,12 +244,12 @@ namespace PresWinForm
 
             }
 
-            foreach (Producto prod in seleccionados)
+            foreach (DetalleCombo prod in seleccionados)
             {
                 for (int i = 0; i <= clbProductos.Items.Count - 1; i++)
                 {
                     clbProductos.SetSelected(i, true);
-                    if (clbProductos.SelectedItem.ToString() == prod.Nombre)
+                    if (clbProductos.SelectedItem.ToString() == prod.Producto.Nombre)
                     {
                         clbProductos.SetItemChecked(i, true);
                     }
@@ -289,17 +292,18 @@ namespace PresWinForm
             {
                 foreach (var item in seleccionados)
                 {
-                    if(item.Nombre == seleccionado.Nombre)
+                    if(item.Producto.Nombre == seleccionado.Nombre)
                     {
                         seleccionados.RemoveAt(seleccionados.IndexOf(item));
                         return;
                     }
                 }
-                seleccionados.RemoveAt(seleccionados.IndexOf(seleccionado));
             }
             else
             {
-                seleccionados.Add(seleccionado);
+                DetalleCombo nuevo = new DetalleCombo();
+                nuevo.Producto = seleccionado;
+                seleccionados.Add(nuevo);
             }
         }
 
@@ -307,9 +311,11 @@ namespace PresWinForm
         {
             if (clbProductos.CheckedItems.Count > 0)
             {
-                llenarCombo();
-                frmCantidadesProductos cantidades = new frmCantidadesProductos(local.Productos);
-                cantidades.ShowDialog();
+                pnlCantidades.Show();
+                txtNombre.Enabled = false;
+                dgvProductos.DataSource = seleccionados;
+                llenarCampos();
+                dgvProductos.Columns["Unidades"].DisplayIndex = 1;
                 calcularCosto();
             }
             else
@@ -326,6 +332,52 @@ namespace PresWinForm
                 Costo += item.Producto.PrecioUnitario * item.Unidades;
             }
             lblCosto.Text = "Costo: $" + Math.Round(Costo, 2).ToString();
+        }
+
+        private void llenarCampos()
+        {
+            dgvProductos.Refresh();
+            txtNombreCant.Text = seleccionados[index].Producto.Nombre;
+            nudUnidades.Value = seleccionados[index].Unidades;
+            if (seleccionados[index].Producto.Fraccionable)
+            {
+                nudKilos.Enabled = true;
+                nudKilos.Value = seleccionados[index].Kilos;
+            }
+            else
+            {
+                nudKilos.Enabled = false;
+                nudKilos.Value = 0;
+            }
+            dgvProductos.Rows[index].Selected = true;
+        }
+
+        private void btnSiguiente_Click(object sender, EventArgs e)
+        {
+            seleccionados[index].Unidades = Convert.ToInt32(nudUnidades.Value);
+            seleccionados[index].Kilos = nudKilos.Value;
+            if (index + 1 < seleccionados.Count)
+            {
+                index++;
+            }
+            else
+            {
+                index = 0;
+            }
+            llenarCampos();
+        }
+
+        private void dgvProductos_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            seleccionados[index].Unidades = Convert.ToInt32(nudUnidades.Value);
+            seleccionados[index].Kilos = nudKilos.Value;
+            index = dgvProductos.CurrentRow.Index;
+            llenarCampos();
+        }
+
+        private void btnAceptarCant_Click(object sender, EventArgs e)
+        {
+            pnlCantidades.Visible = false;
         }
     }
 }
