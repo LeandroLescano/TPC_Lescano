@@ -7,11 +7,15 @@
             if (id != "") {
                 nombreCliente(id);
             }
+
+            $('#alto').height($(window).height());
         });
 
     </script>
     <asp:HiddenField ID="ClienteID" runat="server"/>
     <br />
-    <asp:GridView ID="dgvPedidos" runat="server" CssClass="table"></asp:GridView>
+    <asp:GridView ID="dgvPedidos" runat="server" CssClass="table table-bordered table-hover" OnRowDataBound="dgvPedidos_RowDataBound">
+    </asp:GridView>
+    <div id="alto"></div>
 
 </asp:Content>

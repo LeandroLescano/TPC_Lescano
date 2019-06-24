@@ -3,13 +3,25 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <script type="text/javascript">
         $(document).ready(function () {
+            var id = $(<%=ClienteID.ClientID%>).val();
+            if (id != "") {
+                nombreCliente(id);
+            }
+
+
             var combosJs;
-
-            $('#carousel').carousel('pause');
-
             $('#carousel').on('slid.bs.carousel', function () {
                 cargarDesc();
             });
+
+            $('.carousel').each(function () {
+                $(this).carousel({
+                    interval: false
+                });
+            });
+
+            var btnP = document.getElementById("MainContent_btnPedido")
+            btnP.disabled = true;
 
             <% var serializer = new System.Web.Script.Serialization.JavaScriptSerializer(); %>
             combosJs = <%= serializer.Serialize(combos)%>;
@@ -39,11 +51,10 @@
                     daysOfWeekDisabled: "0",
                     startDate: hoy
                 });
+
             };
 
             window.onload = cargarDesc();
-
-
         });
     </script>
     <div class="container">
@@ -80,9 +91,11 @@
                 <table style="height: 50px;">
                     <tbody>
                         <tr>
-                            <td class="align-middle"><h4 style="margin-bottom: 0px;">Lo retiro el: </h4></td>
-                            <td><asp:TextBox ID="dtpFechaEntrega" runat="server" class="form-control" placeholder="DD/MM/YYYY"></asp:TextBox></td>
-                                <%--<input type='text' class="form-control" id='dtpFechaEntrega' placeholder="DD/MM/YYYY" />--%>
+                            <td class="align-middle">
+                                <h4 style="margin-bottom: 0px;">Lo retiro el: </h4>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="dtpFechaEntrega" runat="server" class="form-control" placeholder="DD/MM/YYYY" onchange="habilitarPedido()"></asp:TextBox></td>
                         </tr>
                     </tbody>
                 </table>
@@ -97,7 +110,7 @@
         <asp:TextBox ID="txtObservaciones" runat="server" Height="100px" class="form-control" TextMode="MultiLine" placeholder="Algo que desees cambiar..."></asp:TextBox>
         <br />
         <div class="col align-items-center text-right" style="padding-right: 0px;">
-            <asp:Button class="btn" ID="btnPedido" runat="server" Text="Enviar pedido" OnClick="btnPedido_Click" value="" />
+            <asp:Button CssClass="btn" ID="btnPedido" runat="server" Text="Enviar pedido" OnClick="btnPedido_Click" value="" />
         </div>
     </div>
 </asp:Content>

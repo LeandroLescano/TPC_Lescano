@@ -25,7 +25,7 @@ function ingresarCliente(nombre) {
     document.getElementById("btnIngresar").innerText = "Salir";
     var id = $("#MainContent_ClienteID").val();
     $("#ModalRegistro").modal('hide');
-
+    habilitarPedido();
     //var url = window.location.pathname;
     //if (url == "/misPedidos.aspx") {
     //    var datagrid = document.getElementById("MainContent_dgvPedidos");
@@ -86,6 +86,18 @@ function nombreCliente(id) {
 
 //=========== VALIDACIONES ========================
 
+function habilitarPedido() {
+    btnP = document.getElementById('MainContent_btnPedido');
+    fecha = document.getElementById('MainContent_dtpFechaEntrega');
+     boton = document.getElementById("btnIngresar");
+    if (fecha.value == '' || boton.innerText == "Ingresar") {
+        btnP.disabled = true;
+    }
+    else {
+        btnP.disabled = false;
+    }
+}
+
 function txtLlenos() {
     objeto = document.getElementById("tabR");
     if ($(objeto).hasClass("active")) {
@@ -114,6 +126,7 @@ function IngresarSalir() {
     if (boton.innerText == "Salir") {
         document.getElementById("lblNombreCliente").innerText = "";
         document.getElementById("btnIngresar").innerText = "Ingresar";
+        habilitarPedido();
     }
     else {
         $("#ModalRegistro").modal('show');

@@ -40,6 +40,24 @@ namespace PresWebForm
                 dgvPedidos.DataSource = lista;
                 dgvPedidos.DataBind();
             }
+            else
+            {
+                List<Pedido> listaVacia = new List<Pedido>();
+                Pedido vacio = new Pedido();
+                dgvPedidos.DataSource = listaVacia;
+                dgvPedidos.DataBind();
+            }
+        }
+
+        protected void dgvPedidos_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.Header)
+            {
+                e.Row.Cells[0].Text = "N° de pedido";
+                e.Row.Cells[2].Text = "Fecha de entrega";
+                e.Row.Cells[3].Text = "Fecha de solicitud";
+                e.Row.Cells[4].Text = "Precio";
+            }
         }
     }
 }
