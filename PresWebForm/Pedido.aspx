@@ -8,7 +8,6 @@
                 nombreCliente(id);
             }
 
-
             var combosJs;
             $('#carousel').on('slid.bs.carousel', function () {
                 cargarDesc();

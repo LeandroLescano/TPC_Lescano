@@ -25,25 +25,27 @@ function ingresarCliente(nombre) {
     document.getElementById("btnIngresar").innerText = "Salir";
     var id = $("#MainContent_ClienteID").val();
     $("#ModalRegistro").modal('hide');
-    habilitarPedido();
-    //var url = window.location.pathname;
-    //if (url == "/misPedidos.aspx") {
-    //    var datagrid = document.getElementById("MainContent_dgvPedidos");
 
-    //    $.ajax({
-    //        type: "POST",
-    //        url: "misPedidos.aspx/actualizarGrilla",
-    //        data: JSON.stringify({ dgv: datagrid, ID: id}),
-    //        async: false,
-    //        contentType: "application/json; charset=utf-8",
-    //        dataType: "json",
-    //        success: function (dgv) {
-    //            datagrid.innerHTML = dgv;
-    //            datagrid.Bind();
-                
-    //        }
-    //    });
-    //}
+    var url = window.location.pathname;
+    if (url.substring(0, 11) == "/misPedidos") {
+        var tabla = "";
+        $.ajax({
+            type: "POST",
+            url: "misPedidos.aspx/actualizarGrilla",
+            data: JSON.stringify({ ID: id, Tabla: tabla }),
+            async: false,
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (salida) {
+                document.getElementById("sinCliente").innerHTML = "";
+                document.getElementById("grilla").innerHTML = salida.d;
+            }
+        });
+    }
+    else {
+        habilitarPedido();
+    }
+
 };
 
 function registrarCliente() {
@@ -113,7 +115,6 @@ function txtLlenos() {
         }
         if (success) {
             document.getElementById("btnIngresarU").disabled = false;
-
         }
         else {
             document.getElementById("btnIngresarU").disabled = true;
@@ -124,9 +125,17 @@ function txtLlenos() {
 function IngresarSalir() {
     var boton = document.getElementById("btnIngresar");
     if (boton.innerText == "Salir") {
+        document.getElementById("ClienteID").value = "";
         document.getElementById("lblNombreCliente").innerText = "";
         document.getElementById("btnIngresar").innerText = "Ingresar";
-        habilitarPedido();
+        var url = window.location.pathname;
+        if (url.substring(0, 11) == "/misPedidos") {
+            document.getElementById("grilla").innerHTML = "";
+            document.getElementById("sinCliente").innerHTML = "Ingrese o registrese para visualizar sus pedidos."
+        }
+        else {
+            habilitarPedido();
+        }
     }
     else {
         $("#ModalRegistro").modal('show');

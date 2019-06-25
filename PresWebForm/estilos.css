@@ -68,6 +68,29 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 
+.tdObservacion {
+    white-space: nowrap;
+    max-width: 40px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.thID {
+    max-width: 10px;
+}
+
+.thFecha {
+    max-width: 155px;
+}
+
+th, td {
+    text-align: center;
+}
+
+#sinCliente {
+    text-align: center;
+}
+
 /*DATEPICKER
 #dtpFechaEntrega {
     display: inline-block;
