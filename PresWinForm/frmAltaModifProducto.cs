@@ -135,13 +135,13 @@ namespace PresWinForm
             }
             if (catSelec == null)
             {
-                Mensaje += "\n-Categoria.";
-                faltanDatos = true;
+                MessageBox.Show("El producto que desea agregar no posee categoría.", "Atención!", MessageBoxButtons.OK);
+                return false;
             }
             if (marcaSelec == null)
             {
-                Mensaje += "\n-Marca.";
-                faltanDatos = true;
+                MessageBox.Show("El producto que desea agregar no posee marca.", "Atención!", MessageBoxButtons.OK);
+                return false;
             }
             if (nudPrecioUnit.Value == 0)
             {

@@ -129,25 +129,31 @@ namespace PresWinForm
             {
                 ComboNegocio negocio = new ComboNegocio();
                 ProductoNegocio negocioProd = new ProductoNegocio();
-                llenarCombo();
-                if (btnAgregar.Text == "Agregar")
+                if(llenarCombo())
                 {
-                    local.ID = negocio.agregarCombo(local);
-                    foreach (DetalleCombo item in local.Productos)
+                    if (btnAgregar.Text == "Agregar")
                     {
-                        negocioProd.agregarProdXCombo(local, item);
+                        local.ID = negocio.agregarCombo(local);
+                        foreach (DetalleCombo item in local.Productos)
+                        {
+                            negocioProd.agregarProdXCombo(local, item);
+                        }
                     }
+                    else
+                    {
+                        negocio.modificarCombo(local);
+                        negocioProd.eliminarProdXCombo(local.ID);
+                        foreach (DetalleCombo item in local.Productos)
+                        {
+                            negocioProd.agregarProdXCombo(local, item);
+                        }
+                    }
+                    this.Close();
                 }
                 else
                 {
-                    negocio.modificarCombo(local);
-                    negocioProd.eliminarProdXCombo(local.ID);
-                    foreach (DetalleCombo item in local.Productos)
-                    {
-                        negocioProd.agregarProdXCombo(local, item);
-                    }
+                    return;
                 }
-                this.Close();
             }
             catch (Exception ex)
             {
@@ -155,15 +161,28 @@ namespace PresWinForm
             }
         }
 
-        private void llenarCombo()
+        private bool llenarCombo()
         {
             try
             {
+                if(seleccionados.Count < 1)
+                {
+                    MessageBox.Show("El combo que desea agregar no posee suficientes productos.", "Atención!", MessageBoxButtons.OK);
+                    return false;
+                }
                 if (txtRuta.Text != "")
                 {
                     local.RutaImagen = txtRuta.Text;
                 }
-                local.Nombre = txtNombre.Text;
+                if(txtNombre.Text != "")
+                {
+                    local.Nombre = txtNombre.Text;
+                }
+                else
+                {
+                    MessageBox.Show("El combo que desea agregar no posee nombre.", "Atención!", MessageBoxButtons.OK);
+                    return false;
+;                }
                 local.Descripcion = txtDescripcion.Text;
                 if (txtDiasAnticipo.Text != "")
                 {
@@ -173,7 +192,15 @@ namespace PresWinForm
                 {
                     local.DiasAnticipo = 0;
                 }
-                local.Precio = Decimal.Round(nudPrecio.Value, 2);
+                if(nudPrecio.Value > 0)
+                {
+                    local.Precio = Decimal.Round(nudPrecio.Value, 2);
+                }
+                else
+                {
+                    MessageBox.Show("El combo que desea agregar no posee precio.\nCosto del combo: " + lblCosto.Text.Substring(lblCosto.Text.IndexOf("$")) +".", "Atención!", MessageBoxButtons.OK);
+                    return false;
+                }
                 local.Productos.Clear();
                 foreach (DetalleCombo item in seleccionados)
                 {
@@ -183,10 +210,12 @@ namespace PresWinForm
                     prod.Kilos = item.Kilos;
                     local.Productos.Add(prod);
                 }
+                return true;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
+                return false;
             }
         }
 
@@ -295,6 +324,7 @@ namespace PresWinForm
                     if(item.Producto.Nombre == seleccionado.Nombre)
                     {
                         seleccionados.RemoveAt(seleccionados.IndexOf(item));
+                        calcularCosto();
                         return;
                     }
                 }
@@ -303,7 +333,9 @@ namespace PresWinForm
             {
                 DetalleCombo nuevo = new DetalleCombo();
                 nuevo.Producto = seleccionado;
+                nuevo.Unidades = 1;
                 seleccionados.Add(nuevo);
+                calcularCosto();
             }
         }
 
@@ -316,7 +348,6 @@ namespace PresWinForm
                 dgvProductos.DataSource = seleccionados;
                 llenarCampos();
                 dgvProductos.Columns["Unidades"].DisplayIndex = 1;
-                calcularCosto();
             }
             else
             {
@@ -327,7 +358,7 @@ namespace PresWinForm
         private void calcularCosto()
         {
             decimal Costo = 0;
-            foreach (DetalleCombo item in local.Productos)
+            foreach (DetalleCombo item in seleccionados)
             {
                 Costo += item.Producto.PrecioUnitario * item.Unidades;
             }
@@ -365,6 +396,7 @@ namespace PresWinForm
                 index = 0;
             }
             llenarCampos();
+            calcularCosto();
         }
 
         private void dgvProductos_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -373,6 +405,7 @@ namespace PresWinForm
             seleccionados[index].Kilos = nudKilos.Value;
             index = dgvProductos.CurrentRow.Index;
             llenarCampos();
+            calcularCosto();
         }
 
         private void btnAceptarCant_Click(object sender, EventArgs e)
