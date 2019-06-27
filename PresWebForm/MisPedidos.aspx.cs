@@ -16,7 +16,8 @@ namespace PresWebForm
         {
             if (Session["ClienteID"] != null)
             {
-                ClienteID.Value = Session["ClienteID"].ToString();
+                if (Session["ClienteID"].ToString() != "")
+                    ClienteID.Value = Session["ClienteID"].ToString();
             }
             //cargarGrilla();
         }

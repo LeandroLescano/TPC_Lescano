@@ -16,7 +16,8 @@ namespace PresWebForm
         {
             if (Session["ClienteID"] != null)
             {
-                ClienteID.Value = Session["ClienteID"].ToString();
+                if (Session["ClienteID"].ToString() != "")
+                    ClienteID.Value = Session["ClienteID"].ToString();
             }
             ComboNegocio negocio = new ComboNegocio();
             List<Combo> combosActivos = negocio.listarCombos();
@@ -83,6 +84,13 @@ namespace PresWebForm
             {
                 return "No existe";
             }
+        }
+
+
+        [System.Web.Services.WebMethod]
+        public static void limpiarSession()
+        {
+            HttpContext.Current.Session.Remove("ClienteID");
         }
 
         [System.Web.Services.WebMethod]

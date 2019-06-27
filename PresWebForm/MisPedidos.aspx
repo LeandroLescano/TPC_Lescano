@@ -7,6 +7,9 @@
             if (id != "") {
                 nombreCliente(id);
             }
+            else {
+                document.getElementById("sinCliente").innerHTML = "Ingrese o registrese para visualizar sus pedidos."
+            }
 
             $('#alto').height($(window).height());
 
@@ -14,11 +17,7 @@
 
     </script>
     <asp:HiddenField ID="ClienteID" runat="server" />
-    <br />
-<%--    <asp:GridView ID="dgvPedidos" runat="server" CssClass="table table-bordered table-hover" OnRowDataBound="dgvPedidos_RowDataBound">
-    </asp:GridView>--%>
-
-
+    <h2>Mis pedidos</h2>
     <table class="table table-hover">
         <thead>
             <tr>

@@ -67,13 +67,6 @@
                 }
             });
 
-            $(document).ready(function () {
-                function refrescar() {
-                    alert("lblNombre changed");
-                };
-
-            });
-
         </script>
         <!-- HEADER -->
         <nav class="navbar navbar-expand-lg navbar-dark">
@@ -90,10 +83,10 @@
                 </div>
                 <div class="navbar-nav ml-auto">
                     <%--<li>--%>
-                        <div class="btn-nav">
-                            <p id="lblNombreCliente" onchange="refrescar()"></p>
-                            <button id="btnIngresar" type="button" class="btn" data-toggle="" data-target=".bd-example-modal-sm" onclick="IngresarSalir()">Ingresar</button>
-                        </div>
+                    <div class="btn-nav">
+                        <p id="lblNombreCliente" onchange="refrescar()"></p>
+                        <button id="btnIngresar" type="button" class="btn" data-toggle="" data-target=".bd-example-modal-sm" onclick="IngresarSalir()">Ingresar</button>
+                    </div>
                     <%--</li>--%>
                 </div>
             </div>

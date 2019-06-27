@@ -11,7 +11,11 @@ namespace PresWebForm
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["ClienteID"] != null)
+            {
+                if (Session["ClienteID"].ToString() != "")
+                    ClienteID.Value = Session["ClienteID"].ToString();
+            }
         }
     }
 }

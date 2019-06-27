@@ -125,6 +125,7 @@ function txtLlenos() {
 function IngresarSalir() {
     var boton = document.getElementById("btnIngresar");
     if (boton.innerText == "Salir") {
+        limpiarSession();
         document.getElementById("ClienteID").value = "";
         document.getElementById("lblNombreCliente").innerText = "";
         document.getElementById("btnIngresar").innerText = "Ingresar";
@@ -141,6 +142,19 @@ function IngresarSalir() {
         $("#ModalRegistro").modal('show');
     }
 };
+
+function limpiarSession() {
+    $.ajax({
+        type: "POST",
+        url: "pedido.aspx/limpiarSession",
+        data: JSON.stringify({}),
+        async: false,
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (nombre) {
+        }
+    });
+}
 
 function validarEmail() {
     objeto = document.getElementById("txtMail");
