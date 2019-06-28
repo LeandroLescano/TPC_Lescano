@@ -115,10 +115,13 @@ namespace PresWinForm
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            Combo cModif = (Combo)dgvCombos.CurrentRow.DataBoundItem;
-            frmAltaModifCombo modif = new frmAltaModifCombo(cModif, false);
-            modif.ShowDialog();
-            cargarGrilla();
+            if(dgvCombos.CurrentRow != null)
+            {
+                Combo cModif = (Combo)dgvCombos.CurrentRow.DataBoundItem;
+                frmAltaModifCombo modif = new frmAltaModifCombo(cModif, false);
+                modif.ShowDialog();
+                cargarGrilla();
+            }
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)

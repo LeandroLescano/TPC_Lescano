@@ -30,10 +30,13 @@ namespace PresWinForm
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            Categoria cModif = (Categoria)dgvCategoria.CurrentRow.DataBoundItem;
-            frmAltaModifMarcaCat modif = new frmAltaModifMarcaCat(cModif, 'C');
-            modif.ShowDialog();
-            cargarGrilla();
+            if(dgvCategoria.CurrentRow != null)
+            {
+                Categoria cModif = (Categoria)dgvCategoria.CurrentRow.DataBoundItem;
+                frmAltaModifMarcaCat modif = new frmAltaModifMarcaCat(cModif, 'C');
+                modif.ShowDialog();
+                cargarGrilla();
+            }
         }
 
         private void frmCategorias_Load(object sender, EventArgs e)
@@ -71,12 +74,15 @@ namespace PresWinForm
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            Categoria cEliminar = (Categoria)dgvCategoria.CurrentRow.DataBoundItem;
-            if (MessageBox.Show("¿Desea eliminar la categoria \"" + cEliminar.Nombre + "\" ?", "Atención!", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if(dgvCategoria.CurrentRow != null)
             {
-                CategoriaNegocio negocio = new CategoriaNegocio();
-                negocio.eliminarCategoria(cEliminar);
-                cargarGrilla();
+                Categoria cEliminar = (Categoria)dgvCategoria.CurrentRow.DataBoundItem;
+                if (MessageBox.Show("¿Desea eliminar la categoria \"" + cEliminar.Nombre + "\" ?", "Atención!", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    CategoriaNegocio negocio = new CategoriaNegocio();
+                    negocio.eliminarCategoria(cEliminar);
+                    cargarGrilla();
+                }
             }
         }
 

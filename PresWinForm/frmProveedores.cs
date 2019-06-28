@@ -72,25 +72,31 @@ namespace PresWinForm
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            Proveedor pmodif = (Proveedor)dgvProveedores.CurrentRow.DataBoundItem;
-            frmAltaModifPersona modif = new frmAltaModifPersona(pmodif, 'P');
-            modif.ShowDialog();
-            cargarGrilla();
+            if (dgvProveedores.CurrentRow != null)
+            {
+                Proveedor pmodif = (Proveedor)dgvProveedores.CurrentRow.DataBoundItem;
+                frmAltaModifPersona modif = new frmAltaModifPersona(pmodif, 'P');
+                modif.ShowDialog();
+                cargarGrilla();
+            }
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            Proveedor peliminar = (Proveedor)dgvProveedores.CurrentRow.DataBoundItem;
-            string Nombre;
-            if(peliminar.TipoPersona.Fisica)
-                Nombre = peliminar.Apellido + ", " + peliminar.Nombre;
-            else
-                Nombre = peliminar.RazonSocial;
-            if (MessageBox.Show("Está a punto de eliminar al proveedor: " + Nombre + ".\n\n¿Desea eliminarlo?", "Atención!", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (dgvProveedores.CurrentRow != null)
             {
-                ProveedorNegocio negocio = new ProveedorNegocio();
-                negocio.eliminarProveedor(peliminar);
-                cargarGrilla();
+                Proveedor peliminar = (Proveedor)dgvProveedores.CurrentRow.DataBoundItem;
+                string Nombre;
+                if (peliminar.TipoPersona.Fisica)
+                    Nombre = peliminar.Apellido + ", " + peliminar.Nombre;
+                else
+                    Nombre = peliminar.RazonSocial;
+                if (MessageBox.Show("Está a punto de eliminar al proveedor: " + Nombre + ".\n\n¿Desea eliminarlo?", "Atención!", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    ProveedorNegocio negocio = new ProveedorNegocio();
+                    negocio.eliminarProveedor(peliminar);
+                    cargarGrilla();
+                }
             }
         }
 

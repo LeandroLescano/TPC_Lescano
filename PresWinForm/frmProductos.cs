@@ -75,10 +75,13 @@ namespace PresWinForm
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            Producto pmodif = (Producto)dgvProductos.CurrentRow.DataBoundItem;
-            frmAltaModifProducto modif = new frmAltaModifProducto(pmodif);
-            modif.ShowDialog();
-            cargarGrilla();
+            if (dgvProductos.CurrentRow != null)
+            {
+                Producto pmodif = (Producto)dgvProductos.CurrentRow.DataBoundItem;
+                frmAltaModifProducto modif = new frmAltaModifProducto(pmodif);
+                modif.ShowDialog();
+                cargarGrilla();
+            }
         }
 
         private void btnVerProveedores_Click(object sender, EventArgs e)
@@ -89,12 +92,15 @@ namespace PresWinForm
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            Producto peliminar = (Producto)dgvProductos.CurrentRow.DataBoundItem;
-            if (MessageBox.Show("Está a punto de eliminar el producto: " + peliminar.Nombre + ".\n\n¿Desea eliminarlo?", "Atención!", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (dgvProductos.CurrentRow != null)
             {
-                ProductoNegocio negocio = new ProductoNegocio();
-                negocio.eliminarProducto(peliminar);
-                cargarGrilla();
+                Producto peliminar = (Producto)dgvProductos.CurrentRow.DataBoundItem;
+                if (MessageBox.Show("Está a punto de eliminar el producto: " + peliminar.Nombre + ".\n\n¿Desea eliminarlo?", "Atención!", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    ProductoNegocio negocio = new ProductoNegocio();
+                    negocio.eliminarProducto(peliminar);
+                    cargarGrilla();
+                }
             }
         }
 

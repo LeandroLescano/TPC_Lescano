@@ -81,27 +81,33 @@ namespace PresWinForm
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            Empleado eModif = (Empleado)dgvEmpleados.CurrentRow.DataBoundItem;
-            frmAltaModifEmpleado modif = new frmAltaModifEmpleado(eModif);
-            modif.ShowDialog();
-            cargarGrilla();
+            if (dgvEmpleados.CurrentRow != null)
+            {
+                Empleado eModif = (Empleado)dgvEmpleados.CurrentRow.DataBoundItem;
+                frmAltaModifEmpleado modif = new frmAltaModifEmpleado(eModif);
+                modif.ShowDialog();
+                cargarGrilla();
+            }
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            Empleado eEliminar = (Empleado)dgvEmpleados.CurrentRow.DataBoundItem;
-            if(eEliminar.Usuario.Nombre != uLocal.Nombre)
+            if (dgvEmpleados.CurrentRow != null)
             {
-                if (MessageBox.Show("Está a punto de eliminar al empleado: " + eEliminar.Nombre + ".\n\n¿Desea eliminarlo?", "Atención!", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                Empleado eEliminar = (Empleado)dgvEmpleados.CurrentRow.DataBoundItem;
+                if (eEliminar.Usuario.Nombre != uLocal.Nombre)
                 {
-                    EmpleadoNegocio negocio = new EmpleadoNegocio();
-                    negocio.eliminarEmpleado(eEliminar);
-                    cargarGrilla();
+                    if (MessageBox.Show("Está a punto de eliminar al empleado: " + eEliminar.Nombre + ".\n\n¿Desea eliminarlo?", "Atención!", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        EmpleadoNegocio negocio = new EmpleadoNegocio();
+                        negocio.eliminarEmpleado(eEliminar);
+                        cargarGrilla();
+                    }
                 }
-            }
-            else
-            {
-                MessageBox.Show("No puedes eliminar el usuario actual.", "Cuidado!");
+                else
+                {
+                    MessageBox.Show("No puedes eliminar el usuario actual.", "Cuidado!");
+                }
             }
         }
 

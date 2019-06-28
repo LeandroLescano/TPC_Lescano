@@ -30,10 +30,13 @@ namespace PresWinForm
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            Marca mModif = (Marca)dgvMarca.CurrentRow.DataBoundItem;
-            frmAltaModifMarcaCat modif = new frmAltaModifMarcaCat(mModif, 'M');
-            modif.ShowDialog();
-            cargarGrilla();
+            if (dgvMarca.CurrentRow != null)
+            {
+                Marca mModif = (Marca)dgvMarca.CurrentRow.DataBoundItem;
+                frmAltaModifMarcaCat modif = new frmAltaModifMarcaCat(mModif, 'M');
+                modif.ShowDialog();
+                cargarGrilla();
+            }
         }
 
         private void frmMarcas_Load(object sender, EventArgs e)
@@ -70,12 +73,15 @@ namespace PresWinForm
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            Marca mEliminar = (Marca)dgvMarca.CurrentRow.DataBoundItem;
-            if(MessageBox.Show("¿Desea eliminar la marca \"" +mEliminar.Nombre+ "\" ?" ,"Atención!", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (dgvMarca.CurrentRow != null)
             {
-                MarcaNegocio negocio = new MarcaNegocio();
-                negocio.eliminarMarca(mEliminar);
-                cargarGrilla();
+                Marca mEliminar = (Marca)dgvMarca.CurrentRow.DataBoundItem;
+                if (MessageBox.Show("¿Desea eliminar la marca \"" + mEliminar.Nombre + "\" ?", "Atención!", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    MarcaNegocio negocio = new MarcaNegocio();
+                    negocio.eliminarMarca(mEliminar);
+                    cargarGrilla();
+                }
             }
         }
 

@@ -35,23 +35,28 @@ namespace PresWinForm
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            Cliente cmodif = (Cliente)dgvClientes.CurrentRow.DataBoundItem;
-            frmAltaModifPersona modif = new frmAltaModifPersona(cmodif, 'C');
-            modif.ShowDialog();
-            cargarGrilla();
+            if (dgvClientes.CurrentRow != null)
+            {
+                Cliente cmodif = (Cliente)dgvClientes.CurrentRow.DataBoundItem;
+                frmAltaModifPersona modif = new frmAltaModifPersona(cmodif, 'C');
+                modif.ShowDialog();
+                cargarGrilla();
+            }
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-
             ClienteNegocio negocio = new ClienteNegocio();
             try
             {
-                Cliente cmodif = (Cliente)dgvClientes.CurrentRow.DataBoundItem;
-                if (MessageBox.Show("Seguro que desea eliminar el cliente " + cmodif.Apellido + ", " + cmodif.Nombre + " con ID: " + cmodif.ID + "?", "Atención!", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                if(dgvClientes.CurrentRow != null)
                 {
-                    negocio.eliminarCliente(cmodif);
-                    cargarGrilla();
+                    Cliente cmodif = (Cliente)dgvClientes.CurrentRow.DataBoundItem;
+                    if (MessageBox.Show("Seguro que desea eliminar el cliente " + cmodif.Apellido + ", " + cmodif.Nombre + " con ID: " + cmodif.ID + "?", "Atención!", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        negocio.eliminarCliente(cmodif);
+                        cargarGrilla();
+                    }
                 }
             }
             catch (Exception ex)

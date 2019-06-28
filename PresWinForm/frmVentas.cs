@@ -107,8 +107,11 @@ namespace PresWinForm
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            int index = dgvDetalle.CurrentRow.Index;
-            Detalle.RemoveAt(index);
+            if(dgvDetalle.CurrentRow != null)
+            {
+                int index = dgvDetalle.CurrentRow.Index;
+                Detalle.RemoveAt(index);
+            }
         }
 
         private void btnFinalizar_Click(object sender, EventArgs e)
