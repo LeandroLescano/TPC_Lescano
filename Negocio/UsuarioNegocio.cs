@@ -56,7 +56,7 @@ namespace Negocio
             AccesoDatosManager accesoDatos = new AccesoDatosManager();
             try
             {
-                accesoDatos.setearConsulta("SELECT * FROM USUARIOS WHERE USUARIO = '"+usuario.Nombre+"' AND CONTRASEÑA = '"+usuario.Contraseña+"' ");
+                accesoDatos.setearConsulta("SELECT U.* FROM USUARIOS AS U RIGHT JOIN EMPLEADOS AS E ON E.IDUSUARIO = U.ID WHERE U.USUARIO = '" + usuario.Nombre+"' AND U.CONTRASEÑA = '"+usuario.Contraseña+"' ");
                 accesoDatos.abrirConexion();
                 accesoDatos.ejecutarConsulta();
                 while(accesoDatos.Lector.Read())
