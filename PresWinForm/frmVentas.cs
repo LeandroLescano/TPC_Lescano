@@ -115,6 +115,9 @@ namespace PresWinForm
         {
             if(cmbClientes.SelectedItem != null)
             {
+                if(Detalle.Count > 0)
+                {
+
                 VentaNegocio negocioVen = new VentaNegocio();
                 FacturaNegocio negocioFact = new FacturaNegocio();
                 Venta nuevaVenta = new Venta();
@@ -137,6 +140,11 @@ namespace PresWinForm
                 foreach (DetalleVenta item in nuevaVenta.Detalle)
                 {
                     negocioVen.agregarProductosXVenta(nuevaVenta.ID, item.Producto.ID, item.Cantidad);
+                }
+                }
+                else
+                {
+                    MessageBox.Show("No hay productos en la venta actual", "Cuidado!");
                 }
             }
             else
