@@ -1,5 +1,6 @@
 ﻿body {
     background-color: rgb(244, 174, 0);
+    height: 100%;
 }
 
 .navbar-dark {
@@ -88,6 +89,16 @@ th, td {
 
 #sinCliente {
     text-align: center;
+}
+
+h2 a {
+    color: black;
+}
+
+h2 a:hover{
+    color:black;
+    text-decoration-style: none;
+    text-decoration: none;
 }
 
 /*DATEPICKER

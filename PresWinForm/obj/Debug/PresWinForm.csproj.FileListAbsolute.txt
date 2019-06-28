@@ -69,3 +69,4 @@ C:\Users\tatil\Desktop\Repos git\TPC_Lescano\PresWinForm\obj\Debug\PresWinForm.p
 C:\Users\Tateh\Desktop\Repos Git\TPC_Lescano\PresWinForm\obj\Debug\PresWinForm.frmModifPedidos.resources
 C:\Users\tatil\Desktop\Repos git\TPC_Lescano\PresWinForm\obj\Debug\PresWinForm.frmModifPedidos.resources
 C:\Users\Tateh\Desktop\Repos Git\TPC_Lescano\PresWinForm\obj\Debug\PresWinForm.frmCantidadesProductos.resources
+C:\Users\tatil\Desktop\Repos git\TPC_Lescano\PresWinForm\obj\Debug\PresWinForm.frmCantidadesProductos.resources
