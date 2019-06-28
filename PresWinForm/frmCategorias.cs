@@ -122,5 +122,33 @@ namespace PresWinForm
             negocio.habilitarCategoria(cat);
             cargarGrilla();
         }
+
+        private void dgvCategoria_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                int currentRow = dgvCategoria.HitTest(e.X, e.Y).RowIndex;
+                int currentColumn = dgvCategoria.HitTest(e.X, e.Y).ColumnIndex;
+
+                if (currentRow >= 0)
+                {
+                    dgvCategoria[currentColumn, currentRow].Selected = true;
+                    Categoria cSelect = (Categoria)dgvCategoria.CurrentRow.DataBoundItem;
+
+                    ContextMenu m = new ContextMenu();
+                    m.MenuItems.Add(new MenuItem("Modificar", btnModificar_Click));
+                    if (cSelect.Estado == true)
+                    {
+                        m.MenuItems.Add(new MenuItem("Deshabilitar", btnEliminar_Click));
+                    }
+                    else
+                    {
+                        m.MenuItems.Add(new MenuItem("Habilitar", btnHabilitar_Click));
+                    }
+
+                    m.Show(dgvCategoria, new Point(e.X, e.Y));
+                }
+            }
+        }
     }
 }

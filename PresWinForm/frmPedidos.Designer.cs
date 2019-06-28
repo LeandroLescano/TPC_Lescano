@@ -31,7 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPedidos));
             this.tspMenu = new System.Windows.Forms.ToolStrip();
             this.btnDetalles = new System.Windows.Forms.ToolStripButton();
-            this.btnEliminar = new System.Windows.Forms.ToolStripButton();
             this.dgvPedidos = new System.Windows.Forms.DataGridView();
             this.tspMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPedidos)).BeginInit();
@@ -44,8 +43,7 @@
             this.tspMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.tspMenu.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.tspMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnDetalles,
-            this.btnEliminar});
+            this.btnDetalles});
             this.tspMenu.Location = new System.Drawing.Point(0, 0);
             this.tspMenu.Name = "tspMenu";
             this.tspMenu.Padding = new System.Windows.Forms.Padding(0);
@@ -68,17 +66,6 @@
             this.btnDetalles.Text = "Detalles";
             this.btnDetalles.Click += new System.EventHandler(this.btnDetalles_Click);
             // 
-            // btnEliminar
-            // 
-            this.btnEliminar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.btnEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEliminar.Image = ((System.Drawing.Image)(resources.GetObject("btnEliminar.Image")));
-            this.btnEliminar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnEliminar.Margin = new System.Windows.Forms.Padding(5);
-            this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(94, 29);
-            this.btnEliminar.Text = "Eliminar";
-            // 
             // dgvPedidos
             // 
             this.dgvPedidos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -93,6 +80,7 @@
             this.dgvPedidos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPedidos.Size = new System.Drawing.Size(663, 426);
             this.dgvPedidos.TabIndex = 7;
+            this.dgvPedidos.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvPedidos_MouseClick);
             // 
             // frmPedidos
             // 
@@ -119,7 +107,6 @@
 
         private System.Windows.Forms.ToolStrip tspMenu;
         private System.Windows.Forms.ToolStripButton btnDetalles;
-        private System.Windows.Forms.ToolStripButton btnEliminar;
         private System.Windows.Forms.DataGridView dgvPedidos;
     }
 }

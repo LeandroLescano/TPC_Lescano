@@ -50,6 +50,7 @@
     <Compile Include="Domicilio.cs" />
     <Compile Include="Edificio.cs" />
     <Compile Include="Empleado.cs" />
+    <Compile Include="EmpleadoLite.cs" />
     <Compile Include="Factura.cs" />
     <Compile Include="Localidad.cs" />
     <Compile Include="Mail.cs" />

@@ -29,6 +29,7 @@ namespace PresWinForm
             InitializeComponent();
             marcaLocal = M;
             Tipo = T;
+            btnAgregar.Text = "Modificar";
         }
 
         public frmAltaModifMarcaCat(Categoria C, char T)
@@ -36,6 +37,7 @@ namespace PresWinForm
             InitializeComponent();
             categoriaLocal = C;
             Tipo = T;
+            btnAgregar.Text = "Modificar";
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -45,7 +47,8 @@ namespace PresWinForm
                 MarcaNegocio negocio = new MarcaNegocio();
                 if (marcaLocal != null)
                 {
-                    negocio.agregarMarca(marcaLocal);
+                    marcaLocal.Nombre = txtNombre.Text;
+                    negocio.modificarMarca(marcaLocal);
                 }
                 else
                 {
@@ -59,7 +62,8 @@ namespace PresWinForm
                 CategoriaNegocio negocio = new CategoriaNegocio();
                 if (categoriaLocal != null)
                 {
-                    negocio.agregarCategoria(categoriaLocal);
+                    categoriaLocal.Nombre = txtNombre.Text;
+                    negocio.modificarCategoria(categoriaLocal);
                 }
                 else
                 {

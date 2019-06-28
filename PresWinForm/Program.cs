@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using Dominio;
 namespace PresWinForm
 {
     static class Program
@@ -16,7 +16,12 @@ namespace PresWinForm
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmPrincipal());
+            frmLogin login = new frmLogin();
+            Application.Run(login);
+            if(login.DialogResult == DialogResult.OK)
+            {
+                Application.Run(new frmPrincipal(login.local));
+            }
         }
     }
 }

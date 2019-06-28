@@ -63,6 +63,11 @@ namespace PresWinForm
                     if (empleadoLocal.Domicilio.Edificio.Piso != 0)
                         txtPiso.Text = empleadoLocal.Domicilio.Edificio.Piso.ToString();
                     txtDepto.Text = empleadoLocal.Domicilio.Edificio.Departamento;
+                    if(empleadoLocal.Usuario != null)
+                    {
+                        txtUsuario.Text = empleadoLocal.Usuario.Nombre;
+                        txtContraseña.Text = empleadoLocal.Usuario.Contraseña;
+                    }
                     if (empleadoLocal.TipoEmpleado.Administrador)
                     {
                         rdbAdministrador.Checked = true;
@@ -161,8 +166,7 @@ namespace PresWinForm
             if (btnAgregar.Text == "Agregar")
             {
                 if (llenarLocal(local))
-                {
-                                        
+                {           
                     int idLocalidad = negocioLoc.buscarLocalidad(local.Domicilio.Localidad);
                     if (txtCalle.Text.Trim() != "" && txtAltura.Text.Trim() != "")
                     {
@@ -210,6 +214,14 @@ namespace PresWinForm
                             }
                             negocioDoc.modificarDomicilio(local.Domicilio);
                         }
+                    }
+                    if(local.Usuario.ID == 0)
+                    {
+                        local.Usuario.ID = negocioUser.agregarUsuario(local.Usuario);
+                    }
+                    else
+                    {
+                        negocioUser.modificarUsuario(local.Usuario);
                     }
                     negocio.modificarEmpleado(local);
                     Close();

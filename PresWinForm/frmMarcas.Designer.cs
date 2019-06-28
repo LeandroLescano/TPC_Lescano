@@ -34,9 +34,9 @@
             this.btnAgregar = new System.Windows.Forms.ToolStripButton();
             this.btnModificar = new System.Windows.Forms.ToolStripButton();
             this.btnEliminar = new System.Windows.Forms.ToolStripButton();
+            this.btnHabilitar = new System.Windows.Forms.ToolStripButton();
             this.lblBusqueda = new System.Windows.Forms.Label();
             this.txtBusqueda = new System.Windows.Forms.TextBox();
-            this.btnHabilitar = new System.Windows.Forms.ToolStripButton();
             this.chbEstado = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMarca)).BeginInit();
             this.tspMenu.SuspendLayout();
@@ -50,13 +50,14 @@
             this.dgvMarca.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvMarca.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvMarca.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgvMarca.Location = new System.Drawing.Point(100, 29);
+            this.dgvMarca.Location = new System.Drawing.Point(100, 35);
             this.dgvMarca.MultiSelect = false;
             this.dgvMarca.Name = "dgvMarca";
             this.dgvMarca.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvMarca.Size = new System.Drawing.Size(339, 241);
+            this.dgvMarca.Size = new System.Drawing.Size(339, 235);
             this.dgvMarca.TabIndex = 0;
             this.dgvMarca.SelectionChanged += new System.EventHandler(this.dgvMarca_SelectionChanged);
+            this.dgvMarca.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvMarca_MouseClick);
             // 
             // tspMenu
             // 
@@ -115,6 +116,21 @@
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
+            // btnHabilitar
+            // 
+            this.btnHabilitar.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.btnHabilitar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnHabilitar.Enabled = false;
+            this.btnHabilitar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHabilitar.Image = ((System.Drawing.Image)(resources.GetObject("btnHabilitar.Image")));
+            this.btnHabilitar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnHabilitar.Margin = new System.Windows.Forms.Padding(5);
+            this.btnHabilitar.Name = "btnHabilitar";
+            this.btnHabilitar.Size = new System.Drawing.Size(76, 24);
+            this.btnHabilitar.Text = "Habilitar";
+            this.btnHabilitar.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
+            this.btnHabilitar.Click += new System.EventHandler(this.btnHabilitar_Click);
+            // 
             // lblBusqueda
             // 
             this.lblBusqueda.AutoSize = true;
@@ -133,21 +149,6 @@
             this.txtBusqueda.Size = new System.Drawing.Size(138, 23);
             this.txtBusqueda.TabIndex = 10;
             this.txtBusqueda.TextChanged += new System.EventHandler(this.txtBusqueda_TextChanged);
-            // 
-            // btnHabilitar
-            // 
-            this.btnHabilitar.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.btnHabilitar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.btnHabilitar.Enabled = false;
-            this.btnHabilitar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHabilitar.Image = ((System.Drawing.Image)(resources.GetObject("btnHabilitar.Image")));
-            this.btnHabilitar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnHabilitar.Margin = new System.Windows.Forms.Padding(5);
-            this.btnHabilitar.Name = "btnHabilitar";
-            this.btnHabilitar.Size = new System.Drawing.Size(76, 24);
-            this.btnHabilitar.Text = "Habilitar";
-            this.btnHabilitar.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
-            this.btnHabilitar.Click += new System.EventHandler(this.btnHabilitar_Click);
             // 
             // chbEstado
             // 

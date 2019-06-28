@@ -59,6 +59,27 @@ namespace Negocio
             }
         }
 
+        public void modificarCategoria(Categoria cat)
+        {
+            AccesoDatosManager accesoDatos = new AccesoDatosManager();
+            try
+            {
+                accesoDatos.setearConsulta("UPDATE CATEGORIAS SET NOMBRE = @Nombre WHERE ID = " + cat.ID);
+                accesoDatos.Comando.Parameters.Clear();
+                accesoDatos.Comando.Parameters.AddWithValue("@Nombre", cat.Nombre);
+                accesoDatos.abrirConexion();
+                accesoDatos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+        }
+
         public void eliminarCategoria(Categoria cat)
         {
             AccesoDatosManager accesoDatos = new AccesoDatosManager();

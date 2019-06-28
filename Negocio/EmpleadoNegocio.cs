@@ -18,7 +18,7 @@ namespace Negocio
             Empleado nuevo;
             try
             {
-                accesoDatos.setearConsulta("Select E.*, D.CALLE, D.ALTURA, L.NOMBRE as LOCALIDAD, D.PISO, D.DEPARTAMENTO, L.CODPOSTAL, L.PARTIDO, L.ID AS IDLOCALIDAD, D.ENTRECALLE1, D.ENTRECALLE2, U.USUARIO from EMPLEADOS AS E LEFT JOIN DOMICILIOS AS D ON D.ID = E.IDDOMICILIO LEFT JOIN LOCALIDADES AS L ON L.ID = D.IDLOCALIDAD LEFT JOIN USUARIOS AS U ON U.ID = E.IDUSUARIO");
+                accesoDatos.setearConsulta("Select E.*, D.CALLE, D.ALTURA, L.NOMBRE as LOCALIDAD, D.PISO, D.DEPARTAMENTO, L.CODPOSTAL, L.PARTIDO, L.ID AS IDLOCALIDAD, D.ENTRECALLE1, D.ENTRECALLE2, U.USUARIO, U.CONTRASEÑA from EMPLEADOS AS E LEFT JOIN DOMICILIOS AS D ON D.ID = E.IDDOMICILIO LEFT JOIN LOCALIDADES AS L ON L.ID = D.IDLOCALIDAD LEFT JOIN USUARIOS AS U ON U.ID = E.IDUSUARIO");
                 accesoDatos.abrirConexion();
                 accesoDatos.ejecutarConsulta();
 
@@ -46,9 +46,12 @@ namespace Negocio
                         nuevo.Usuario.ID = accesoDatos.Lector.GetInt32(6);
                     if (!Convert.IsDBNull(accesoDatos.Lector["USUARIO"]))
                         nuevo.Usuario.Nombre = accesoDatos.Lector.GetString(20);
+                    if (!Convert.IsDBNull(accesoDatos.Lector["USUARIO"]))
+                        nuevo.Usuario.Contraseña = accesoDatos.Lector.GetString(21);
                     nuevo.Domicilio = new Domicilio();
                     nuevo.Domicilio.Localidad = new Localidad();
                     nuevo.Domicilio.Edificio = new Edificio();
+
                     //Domicilio
                     if (!Convert.IsDBNull(accesoDatos.Lector["CALLE"]))
                         nuevo.Domicilio.Calle = accesoDatos.Lector.GetString(10);
@@ -82,6 +85,44 @@ namespace Negocio
 
                 return listado;
 
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+        }
+
+        public EmpleadoLite listarEmpleadoXUsuario(int IDUsuario)
+        {
+            AccesoDatosManager accesoDatos = new AccesoDatosManager();
+            EmpleadoLite nuevo;
+            try
+            {
+                accesoDatos.setearConsulta("Select * from EMPLEADOS WHERE IDUSUARIO = " + IDUsuario);
+                accesoDatos.abrirConexion();
+                accesoDatos.ejecutarConsulta();
+                nuevo = new EmpleadoLite();
+
+                while (accesoDatos.Lector.Read())
+                {
+                    nuevo.ID = accesoDatos.Lector.GetInt32(0);
+                    nuevo.TipoEmpleado = new TipoEmpleado();
+                    if ((int)accesoDatos.Lector["IDTIPOEMPLEADO"] == 1)
+                    {
+                        nuevo.TipoEmpleado.Administrador = true;
+                    }
+                    else
+                    {
+                        nuevo.TipoEmpleado.Vendedor = true;
+                    }
+                    nuevo.Apellido = accesoDatos.Lector.GetString(1);
+                    nuevo.Nombre = accesoDatos.Lector.GetString(2);
+                }
+                return nuevo;
             }
             catch (Exception ex)
             {

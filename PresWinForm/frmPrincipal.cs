@@ -7,14 +7,33 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using Negocio;
+using Dominio;
 namespace PresWinForm
 {
     public partial class frmPrincipal : Form
     {
+        Usuario local = new Usuario();
+        EmpleadoLite empLocal = new EmpleadoLite();
         public frmPrincipal()
         {
             InitializeComponent();
+        }
+
+        public frmPrincipal(Usuario u)
+        {
+            EmpleadoNegocio negocio= new EmpleadoNegocio();
+            InitializeComponent();
+            local = u;
+            tspEstatus.Text += u.Nombre;
+            empLocal = negocio.listarEmpleadoXUsuario(u.ID);
+            if (empLocal.TipoEmpleado.Vendedor)
+            {
+                btnClientes.Enabled = false;
+                btnEmpleados.Enabled = false;
+                btnProductos.Enabled = false;
+                btnProveedores.Enabled = false;
+            }
         }
 
         private void btnCompras_Click(object sender, EventArgs e)
@@ -62,12 +81,13 @@ namespace PresWinForm
         private void btnEmpleados_Click(object sender, EventArgs e)
         {
             this.ActiveMdiChild.Close();
-            frmEmpleados empleados = new frmEmpleados();
+            frmEmpleados empleados = new frmEmpleados(local);
             setearVentana(empleados, btnEmpleados);
         }
 
         private void frmPrincipal_Load(object sender, EventArgs e)
         {
+            //if()
             frmCompras compras = new frmCompras();
             setearVentana(compras, btnCompras);
         }

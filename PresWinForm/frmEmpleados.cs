@@ -15,10 +15,17 @@ namespace PresWinForm
     public partial class frmEmpleados : Form
     {
         private List<Empleado> listaEmp;
+        private Usuario uLocal = new Usuario();
 
         public frmEmpleados()
         {
             InitializeComponent();
+        }
+
+        public frmEmpleados(Usuario u)
+        {
+            InitializeComponent();
+            uLocal = u;
         }
 
         private void frmEmpleados_Load(object sender, EventArgs e)
@@ -83,11 +90,18 @@ namespace PresWinForm
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             Empleado eEliminar = (Empleado)dgvEmpleados.CurrentRow.DataBoundItem;
-            if (MessageBox.Show("Está a punto de eliminar al empleado: " + eEliminar.Nombre + ".\n\n¿Desea eliminarlo?", "Atención!", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if(eEliminar.Usuario.Nombre != uLocal.Nombre)
             {
-                EmpleadoNegocio negocio = new EmpleadoNegocio();
-                negocio.eliminarEmpleado(eEliminar);
-                cargarGrilla();
+                if (MessageBox.Show("Está a punto de eliminar al empleado: " + eEliminar.Nombre + ".\n\n¿Desea eliminarlo?", "Atención!", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    EmpleadoNegocio negocio = new EmpleadoNegocio();
+                    negocio.eliminarEmpleado(eEliminar);
+                    cargarGrilla();
+                }
+            }
+            else
+            {
+                MessageBox.Show("No puedes eliminar el usuario actual.", "Cuidado!");
             }
         }
 
@@ -132,6 +146,34 @@ namespace PresWinForm
             else
             {
                 btnHabilitar.Enabled = false;
+            }
+        }
+
+        private void dgvEmpleados_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                int currentRow = dgvEmpleados.HitTest(e.X, e.Y).RowIndex;
+                int currentColumn = dgvEmpleados.HitTest(e.X, e.Y).ColumnIndex;
+
+                if (currentRow >= 0)
+                {
+                    dgvEmpleados[currentColumn, currentRow].Selected = true;
+                    Empleado eSelect = (Empleado)dgvEmpleados.CurrentRow.DataBoundItem;
+
+                    ContextMenu m = new ContextMenu();
+                    m.MenuItems.Add(new MenuItem("Modificar", btnModificar_Click));
+                    if (eSelect.Estado == true)
+                    {
+                        m.MenuItems.Add(new MenuItem("Eliminar", btnEliminar_Click));
+                    }
+                    else
+                    {
+                        m.MenuItems.Add(new MenuItem("Habilitar", btnHabilitar_Click));
+                    }
+
+                    m.Show(dgvEmpleados, new Point(e.X, e.Y));
+                }
             }
         }
     }

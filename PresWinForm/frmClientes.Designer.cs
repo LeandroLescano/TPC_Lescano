@@ -129,6 +129,7 @@
             this.dgvClientes.Size = new System.Drawing.Size(663, 376);
             this.dgvClientes.TabIndex = 6;
             this.dgvClientes.SelectionChanged += new System.EventHandler(this.dgvClientes_SelectionChanged);
+            this.dgvClientes.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvClientes_MouseClick);
             // 
             // lblBusqueda
             // 

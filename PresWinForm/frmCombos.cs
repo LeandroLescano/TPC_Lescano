@@ -133,5 +133,33 @@ namespace PresWinForm
                 }
             }
         }
+
+        private void dgvCombos_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                int currentRow = dgvCombos.HitTest(e.X, e.Y).RowIndex;
+                int currentColumn = dgvCombos.HitTest(e.X, e.Y).ColumnIndex;
+
+                if (currentRow >= 0)
+                {
+                    dgvCombos[currentColumn, currentRow].Selected = true;
+                    Combo cSelect = (Combo)dgvCombos.CurrentRow.DataBoundItem;
+
+                    ContextMenu m = new ContextMenu();
+                    m.MenuItems.Add(new MenuItem("Modificar", btnModificar_Click));
+                    if (cSelect.Estado == true)
+                    {
+                        m.MenuItems.Add(new MenuItem("Eliminar", btnEliminar_Click));
+                    }
+                    else
+                    {
+                        m.MenuItems.Add(new MenuItem("Habilitar", btnHabilitar_Click));
+                    }
+
+                    m.Show(dgvCombos, new Point(e.X, e.Y));
+                }
+            }
+        }
     }
 }

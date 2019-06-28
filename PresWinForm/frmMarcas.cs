@@ -121,5 +121,33 @@ namespace PresWinForm
                 btnHabilitar.Enabled = false;
             }
         }
+
+        private void dgvMarca_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                int currentRow = dgvMarca.HitTest(e.X, e.Y).RowIndex;
+                int currentColumn = dgvMarca.HitTest(e.X, e.Y).ColumnIndex;
+
+                if (currentRow >= 0)
+                {
+                    dgvMarca[currentColumn, currentRow].Selected = true;
+                    Marca mSelect = (Marca)dgvMarca.CurrentRow.DataBoundItem;
+
+                    ContextMenu m = new ContextMenu();
+                    m.MenuItems.Add(new MenuItem("Modificar", btnModificar_Click));
+                    if (mSelect.Estado == true)
+                    {
+                        m.MenuItems.Add(new MenuItem("Eliminar", btnEliminar_Click));
+                    }
+                    else
+                    {
+                        m.MenuItems.Add(new MenuItem("Habilitar", btnHabilitar_Click));
+                    }
+
+                    m.Show(dgvMarca, new Point(e.X, e.Y));
+                }
+            }
+        }
     }
 }

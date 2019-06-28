@@ -290,6 +290,7 @@ namespace PresWinForm
         {
             CategoriaNegocio negocioCat = new CategoriaNegocio();
             listaCat = negocioCat.listarCategorias();
+            listaCat = listaCat.FindAll(X => X.Estado == true);
             listaCat.Insert(0, new Categoria { Nombre = "Todos", ID = -1 });
             cmbCategoria.DataSource = listaCat;
         }

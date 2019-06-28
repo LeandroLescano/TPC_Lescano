@@ -57,6 +57,7 @@
             this.dgvCombos.Size = new System.Drawing.Size(663, 376);
             this.dgvCombos.TabIndex = 9;
             this.dgvCombos.SelectionChanged += new System.EventHandler(this.dgvCombos_SelectionChanged);
+            this.dgvCombos.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvCombos_MouseClick);
             // 
             // tspMenu
             // 

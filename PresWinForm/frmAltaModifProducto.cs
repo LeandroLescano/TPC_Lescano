@@ -187,17 +187,24 @@ namespace PresWinForm
         private void cargarListas()
         {
             ProveedorNegocio negocioProv = new ProveedorNegocio();
-            clbProveedores.DataSource = negocioProv.listarProveedores();
+            List<Proveedor> listadoProv = new List<Proveedor>();
+            listadoProv = negocioProv.listarProveedores();
+            listadoProv = listadoProv.FindAll(X => X.Estado == true);
+            clbProveedores.DataSource = listadoProv;
 
             CategoriaNegocio negocioCat = new CategoriaNegocio();
-            cmbCategoria.DataSource = negocioCat.listarCategorias();
+            List<Categoria> listadoCat = negocioCat.listarCategorias();
+            listadoCat = listadoCat.FindAll(X => X.Estado == true);
+            cmbCategoria.DataSource = listadoCat;
             cmbCategoria.AutoCompleteMode = AutoCompleteMode.Append;
             cmbCategoria.AutoCompleteSource = AutoCompleteSource.ListItems;
             cmbCategoria.SelectedIndex = -1;
             cmbCategoria.Text = "Elige una opción...";
 
             MarcaNegocio negocioMarcas = new MarcaNegocio();
-            cmbMarca.DataSource = negocioMarcas.listarMarcas();
+            List<Marca> listadoMarcas = negocioMarcas.listarMarcas();
+            listadoMarcas = listadoMarcas.FindAll(X => X.Estado == true);
+            cmbMarca.DataSource = listadoMarcas;
             cmbMarca.AutoCompleteMode = AutoCompleteMode.Append;
             cmbMarca.AutoCompleteSource = AutoCompleteSource.ListItems;
             cmbMarca.SelectedIndex = -1;

@@ -76,5 +76,11 @@ namespace PresWinForm
         {
             this.Close();
         }
+
+        private void btnDetallesCliente_Click(object sender, EventArgs e)
+        {
+            frmAltaModifPersona verCliente = new frmAltaModifPersona(local.Cliente, 'C');
+            verCliente.ShowDialog();
+        }
     }
 }

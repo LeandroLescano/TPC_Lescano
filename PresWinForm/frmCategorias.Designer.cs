@@ -57,6 +57,7 @@
             this.dgvCategoria.Size = new System.Drawing.Size(388, 275);
             this.dgvCategoria.TabIndex = 7;
             this.dgvCategoria.SelectionChanged += new System.EventHandler(this.dgvCategoria_SelectionChanged);
+            this.dgvCategoria.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvCategoria_MouseClick);
             // 
             // lblBusqueda
             // 

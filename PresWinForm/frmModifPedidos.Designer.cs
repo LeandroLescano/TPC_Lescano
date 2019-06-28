@@ -51,6 +51,7 @@
             this.btnDetalles = new System.Windows.Forms.Button();
             this.dtpFechaSolicitud = new System.Windows.Forms.DateTimePicker();
             this.lblFechaSolicitud = new System.Windows.Forms.Label();
+            this.btnDetallesCliente = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblCombo
@@ -257,7 +258,7 @@
             // 
             this.btnDetalles.AutoSize = true;
             this.btnDetalles.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDetalles.Location = new System.Drawing.Point(296, 61);
+            this.btnDetalles.Location = new System.Drawing.Point(296, 53);
             this.btnDetalles.Name = "btnDetalles";
             this.btnDetalles.Size = new System.Drawing.Size(69, 27);
             this.btnDetalles.TabIndex = 23;
@@ -287,11 +288,24 @@
             this.lblFechaSolicitud.TabIndex = 24;
             this.lblFechaSolicitud.Text = "Fecha solicitud:";
             // 
+            // btnDetallesCliente
+            // 
+            this.btnDetallesCliente.AutoSize = true;
+            this.btnDetallesCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDetallesCliente.Location = new System.Drawing.Point(296, 129);
+            this.btnDetallesCliente.Name = "btnDetallesCliente";
+            this.btnDetallesCliente.Size = new System.Drawing.Size(69, 27);
+            this.btnDetallesCliente.TabIndex = 26;
+            this.btnDetallesCliente.Text = "Detalles";
+            this.btnDetallesCliente.UseVisualStyleBackColor = true;
+            this.btnDetallesCliente.Click += new System.EventHandler(this.btnDetallesCliente_Click);
+            // 
             // frmModifPedidos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(751, 371);
+            this.Controls.Add(this.btnDetallesCliente);
             this.Controls.Add(this.dtpFechaSolicitud);
             this.Controls.Add(this.lblFechaSolicitud);
             this.Controls.Add(this.btnDetalles);
@@ -348,5 +362,6 @@
         private System.Windows.Forms.Button btnDetalles;
         private System.Windows.Forms.DateTimePicker dtpFechaSolicitud;
         private System.Windows.Forms.Label lblFechaSolicitud;
+        private System.Windows.Forms.Button btnDetallesCliente;
     }
 }

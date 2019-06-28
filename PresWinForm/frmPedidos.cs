@@ -47,5 +47,24 @@ namespace PresWinForm
                 cargarGrilla();
             }
         }
+
+        private void dgvPedidos_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                int currentRow = dgvPedidos.HitTest(e.X, e.Y).RowIndex;
+                int currentColumn = dgvPedidos.HitTest(e.X, e.Y).ColumnIndex;
+
+                if (currentRow >= 0)
+                {
+                    dgvPedidos[currentColumn, currentRow].Selected = true;
+                    Pedido pSelect = (Pedido)dgvPedidos.CurrentRow.DataBoundItem;
+
+                    ContextMenu m = new ContextMenu();
+                    m.MenuItems.Add(new MenuItem("Detalles", btnDetalles_Click));
+                    m.Show(dgvPedidos, new Point(e.X, e.Y));
+                }
+            }
+        }
     }
 }
