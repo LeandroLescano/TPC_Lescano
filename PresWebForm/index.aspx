@@ -2,13 +2,15 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <script type="text/javascript">       
         $(document).ready(function () {
-
-            $('#alto').height($(window).height());
+            $('#alto').height(window.innerHeight);
+            
 
         });
     </script>
     <asp:HiddenField ID="ClienteID" runat="server" />
-    <h1 style="text-align:center;">Bienvenido!</h1>
-    <h2 ><a href="/pedido">Hacé tu pedido</a></h2>
+    <div id="Bienvenido">
+        <h1 style="text-align:center;">Bienvenido!</h1>
+        <h2 style ="text-align:center;"><a href="/pedido">Hacé tu pedido</a></h2>
+    </div>
     <div id="alto"></div>
 </asp:Content>

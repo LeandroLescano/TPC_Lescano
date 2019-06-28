@@ -22,6 +22,7 @@
         <thead>
             <tr>
                 <th class="thID" scope="col">Nro</th>
+                <th scope="col">Combo</th>
                 <th scope="col">Observación</th>
                 <th class="thFecha" scope="col">Fecha de entrega</th>
                 <th class="thFecha" scope="col">Fecha de solicitud</th>

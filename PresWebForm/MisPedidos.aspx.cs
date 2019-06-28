@@ -19,7 +19,6 @@ namespace PresWebForm
                 if (Session["ClienteID"].ToString() != "")
                     ClienteID.Value = Session["ClienteID"].ToString();
             }
-            //cargarGrilla();
         }
 
         [System.Web.Services.WebMethod]
@@ -33,6 +32,7 @@ namespace PresWebForm
             {
                 Tabla += "<tr>" +
                     "<th class='thID' scope='row'>" + (i + 1) + "</th>" +
+                        "<td>" + listado[i].Combo.Nombre + "</td>" + 
                         "<td class='tdObservacion'>" + listado[i].Observacion + "</td>" +
                         "<td>" + listado[i].FechaEntrega.ToShortDateString() + "</td>" +
                         "<td>" + listado[i].FechaSolicitud.ToShortDateString() + "</td>" +
@@ -44,48 +44,6 @@ namespace PresWebForm
 
             return Tabla;
         }
-
-        //[System.Web.Services.WebMethod]
-        //public static DataGrid actualizarGrilla(DataGrid dgv, int ID)
-        //{
-        //    PedidoNegocio negocio = new PedidoNegocio();
-        //    dgv.DataSource = negocio.listarPedidosCliente(ID);
-        //    dgv.DataBind();
-
-        //    return dgv;
-        //}
-
-        //protected void cargarGrilla()
-        //{
-        //    if (ClienteID.Value != "")
-        //    {
-        //        PedidoNegocio negocio = new PedidoNegocio();
-        //        lista = new List<Pedido>();   
-        //        lista = negocio.listarPedidosCliente(Convert.ToInt32(ClienteID.Value));
-        //        int index = 0;
-        //        foreach (var item in lista)
-        //        {
-        //grilla.InnerHtml += "<tr>" +
-        //"<th scope='row'>" + (index+1) + "</th>" +
-        //    "<td>" + lista[index].Observacion + "</td>" +
-        //    "<td>" + lista[index].FechaEntrega.ToShortDateString() + "</td>" +
-        //    "<td>" + lista[index].FechaSolicitud.ToShortDateString() + "</td>" +
-        //    "<td>" + "$"+ lista[index].PrecioFinal + "</td>" +
-        //    "<td>" + lista[index].Estado + "</td>" +
-        //"</tr>";
-        //            index++;
-        //        }
-        //        //dgvpedidos.datasource = lista;
-        //        //dgvpedidos.databind();
-        //    }
-        //else
-        //{
-        //List<Pedido> listaVacia = new List<Pedido>();
-        //Pedido vacio = new Pedido();
-        //dgvPedidos.DataSource = listaVacia;
-        //dgvPedidos.DataBind();
-        //}
-        //}
 
         protected void dgvPedidos_RowDataBound(object sender, GridViewRowEventArgs e)
         {
