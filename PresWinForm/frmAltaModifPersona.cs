@@ -17,6 +17,8 @@ namespace PresWinForm
         private Cliente clienteLocal = null;
         private Proveedor proveedorLocal = null;
         private MailNegocio negocioMail = new MailNegocio();
+        private ProveedorNegocio negocioProv = new ProveedorNegocio();
+        private ClienteNegocio negocioCli = new ClienteNegocio();
         private char Tipo;
 
         public frmAltaModifPersona(char T)
@@ -588,6 +590,50 @@ namespace PresWinForm
             else
             {
                 btnAñadirMail.Enabled = false;
+            }
+        }
+
+        private void txtCUIT_Leave(object sender, EventArgs e)
+        {
+            if(Tipo == 'P')
+            {
+                if (negocioProv.dniCuitDuplicado(txtCUIT.Text, 'C') && txtCUIT.Text != "")
+                {
+                    MessageBox.Show("El CUIL pertenece a otro proveedor", "Cuidado!");
+                    txtCUIT.Focus();
+                    txtCUIT.SelectAll();
+                }
+            }
+            else
+            {
+                if (negocioCli.dniCuitDuplicado(txtCUIT.Text, 'C') && txtCUIT.Text != "")
+                {
+                    MessageBox.Show("El CUIL pertenece a otro cliente", "Cuidado!");
+                    txtCUIT.Focus();
+                    txtCUIT.SelectAll();
+                }
+            }
+        }
+
+        private void txtDNI_Leave(object sender, EventArgs e)
+        {
+            if(Tipo == 'P')
+            {
+                if (negocioProv.dniCuitDuplicado(txtDNI.Text, 'D') && txtDNI.Text != "")
+                {
+                    MessageBox.Show("El DNI pertenece a otro proveedor", "Cuidado!");
+                    txtDNI.Focus();
+                    txtDNI.SelectAll();
+                }
+            }
+            else
+            {
+                if (negocioCli.dniCuitDuplicado(txtDNI.Text, 'D') && txtDNI.Text != "")
+                {
+                    MessageBox.Show("El DNI pertenece a otro cliente", "Cuidado!");
+                    txtDNI.Focus();
+                    txtDNI.SelectAll();
+                }
             }
         }
     }

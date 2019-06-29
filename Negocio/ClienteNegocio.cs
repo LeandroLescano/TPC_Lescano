@@ -459,5 +459,36 @@ namespace Negocio
             }
 
         }
+
+        public bool dniCuitDuplicado(string Numero, char Tipo)
+        {
+            AccesoDatosManager accesoDatos = new AccesoDatosManager();
+            try
+            {
+                if (Tipo == 'D')
+                {
+                    accesoDatos.setearConsulta("SELECT DNI FROM CLIENTES WHERE DNI = '" + Numero + "'");
+                }
+                else
+                {
+                    accesoDatos.setearConsulta("SELECT CUIT FROM CLIENTES WHERE CUIT = '" + Numero + "'");
+                }
+                accesoDatos.abrirConexion();
+                accesoDatos.ejecutarConsulta();
+                while (accesoDatos.Lector.Read())
+                {
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+        }
     }
 }

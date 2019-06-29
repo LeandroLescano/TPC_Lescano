@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 using Dominio;
 using Negocio;
 
@@ -15,6 +16,7 @@ namespace PresWinForm
     public partial class frmAltaModifEmpleado : Form
     {
         private Empleado empleadoLocal = null;
+        private EmpleadoNegocio negocio = new EmpleadoNegocio();
 
         public frmAltaModifEmpleado()
         {
@@ -317,6 +319,26 @@ namespace PresWinForm
             if (!(char.IsNumber(e.KeyChar)) && (e.KeyChar != (char)Keys.Back))
             {
                 e.Handled = true;
+            }
+        }
+
+        private void txtDNI_Leave(object sender, EventArgs e)
+        {
+            if(negocio.dniCuilDuplicado(txtDNI.Text, 'D') && txtDNI.Text != "")
+            {
+                MessageBox.Show("El DNI pertenece a otro empleado", "Cuidado!");
+                txtDNI.Focus();
+                txtDNI.SelectAll();
+            }
+        }
+
+        private void txtCUIL_Leave(object sender, EventArgs e)
+        {
+            if (negocio.dniCuilDuplicado(txtCUIL.Text, 'C') && txtCUIL.Text != "")
+            {
+                MessageBox.Show("El CUIL pertenece a otro empleado", "Cuidado!");
+                txtCUIL.Focus();
+                txtCUIL.SelectAll();
             }
         }
     }

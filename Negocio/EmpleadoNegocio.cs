@@ -267,6 +267,37 @@ namespace Negocio
             }
         }
 
+        public bool dniCuilDuplicado(string Numero, char Tipo)
+        {
+            AccesoDatosManager accesoDatos = new AccesoDatosManager();
+            try
+            {
+                if(Tipo == 'D')
+                {
+                    accesoDatos.setearConsulta("SELECT DNI, CUIL FROM EMPLEADOS WHERE DNI = '"+ Numero +"'");
+                }
+                else
+                {
+                    accesoDatos.setearConsulta("SELECT DNI, CUIL FROM EMPLEADOS WHERE CUIL = '" + Numero + "'");
+                }
+                accesoDatos.abrirConexion();
+                accesoDatos.ejecutarConsulta();
+                while(accesoDatos.Lector.Read())
+                {
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+        }
+
     }
 }
 

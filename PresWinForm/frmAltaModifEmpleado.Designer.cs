@@ -211,6 +211,7 @@
             this.txtDNI.Name = "txtDNI";
             this.txtDNI.Size = new System.Drawing.Size(208, 23);
             this.txtDNI.TabIndex = 3;
+            this.txtDNI.Leave += new System.EventHandler(this.txtDNI_Leave);
             // 
             // lblID
             // 
@@ -229,6 +230,7 @@
             this.txtCUIL.Name = "txtCUIL";
             this.txtCUIL.Size = new System.Drawing.Size(208, 23);
             this.txtCUIL.TabIndex = 4;
+            this.txtCUIL.Leave += new System.EventHandler(this.txtCUIL_Leave);
             // 
             // txtID
             // 
