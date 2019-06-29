@@ -97,6 +97,10 @@ namespace PresWinForm
                 lblTotal.Text = "Total: " + PrecioFinal;
                 cmbProducto.Focus();
             }
+            else
+            {
+                MessageBox.Show("No hay ningún producto seleccionado", "Cuidado!");
+            }
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -105,6 +109,10 @@ namespace PresWinForm
             {
                 int index = dgvDetalle.CurrentRow.Index;
                 Detalle.RemoveAt(index);
+            }
+            else
+            {
+                MessageBox.Show("No hay ningún producto seleccionado", "Cuidado!");
             }
         }
 

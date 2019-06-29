@@ -26,11 +26,11 @@ namespace PresWinForm
             InitializeComponent();
         }
 
-        public frmAltaModifCombo(Combo cmb, bool Ver)
+        public frmAltaModifCombo(Combo cmb, bool Editar)
         {
             InitializeComponent();
             local = cmb;
-            if (Ver)
+            if (!Editar)
             {
                 btnAgregar.Enabled = false;
                 btnBuscar.Enabled = false;
@@ -60,8 +60,7 @@ namespace PresWinForm
                 btnAgregar.Text = "Modificar";
                 txtID.Text = local.ID.ToString();
                 txtRuta.Text = local.RutaImagen;
-                if (local.RutaImagen != null)
-                    picImagen.Image = Image.FromFile(local.RutaImagen);
+                cargarImagen();
                 txtNombre.Text = local.Nombre;
                 txtDescripcion.Text = local.Descripcion;
                 txtDiasAnticipo.Text = local.DiasAnticipo.ToString();
@@ -85,6 +84,19 @@ namespace PresWinForm
             {
                 local = new Combo();
                 local.Productos = new List<DetalleCombo>();
+            }
+        }
+
+        private void cargarImagen()
+        {
+            try
+            {
+                if (local.RutaImagen != null)
+                    picImagen.Image = Image.FromFile(local.RutaImagen);
+            }
+            catch (Exception)
+            {
+                
             }
         }
 

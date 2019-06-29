@@ -37,6 +37,10 @@ namespace PresWinForm
                 modif.ShowDialog();
                 cargarGrilla();
             }
+            else
+            {
+                MessageBox.Show("No hay ninguna categoría seleccionada", "Cuidado!");
+            }
         }
 
         private void frmCategorias_Load(object sender, EventArgs e)
@@ -83,6 +87,10 @@ namespace PresWinForm
                     negocio.eliminarCategoria(cEliminar);
                     cargarGrilla();
                 }
+            }
+            else
+            {
+                MessageBox.Show("No hay ninguna categoría seleccionada", "Cuidado!");
             }
         }
 

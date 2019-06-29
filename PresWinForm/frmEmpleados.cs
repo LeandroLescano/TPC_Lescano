@@ -88,6 +88,10 @@ namespace PresWinForm
                 modif.ShowDialog();
                 cargarGrilla();
             }
+            else
+            {
+                MessageBox.Show("No hay ningún empleado seleccionado", "Cuidado!");
+            }
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -108,6 +112,10 @@ namespace PresWinForm
                 {
                     MessageBox.Show("No puedes eliminar el usuario actual.", "Cuidado!");
                 }
+            }
+            else
+            {
+                MessageBox.Show("No hay ningún empleado seleccionado", "Cuidado!");
             }
         }
 

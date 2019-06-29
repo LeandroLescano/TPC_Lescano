@@ -42,6 +42,10 @@ namespace PresWinForm
                 modif.ShowDialog();
                 cargarGrilla();
             }
+            else
+            {
+                MessageBox.Show("No hay ningún cliente seleccionado", "Cuidado!");
+            }
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -57,6 +61,10 @@ namespace PresWinForm
                         negocio.eliminarCliente(cmodif);
                         cargarGrilla();
                     }
+                }
+                else
+                {
+                    MessageBox.Show("No hay ningún cliente seleccionado", "Cuidado!");
                 }
             }
             catch (Exception ex)

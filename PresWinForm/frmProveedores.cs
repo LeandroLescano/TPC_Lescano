@@ -79,6 +79,10 @@ namespace PresWinForm
                 modif.ShowDialog();
                 cargarGrilla();
             }
+            else
+            {
+                MessageBox.Show("No hay ningún proveedor seleccionado", "Cuidado!");
+            }
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -97,6 +101,10 @@ namespace PresWinForm
                     negocio.eliminarProveedor(peliminar);
                     cargarGrilla();
                 }
+            }
+            else
+            {
+                MessageBox.Show("No hay ningún proveedor seleccionado", "Cuidado!");
             }
         }
 

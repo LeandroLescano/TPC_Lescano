@@ -89,6 +89,10 @@ namespace PresWinForm
                 lblPrecioTotal.Text = PrecioFinal.ToString();
                 cmbProducto.Focus();
             }
+            else
+            {
+                MessageBox.Show("No hay ningún producto seleccionado", "Cuidado!");
+            }
         }
 
         private void cmbProducto_SelectedIndexChanged(object sender, EventArgs e)
@@ -111,6 +115,10 @@ namespace PresWinForm
             {
                 int index = dgvDetalle.CurrentRow.Index;
                 Detalle.RemoveAt(index);
+            }
+            else
+            {
+                MessageBox.Show("No hay ningún producto seleccionado", "Cuidado!");
             }
         }
 

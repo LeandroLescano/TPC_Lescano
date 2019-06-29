@@ -118,9 +118,13 @@ namespace PresWinForm
             if(dgvCombos.CurrentRow != null)
             {
                 Combo cModif = (Combo)dgvCombos.CurrentRow.DataBoundItem;
-                frmAltaModifCombo modif = new frmAltaModifCombo(cModif, false);
+                frmAltaModifCombo modif = new frmAltaModifCombo(cModif, true);
                 modif.ShowDialog();
                 cargarGrilla();
+            }
+            else
+            {
+                MessageBox.Show("No hay ningún combo seleccionado", "Cuidado!");
             }
         }
 
@@ -134,6 +138,10 @@ namespace PresWinForm
                     negocio.eliminarCombo(cEliminar);
                     cargarGrilla();
                 }
+            }
+            else
+            {
+                MessageBox.Show("No hay ningún combo seleccionado", "Cuidado!");
             }
         }
 

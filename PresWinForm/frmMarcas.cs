@@ -37,6 +37,10 @@ namespace PresWinForm
                 modif.ShowDialog();
                 cargarGrilla();
             }
+            else
+            {
+                MessageBox.Show("No hay ninguna marca seleccionada", "Cuidado!");
+            }
         }
 
         private void frmMarcas_Load(object sender, EventArgs e)
@@ -82,6 +86,10 @@ namespace PresWinForm
                     negocio.eliminarMarca(mEliminar);
                     cargarGrilla();
                 }
+            }
+            else
+            {
+                MessageBox.Show("No hay ninguna marca seleccionada", "Cuidado!");
             }
         }
 

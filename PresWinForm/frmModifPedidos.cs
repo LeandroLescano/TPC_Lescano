@@ -68,7 +68,7 @@ namespace PresWinForm
 
         private void btnDetalles_Click(object sender, EventArgs e)
         {
-            frmAltaModifCombo verCombo = new frmAltaModifCombo(local.Combo, true);
+            frmAltaModifCombo verCombo = new frmAltaModifCombo(local.Combo, false);
             verCombo.ShowDialog();
         }
 
