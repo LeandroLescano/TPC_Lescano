@@ -134,7 +134,8 @@
 
                                         <div class="form-group">
                                             <label for="txtUsuarioR" class="col-form-label">Usuario:</label>
-                                            <input type="text" class="form-control" id="txtUsuarioR" placeholder="Usuario" tabindex="4" onkeyup="validarVacio(this.id)" onblur="sacarFoco(this.id)" onfocus="enFoco(this.id)">
+                                            <input type="text" class="form-control" id="txtUsuarioR" placeholder="Usuario" tabindex="4" onkeyup="validarVacio(this.id)" onblur="usuarioDuplicado(this.id); sacarFoco(this.id)" onfocus="enFoco(this.id)">
+                                            <label id="usuarioDuplicado" style="position: absolute" hidden class="col-form-label">Usuario en uso, intente con otro.</label>
                                         </div>
                                         <div class="form-group">
                                             <label for="txtMail" class="col-form-label">Mail:</label>
@@ -158,7 +159,8 @@
                                     <div class="col-sm-4">
                                         <div class="form-group">
                                             <label for="txtDNI" class="col-form-label">DNI:</label>
-                                            <input type="number" class="form-control" id="txtDNI" placeholder="12345678" tabindex="3" onfocus="enFoco(this.id)" onkeyup="validarDNI()" oninput="maxNumeros(this.id)" onblur="sacarFoco(this.id)">
+                                            <input type="number" class="form-control" id="txtDNI" placeholder="12345678" tabindex="3" onfocus="enFoco(this.id)" onkeyup="validarDNI()" oninput="maxNumeros(this.id)" onblur="dniDuplicado(this.id); sacarFoco(this.id)">
+                                            <label id="duplicado" style="position: absolute" hidden class="col-form-label">DNI correspondiente a otro cliente.</label>
                                         </div>
                                         <div class="form-group">
                                             <label for="txtContraseñaRepetida" class="col-form-label">Repetir contraseña:</label>

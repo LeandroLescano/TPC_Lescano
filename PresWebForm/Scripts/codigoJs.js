@@ -85,6 +85,56 @@ function nombreCliente(id) {
     });
 };
 
+function dniDuplicado(id) {
+    var objeto = document.getElementById(id)
+    var dni =objeto.value;
+    $.ajax({
+        type: "POST",
+        url: "pedido.aspx/dniDuplicado",
+        data: JSON.stringify({ DNI: dni }),
+        async: false,
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (salida) {
+            if (salida.d == "Existe") {
+                objeto.className = "form-control border border-danger";
+                objeto.style.boxShadow = "0 0 0 0.2rem rgba(255, 0, 0, 0.23)";
+                document.getElementById("duplicado").hidden = false;
+            }
+            else {
+                objeto.className = "form-control border border-success";
+                objeto.style.boxShadow = "0 0 0 0.2rem rgba(79, 162, 51, 0.25)";
+                document.getElementById("duplicado").hidden = true;
+            }
+        }
+    });
+}
+
+function usuarioDuplicado(id) {
+    var objeto = document.getElementById(id)
+    var user = objeto.value;
+    $.ajax({
+        type: "POST",
+        url: "pedido.aspx/usuarioDuplicado",
+        data: JSON.stringify({ usuario: user }),
+        async: false,
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (salida) {
+            if (salida.d == "Existe") {
+                objeto.className = "form-control border border-danger";
+                objeto.style.boxShadow = "0 0 0 0.2rem rgba(255, 0, 0, 0.23)";
+                document.getElementById("usuarioDuplicado").hidden = false;
+            }
+            else {
+                objeto.className = "form-control border border-success";
+                objeto.style.boxShadow = "0 0 0 0.2rem rgba(79, 162, 51, 0.25)";
+                document.getElementById("usuarioDuplicado").hidden = true;
+            }
+        }
+    });
+}
+
 
 //=========== VALIDACIONES ========================
 
@@ -275,14 +325,14 @@ function validarContraseña() {
     pass = document.getElementById("txtContraseñaR");
     passR = document.getElementById("txtContraseñaRepetida");
 
-    if (pass.value == passR.value) {
-        passR.className = "form-control border border-success";
-        passR.style.boxShadow = "0 0 0 0.2rem rgba(79, 162, 51, 0.25)";
-    }
-    else if (passR.value == "") {
+    if (passR.value == "") {
         passR.className = "form-control";
         passR.style.border = "1px solid #ced4da";
         passR.style.boxShadow = "0 0 0 0.2rem rgba(0,123,255,.25)";
+    }
+    else if (pass.value == passR.value) {
+        passR.className = "form-control border border-success";
+        passR.style.boxShadow = "0 0 0 0.2rem rgba(79, 162, 51, 0.25)";
     }
     else {
         passR.className = "form-control border border-danger";

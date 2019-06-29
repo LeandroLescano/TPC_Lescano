@@ -92,6 +92,33 @@ namespace PresWebForm
         {
             HttpContext.Current.Session.Remove("ClienteID");
         }
+        [System.Web.Services.WebMethod]
+        public static string usuarioDuplicado(string usuario)
+        {
+            UsuarioNegocio negocio = new UsuarioNegocio();
+            if (negocio.usuarioDuplicado(usuario))
+            {
+                return "Existe";
+            }
+            else
+            {
+                return "No existe";
+            }
+        }
+
+        [System.Web.Services.WebMethod]
+        public static string dniDuplicado(string DNI)
+        {
+            ClienteNegocio negocio = new ClienteNegocio();
+            if(negocio.dniCuitDuplicado(DNI, 'D'))
+            {
+                return "Existe";
+            }
+            else
+            {
+                return "No existe";
+            }
+        }
 
         [System.Web.Services.WebMethod]
         public static string nombreCliente(int ID)

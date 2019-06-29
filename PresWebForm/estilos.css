@@ -109,6 +109,18 @@ h2 a:hover{
     margin: -100px 0 0 -150px;
 }
 
+#duplicado {
+    font-size: 14px;
+    margin-top: -6px;
+    color: black;
+}
+
+#usuarioDuplicado {
+    font-size: 14px;
+    margin-top: -6px;
+    color: black;
+}
+
 /*DATEPICKER
 #dtpFechaEntrega {
     display: inline-block;
