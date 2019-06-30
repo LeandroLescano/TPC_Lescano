@@ -128,30 +128,33 @@ namespace PresWinForm
             {
                 if(Detalle.Count > 0)
                 {
+                    VentaNegocio negocioVen = new VentaNegocio();
+                    FacturaNegocio negocioFact = new FacturaNegocio();
+                    ComercioNegocio negocioCom = new ComercioNegocio();
+                    Comercio comercio = new Comercio();
+                    comercio = negocioCom.listarComercio();
+                    Venta nuevaVenta = new Venta();
+                    nuevaVenta.Cliente = new Cliente();
+                    nuevaVenta.Detalle = new List<DetalleVenta>();
+                    nuevaVenta.Factura = new Factura();
 
-                VentaNegocio negocioVen = new VentaNegocio();
-                FacturaNegocio negocioFact = new FacturaNegocio();
-                Venta nuevaVenta = new Venta();
-                nuevaVenta.Cliente = new Cliente();
-                nuevaVenta.Detalle = new List<DetalleVenta>();
-                nuevaVenta.Factura = new Factura();
-
-                nuevaVenta.Cliente = (Cliente)cmbClientes.SelectedItem;
-                nuevaVenta.Detalle = Detalle.ToList();
-                nuevaVenta.Factura.Domicilio = nuevaVenta.Cliente.Domicilio; //Como prueba asigno domicilio del cliente
-                nuevaVenta.Importe = Convert.ToDecimal(lblPrecioTotal.Text);
-                nuevaVenta.Factura.Numero = "0001-00000001";
-                nuevaVenta.Factura.CUIT = nuevaVenta.Cliente.CUIT;
-                nuevaVenta.Factura.IngresosBrutos = "1234567-08"; //Falta hacer una sección para poner los datos generales de la factura junto a Domicilio, Fecha de inicio
-                nuevaVenta.Factura.FechaInicio = System.DateTime.Now;
-                nuevaVenta.Factura.FechaActual = System.DateTime.Now;
-                nuevaVenta.Factura.ListadoProductos = nuevaVenta.Detalle;
-                nuevaVenta.Factura.ID = negocioFact.agregarFactura(nuevaVenta.Factura);
-                nuevaVenta.ID = negocioVen.agregarVenta(nuevaVenta);
-                foreach (DetalleVenta item in nuevaVenta.Detalle)
-                {
-                    negocioVen.agregarProductosXVenta(nuevaVenta.ID, item.Producto.ID, item.Cantidad);
-                }
+                    nuevaVenta.Cliente = (Cliente)cmbClientes.SelectedItem;
+                    nuevaVenta.Detalle = Detalle.ToList();
+                    nuevaVenta.Factura.Domicilio = comercio.Domicilio;
+                    nuevaVenta.Importe = Convert.ToDecimal(lblPrecioTotal.Text);
+                    nuevaVenta.Factura.Numero = negocioFact.NumeroNuevaFact();
+                    nuevaVenta.Factura.CUIT = comercio.CUIT;
+                    nuevaVenta.Factura.IngresosBrutos = comercio.IngresosBrutos;
+                    nuevaVenta.Factura.FechaInicio = comercio.FechaInicio;
+                    nuevaVenta.Factura.FechaActual = System.DateTime.Now;
+                    nuevaVenta.Factura.ListadoProductos = nuevaVenta.Detalle;
+                    nuevaVenta.Factura.ID = negocioFact.agregarFactura(nuevaVenta.Factura);
+                    nuevaVenta.ID = negocioVen.agregarVenta(nuevaVenta);
+                    foreach (DetalleVenta item in nuevaVenta.Detalle)
+                    {
+                        negocioVen.agregarProductosXVenta(nuevaVenta.ID, item.Producto.ID, item.Cantidad);
+                    }
+                    negocioFact.FacturaWord(nuevaVenta.Factura, nuevaVenta);
                 }
                 else
                 {
@@ -163,6 +166,5 @@ namespace PresWinForm
                 MessageBox.Show("No hay cliente asignado", "Cuidado!");
             }
         }
-
     }
 }

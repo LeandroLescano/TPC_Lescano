@@ -341,5 +341,39 @@ namespace PresWinForm
                 txtCUIL.SelectAll();
             }
         }
+
+        private void alturaCalle()
+        {
+            if (txtCalle.Text != "" && txtAltura.Text != "")
+            {
+                txtEntreCalle1.Enabled = true;
+                txtEntreCalle2.Enabled = true;
+                txtPiso.Enabled = true;
+                txtDepto.Enabled = true;
+                txtLocalidad.Enabled = true;
+                txtPartido.Enabled = true;
+                txtCPostal.Enabled = true;
+            }
+            else
+            {
+                txtEntreCalle1.Enabled = false;
+                txtEntreCalle2.Enabled = false;
+                txtPiso.Enabled = false;
+                txtDepto.Enabled = false;
+                txtLocalidad.Enabled = false;
+                txtPartido.Enabled = false;
+                txtCPostal.Enabled = false;
+            }
+        }
+
+        private void txtCalle_TextChanged(object sender, EventArgs e)
+        {
+            alturaCalle();
+        }
+
+        private void txtAltura_TextChanged(object sender, EventArgs e)
+        {
+            alturaCalle();
+        }
     }
 }

@@ -38,6 +38,8 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.btnPedidos = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnCombos = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             this.btnProductos = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.btnProveedores = new System.Windows.Forms.ToolStripButton();
@@ -45,8 +47,8 @@
             this.btnClientes = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.btnEmpleados = new System.Windows.Forms.ToolStripButton();
-            this.btnCombos = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnConfiguracion = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
             this.statusStrip1.SuspendLayout();
             this.tspMenu.SuspendLayout();
             this.SuspendLayout();
@@ -63,7 +65,7 @@
             // 
             // tspEstatus
             // 
-            this.tspEstatus.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.tspEstatus.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.tspEstatus.Name = "tspEstatus";
             this.tspEstatus.Size = new System.Drawing.Size(100, 17);
             this.tspEstatus.Text = "Logueado como: ";
@@ -85,10 +87,13 @@
             this.toolStripSeparator5,
             this.btnClientes,
             this.toolStripSeparator6,
-            this.btnEmpleados});
+            this.btnEmpleados,
+            this.toolStripSeparator8,
+            this.btnConfiguracion});
             this.tspMenu.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
             this.tspMenu.Location = new System.Drawing.Point(0, 0);
             this.tspMenu.Name = "tspMenu";
+            this.tspMenu.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.tspMenu.Size = new System.Drawing.Size(1088, 37);
             this.tspMenu.TabIndex = 1;
             this.tspMenu.Text = "toolStrip1";
@@ -154,6 +159,26 @@
             this.toolStripSeparator3.MergeIndex = 0;
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(6, 35);
+            // 
+            // btnCombos
+            // 
+            this.btnCombos.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnCombos.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCombos.Image = ((System.Drawing.Image)(resources.GetObject("btnCombos.Image")));
+            this.btnCombos.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnCombos.Margin = new System.Windows.Forms.Padding(0, 3, 0, 2);
+            this.btnCombos.Name = "btnCombos";
+            this.btnCombos.Size = new System.Drawing.Size(90, 29);
+            this.btnCombos.Text = "Combos";
+            this.btnCombos.Click += new System.EventHandler(this.btnCombos_Click);
+            // 
+            // toolStripSeparator7
+            // 
+            this.toolStripSeparator7.AutoSize = false;
+            this.toolStripSeparator7.Margin = new System.Windows.Forms.Padding(0, 2, 0, 0);
+            this.toolStripSeparator7.MergeIndex = 0;
+            this.toolStripSeparator7.Name = "toolStripSeparator7";
+            this.toolStripSeparator7.Size = new System.Drawing.Size(6, 35);
             // 
             // btnProductos
             // 
@@ -227,25 +252,27 @@
             this.btnEmpleados.Text = "Empleados";
             this.btnEmpleados.Click += new System.EventHandler(this.btnEmpleados_Click);
             // 
-            // btnCombos
+            // btnConfiguracion
             // 
-            this.btnCombos.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.btnCombos.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCombos.Image = ((System.Drawing.Image)(resources.GetObject("btnCombos.Image")));
-            this.btnCombos.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnCombos.Margin = new System.Windows.Forms.Padding(0, 3, 0, 2);
-            this.btnCombos.Name = "btnCombos";
-            this.btnCombos.Size = new System.Drawing.Size(90, 29);
-            this.btnCombos.Text = "Combos";
-            this.btnCombos.Click += new System.EventHandler(this.btnCombos_Click);
+            this.btnConfiguracion.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.btnConfiguracion.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnConfiguracion.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConfiguracion.Image = ((System.Drawing.Image)(resources.GetObject("btnConfiguracion.Image")));
+            this.btnConfiguracion.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnConfiguracion.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnConfiguracion.Margin = new System.Windows.Forms.Padding(3, 3, 0, 2);
+            this.btnConfiguracion.Name = "btnConfiguracion";
+            this.btnConfiguracion.Size = new System.Drawing.Size(29, 29);
+            this.btnConfiguracion.ToolTipText = "Configuración";
+            this.btnConfiguracion.Click += new System.EventHandler(this.btnConfiguracion_Click);
             // 
-            // toolStripSeparator7
+            // toolStripSeparator8
             // 
-            this.toolStripSeparator7.AutoSize = false;
-            this.toolStripSeparator7.Margin = new System.Windows.Forms.Padding(0, 2, 0, 0);
-            this.toolStripSeparator7.MergeIndex = 0;
-            this.toolStripSeparator7.Name = "toolStripSeparator7";
-            this.toolStripSeparator7.Size = new System.Drawing.Size(6, 35);
+            this.toolStripSeparator8.AutoSize = false;
+            this.toolStripSeparator8.Margin = new System.Windows.Forms.Padding(0, 2, 0, 0);
+            this.toolStripSeparator8.MergeIndex = 0;
+            this.toolStripSeparator8.Name = "toolStripSeparator8";
+            this.toolStripSeparator8.Size = new System.Drawing.Size(6, 35);
             // 
             // frmPrincipal
             // 
@@ -289,6 +316,8 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
         private System.Windows.Forms.ToolStripButton btnCombos;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
+        private System.Windows.Forms.ToolStripButton btnConfiguracion;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
     }
 }
 

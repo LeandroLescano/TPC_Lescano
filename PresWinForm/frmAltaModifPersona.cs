@@ -482,50 +482,12 @@ namespace PresWinForm
 
         private void txtCalle_TextChanged(object sender, EventArgs e)
         {
-            if (txtCalle.Text != "" && txtAltura.Text != "")
-            {
-                txtEntreCalle1.Enabled = true;
-                txtEntreCalle2.Enabled = true;
-                txtPiso.Enabled = true;
-                txtDepto.Enabled = true;
-                txtLocalidad.Enabled = true;
-                txtPartido.Enabled = true;
-                txtCPostal.Enabled = true;
-            }
-            else
-            {
-                txtEntreCalle1.Enabled = false;
-                txtEntreCalle2.Enabled = false;
-                txtPiso.Enabled = false;
-                txtDepto.Enabled = false;
-                txtLocalidad.Enabled = false;
-                txtPartido.Enabled = false;
-                txtCPostal.Enabled = false;
-            }
+            alturaCalle();
         }
 
         private void txtAltura_TextChanged(object sender, EventArgs e)
         {
-            if (txtCalle.Text != "" && txtAltura.Text != "")
-            {
-                txtEntreCalle1.Enabled = true;
-                txtEntreCalle2.Enabled = true;
-                txtPiso.Enabled = true;
-                txtDepto.Enabled = true;
-                txtLocalidad.Enabled = true;
-                txtPartido.Enabled = true;
-                txtCPostal.Enabled = true;
-            }
-            else
-            {
-                txtEntreCalle1.Enabled = false;
-                txtEntreCalle2.Enabled = false;
-                txtPiso.Enabled = false;
-                txtDepto.Enabled = false;
-                txtLocalidad.Enabled = false;
-                txtPartido.Enabled = false;
-                txtCPostal.Enabled = false;
-            }
+            alturaCalle();
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -634,6 +596,30 @@ namespace PresWinForm
                     txtDNI.Focus();
                     txtDNI.SelectAll();
                 }
+            }
+        }
+
+        private void alturaCalle()
+        {
+            if (txtCalle.Text != "" && txtAltura.Text != "")
+            {
+                txtEntreCalle1.Enabled = true;
+                txtEntreCalle2.Enabled = true;
+                txtPiso.Enabled = true;
+                txtDepto.Enabled = true;
+                txtLocalidad.Enabled = true;
+                txtPartido.Enabled = true;
+                txtCPostal.Enabled = true;
+            }
+            else
+            {
+                txtEntreCalle1.Enabled = false;
+                txtEntreCalle2.Enabled = false;
+                txtPiso.Enabled = false;
+                txtDepto.Enabled = false;
+                txtLocalidad.Enabled = false;
+                txtPartido.Enabled = false;
+                txtCPostal.Enabled = false;
             }
         }
     }

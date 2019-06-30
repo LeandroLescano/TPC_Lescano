@@ -465,6 +465,7 @@
             this.txtCalle.Name = "txtCalle";
             this.txtCalle.Size = new System.Drawing.Size(135, 23);
             this.txtCalle.TabIndex = 0;
+            this.txtCalle.TextChanged += new System.EventHandler(this.txtCalle_TextChanged);
             // 
             // txtLocalidad
             // 
@@ -482,6 +483,7 @@
             this.txtAltura.Name = "txtAltura";
             this.txtAltura.Size = new System.Drawing.Size(71, 23);
             this.txtAltura.TabIndex = 1;
+            this.txtAltura.TextChanged += new System.EventHandler(this.txtAltura_TextChanged);
             this.txtAltura.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAltura_KeyPress);
             // 
             // label3

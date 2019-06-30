@@ -29,6 +29,7 @@ namespace PresWinForm
             empLocal = negocio.listarEmpleadoXUsuario(u.ID);
             if (empLocal.TipoEmpleado.Vendedor)
             {
+                btnConfiguracion.Enabled = false;
                 btnClientes.Enabled = false;
                 btnEmpleados.Enabled = false;
                 btnProductos.Enabled = false;
@@ -87,7 +88,6 @@ namespace PresWinForm
 
         private void frmPrincipal_Load(object sender, EventArgs e)
         {
-            //if()
             frmCompras compras = new frmCompras();
             setearVentana(compras, btnCompras);
         }
@@ -115,6 +115,12 @@ namespace PresWinForm
                 }
             }
             btn.CheckState = CheckState.Indeterminate;
+        }
+
+        private void btnConfiguracion_Click(object sender, EventArgs e)
+        {
+            frmConfiguracion config = new frmConfiguracion();
+            config.ShowDialog();
         }
     }
 }

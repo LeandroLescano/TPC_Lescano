@@ -15,7 +15,10 @@ namespace Dominio
         {
             if (this.TipoPersona.Fisica == true)
             {
-                return Apellido + ", " + Nombre;
+                if (Nombre != "")
+                    return Apellido + ", " + Nombre;
+                else
+                    return Apellido;
             }
             else
             {
