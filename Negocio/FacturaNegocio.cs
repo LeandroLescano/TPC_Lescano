@@ -123,7 +123,7 @@ namespace Negocio
             int index = 1;
             foreach (DetalleVenta item in f.ListadoProductos)
             {
-                findAndReplace(doc, "{Cant" + index + "}", item.Cantidad.ToString());
+                findAndReplace(doc, "{Cant" + index + "}", (item.Cantidad + item.Kilos).ToString());
                 findAndReplace(doc, "{Prod" + index + "}", item.Producto.Nombre.ToString());
                 findAndReplace(doc, "{Precio" + index + "}", Math.Round(item.Producto.PrecioUnitario,2).ToString());
                 findAndReplace(doc, "{SubT" + index + "}", Math.Round(item.PrecioParcial,2).ToString());

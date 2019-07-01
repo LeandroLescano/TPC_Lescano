@@ -33,16 +33,17 @@ namespace Negocio
             }
         }
 
-        public void agregarProductosXVenta(int IDVenta, int IDProd, int Cantidad)
+        public void agregarProductosXVenta(int IDVenta, int IDProd, int Cantidad, decimal Kilos)
         {
             AccesoDatosManager accesoDatos = new AccesoDatosManager();
             try
             {
-                accesoDatos.setearConsulta("INSERT INTO PRODUCTOS_X_VENTA(IDVENTA, IDPRODUCTO, CANTIDAD) VALUES(@venta, @Producto, @Cantidad)");
+                accesoDatos.setearConsulta("INSERT INTO PRODUCTOS_X_VENTA(IDVENTA, IDPRODUCTO, CANTIDAD, KILOS) VALUES(@venta, @Producto, @Cantidad, @Kilos)");
                 accesoDatos.Comando.Parameters.Clear();
                 accesoDatos.Comando.Parameters.AddWithValue("@Venta", IDVenta);
                 accesoDatos.Comando.Parameters.AddWithValue("@Producto", IDProd);
                 accesoDatos.Comando.Parameters.AddWithValue("@Cantidad", Cantidad);
+                accesoDatos.Comando.Parameters.AddWithValue("@Kilos", Kilos.ToString().Replace(',','.'));
                 accesoDatos.abrirConexion();
                 accesoDatos.ejecutarAccion();
             }
@@ -109,8 +110,9 @@ namespace Negocio
                     detalle.Producto = new Producto();
                     detalle.Producto = negocioP.listarProducto(accesoDatos.Lector.GetInt32(2));
                     detalle.Cantidad = accesoDatos.Lector.GetInt32(3);
+                    detalle.Kilos = accesoDatos.Lector.GetDecimal(4);
                     detalle.PrecioUnitario = detalle.Producto.PrecioUnitario;
-                    detalle.PrecioParcial = detalle.Cantidad * detalle.PrecioUnitario;
+                    detalle.PrecioParcial = (detalle.Cantidad * detalle.PrecioUnitario) + (detalle.PrecioUnitario * detalle.Kilos);
                     venta.Detalle.Add(detalle);
                 }
             }

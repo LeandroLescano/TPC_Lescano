@@ -55,11 +55,14 @@
             this.lblCliente = new System.Windows.Forms.Label();
             this.cmbClientes = new System.Windows.Forms.ComboBox();
             this.btnFinalizar = new System.Windows.Forms.Button();
+            this.lblKilos = new System.Windows.Forms.Label();
+            this.nudKilos = new System.Windows.Forms.NumericUpDown();
             this.tspMenu.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetalle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudCantidad)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVentas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudKilos)).BeginInit();
             this.SuspendLayout();
             // 
             // tspMenu
@@ -161,6 +164,8 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.nudKilos);
+            this.panel1.Controls.Add(this.lblKilos);
             this.panel1.Controls.Add(this.lblPrecioTotal);
             this.panel1.Controls.Add(this.txtPrecio);
             this.panel1.Controls.Add(this.btnEliminar);
@@ -377,6 +382,40 @@
             this.btnFinalizar.UseVisualStyleBackColor = true;
             this.btnFinalizar.Click += new System.EventHandler(this.btnFinalizar_Click);
             // 
+            // lblKilos
+            // 
+            this.lblKilos.AutoSize = true;
+            this.lblKilos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblKilos.Location = new System.Drawing.Point(307, 55);
+            this.lblKilos.Name = "lblKilos";
+            this.lblKilos.Size = new System.Drawing.Size(46, 20);
+            this.lblKilos.TabIndex = 29;
+            this.lblKilos.Text = "Kilos:";
+            // 
+            // nudKilos
+            // 
+            this.nudKilos.DecimalPlaces = 3;
+            this.nudKilos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nudKilos.Increment = new decimal(new int[] {
+            250,
+            0,
+            0,
+            196608});
+            this.nudKilos.Location = new System.Drawing.Point(359, 53);
+            this.nudKilos.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.nudKilos.Name = "nudKilos";
+            this.nudKilos.Size = new System.Drawing.Size(99, 26);
+            this.nudKilos.TabIndex = 30;
+            this.nudKilos.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
             // frmVentas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -405,6 +444,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetalle)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudCantidad)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVentas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudKilos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -438,5 +478,7 @@
         private System.Windows.Forms.TextBox txtPrecio;
         private System.Windows.Forms.Label lblPrecioTotal;
         private System.Windows.Forms.Button btnFinalizar;
+        private System.Windows.Forms.NumericUpDown nudKilos;
+        private System.Windows.Forms.Label lblKilos;
     }
 }

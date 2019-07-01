@@ -54,6 +54,7 @@
             this.btnCantidades = new System.Windows.Forms.Button();
             this.lblCosto = new System.Windows.Forms.Label();
             this.pnlCantidades = new System.Windows.Forms.Panel();
+            this.btnAceptarCant = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btnSiguiente = new System.Windows.Forms.Button();
@@ -62,7 +63,6 @@
             this.nudUnidades = new System.Windows.Forms.NumericUpDown();
             this.txtNombreCant = new System.Windows.Forms.TextBox();
             this.dgvProductos = new System.Windows.Forms.DataGridView();
-            this.btnAceptarCant = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picImagen)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudPrecio)).BeginInit();
             this.pnlCantidades.SuspendLayout();
@@ -331,6 +331,18 @@
             this.pnlCantidades.Size = new System.Drawing.Size(700, 282);
             this.pnlCantidades.TabIndex = 17;
             // 
+            // btnAceptarCant
+            // 
+            this.btnAceptarCant.AutoSize = true;
+            this.btnAceptarCant.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAceptarCant.Location = new System.Drawing.Point(605, 250);
+            this.btnAceptarCant.Name = "btnAceptarCant";
+            this.btnAceptarCant.Size = new System.Drawing.Size(67, 27);
+            this.btnAceptarCant.TabIndex = 16;
+            this.btnAceptarCant.Text = "Aceptar";
+            this.btnAceptarCant.UseVisualStyleBackColor = true;
+            this.btnAceptarCant.Click += new System.EventHandler(this.btnAceptarCant_Click);
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -375,7 +387,7 @@
             // 
             // nudKilos
             // 
-            this.nudKilos.DecimalPlaces = 4;
+            this.nudKilos.DecimalPlaces = 3;
             this.nudKilos.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nudKilos.Increment = new decimal(new int[] {
             5,
@@ -430,18 +442,6 @@
             this.dgvProductos.Size = new System.Drawing.Size(541, 223);
             this.dgvProductos.TabIndex = 8;
             this.dgvProductos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProductos_CellClick);
-            // 
-            // btnAceptarCant
-            // 
-            this.btnAceptarCant.AutoSize = true;
-            this.btnAceptarCant.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAceptarCant.Location = new System.Drawing.Point(605, 250);
-            this.btnAceptarCant.Name = "btnAceptarCant";
-            this.btnAceptarCant.Size = new System.Drawing.Size(67, 27);
-            this.btnAceptarCant.TabIndex = 16;
-            this.btnAceptarCant.Text = "Aceptar";
-            this.btnAceptarCant.UseVisualStyleBackColor = true;
-            this.btnAceptarCant.Click += new System.EventHandler(this.btnAceptarCant_Click);
             // 
             // frmAltaModifCombo
             // 

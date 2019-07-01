@@ -50,6 +50,7 @@ namespace PresWinForm
             ComboStyle(cmbProducto);
             ComboStyle(cmbClientes);
             nudCantidad.Value = 1;
+            nudKilos.Value = 0;
         }
 
         private void ComboStyle(ComboBox cmb)
@@ -81,13 +82,15 @@ namespace PresWinForm
                 DetalleVenta nuevo = new DetalleVenta();
                 nuevo.Producto = (Producto)cmbProducto.SelectedItem;
                 nuevo.Cantidad = Convert.ToInt32(nudCantidad.Value);
-                nuevo.PrecioUnitario = Convert.ToDecimal(txtPrecio.Text);
-                nuevo.PrecioParcial = nuevo.PrecioUnitario * nuevo.Cantidad;
+                nuevo.Kilos = Convert.ToDecimal(nudKilos.Value);
+                nuevo.PrecioUnitario = nuevo.Producto.PrecioUnitario;
+                nuevo.PrecioParcial = (nuevo.PrecioUnitario * nuevo.Cantidad) + (nuevo.PrecioUnitario * nuevo.Kilos);
                 Detalle.Add(nuevo);
                 cargarGrilla();
                 PrecioFinal += Math.Round(nuevo.PrecioParcial, 2);
                 lblPrecioTotal.Text = PrecioFinal.ToString();
                 cmbProducto.Focus();
+                cmbProducto.SelectedIndex = -1;
             }
             else
             {
@@ -101,6 +104,18 @@ namespace PresWinForm
             {
                 Producto prod = (Producto)cmbProducto.SelectedItem;
                 txtPrecio.Text = prod.calcularPrecio().ToString();
+                if(prod.Fraccionable)
+                {
+                    nudCantidad.Value = 0;
+                    nudKilos.Value = 0;
+                    nudKilos.Enabled = true;
+                }
+                else
+                {
+                    nudCantidad.Value = 1;
+                    nudKilos.Value = 0;
+                    nudKilos.Enabled = false;
+                }
             }
         }
 
@@ -113,6 +128,9 @@ namespace PresWinForm
         {
             if(dgvDetalle.CurrentRow != null)
             {
+                DetalleVenta item = (DetalleVenta)dgvDetalle.CurrentRow.DataBoundItem;
+                PrecioFinal -= Math.Round(item.PrecioParcial, 2);
+                lblPrecioTotal.Text = PrecioFinal.ToString();
                 int index = dgvDetalle.CurrentRow.Index;
                 Detalle.RemoveAt(index);
             }
@@ -131,6 +149,7 @@ namespace PresWinForm
                     VentaNegocio negocioVen = new VentaNegocio();
                     FacturaNegocio negocioFact = new FacturaNegocio();
                     ComercioNegocio negocioCom = new ComercioNegocio();
+                    ProductoNegocio negocioProd = new ProductoNegocio();
                     Comercio comercio = new Comercio();
                     comercio = negocioCom.listarComercio();
                     Venta nuevaVenta = new Venta();
@@ -152,9 +171,11 @@ namespace PresWinForm
                     nuevaVenta.ID = negocioVen.agregarVenta(nuevaVenta);
                     foreach (DetalleVenta item in nuevaVenta.Detalle)
                     {
-                        negocioVen.agregarProductosXVenta(nuevaVenta.ID, item.Producto.ID, item.Cantidad);
+                        negocioVen.agregarProductosXVenta(nuevaVenta.ID, item.Producto.ID, item.Cantidad, item.Kilos);
+                        negocioProd.descontarStock(item.Producto, item.Cantidad, item.Kilos);
                     }
                     negocioFact.FacturaWord(nuevaVenta.Factura, nuevaVenta);
+                    restablecerControles();
                 }
                 else
                 {
