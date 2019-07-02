@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Dominio;
 using AccesoDatos;
 
-namespace Negocio
+namespace negocioCom
 {
     public class VentaNegocio
     {
@@ -101,7 +101,7 @@ namespace Negocio
             DetalleVenta detalle;
             try
             {
-                accesoDatos.setearConsulta("SELECT * FROM PRODUCTOS_X_VENTA WHERE ID = " + venta.ID);
+                accesoDatos.setearConsulta("SELECT * FROM PRODUCTOS_X_VENTA WHERE IDVENTA = " + venta.ID);
                 accesoDatos.abrirConexion();
                 accesoDatos.ejecutarConsulta();
                 while (accesoDatos.Lector.Read())
@@ -109,8 +109,10 @@ namespace Negocio
                     detalle = new DetalleVenta();
                     detalle.Producto = new Producto();
                     detalle.Producto = negocioP.listarProducto(accesoDatos.Lector.GetInt32(2));
-                    detalle.Cantidad = accesoDatos.Lector.GetInt32(3);
-                    detalle.Kilos = accesoDatos.Lector.GetDecimal(4);
+                    if(!Convert.IsDBNull(accesoDatos.Lector["CANTIDAD"]))
+                        detalle.Cantidad = accesoDatos.Lector.GetInt32(3);
+                    if (!Convert.IsDBNull(accesoDatos.Lector["KILOS"]))
+                        detalle.Kilos = accesoDatos.Lector.GetDecimal(4);
                     detalle.PrecioUnitario = detalle.Producto.PrecioUnitario;
                     detalle.PrecioParcial = (detalle.Cantidad * detalle.PrecioUnitario) + (detalle.PrecioUnitario * detalle.Kilos);
                     venta.Detalle.Add(detalle);

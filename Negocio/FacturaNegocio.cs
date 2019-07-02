@@ -11,7 +11,7 @@ using Dominio;
 using AccesoDatos;
 using System.Windows.Forms;
 
-namespace Negocio
+namespace negocioCom
 {
     public class FacturaNegocio
     {

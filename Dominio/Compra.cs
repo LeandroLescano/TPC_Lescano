@@ -10,6 +10,7 @@ namespace Dominio
     {
         public int ID { get; set; }
         public Proveedor Proveedor { get; set; }
-        public DetalleCompra Detalle { get; set; }
+        public List<DetalleCompra> Detalle { get; set; }
+        public decimal Importe { get; set; }
     }
 }

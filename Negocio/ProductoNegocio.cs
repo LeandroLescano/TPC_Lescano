@@ -7,7 +7,7 @@ using AccesoDatos;
 using Dominio;
 using System.Data.SqlClient;
 
-namespace Negocio
+namespace negocioCom
 {
     public class ProductoNegocio
     {
@@ -253,6 +253,27 @@ namespace Negocio
             }
         }
 
+        public void aumentarStock(Producto prod, int unidades)
+        {
+            AccesoDatosManager accesoDatos = new AccesoDatosManager();
+            try
+            {
+                accesoDatos.setearConsulta("UPDATE PRODUCTOS Set STOCK= STOCK + @Stock WHERE ID=" + prod.ID);
+                accesoDatos.Comando.Parameters.Clear();
+                accesoDatos.Comando.Parameters.AddWithValue("@Stock", unidades);
+                accesoDatos.abrirConexion();
+                accesoDatos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+        }
+
         public void descontarStock(Producto prod, int unidades, decimal kilos)
         {
             AccesoDatosManager accesoDatos = new AccesoDatosManager();
@@ -261,13 +282,13 @@ namespace Negocio
                 decimal stockActual;
                 if (prod.Fraccionable)
                 {
-                    stockActual = prod.Cantidad - unidades - kilos;
+                    stockActual = unidades + kilos;
                 }
                 else
                 {
-                    stockActual = prod.Cantidad - unidades;
+                    stockActual = unidades;
                 }
-                accesoDatos.setearConsulta("UPDATE PRODUCTOS Set STOCK=@Stock WHERE ID=" + prod.ID.ToString());
+                accesoDatos.setearConsulta("UPDATE PRODUCTOS Set STOCK = STOCK - @Stock WHERE ID=" + prod.ID);
                 accesoDatos.Comando.Parameters.Clear();
                 accesoDatos.Comando.Parameters.AddWithValue("@Stock", stockActual.ToString().Replace(',', '.'));
                 accesoDatos.abrirConexion();

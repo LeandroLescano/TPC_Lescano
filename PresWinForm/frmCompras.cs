@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Dominio;
-using Negocio;
+using negocioCom;
 
 namespace PresWinForm
 {
@@ -16,6 +16,7 @@ namespace PresWinForm
     {
 
         private BindingList<DetalleCompra> Detalle = new BindingList<DetalleCompra>();
+        private CompraNegocio negocio = new CompraNegocio();
         private decimal PrecioFinal;
 
         public frmCompras()
@@ -38,19 +39,24 @@ namespace PresWinForm
             listaProv = listaProv.FindAll(X => X.Estado == true);
             cmbProveedores.DataSource = listaProv;
             ComboStyle(cmbProveedores);
+            txtPrecio.ReadOnly = true;
             txtPrecio.BackColor = Color.White;
             txtPrecio.Text = "0,00";
+            btnDetalles.Visible = false;
         }
 
         private void btnListar_Click(object sender, EventArgs e)
         {
+            dgvCompras.DataSource = negocio.listarCompras();
             dgvCompras.BringToFront();
             dgvCompras.Visible = true;
+            btnDetalles.Visible = true;
         }
 
         private void btnNueva_Click(object sender, EventArgs e)
         {
             dgvCompras.Visible = false;
+            btnDetalles.Visible = false;
         }
 
         private void btnNuevoProd_Click(object sender, EventArgs e)
@@ -89,12 +95,12 @@ namespace PresWinForm
                 DetalleCompra nuevo = new DetalleCompra();
                 nuevo.Producto = (Producto)cmbProducto.SelectedItem;
                 nuevo.Cantidad = Convert.ToInt32(nudCantidad.Value);
-                nuevo.PrecioUnitario = Convert.ToDecimal(txtPrecio.Text);
+                nuevo.PrecioUnitario = nuevo.Producto.PrecioUnitario;
                 nuevo.PrecioParcial = nuevo.PrecioUnitario * nuevo.Cantidad;
                 Detalle.Add(nuevo);
                 cargarGrilla();
                 PrecioFinal += Math.Round(nuevo.PrecioParcial, 2);
-                lblTotal.Text = "Total: " + PrecioFinal;
+                lblPrecioTotal.Text = PrecioFinal.ToString();
                 cmbProducto.Focus();
             }
             else
@@ -107,6 +113,9 @@ namespace PresWinForm
         {
             if(dgvDetalle.CurrentRow != null)
             {
+                DetalleCompra item = (DetalleCompra)dgvDetalle.CurrentRow.DataBoundItem;
+                PrecioFinal -= Math.Round(item.PrecioParcial, 2);
+                lblPrecioTotal.Text = PrecioFinal.ToString();
                 int index = dgvDetalle.CurrentRow.Index;
                 Detalle.RemoveAt(index);
             }
@@ -114,6 +123,13 @@ namespace PresWinForm
             {
                 MessageBox.Show("No hay ningún producto seleccionado", "Cuidado!");
             }
+        }
+
+        private void restablecerControles()
+        {
+            ComboStyle(cmbProducto);
+            ComboStyle(cmbProveedores);
+            nudCantidad.Value = 1;
         }
 
         private void nudCantidad_Enter_1(object sender, EventArgs e)
@@ -126,13 +142,65 @@ namespace PresWinForm
             if ((Producto)cmbProducto.SelectedItem != null)
             {
                 Producto prod = (Producto)cmbProducto.SelectedItem;
-                txtPrecio.Text = prod.calcularPrecio().ToString();
+                txtPrecio.Text = prod.PrecioUnitario.ToString();
             }
         }
 
         private void frmCompras_FormClosing(object sender, FormClosingEventArgs e)
         {
 
+        }
+
+        private void btnFinalizar_Click(object sender, EventArgs e)
+        {
+            Cursor.Current = Cursors.WaitCursor;
+            if (cmbProveedores.SelectedItem != null)
+            {
+                if (Detalle.Count > 0)
+                {
+                    CompraNegocio negocioCom = new CompraNegocio();
+                    ProductoNegocio negocioProd = new ProductoNegocio();
+                    Compra nuevaCompra = new Compra();
+                    nuevaCompra.Proveedor = new Proveedor();
+                    nuevaCompra.Detalle = new List<DetalleCompra>();
+                         
+                    nuevaCompra.Proveedor = (Proveedor)cmbProveedores.SelectedItem;
+                    nuevaCompra.Detalle = Detalle.ToList();
+                    nuevaCompra.Importe = Convert.ToDecimal(lblPrecioTotal.Text);
+
+                    nuevaCompra.ID = negocioCom.agregarCompra(nuevaCompra);
+                    foreach (DetalleCompra item in nuevaCompra.Detalle)
+                    {
+                        negocioCom.agregarProductosXCompra(nuevaCompra.ID, item.Producto.ID, item.Cantidad);
+                        negocioProd.aumentarStock(item.Producto, item.Cantidad);
+                    }
+                    restablecerControles();
+                    Detalle.Clear();
+                }
+                else
+                {
+                    MessageBox.Show("No hay productos en la compra actual", "Cuidado!");
+                }
+            }
+            else
+            {
+                MessageBox.Show("No hay proveedor asignado", "Cuidado!");
+            }
+            Cursor.Current = Cursors.Default;
+        }
+
+        private void btnDetalles_Click(object sender, EventArgs e)
+        {
+            Compra cSelect = (Compra)dgvCompras.CurrentRow.DataBoundItem;
+            frmDetallesCompra detalles = new frmDetallesCompra(cSelect);
+            detalles.ShowDialog();
+        }
+
+        private void dgvCompras_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            Compra cSelect = (Compra)dgvCompras.CurrentRow.DataBoundItem;
+            frmDetallesCompra detalles = new frmDetallesCompra(cSelect);
+            detalles.ShowDialog();
         }
     }
 }

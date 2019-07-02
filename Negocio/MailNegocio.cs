@@ -10,7 +10,7 @@ using AccesoDatos;
 using System.Net.Mail;
 using System.IO;
 
-namespace Negocio
+namespace negocioCom
 {
     public class MailNegocio
     {

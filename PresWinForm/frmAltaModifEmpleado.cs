@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
 using Dominio;
-using Negocio;
+using negocioCom;
 
 namespace PresWinForm
 {

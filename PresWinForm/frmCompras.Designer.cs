@@ -31,7 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCompras));
             this.tspMenu = new System.Windows.Forms.ToolStrip();
             this.btnNueva = new System.Windows.Forms.ToolStripButton();
-            this.btnModificar = new System.Windows.Forms.ToolStripButton();
             this.btnListar = new System.Windows.Forms.ToolStripButton();
             this.dgvCompras = new System.Windows.Forms.DataGridView();
             this.lblProveedor = new System.Windows.Forms.Label();
@@ -56,6 +55,8 @@
             this.nudCantidad = new System.Windows.Forms.NumericUpDown();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.lblPrecio = new System.Windows.Forms.Label();
+            this.btnFinalizar = new System.Windows.Forms.Button();
+            this.btnDetalles = new System.Windows.Forms.Button();
             this.tspMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCompras)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetalle)).BeginInit();
@@ -71,13 +72,12 @@
             this.tspMenu.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.tspMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnNueva,
-            this.btnModificar,
             this.btnListar});
             this.tspMenu.Location = new System.Drawing.Point(0, 0);
             this.tspMenu.Name = "tspMenu";
             this.tspMenu.Padding = new System.Windows.Forms.Padding(0);
             this.tspMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.tspMenu.Size = new System.Drawing.Size(105, 450);
+            this.tspMenu.Size = new System.Drawing.Size(83, 491);
             this.tspMenu.TabIndex = 5;
             this.tspMenu.Text = "tspMenu";
             // 
@@ -91,20 +91,9 @@
             this.btnNueva.Margin = new System.Windows.Forms.Padding(5, 10, 5, 5);
             this.btnNueva.MergeIndex = 0;
             this.btnNueva.Name = "btnNueva";
-            this.btnNueva.Size = new System.Drawing.Size(94, 29);
+            this.btnNueva.Size = new System.Drawing.Size(72, 29);
             this.btnNueva.Text = "Nueva";
             this.btnNueva.Click += new System.EventHandler(this.btnNueva_Click);
-            // 
-            // btnModificar
-            // 
-            this.btnModificar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.btnModificar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnModificar.Image = ((System.Drawing.Image)(resources.GetObject("btnModificar.Image")));
-            this.btnModificar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnModificar.Margin = new System.Windows.Forms.Padding(5);
-            this.btnModificar.Name = "btnModificar";
-            this.btnModificar.Size = new System.Drawing.Size(94, 29);
-            this.btnModificar.Text = "Modificar";
             // 
             // btnListar
             // 
@@ -114,7 +103,7 @@
             this.btnListar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnListar.Margin = new System.Windows.Forms.Padding(5);
             this.btnListar.Name = "btnListar";
-            this.btnListar.Size = new System.Drawing.Size(94, 29);
+            this.btnListar.Size = new System.Drawing.Size(72, 29);
             this.btnListar.Text = "Listar";
             this.btnListar.Click += new System.EventHandler(this.btnListar_Click);
             // 
@@ -126,19 +115,20 @@
             this.dgvCompras.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvCompras.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCompras.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgvCompras.Location = new System.Drawing.Point(125, 12);
+            this.dgvCompras.Location = new System.Drawing.Point(102, 12);
             this.dgvCompras.MultiSelect = false;
             this.dgvCompras.Name = "dgvCompras";
             this.dgvCompras.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvCompras.Size = new System.Drawing.Size(663, 426);
+            this.dgvCompras.Size = new System.Drawing.Size(858, 431);
             this.dgvCompras.TabIndex = 6;
             this.dgvCompras.Visible = false;
+            this.dgvCompras.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCompras_CellDoubleClick);
             // 
             // lblProveedor
             // 
             this.lblProveedor.AutoSize = true;
             this.lblProveedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProveedor.Location = new System.Drawing.Point(152, 93);
+            this.lblProveedor.Location = new System.Drawing.Point(132, 101);
             this.lblProveedor.Name = "lblProveedor";
             this.lblProveedor.Size = new System.Drawing.Size(85, 20);
             this.lblProveedor.TabIndex = 7;
@@ -158,7 +148,7 @@
             // 
             this.cmbProveedores.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbProveedores.FormattingEnabled = true;
-            this.cmbProveedores.Location = new System.Drawing.Point(311, 90);
+            this.cmbProveedores.Location = new System.Drawing.Point(291, 98);
             this.cmbProveedores.Name = "cmbProveedores";
             this.cmbProveedores.Size = new System.Drawing.Size(261, 28);
             this.cmbProveedores.TabIndex = 2;
@@ -167,7 +157,7 @@
             // 
             this.btnNuevoProv.AutoSize = true;
             this.btnNuevoProv.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNuevoProv.Location = new System.Drawing.Point(582, 90);
+            this.btnNuevoProv.Location = new System.Drawing.Point(562, 98);
             this.btnNuevoProv.Name = "btnNuevoProv";
             this.btnNuevoProv.Size = new System.Drawing.Size(75, 30);
             this.btnNuevoProv.TabIndex = 2;
@@ -180,7 +170,7 @@
             // 
             this.lblNumero.AutoSize = true;
             this.lblNumero.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNumero.Location = new System.Drawing.Point(152, 16);
+            this.lblNumero.Location = new System.Drawing.Point(132, 24);
             this.lblNumero.Name = "lblNumero";
             this.lblNumero.Size = new System.Drawing.Size(148, 20);
             this.lblNumero.TabIndex = 13;
@@ -190,7 +180,7 @@
             // 
             this.txtNumeroCompra.Enabled = false;
             this.txtNumeroCompra.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNumeroCompra.Location = new System.Drawing.Point(311, 13);
+            this.txtNumeroCompra.Location = new System.Drawing.Point(291, 21);
             this.txtNumeroCompra.Name = "txtNumeroCompra";
             this.txtNumeroCompra.Size = new System.Drawing.Size(260, 26);
             this.txtNumeroCompra.TabIndex = 0;
@@ -199,7 +189,7 @@
             // 
             this.lblFecha.AutoSize = true;
             this.lblFecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFecha.Location = new System.Drawing.Point(152, 53);
+            this.lblFecha.Location = new System.Drawing.Point(132, 61);
             this.lblFecha.Name = "lblFecha";
             this.lblFecha.Size = new System.Drawing.Size(62, 20);
             this.lblFecha.TabIndex = 15;
@@ -208,7 +198,7 @@
             // dtpFechaCompra
             // 
             this.dtpFechaCompra.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpFechaCompra.Location = new System.Drawing.Point(311, 51);
+            this.dtpFechaCompra.Location = new System.Drawing.Point(291, 59);
             this.dtpFechaCompra.Name = "dtpFechaCompra";
             this.dtpFechaCompra.Size = new System.Drawing.Size(260, 23);
             this.dtpFechaCompra.TabIndex = 1;
@@ -228,7 +218,7 @@
             this.dgvDetalle.MultiSelect = false;
             this.dgvDetalle.Name = "dgvDetalle";
             this.dgvDetalle.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDetalle.Size = new System.Drawing.Size(600, 101);
+            this.dgvDetalle.Size = new System.Drawing.Size(793, 106);
             this.dgvDetalle.TabIndex = 17;
             // 
             // lblTotal
@@ -236,7 +226,7 @@
             this.lblTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTotal.AutoSize = true;
             this.lblTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotal.Location = new System.Drawing.Point(453, 270);
+            this.lblTotal.Location = new System.Drawing.Point(646, 275);
             this.lblTotal.Name = "lblTotal";
             this.lblTotal.Size = new System.Drawing.Size(78, 25);
             this.lblTotal.TabIndex = 18;
@@ -317,16 +307,16 @@
             this.panel1.Controls.Add(this.lblCantidad);
             this.panel1.Controls.Add(this.cmbProducto);
             this.panel1.Controls.Add(this.lblDetalleCompra);
-            this.panel1.Location = new System.Drawing.Point(135, 139);
+            this.panel1.Location = new System.Drawing.Point(114, 139);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(637, 299);
+            this.panel1.Size = new System.Drawing.Size(830, 304);
             this.panel1.TabIndex = 3;
             // 
             // lblPrecioTotal
             // 
             this.lblPrecioTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblPrecioTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPrecioTotal.Location = new System.Drawing.Point(526, 270);
+            this.lblPrecioTotal.Location = new System.Drawing.Point(719, 275);
             this.lblPrecioTotal.Name = "lblPrecioTotal";
             this.lblPrecioTotal.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.lblPrecioTotal.Size = new System.Drawing.Size(94, 23);
@@ -393,11 +383,37 @@
             this.lblPrecio.TabIndex = 25;
             this.lblPrecio.Text = "Precio:";
             // 
+            // btnFinalizar
+            // 
+            this.btnFinalizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnFinalizar.AutoSize = true;
+            this.btnFinalizar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFinalizar.Location = new System.Drawing.Point(882, 449);
+            this.btnFinalizar.Name = "btnFinalizar";
+            this.btnFinalizar.Size = new System.Drawing.Size(78, 30);
+            this.btnFinalizar.TabIndex = 37;
+            this.btnFinalizar.Text = "Finalizar";
+            this.btnFinalizar.UseVisualStyleBackColor = true;
+            this.btnFinalizar.Click += new System.EventHandler(this.btnFinalizar_Click);
+            // 
+            // btnDetalles
+            // 
+            this.btnDetalles.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDetalles.AutoSize = true;
+            this.btnDetalles.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDetalles.Location = new System.Drawing.Point(857, 449);
+            this.btnDetalles.Name = "btnDetalles";
+            this.btnDetalles.Size = new System.Drawing.Size(103, 30);
+            this.btnDetalles.TabIndex = 38;
+            this.btnDetalles.Text = "Ver detalles";
+            this.btnDetalles.UseVisualStyleBackColor = true;
+            this.btnDetalles.Click += new System.EventHandler(this.btnDetalles_Click);
+            // 
             // frmCompras
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(972, 491);
             this.ControlBox = false;
             this.Controls.Add(this.dtpFechaCompra);
             this.Controls.Add(this.lblFecha);
@@ -409,6 +425,8 @@
             this.Controls.Add(this.tspMenu);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dgvCompras);
+            this.Controls.Add(this.btnFinalizar);
+            this.Controls.Add(this.btnDetalles);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmCompras";
@@ -432,7 +450,6 @@
 
         private System.Windows.Forms.ToolStrip tspMenu;
         private System.Windows.Forms.ToolStripButton btnNueva;
-        private System.Windows.Forms.ToolStripButton btnModificar;
         private System.Windows.Forms.ToolStripButton btnListar;
         private System.Windows.Forms.DataGridView dgvCompras;
         private System.Windows.Forms.Label lblProveedor;
@@ -457,5 +474,7 @@
         private System.Windows.Forms.NumericUpDown nudCantidad;
         private System.Windows.Forms.TextBox txtPrecio;
         private System.Windows.Forms.Label lblPrecioTotal;
+        private System.Windows.Forms.Button btnFinalizar;
+        private System.Windows.Forms.Button btnDetalles;
     }
 }

@@ -46,6 +46,7 @@
     <Compile Include="ClienteNegocio.cs" />
     <Compile Include="ComboNegocio.cs" />
     <Compile Include="ComercioNegocio.cs" />
+    <Compile Include="CompraNegocio.cs" />
     <Compile Include="DomicilioNegocio.cs" />
     <Compile Include="EmpleadoNegocio.cs" />
     <Compile Include="FacturaNegocio.cs" />

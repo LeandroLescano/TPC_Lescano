@@ -47,8 +47,8 @@
             this.btnClientes = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.btnEmpleados = new System.Windows.Forms.ToolStripButton();
-            this.btnConfiguracion = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnConfiguracion = new System.Windows.Forms.ToolStripButton();
             this.statusStrip1.SuspendLayout();
             this.tspMenu.SuspendLayout();
             this.SuspendLayout();
@@ -72,6 +72,7 @@
             // 
             // tspMenu
             // 
+            this.tspMenu.CanOverflow = false;
             this.tspMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnCompras,
             this.toolStripSeparator1,
@@ -93,7 +94,6 @@
             this.tspMenu.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
             this.tspMenu.Location = new System.Drawing.Point(0, 0);
             this.tspMenu.Name = "tspMenu";
-            this.tspMenu.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.tspMenu.Size = new System.Drawing.Size(1088, 37);
             this.tspMenu.TabIndex = 1;
             this.tspMenu.Text = "toolStrip1";
@@ -252,6 +252,14 @@
             this.btnEmpleados.Text = "Empleados";
             this.btnEmpleados.Click += new System.EventHandler(this.btnEmpleados_Click);
             // 
+            // toolStripSeparator8
+            // 
+            this.toolStripSeparator8.AutoSize = false;
+            this.toolStripSeparator8.Margin = new System.Windows.Forms.Padding(0, 2, 0, 0);
+            this.toolStripSeparator8.MergeIndex = 0;
+            this.toolStripSeparator8.Name = "toolStripSeparator8";
+            this.toolStripSeparator8.Size = new System.Drawing.Size(6, 35);
+            // 
             // btnConfiguracion
             // 
             this.btnConfiguracion.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
@@ -262,17 +270,10 @@
             this.btnConfiguracion.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnConfiguracion.Margin = new System.Windows.Forms.Padding(3, 3, 0, 2);
             this.btnConfiguracion.Name = "btnConfiguracion";
+            this.btnConfiguracion.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.btnConfiguracion.Size = new System.Drawing.Size(29, 29);
             this.btnConfiguracion.ToolTipText = "Configuración";
             this.btnConfiguracion.Click += new System.EventHandler(this.btnConfiguracion_Click);
-            // 
-            // toolStripSeparator8
-            // 
-            this.toolStripSeparator8.AutoSize = false;
-            this.toolStripSeparator8.Margin = new System.Windows.Forms.Padding(0, 2, 0, 0);
-            this.toolStripSeparator8.MergeIndex = 0;
-            this.toolStripSeparator8.Name = "toolStripSeparator8";
-            this.toolStripSeparator8.Size = new System.Drawing.Size(6, 35);
             // 
             // frmPrincipal
             // 

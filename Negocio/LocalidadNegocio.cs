@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using AccesoDatos;
 using Dominio;
 
-namespace Negocio
+namespace negocioCom
 {
     public class LocalidadNegocio
     {

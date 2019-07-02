@@ -7,18 +7,19 @@ using System.Data.SqlClient;
 using Dominio;
 using AccesoDatos;
 
-namespace Negocio
+namespace negocioCom
 {
     public class ProveedorNegocio
     {
         public List<Proveedor> listarProveedores()
         {
             AccesoDatosManager accesoDatos = new AccesoDatosManager();
+            DomicilioNegocio negocioDom = new DomicilioNegocio();
             List<Proveedor> listado = new List<Proveedor>();
             Proveedor nuevo;
             try
             {
-                accesoDatos.setearConsulta("Select P.*, D.CALLE, D.ALTURA, L.NOMBRE as LOCALIDAD, D.PISO, D.DEPARTAMENTO, L.CODPOSTAL, L.PARTIDO, L.ID AS IDLOCALIDAD, D.ENTRECALLE1, D.ENTRECALLE2 from PROVEEDORES AS P LEFT JOIN DOMICILIOS AS D ON D.ID = P.IDDOMICILIO LEFT JOIN LOCALIDADES AS L ON L.ID = D.IDLOCALIDAD");
+                accesoDatos.setearConsulta("Select * from PROVEEDORES");
                 accesoDatos.abrirConexion();
                 accesoDatos.ejecutarConsulta();
 
@@ -42,42 +43,89 @@ namespace Negocio
                     nuevo.CUIT = accesoDatos.Lector.GetString(5);
                     nuevo.DNI = accesoDatos.Lector.GetString(4);
                     nuevo.Domicilio = new Domicilio();
-                    nuevo.Domicilio.Localidad = new Localidad();
-                    nuevo.Domicilio.Edificio = new Edificio();
-
-
-                    //Domicilio
-                    if (!Convert.IsDBNull(accesoDatos.Lector["CALLE"]))
-                        nuevo.Domicilio.Calle = accesoDatos.Lector.GetString(10);    
-                    if (!Convert.IsDBNull(accesoDatos.Lector["ALTURA"]))
-                        nuevo.Domicilio.Altura = accesoDatos.Lector.GetInt32(11);
                     if (!Convert.IsDBNull(accesoDatos.Lector["IDDOMICILIO"]))
-                        nuevo.Domicilio.ID = accesoDatos.Lector.GetInt32(6);
-                    if (!Convert.IsDBNull(accesoDatos.Lector["ENTRECALLE1"]))
-                        nuevo.Domicilio.EntreCalle1 = accesoDatos.Lector.GetString(18);
-                    if (!Convert.IsDBNull(accesoDatos.Lector["ENTRECALLE2"]))
-                        nuevo.Domicilio.EntreCalle2 = accesoDatos.Lector.GetString(19);
+                        nuevo.Domicilio = negocioDom.listarDomicilio(accesoDatos.Lector.GetInt32(6));
 
-                    //Edificio
-                    if (!Convert.IsDBNull(accesoDatos.Lector["PISO"]))
-                        nuevo.Domicilio.Edificio.Piso = accesoDatos.Lector.GetInt32(13);
-                    if (!Convert.IsDBNull(accesoDatos.Lector["DEPARTAMENTO"]))
-                        nuevo.Domicilio.Edificio.Departamento = accesoDatos.Lector.GetString(14);
+                    ////Domicilio
+                    //if (!Convert.IsDBNull(accesoDatos.Lector["CALLE"]))
+                    //    nuevo.Domicilio.Calle = accesoDatos.Lector.GetString(10);    
+                    //if (!Convert.IsDBNull(accesoDatos.Lector["ALTURA"]))
+                    //    nuevo.Domicilio.Altura = accesoDatos.Lector.GetInt32(11);
+                    //if (!Convert.IsDBNull(accesoDatos.Lector["IDDOMICILIO"]))
+                    //    nuevo.Domicilio.ID = accesoDatos.Lector.GetInt32(6);
+                    //if (!Convert.IsDBNull(accesoDatos.Lector["ENTRECALLE1"]))
+                    //    nuevo.Domicilio.EntreCalle1 = accesoDatos.Lector.GetString(18);
+                    //if (!Convert.IsDBNull(accesoDatos.Lector["ENTRECALLE2"]))
+                    //    nuevo.Domicilio.EntreCalle2 = accesoDatos.Lector.GetString(19);
 
-                    //Localidad
-                    if (!Convert.IsDBNull(accesoDatos.Lector["LOCALIDAD"]))
-                        nuevo.Domicilio.Localidad.Nombre = accesoDatos.Lector.GetString(12);
-                    if (!Convert.IsDBNull(accesoDatos.Lector["CODPOSTAL"]))
-                        nuevo.Domicilio.Localidad.CPostal = accesoDatos.Lector.GetString(15);
-                    if (!Convert.IsDBNull(accesoDatos.Lector["PARTIDO"]))
-                        nuevo.Domicilio.Localidad.Partido = accesoDatos.Lector.GetString(16);
-                    if (!Convert.IsDBNull(accesoDatos.Lector["IDLOCALIDAD"]))
-                        nuevo.Domicilio.Localidad.ID = accesoDatos.Lector.GetInt32(17);
+                    ////Edificio
+                    //if (!Convert.IsDBNull(accesoDatos.Lector["PISO"]))
+                    //    nuevo.Domicilio.Edificio.Piso = accesoDatos.Lector.GetInt32(13);
+                    //if (!Convert.IsDBNull(accesoDatos.Lector["DEPARTAMENTO"]))
+                    //    nuevo.Domicilio.Edificio.Departamento = accesoDatos.Lector.GetString(14);
+
+                    ////Localidad
+                    //if (!Convert.IsDBNull(accesoDatos.Lector["LOCALIDAD"]))
+                    //    nuevo.Domicilio.Localidad.Nombre = accesoDatos.Lector.GetString(12);
+                    //if (!Convert.IsDBNull(accesoDatos.Lector["CODPOSTAL"]))
+                    //    nuevo.Domicilio.Localidad.CPostal = accesoDatos.Lector.GetString(15);
+                    //if (!Convert.IsDBNull(accesoDatos.Lector["PARTIDO"]))
+                    //    nuevo.Domicilio.Localidad.Partido = accesoDatos.Lector.GetString(16);
+                    //if (!Convert.IsDBNull(accesoDatos.Lector["IDLOCALIDAD"]))
+                    //    nuevo.Domicilio.Localidad.ID = accesoDatos.Lector.GetInt32(17);
 
                     listado.Add(nuevo);
                 }
 
                 return listado;
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+        }
+
+        internal Proveedor listarProveedor(int ID)
+        {
+            AccesoDatosManager accesoDatos = new AccesoDatosManager();
+            DomicilioNegocio negocioDom = new DomicilioNegocio();
+            Proveedor nuevo = new Proveedor();
+            try
+            {
+                accesoDatos.setearConsulta("Select * from PROVEEDORES WHERE ID = " + ID);
+                accesoDatos.abrirConexion();
+                accesoDatos.ejecutarConsulta();
+
+                while (accesoDatos.Lector.Read())
+                {
+                    nuevo = new Proveedor();
+                    nuevo.ID = accesoDatos.Lector.GetInt32(0);
+                    nuevo.TipoPersona = new TipoPersona();
+                    nuevo.Estado = accesoDatos.Lector.GetBoolean(9);
+                    if ((int)accesoDatos.Lector["IDTIPOPERSONA"] == 2)
+                    {
+                        nuevo.RazonSocial = accesoDatos.Lector.GetString(3);
+                        nuevo.TipoPersona.Juridica = true;
+                    }
+                    else
+                    {
+                        nuevo.Apellido = accesoDatos.Lector.GetString(1);
+                        nuevo.Nombre = accesoDatos.Lector.GetString(2);
+                        nuevo.TipoPersona.Fisica = true;
+                    }
+                    nuevo.DNI = accesoDatos.Lector.GetString(4);
+                    nuevo.CUIT = accesoDatos.Lector.GetString(5);
+                    nuevo.Domicilio = new Domicilio();
+                    if (!Convert.IsDBNull(accesoDatos.Lector["IDDOMICILIO"]))
+                        nuevo.Domicilio = negocioDom.listarDomicilio(accesoDatos.Lector.GetInt32(6));
+                }
+
+                return nuevo;
 
             }
             catch (Exception ex)

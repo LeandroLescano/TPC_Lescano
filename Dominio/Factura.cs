@@ -16,5 +16,10 @@ namespace Dominio
         public DateTime FechaInicio { get; set; }
         public DateTime FechaActual { get; set; }
         public string IngresosBrutos { get; set; }
+
+        public override string ToString()
+        {
+            return Numero;
+        }
     }
 }

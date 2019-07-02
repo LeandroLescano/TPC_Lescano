@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Negocio;
+using negocioCom;
 using Dominio;
 namespace PresWinForm
 {
@@ -36,8 +36,10 @@ namespace PresWinForm
             listaClientes = listaClientes.FindAll(X => X.Estado == true);
             cmbClientes.DataSource = listaClientes;
             restablecerControles();
+            txtPrecio.ReadOnly = true;
             txtPrecio.BackColor = Color.White;
             txtPrecio.Text = "0,00";
+            btnDetalles.Visible = false;
         }
 
         private void cargarGrilla()
@@ -64,6 +66,7 @@ namespace PresWinForm
         private void btnNueva_Click(object sender, EventArgs e)
         {
             dgvVentas.Visible = false;
+            btnDetalles.Visible = false;
         }
 
         private void btnListar_Click(object sender, EventArgs e)
@@ -73,6 +76,7 @@ namespace PresWinForm
             dgvVentas.Visible = true;
             listado = negocio.listarVentas();
             dgvVentas.DataSource = listado;
+            btnDetalles.Visible = true;
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -83,7 +87,7 @@ namespace PresWinForm
                 nuevo.Producto = (Producto)cmbProducto.SelectedItem;
                 nuevo.Cantidad = Convert.ToInt32(nudCantidad.Value);
                 nuevo.Kilos = Convert.ToDecimal(nudKilos.Value);
-                nuevo.PrecioUnitario = nuevo.Producto.PrecioUnitario;
+                nuevo.PrecioUnitario = nuevo.Producto.calcularPrecio();
                 nuevo.PrecioParcial = (nuevo.PrecioUnitario * nuevo.Cantidad) + (nuevo.PrecioUnitario * nuevo.Kilos);
                 Detalle.Add(nuevo);
                 cargarGrilla();
@@ -91,6 +95,7 @@ namespace PresWinForm
                 lblPrecioTotal.Text = PrecioFinal.ToString();
                 cmbProducto.Focus();
                 cmbProducto.SelectedIndex = -1;
+                cmbProducto.Text = "Elige una opción...";
             }
             else
             {
@@ -142,7 +147,8 @@ namespace PresWinForm
 
         private void btnFinalizar_Click(object sender, EventArgs e)
         {
-            if(cmbClientes.SelectedItem != null)
+            Cursor.Current = Cursors.WaitCursor;
+            if (cmbClientes.SelectedItem != null)
             {
                 if(Detalle.Count > 0)
                 {
@@ -176,6 +182,7 @@ namespace PresWinForm
                     }
                     negocioFact.FacturaWord(nuevaVenta.Factura, nuevaVenta);
                     restablecerControles();
+                    Detalle.Clear();
                 }
                 else
                 {
@@ -186,6 +193,21 @@ namespace PresWinForm
             {
                 MessageBox.Show("No hay cliente asignado", "Cuidado!");
             }
+            Cursor.Current = Cursors.Default;
+        }
+
+        private void btnDetalles_Click(object sender, EventArgs e)
+        {
+            Venta vSelect = (Venta)dgvVentas.CurrentRow.DataBoundItem;
+            frmDetallesVenta detalles = new frmDetallesVenta(vSelect);
+            detalles.ShowDialog();
+        }
+
+        private void dgvVentas_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            Venta vSelect = (Venta)dgvVentas.CurrentRow.DataBoundItem;
+            frmDetallesVenta detalles = new frmDetallesVenta(vSelect);
+            detalles.ShowDialog();
         }
     }
 }
