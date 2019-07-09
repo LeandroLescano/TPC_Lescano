@@ -317,6 +317,7 @@
             // 
             // pnlCantidades
             // 
+            this.pnlCantidades.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pnlCantidades.Controls.Add(this.btnAceptarCant);
             this.pnlCantidades.Controls.Add(this.label2);
             this.pnlCantidades.Controls.Add(this.label1);
@@ -439,7 +440,7 @@
             this.dgvProductos.MultiSelect = false;
             this.dgvProductos.Name = "dgvProductos";
             this.dgvProductos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProductos.Size = new System.Drawing.Size(541, 223);
+            this.dgvProductos.Size = new System.Drawing.Size(537, 219);
             this.dgvProductos.TabIndex = 8;
             this.dgvProductos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProductos_CellClick);
             // 
@@ -449,7 +450,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancelar;
             this.ClientSize = new System.Drawing.Size(1052, 298);
-            this.Controls.Add(this.pnlCantidades);
             this.Controls.Add(this.lblCosto);
             this.Controls.Add(this.btnCantidades);
             this.Controls.Add(this.lblCategoria);
@@ -473,6 +473,7 @@
             this.Controls.Add(this.lblDescripción);
             this.Controls.Add(this.lblNombre);
             this.Controls.Add(this.lblCodigo);
+            this.Controls.Add(this.pnlCantidades);
             this.MaximumSize = new System.Drawing.Size(1068, 337);
             this.MinimumSize = new System.Drawing.Size(1068, 337);
             this.Name = "frmAltaModifCombo";

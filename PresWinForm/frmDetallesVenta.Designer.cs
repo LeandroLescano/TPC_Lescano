@@ -34,6 +34,7 @@
             this.lblID = new System.Windows.Forms.Label();
             this.lblCliente = new System.Windows.Forms.Label();
             this.dgvProductos = new System.Windows.Forms.DataGridView();
+            this.lblFecha = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -108,11 +109,22 @@
             this.dgvProductos.Size = new System.Drawing.Size(619, 362);
             this.dgvProductos.TabIndex = 6;
             // 
+            // lblFecha
+            // 
+            this.lblFecha.AutoSize = true;
+            this.lblFecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFecha.Location = new System.Drawing.Point(333, 33);
+            this.lblFecha.Name = "lblFecha";
+            this.lblFecha.Size = new System.Drawing.Size(62, 20);
+            this.lblFecha.TabIndex = 12;
+            this.lblFecha.Text = "Fecha: ";
+            // 
             // frmDetallesVenta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(640, 450);
+            this.Controls.Add(this.lblFecha);
             this.Controls.Add(this.lblImporte);
             this.Controls.Add(this.lblTotal);
             this.Controls.Add(this.lblProductos);
@@ -136,5 +148,6 @@
         private System.Windows.Forms.Label lblID;
         private System.Windows.Forms.Label lblCliente;
         private System.Windows.Forms.DataGridView dgvProductos;
+        private System.Windows.Forms.Label lblFecha;
     }
 }

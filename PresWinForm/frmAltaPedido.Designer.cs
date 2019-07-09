@@ -41,11 +41,12 @@
             this.cmbClientes = new System.Windows.Forms.ComboBox();
             this.cmbEstado = new System.Windows.Forms.ComboBox();
             this.dtpSolicitud = new System.Windows.Forms.DateTimePicker();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtObservacion = new System.Windows.Forms.TextBox();
             this.btnNuevoCliente = new System.Windows.Forms.Button();
             this.btnNuevoCombo = new System.Windows.Forms.Button();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
+            this.lblSigno = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblCombo
@@ -122,7 +123,7 @@
             // 
             this.cmbCombo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbCombo.FormattingEnabled = true;
-            this.cmbCombo.Location = new System.Drawing.Point(180, 6);
+            this.cmbCombo.Location = new System.Drawing.Point(153, 8);
             this.cmbCombo.Name = "cmbCombo";
             this.cmbCombo.Size = new System.Drawing.Size(210, 28);
             this.cmbCombo.TabIndex = 7;
@@ -133,7 +134,7 @@
             this.dtpEntrega.CustomFormat = "d \'de\' MMMM \'del\' yyyy";
             this.dtpEntrega.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpEntrega.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpEntrega.Location = new System.Drawing.Point(180, 86);
+            this.dtpEntrega.Location = new System.Drawing.Point(153, 88);
             this.dtpEntrega.Name = "dtpEntrega";
             this.dtpEntrega.Size = new System.Drawing.Size(210, 24);
             this.dtpEntrega.TabIndex = 8;
@@ -141,17 +142,18 @@
             // txtPrecio
             // 
             this.txtPrecio.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPrecio.Location = new System.Drawing.Point(180, 158);
+            this.txtPrecio.Location = new System.Drawing.Point(153, 160);
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.ReadOnly = true;
-            this.txtPrecio.Size = new System.Drawing.Size(210, 26);
+            this.txtPrecio.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txtPrecio.Size = new System.Drawing.Size(105, 26);
             this.txtPrecio.TabIndex = 9;
             // 
             // cmbClientes
             // 
             this.cmbClientes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbClientes.FormattingEnabled = true;
-            this.cmbClientes.Location = new System.Drawing.Point(180, 46);
+            this.cmbClientes.Location = new System.Drawing.Point(153, 48);
             this.cmbClientes.Name = "cmbClientes";
             this.cmbClientes.Size = new System.Drawing.Size(210, 28);
             this.cmbClientes.TabIndex = 10;
@@ -161,7 +163,7 @@
             this.cmbEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbEstado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbEstado.FormattingEnabled = true;
-            this.cmbEstado.Location = new System.Drawing.Point(180, 196);
+            this.cmbEstado.Location = new System.Drawing.Point(153, 198);
             this.cmbEstado.Name = "cmbEstado";
             this.cmbEstado.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.cmbEstado.Size = new System.Drawing.Size(210, 28);
@@ -173,41 +175,44 @@
             this.dtpSolicitud.Enabled = false;
             this.dtpSolicitud.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpSolicitud.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpSolicitud.Location = new System.Drawing.Point(180, 122);
+            this.dtpSolicitud.Location = new System.Drawing.Point(153, 124);
             this.dtpSolicitud.Name = "dtpSolicitud";
             this.dtpSolicitud.Size = new System.Drawing.Size(210, 24);
             this.dtpSolicitud.TabIndex = 12;
             // 
-            // textBox1
+            // txtObservacion
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(14, 257);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(457, 77);
-            this.textBox1.TabIndex = 13;
+            this.txtObservacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtObservacion.Location = new System.Drawing.Point(14, 257);
+            this.txtObservacion.MaxLength = 1024;
+            this.txtObservacion.Multiline = true;
+            this.txtObservacion.Name = "txtObservacion";
+            this.txtObservacion.Size = new System.Drawing.Size(430, 77);
+            this.txtObservacion.TabIndex = 13;
             // 
             // btnNuevoCliente
             // 
             this.btnNuevoCliente.AutoSize = true;
             this.btnNuevoCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNuevoCliente.Location = new System.Drawing.Point(396, 46);
+            this.btnNuevoCliente.Location = new System.Drawing.Point(369, 46);
             this.btnNuevoCliente.Name = "btnNuevoCliente";
             this.btnNuevoCliente.Size = new System.Drawing.Size(75, 30);
             this.btnNuevoCliente.TabIndex = 14;
             this.btnNuevoCliente.Text = "Nuevo";
             this.btnNuevoCliente.UseVisualStyleBackColor = true;
+            this.btnNuevoCliente.Click += new System.EventHandler(this.btnNuevoCliente_Click);
             // 
             // btnNuevoCombo
             // 
             this.btnNuevoCombo.AutoSize = true;
             this.btnNuevoCombo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNuevoCombo.Location = new System.Drawing.Point(396, 6);
+            this.btnNuevoCombo.Location = new System.Drawing.Point(369, 6);
             this.btnNuevoCombo.Name = "btnNuevoCombo";
             this.btnNuevoCombo.Size = new System.Drawing.Size(75, 30);
             this.btnNuevoCombo.TabIndex = 15;
             this.btnNuevoCombo.Text = "Nuevo";
             this.btnNuevoCombo.UseVisualStyleBackColor = true;
+            this.btnNuevoCombo.Click += new System.EventHandler(this.btnNuevoCombo_Click);
             // 
             // btnAceptar
             // 
@@ -219,6 +224,7 @@
             this.btnAceptar.TabIndex = 16;
             this.btnAceptar.Text = "Aceptar";
             this.btnAceptar.UseVisualStyleBackColor = true;
+            this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
             // btnCancelar
             // 
@@ -232,16 +238,27 @@
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
+            // lblSigno
+            // 
+            this.lblSigno.AutoSize = true;
+            this.lblSigno.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSigno.Location = new System.Drawing.Point(135, 163);
+            this.lblSigno.Name = "lblSigno";
+            this.lblSigno.Size = new System.Drawing.Size(18, 20);
+            this.lblSigno.TabIndex = 18;
+            this.lblSigno.Text = "$";
+            // 
             // frmAltaPedido
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(479, 395);
+            this.ClientSize = new System.Drawing.Size(452, 395);
+            this.Controls.Add(this.lblSigno);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.btnNuevoCombo);
             this.Controls.Add(this.btnNuevoCliente);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtObservacion);
             this.Controls.Add(this.dtpSolicitud);
             this.Controls.Add(this.cmbEstado);
             this.Controls.Add(this.cmbClientes);
@@ -278,10 +295,11 @@
         private System.Windows.Forms.ComboBox cmbClientes;
         private System.Windows.Forms.ComboBox cmbEstado;
         private System.Windows.Forms.DateTimePicker dtpSolicitud;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtObservacion;
         private System.Windows.Forms.Button btnNuevoCliente;
         private System.Windows.Forms.Button btnNuevoCombo;
         private System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.Label lblSigno;
     }
 }

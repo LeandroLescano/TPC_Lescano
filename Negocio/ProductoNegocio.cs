@@ -29,7 +29,7 @@ namespace negocioCom
                     nuevo.Marca = new Marca();
                     if (!Convert.IsDBNull(accesoDatos.Lector["MARCA"]))
                         nuevo.Marca.Nombre = accesoDatos.Lector.GetString(2);
-                    nuevo.PrecioUnitario = accesoDatos.Lector.GetDecimal(3);
+                    nuevo.PrecioUnitario = Math.Round(accesoDatos.Lector.GetDecimal(3),3);
                     nuevo.Cantidad = accesoDatos.Lector.GetDecimal(4);
                     nuevo.Categoria = new Categoria();
                     nuevo.Categoria.Nombre = accesoDatos.Lector["CATEGORIA"].ToString();

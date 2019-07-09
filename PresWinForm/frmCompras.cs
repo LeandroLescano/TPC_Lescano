@@ -47,16 +47,20 @@ namespace PresWinForm
 
         private void btnListar_Click(object sender, EventArgs e)
         {
-            dgvCompras.DataSource = negocio.listarCompras();
+            List<Compra> listado = negocio.listarCompras();
+            listado.Reverse();
+            dgvCompras.DataSource = listado;
             dgvCompras.BringToFront();
             dgvCompras.Visible = true;
             btnDetalles.Visible = true;
+            btnFinalizar.Visible = false;
         }
 
         private void btnNueva_Click(object sender, EventArgs e)
         {
             dgvCompras.Visible = false;
             btnDetalles.Visible = false;
+            btnFinalizar.Visible = true;
         }
 
         private void btnNuevoProd_Click(object sender, EventArgs e)

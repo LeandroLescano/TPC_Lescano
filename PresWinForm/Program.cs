@@ -18,7 +18,7 @@ namespace PresWinForm
             Application.SetCompatibleTextRenderingDefault(false);
             frmLogin login = new frmLogin();
             Application.Run(login);
-            if(login.DialogResult == DialogResult.OK)
+            if (login.DialogResult == DialogResult.OK)
             {
                 Application.Run(new frmPrincipal(login.local));
             }

@@ -32,6 +32,7 @@ namespace PresWinForm
             lblID.Text += ventaLocal.ID.ToString();
             lblCliente.Text += ventaLocal.Cliente;
             lblImporte.Text = ventaLocal.Importe.ToString();
+            lblFecha.Text += ventaLocal.Factura.FechaActual.ToShortDateString();
             dgvProductos.DataSource = ventaLocal.Detalle;
         }
     }

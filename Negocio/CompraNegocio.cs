@@ -15,10 +15,12 @@ namespace negocioCom
             AccesoDatosManager accesoDatos = new AccesoDatosManager();
             try
             {
-                accesoDatos.setearConsulta("INSERT INTO COMPRAS (IDPROVEEDOR, IMPORTE) VALUES(@Proveedor, @Importe) SELECT SCOPE_IDENTITY();");
+                accesoDatos.setearConsulta("INSERT INTO COMPRAS (IDPROVEEDOR, IMPORTE, FECHA) VALUES(@Proveedor, @Importe, @Fecha) SELECT SCOPE_IDENTITY();");
                 accesoDatos.Comando.Parameters.Clear();
                 accesoDatos.Comando.Parameters.AddWithValue("@Proveedor", nueva.Proveedor.ID);
+                accesoDatos.Comando.Parameters.AddWithValue("@Fecha", DateTime.Now.Date);
                 accesoDatos.Comando.Parameters.AddWithValue("@Importe", nueva.Importe.ToString().Replace(',','.'));
+                
                 accesoDatos.abrirConexion();
                 return accesoDatos.ejecutarAccionReturn();
             }
@@ -75,6 +77,7 @@ namespace negocioCom
                     nueva.Proveedor = negocioP.listarProveedor(accesoDatos.Lector.GetInt32(1));
                     listarProductosXCompra(nueva);
                     nueva.Importe = accesoDatos.Lector.GetDecimal(2);
+                    nueva.Fecha = accesoDatos.Lector.GetDateTime(3);
                     listado.Add(nueva);
                 }
                 return listado;
@@ -105,8 +108,8 @@ namespace negocioCom
                     detalle.Producto = new Producto();
                     detalle.Producto = negocioP.listarProducto(accesoDatos.Lector.GetInt32(2));
                     detalle.Cantidad = accesoDatos.Lector.GetInt32(3);
-                    detalle.PrecioUnitario = detalle.Producto.PrecioUnitario;
-                    detalle.PrecioParcial = (detalle.Cantidad * detalle.PrecioUnitario);
+                    detalle.PrecioUnitario = Math.Round(detalle.Producto.PrecioUnitario,3);
+                    detalle.PrecioParcial = Math.Round((detalle.Cantidad * detalle.PrecioUnitario),3);
                     compra.Detalle.Add(detalle);
                 }
             }

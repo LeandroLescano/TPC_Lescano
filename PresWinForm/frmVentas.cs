@@ -67,14 +67,17 @@ namespace PresWinForm
         {
             dgvVentas.Visible = false;
             btnDetalles.Visible = false;
+            btnFinalizar.Visible = true;
         }
 
         private void btnListar_Click(object sender, EventArgs e)
         {
+            btnFinalizar.Visible = false;
             VentaNegocio negocio = new VentaNegocio();
             dgvVentas.BringToFront();
             dgvVentas.Visible = true;
             listado = negocio.listarVentas();
+            listado.Reverse();
             dgvVentas.DataSource = listado;
             btnDetalles.Visible = true;
         }
@@ -154,25 +157,12 @@ namespace PresWinForm
                 {
                     VentaNegocio negocioVen = new VentaNegocio();
                     FacturaNegocio negocioFact = new FacturaNegocio();
-                    ComercioNegocio negocioCom = new ComercioNegocio();
                     ProductoNegocio negocioProd = new ProductoNegocio();
-                    Comercio comercio = new Comercio();
-                    comercio = negocioCom.listarComercio();
                     Venta nuevaVenta = new Venta();
                     nuevaVenta.Cliente = new Cliente();
                     nuevaVenta.Detalle = new List<DetalleVenta>();
                     nuevaVenta.Factura = new Factura();
-
-                    nuevaVenta.Cliente = (Cliente)cmbClientes.SelectedItem;
-                    nuevaVenta.Detalle = Detalle.ToList();
-                    nuevaVenta.Factura.Domicilio = comercio.Domicilio;
-                    nuevaVenta.Importe = Convert.ToDecimal(lblPrecioTotal.Text);
-                    nuevaVenta.Factura.Numero = negocioFact.NumeroNuevaFact();
-                    nuevaVenta.Factura.CUIT = comercio.CUIT;
-                    nuevaVenta.Factura.IngresosBrutos = comercio.IngresosBrutos;
-                    nuevaVenta.Factura.FechaInicio = comercio.FechaInicio;
-                    nuevaVenta.Factura.FechaActual = System.DateTime.Now;
-                    nuevaVenta.Factura.ListadoProductos = nuevaVenta.Detalle;
+                    llenarFactura(nuevaVenta);
                     nuevaVenta.Factura.ID = negocioFact.agregarFactura(nuevaVenta.Factura);
                     nuevaVenta.ID = negocioVen.agregarVenta(nuevaVenta);
                     foreach (DetalleVenta item in nuevaVenta.Detalle)
@@ -208,6 +198,24 @@ namespace PresWinForm
             Venta vSelect = (Venta)dgvVentas.CurrentRow.DataBoundItem;
             frmDetallesVenta detalles = new frmDetallesVenta(vSelect);
             detalles.ShowDialog();
+        }
+
+        private void llenarFactura(Venta nuevaVenta)
+        {
+            ComercioNegocio negocioCom = new ComercioNegocio();
+            FacturaNegocio negocioFact = new FacturaNegocio();
+            Comercio comercio = new Comercio();
+            comercio = negocioCom.listarComercio();
+            nuevaVenta.Cliente = (Cliente)cmbClientes.SelectedItem;
+            nuevaVenta.Detalle = Detalle.ToList();
+            nuevaVenta.Factura.Domicilio = comercio.Domicilio;
+            nuevaVenta.Importe = Convert.ToDecimal(lblPrecioTotal.Text);
+            nuevaVenta.Factura.Numero = negocioFact.NumeroNuevaFact();
+            nuevaVenta.Factura.CUIT = comercio.CUIT;
+            nuevaVenta.Factura.IngresosBrutos = comercio.IngresosBrutos;
+            nuevaVenta.Factura.FechaInicio = comercio.FechaInicio;
+            nuevaVenta.Factura.FechaActual = System.DateTime.Now;
+            nuevaVenta.Factura.ListadoProductos = nuevaVenta.Detalle;
         }
     }
 }

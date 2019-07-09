@@ -29,7 +29,9 @@ namespace PresWinForm
             PedidoNegocio negocio = new PedidoNegocio();
             try
             {
-                dgvPedidos.DataSource = negocio.listarPedidos();
+                List<Pedido> listado = negocio.listarPedidos();
+                listado.Reverse();
+                dgvPedidos.DataSource = listado;
             }
             catch (Exception ex)
             {

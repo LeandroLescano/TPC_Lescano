@@ -57,8 +57,8 @@ namespace negocioCom
                     nueva.Numero = accesoDatos.Lector.GetString(1);
                     nueva.CUIT = accesoDatos.Lector.GetString(2);
                     nueva.Domicilio = negocioD.listarDomicilio(accesoDatos.Lector.GetInt32(3));
-                    nueva.FechaActual = accesoDatos.Lector.GetDateTime(4);
-                    nueva.FechaInicio = accesoDatos.Lector.GetDateTime(5);
+                    nueva.FechaInicio = accesoDatos.Lector.GetDateTime(4);
+                    nueva.FechaActual = accesoDatos.Lector.GetDateTime(5);
                     nueva.IngresosBrutos = accesoDatos.Lector.GetString(6);
 
                 }

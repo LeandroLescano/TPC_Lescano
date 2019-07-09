@@ -34,6 +34,7 @@
             this.lblProductos = new System.Windows.Forms.Label();
             this.lblTotal = new System.Windows.Forms.Label();
             this.lblImporte = new System.Windows.Forms.Label();
+            this.lblFecha = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -108,11 +109,22 @@
             this.lblImporte.Size = new System.Drawing.Size(83, 20);
             this.lblImporte.TabIndex = 5;
             // 
+            // lblFecha
+            // 
+            this.lblFecha.AutoSize = true;
+            this.lblFecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFecha.Location = new System.Drawing.Point(333, 33);
+            this.lblFecha.Name = "lblFecha";
+            this.lblFecha.Size = new System.Drawing.Size(62, 20);
+            this.lblFecha.TabIndex = 6;
+            this.lblFecha.Text = "Fecha: ";
+            // 
             // frmDetallesCompra
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(643, 450);
+            this.Controls.Add(this.lblFecha);
             this.Controls.Add(this.lblImporte);
             this.Controls.Add(this.lblTotal);
             this.Controls.Add(this.lblProductos);
@@ -137,5 +149,6 @@
         private System.Windows.Forms.Label lblProductos;
         private System.Windows.Forms.Label lblTotal;
         private System.Windows.Forms.Label lblImporte;
+        private System.Windows.Forms.Label lblFecha;
     }
 }

@@ -79,7 +79,7 @@ namespace negocioCom
                     nueva.Cliente = negocioC.listarCliente(accesoDatos.Lector.GetInt32(1));
                     nueva.Factura = negocioF.listarFactura(accesoDatos.Lector.GetInt32(2));
                     listarProductosXVenta(nueva);
-                    nueva.Importe = accesoDatos.Lector.GetDecimal(3);
+                    nueva.Importe = Math.Round(accesoDatos.Lector.GetDecimal(3),2);
                     listado.Add(nueva);
                 }
                 return listado;
@@ -113,8 +113,8 @@ namespace negocioCom
                         detalle.Cantidad = accesoDatos.Lector.GetInt32(3);
                     if (!Convert.IsDBNull(accesoDatos.Lector["KILOS"]))
                         detalle.Kilos = accesoDatos.Lector.GetDecimal(4);
-                    detalle.PrecioUnitario = detalle.Producto.PrecioUnitario;
-                    detalle.PrecioParcial = (detalle.Cantidad * detalle.PrecioUnitario) + (detalle.PrecioUnitario * detalle.Kilos);
+                    detalle.PrecioUnitario = Math.Round(detalle.Producto.PrecioUnitario,3);
+                    detalle.PrecioParcial = Math.Round((detalle.Cantidad * detalle.PrecioUnitario) + (detalle.PrecioUnitario * detalle.Kilos),3);
                     venta.Detalle.Add(detalle);
                 }
             }
