@@ -8,6 +8,8 @@
                 nombreCliente(id);
             }
             else {
+                document.getElementById("Gridview").hidden = true;
+                document.getElementById("titulo").hidden = true;
                 document.getElementById("sinCliente").innerHTML = "Ingrese o registrese para visualizar sus pedidos."
             }
 
@@ -17,8 +19,8 @@
 
     </script>
     <asp:HiddenField ID="ClienteID" runat="server" />
-    <h2>Mis pedidos</h2>
-    <table class="table table-hover">
+    <h2 id="titulo">Mis pedidos</h2>
+    <table id="Gridview" class="table table-hover">
         <thead>
             <tr>
                 <th class="thID" scope="col">Nro</th>

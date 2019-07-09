@@ -32,6 +32,7 @@
             this.tspMenu = new System.Windows.Forms.ToolStrip();
             this.btnDetalles = new System.Windows.Forms.ToolStripButton();
             this.dgvPedidos = new System.Windows.Forms.DataGridView();
+            this.btnNuevo = new System.Windows.Forms.ToolStripButton();
             this.tspMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPedidos)).BeginInit();
             this.SuspendLayout();
@@ -43,6 +44,7 @@
             this.tspMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.tspMenu.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.tspMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnNuevo,
             this.btnDetalles});
             this.tspMenu.Location = new System.Drawing.Point(0, 0);
             this.tspMenu.Name = "tspMenu";
@@ -82,6 +84,20 @@
             this.dgvPedidos.TabIndex = 7;
             this.dgvPedidos.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvPedidos_MouseClick);
             // 
+            // btnNuevo
+            // 
+            this.btnNuevo.BackColor = System.Drawing.Color.Transparent;
+            this.btnNuevo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnNuevo.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNuevo.Image = ((System.Drawing.Image)(resources.GetObject("btnNuevo.Image")));
+            this.btnNuevo.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnNuevo.Margin = new System.Windows.Forms.Padding(5, 10, 5, 5);
+            this.btnNuevo.MergeIndex = 0;
+            this.btnNuevo.Name = "btnNuevo";
+            this.btnNuevo.Size = new System.Drawing.Size(85, 29);
+            this.btnNuevo.Text = "Nuevo";
+            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
+            // 
             // frmPedidos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -108,5 +124,6 @@
         private System.Windows.Forms.ToolStrip tspMenu;
         private System.Windows.Forms.ToolStripButton btnDetalles;
         private System.Windows.Forms.DataGridView dgvPedidos;
+        private System.Windows.Forms.ToolStripButton btnNuevo;
     }
 }

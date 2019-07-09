@@ -28,7 +28,7 @@ namespace PresWebForm
             List<Pedido> listado = new List<Pedido>();
             listado =  negocio.listarPedidosCliente(ID);
 
-            for (int i = 0; i < listado.Count; i++)
+            for (int i = listado.Count-1; i >= 0; i--)
             {
                 Tabla += "<tr>" +
                     "<th class='thID' scope='row'>" + (i + 1) + "</th>" +

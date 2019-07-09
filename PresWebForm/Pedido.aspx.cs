@@ -66,6 +66,7 @@ namespace PresWebForm
             nuevo.PrecioFinal = nuevo.Combo.Precio;
             nuevo.Estado = "A revisar";
             negocio.cargarPedido(nuevo);
+            Response.Redirect("~/misPedidos.aspx");
         }
 
         [System.Web.Services.WebMethod]

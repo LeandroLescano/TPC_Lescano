@@ -38,6 +38,8 @@ function ingresarCliente(nombre) {
             dataType: "json",
             success: function (salida) {
                 document.getElementById("sinCliente").innerHTML = "";
+                document.getElementById("titulo").hidden = false;
+                document.getElementById("Gridview").hidden = false;
                 document.getElementById("grilla").innerHTML = salida.d;
             }
         });
@@ -183,6 +185,8 @@ function IngresarSalir() {
         if (url.substring(0, 11) == "/misPedidos") {
             document.getElementById("grilla").innerHTML = "";
             document.getElementById("sinCliente").innerHTML = "Ingrese o registrese para visualizar sus pedidos."
+            document.getElementById("Gridview").hidden = true;
+            document.getElementById("titulo").hidden = true;
         }
         else {
             habilitarPedido();

@@ -66,5 +66,12 @@ namespace PresWinForm
                 }
             }
         }
+
+        private void btnNuevo_Click(object sender, EventArgs e)
+        {
+            frmAltaPedido nuevo = new frmAltaPedido();
+            nuevo.ShowDialog();
+            cargarGrilla();
+        }
     }
 }

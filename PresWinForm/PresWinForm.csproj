@@ -47,6 +47,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmAltaPedido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAltaPedido.Designer.cs">
+      <DependentUpon>frmAltaPedido.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmCantidadesProductos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -201,6 +207,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmAltaModifProducto.resx">
       <DependentUpon>frmAltaModifProducto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAltaPedido.resx">
+      <DependentUpon>frmAltaPedido.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmCantidadesProductos.resx">
       <DependentUpon>frmCantidadesProductos.cs</DependentUpon>
