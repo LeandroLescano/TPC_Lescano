@@ -13,12 +13,30 @@
                 alert("El usuario o contraseña ingresado no son válidos.");
             }
             else {
-                document.getElementById("MainContent_ClienteID").value = salida.d.substring(salida.d.indexOf(",")+1, salida.d.length);
+                document.getElementById("MainContent_ClienteID").value = salida.d.substring(salida.d.indexOf(",") + 1, salida.d.length);
                 ingresarCliente(salida.d.substring(0, salida.d.indexOf(",")));
             }
         }
     });
 };
+
+function enviarPedido() {
+    var IDCombo = document.getElementById("MainContent_ComboID").value;
+    var IDCliente = document.getElementById("MainContent_ClienteID").value
+    var Obser = document.getElementById("MainContent_txtObservaciones").value;
+    var fechEntrega = document.getElementById("MainContent_dtpFechaEntrega").value;
+    $.ajax({
+        type: "POST",
+        url: "pedido.aspx/cargarPedido",
+        data: JSON.stringify({ ComboID: IDCombo, ClienteID: IDCliente, Observaciones: Obser, Entrega: fechEntrega }),
+        async: false,
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function () {
+        }
+    });
+    $(".toast").toast('show');
+}
 
 function ingresarCliente(nombre) {
     document.getElementById("lblNombreCliente").innerText = "Bievenido " + nombre + "!";
@@ -89,7 +107,7 @@ function nombreCliente(id) {
 
 function dniDuplicado(id) {
     var objeto = document.getElementById(id)
-    var dni =objeto.value;
+    var dni = objeto.value;
     $.ajax({
         type: "POST",
         url: "pedido.aspx/dniDuplicado",
@@ -143,7 +161,7 @@ function usuarioDuplicado(id) {
 function habilitarPedido() {
     btnP = document.getElementById('MainContent_btnPedido');
     fecha = document.getElementById('MainContent_dtpFechaEntrega');
-     boton = document.getElementById("btnIngresar");
+    boton = document.getElementById("btnIngresar");
     if (fecha.value == '' || boton.innerText == "Ingresar") {
         btnP.disabled = true;
     }
@@ -249,8 +267,7 @@ function validarVacio(id) {
         objeto.className = "form-control border border-success";
         objeto.style.boxShadow = "0 0 0 0.2rem rgba(79, 162, 51, 0.25)";
     }
-    else if (valueForm == "")
-    {
+    else if (valueForm == "") {
         objeto.className = "form-control";
         objeto.style.border = "1px solid #ced4da";
         objeto.style.boxShadow = "0 0 0 0.2rem rgba(0,123,255,.25)";

@@ -53,6 +53,11 @@
 
             };
 
+
+            function popupEnviado() {
+                $(".toast").toast('show');
+            }
+
             window.onload = cargarDesc();
         });
     </script>
@@ -109,7 +114,23 @@
         <asp:TextBox ID="txtObservaciones" runat="server" Height="100px" class="form-control" TextMode="MultiLine" placeholder="Algo que desees cambiar..."></asp:TextBox>
         <br />
         <div class="col align-items-center text-right" style="padding-right: 0px;">
-            <asp:Button CssClass="btn" ID="btnPedido" runat="server" Text="Enviar pedido" OnClick="btnPedido_Click" value="" />
+            <asp:Button CssClass="btn" ID="btnPedido" runat="server" Text="Enviar pedido" OnClientClick="enviarPedido(); return false" value="" />
         </div>
     </div>
+
+
+    <%-- TOAST NOTIFICATION --%>
+    <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-delay="3000" >
+        <div class="toast-header">
+            <%--<img src="..." class="rounded mr-2" alt="...">--%>
+            <strong class="mr-auto">Felicitaciones!</strong>
+            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="toast-body">
+            Pedido realizado con éxito!.
+        </div>
+    </div>
+
 </asp:Content>

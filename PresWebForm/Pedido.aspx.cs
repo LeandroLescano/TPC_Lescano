@@ -23,6 +23,8 @@ namespace PresWebForm
             List<Combo> combosActivos = negocio.listarCombos();
             combosActivos = combosActivos.FindAll(X => X.Estado == true);
             combos = combosActivos;
+            Indicador.InnerHtml = "";
+            ContenedorImg.InnerHtml = "";
             for (int i = 1; i < combos.Count; i++)
             {
                 Indicador.InnerHtml += "</li>\n\t<li data-target='#carousel' data-slide-to='" + i + "'>";
@@ -66,7 +68,25 @@ namespace PresWebForm
             nuevo.PrecioFinal = nuevo.Combo.Precio;
             nuevo.Estado = "A revisar";
             negocio.cargarPedido(nuevo);
-            Response.Redirect("~/misPedidos.aspx");
+            //Response.Redirect("~/misPedidos.aspx");
+        }
+
+        [System.Web.Services.WebMethod]
+        public static void cargarPedido(int ComboID, int ClienteID, string Observaciones, DateTime Entrega)
+        {
+            PedidoNegocio negocio = new PedidoNegocio();
+            ComboNegocio negocioC = new ComboNegocio();
+            Pedido nuevo = new Pedido();
+            nuevo.Cliente = new Cliente();
+            nuevo.Combo = new Combo();
+            nuevo.Cliente.ID = ClienteID;
+            nuevo.Combo = negocioC.listarCombo(2);
+            nuevo.Observacion = Observaciones;
+            nuevo.FechaEntrega = Entrega;
+            nuevo.FechaSolicitud = System.DateTime.Now;
+            nuevo.PrecioFinal = nuevo.Combo.Precio;
+            nuevo.Estado = "A revisar";
+            negocio.cargarPedido(nuevo);
         }
 
         [System.Web.Services.WebMethod]

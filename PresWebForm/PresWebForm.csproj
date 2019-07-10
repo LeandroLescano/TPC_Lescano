@@ -115,7 +115,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="estilos.css" />
-    <Content Include="index.aspx" />
     <Content Include="misPedidos.aspx" />
     <Content Include="pedido.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -172,13 +171,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
-    <Compile Include="index.aspx.cs">
-      <DependentUpon>index.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="index.aspx.designer.cs">
-      <DependentUpon>index.aspx</DependentUpon>
-    </Compile>
     <Compile Include="misPedidos.aspx.cs">
       <DependentUpon>misPedidos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
