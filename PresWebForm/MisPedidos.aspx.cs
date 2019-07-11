@@ -27,19 +27,25 @@ namespace PresWebForm
             PedidoNegocio negocio = new PedidoNegocio();
             List<Pedido> listado = new List<Pedido>();
             listado =  negocio.listarPedidosCliente(ID);
-
-            for (int i = listado.Count-1; i >= 0; i--)
+            if(listado.Count == 0)
             {
-                Tabla += "<tr>" +
-                    "<th class='thID' scope='row'>" + (i + 1) + "</th>" +
-                        "<td>" + listado[i].Combo.Nombre + "</td>" + 
-                        "<td class='tdObservacion'>" + listado[i].Observacion + "</td>" +
-                        "<td>" + listado[i].FechaEntrega.ToShortDateString() + "</td>" +
-                        "<td>" + listado[i].FechaSolicitud.ToShortDateString() + "</td>" +
-                        "<td>" + "$" + listado[i].PrecioFinal + "</td>" +
-                        "<td>" + listado[i].Estado + "</td>" +
-                    "</tr>";
+                Tabla = "";
+            }
+            else
+            {
+                for (int i = listado.Count-1; i >= 0; i--)
+                {
+                    Tabla += "<tr>" +
+                        "<th class='thID' scope='row'>" + (i + 1) + "</th>" +
+                            "<td>" + listado[i].Combo.Nombre + "</td>" + 
+                            "<td class='tdObservacion'>" + listado[i].Observacion + "</td>" +
+                            "<td>" + listado[i].FechaEntrega.ToShortDateString() + "</td>" +
+                            "<td>" + listado[i].FechaSolicitud.ToShortDateString() + "</td>" +
+                            "<td>" + "$" + listado[i].PrecioFinal + "</td>" +
+                            "<td>" + listado[i].Estado + "</td>" +
+                        "</tr>";
 
+                }
             }
 
             return Tabla;

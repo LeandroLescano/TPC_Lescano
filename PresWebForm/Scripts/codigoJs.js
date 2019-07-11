@@ -32,10 +32,12 @@ function enviarPedido() {
         async: false,
         contentType: "application/json; charset=utf-8",
         dataType: "json",
-        success: function () {
+        success: function (salida) {
+            if (salida.d == "Cargado") {
+                $(".toast").toast('show');
+            }
         }
     });
-    $(".toast").toast('show');
 }
 
 function ingresarCliente(nombre) {
@@ -55,10 +57,15 @@ function ingresarCliente(nombre) {
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function (salida) {
-                document.getElementById("sinCliente").innerHTML = "";
-                document.getElementById("titulo").hidden = false;
-                document.getElementById("Gridview").hidden = false;
-                document.getElementById("grilla").innerHTML = salida.d;
+                if (salida.d != "") {
+                    document.getElementById("sinCliente").innerHTML = "";
+                    document.getElementById("titulo").hidden = false;
+                    document.getElementById("Gridview").hidden = false;
+                    document.getElementById("grilla").innerHTML = salida.d;
+                }
+                else {
+                    document.getElementById("sinCliente").innerHTML = "Aún no has realizado ningún pedido.";
+                }
             }
         });
     }
@@ -212,6 +219,7 @@ function IngresarSalir() {
     }
     else {
         $("#ModalRegistro").modal('show');
+        document.getElementById("txtUsuario").focus();
     }
 };
 

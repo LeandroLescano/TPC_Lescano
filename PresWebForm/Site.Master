@@ -55,6 +55,11 @@
                 $('#myInput').trigger('focus')
             })
 
+            $(".nav .nav-link").on("click", function () {
+                $(".nav").find(".active").removeClass("active");
+                $(this).addClass("active");
+            });
+
             $('form').keyup(function usuarioSugerido() {
                 var objeto = [document.getElementById("txtNombre"),
                 document.getElementById("txtApellido")];
@@ -70,7 +75,7 @@
         </script>
         <!-- HEADER -->
         <nav class="navbar navbar-expand-lg navbar-dark">
-            <a class="navbar-brand" href="index">Nombre del local</a>
+            <a class="navbar-brand" href="pedido">Nombre del local</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>

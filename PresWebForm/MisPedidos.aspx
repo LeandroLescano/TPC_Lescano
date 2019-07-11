@@ -4,6 +4,8 @@
     <script type="text/javascript">
         $(document).ready(function () {
             var id = $(<%=ClienteID.ClientID%>).val();
+            document.getElementById("Gridview").hidden = true;
+            document.getElementById("titulo").hidden = true;
             if (id != "") {
                 nombreCliente(id);
             }

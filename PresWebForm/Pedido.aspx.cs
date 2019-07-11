@@ -72,7 +72,7 @@ namespace PresWebForm
         }
 
         [System.Web.Services.WebMethod]
-        public static void cargarPedido(int ComboID, int ClienteID, string Observaciones, DateTime Entrega)
+        public static string cargarPedido(int ComboID, int ClienteID, string Observaciones, string Entrega)
         {
             PedidoNegocio negocio = new PedidoNegocio();
             ComboNegocio negocioC = new ComboNegocio();
@@ -80,13 +80,14 @@ namespace PresWebForm
             nuevo.Cliente = new Cliente();
             nuevo.Combo = new Combo();
             nuevo.Cliente.ID = ClienteID;
-            nuevo.Combo = negocioC.listarCombo(2);
+            nuevo.Combo = negocioC.listarCombo(ComboID+1);
             nuevo.Observacion = Observaciones;
-            nuevo.FechaEntrega = Entrega;
+            nuevo.FechaEntrega = Convert.ToDateTime(Entrega);
             nuevo.FechaSolicitud = System.DateTime.Now;
             nuevo.PrecioFinal = nuevo.Combo.Precio;
             nuevo.Estado = "A revisar";
             negocio.cargarPedido(nuevo);
+            return "Cargado";
         }
 
         [System.Web.Services.WebMethod]
