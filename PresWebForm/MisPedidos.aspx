@@ -15,7 +15,7 @@
                 document.getElementById("sinCliente").innerHTML = "Ingrese o registrese para visualizar sus pedidos."
             }
 
-            $('#alto').height($(window).height());
+            //$('#alto').height($(window).height());
 
         });
 
@@ -41,5 +41,5 @@
     <br />
     <h2 id="sinCliente"></h2>
 
-    <div id="alto"></div>
+<%--    <div id="alto"></div>--%>
 </asp:Content>

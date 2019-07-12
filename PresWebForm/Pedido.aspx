@@ -64,7 +64,7 @@
     <div class="container">
         <asp:HiddenField ID="ComboID" runat="server" />
         <asp:HiddenField ID="ClienteID" runat="server" />
-        <h3>Elegí la picada que más te guste</h3>
+        <h3 style="margin-top: .5em">Elegí la picada que más te guste</h3>
 
         <div class="row">
             <div id="carousel" class="carousel slide col-sm-12" data-ride="carousel" style="width: 500px;">
@@ -87,7 +87,7 @@
 
         <div class="row">
             <div class="col-sm-8" style="margin: auto;">
-                <h4>Descripción</h4>
+                <h4 style="margin-top: .5em">Descripción</h4>
                 <asp:Label ID="lblDescripcion" runat="server" Text=""></asp:Label>
                 <br />
                 <asp:Label ID="lblDias" runat="server" Text="La podrás retirar en:"></asp:Label>
@@ -96,7 +96,7 @@
                     <tbody>
                         <tr>
                             <td class="align-middle">
-                                <h4 style="margin-bottom: 0px;">Lo retiro el: </h4>
+                                <h4 style="margin: 0 5px 0 0;">La retiro el: </h4>
                             </td>
                             <td>
                                 <asp:TextBox ID="dtpFechaEntrega" runat="server" class="form-control" placeholder="DD/MM/YYYY" onchange="habilitarPedido()"></asp:TextBox></td>
