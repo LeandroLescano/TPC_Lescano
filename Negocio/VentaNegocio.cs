@@ -15,11 +15,12 @@ namespace negocioCom
             AccesoDatosManager accesoDatos = new AccesoDatosManager();
             try
             {
-                accesoDatos.setearConsulta("INSERT INTO VENTAS (IDCLIENTE, IDFACTURA, IMPORTE) VALUES(@Cliente, @Factura, @Importe) SELECT SCOPE_IDENTITY();");
+                accesoDatos.setearConsulta("INSERT INTO VENTAS (IDCLIENTE, IDFACTURA, IMPORTE, DESCRIPCION) VALUES(@Cliente, @Factura, @Importe, @Desc) SELECT SCOPE_IDENTITY();");
                 accesoDatos.Comando.Parameters.Clear();
                 accesoDatos.Comando.Parameters.AddWithValue("@Cliente", nueva.Cliente.ID);
                 accesoDatos.Comando.Parameters.AddWithValue("@Factura", nueva.Factura.ID);
                 accesoDatos.Comando.Parameters.AddWithValue("@Importe", nueva.Importe);
+                accesoDatos.Comando.Parameters.AddWithValue("@Desc", nueva.Descripcion);
                 accesoDatos.abrirConexion();
                 return accesoDatos.ejecutarAccionReturn();
             }
@@ -78,6 +79,8 @@ namespace negocioCom
                     nueva.ID = accesoDatos.Lector.GetInt32(0);
                     nueva.Cliente = negocioC.listarCliente(accesoDatos.Lector.GetInt32(1));
                     nueva.Factura = negocioF.listarFactura(accesoDatos.Lector.GetInt32(2));
+                    if(!Convert.IsDBNull(accesoDatos.Lector["DESCRIPCION"]))
+                        nueva.Descripcion = accesoDatos.Lector.GetString(5);
                     listarProductosXVenta(nueva);
                     nueva.Importe = Math.Round(accesoDatos.Lector.GetDecimal(3),2);
                     listado.Add(nueva);

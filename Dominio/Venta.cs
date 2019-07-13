@@ -13,5 +13,6 @@ namespace Dominio
         public Factura Factura { get; set; }
         public List<DetalleVenta> Detalle { get; set; }
         public decimal Importe { get; set; }
+        public string Descripcion { get; set; }
     }
 }

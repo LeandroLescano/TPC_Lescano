@@ -64,6 +64,7 @@ namespace PresWinForm
                 ventaCombo.Detalle = new List<DetalleVenta>();
                 ventaCombo.Cliente = local.Cliente;
                 ventaCombo.Importe = local.Combo.Precio;
+                ventaCombo.Descripcion = local.Combo.Nombre;
                 foreach (DetalleCombo item in local.Combo.Productos)
                 {
                     DetalleVenta detalle = new DetalleVenta();

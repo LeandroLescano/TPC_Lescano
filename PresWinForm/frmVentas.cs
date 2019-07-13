@@ -162,6 +162,7 @@ namespace PresWinForm
                     nuevaVenta.Cliente = new Cliente();
                     nuevaVenta.Detalle = new List<DetalleVenta>();
                     nuevaVenta.Factura = new Factura();
+                    nuevaVenta.Descripcion = "En mostrador";
                     llenarFactura(nuevaVenta);
                     nuevaVenta.Factura.ID = negocioFact.agregarFactura(nuevaVenta.Factura);
                     nuevaVenta.ID = negocioVen.agregarVenta(nuevaVenta);
