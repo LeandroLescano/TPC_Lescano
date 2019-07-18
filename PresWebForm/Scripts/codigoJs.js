@@ -185,9 +185,22 @@ function habilitarPedido() {
     boton = document.getElementById("btnIngresar");
     if (fecha.value == '' || boton.innerText == "Ingresar") {
         btnP.disabled = true;
+        document.getElementById('TextoEnviar').style.marginLeft = "33em"
+        if (fecha.value == '' && boton.innerText == "Ingresar") {
+            document.getElementById('TextoEnviar').style.marginLeft = "21em"
+            document.getElementById('TextoEnviar').innerHTML = "Debes elegir una fecha de retiro e ingresar/registrarte para poder realizar un pedido!";
+        }
+        else if (fecha.value == '') {
+            document.getElementById('TextoEnviar').style.marginLeft = "31em"
+            document.getElementById('TextoEnviar').innerHTML = "Debes elegir una fecha de retiro para poder realizar el pedido!";
+        }
+        else {
+            document.getElementById('TextoEnviar').innerHTML = "Debes ingresar/registrarte para poder realizar un pedido!";
+        }
     }
     else {
         btnP.disabled = false;
+        document.getElementById('TextoEnviar').innerHTML = "";
     }
 }
 

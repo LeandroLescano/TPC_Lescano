@@ -3,11 +3,13 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <script type="text/javascript">
         $(document).ready(function () {
+
             var id = $(<%=ClienteID.ClientID%>).val();
             if (id != "") {
                 nombreCliente(id);
             }
 
+            habilitarPedido();
             var combosJs;
             $('#carousel').on('slid.bs.carousel', function () {
                 cargarDesc();
@@ -114,6 +116,7 @@
         <asp:TextBox ID="txtObservaciones" runat="server" Height="100px" class="form-control" TextMode="MultiLine" placeholder="Algo que desees cambiar..."></asp:TextBox>
         <br />
         <div class="col align-items-center text-right" style="padding-right: 0px;">
+            <p id="TextoEnviar">Debes ingresar o registrarte para poder realizar un pedido!</p>
             <asp:Button CssClass="btn" ID="btnPedido" runat="server" Text="Enviar pedido" OnClientClick="enviarPedido(); return false" value="" />
         </div>
     </div>
