@@ -14,6 +14,14 @@
     overflow: hidden;
 }
 
+#TextoError {
+    color: white;
+    padding-right: 35em;
+    margin-bottom: 0;
+    transition-property: color;
+    transition-duration: 0.5s;
+}
+
 #MainContent_btnPedido {
     background-color: rgb(122, 22, 0);
     color: white;

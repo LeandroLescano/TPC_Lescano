@@ -10,15 +10,29 @@
         dataType: "json",
         success: function (salida) {
             if (salida.d == "No existe") {
-                alert("El usuario o contraseña ingresado no son válidos.");
+                document.getElementById("txtContraseña").className = "form-control border border-danger";
+                document.getElementById("txtUsuario").className = "form-control border border-danger";
+                document.getElementById("TextoError").style.transitionDelay = "0.1s"
+                document.getElementById("TextoError").style.transitionDuration = "0s"
+                document.getElementById("TextoError").style.color = "darkred";
+                setTimeout(restablecerIngreso, 2000);
             }
             else {
                 document.getElementById("MainContent_ClienteID").value = salida.d.substring(salida.d.indexOf(",") + 1, salida.d.length);
                 ingresarCliente(salida.d.substring(0, salida.d.indexOf(",")));
+                document.getElementById("TextoError").style.transitionDuration = "0.3s"
+                document.getElementById("TextoError").style.color = "white";
             }
         }
     });
 };
+
+function restablecerIngreso() {
+    document.getElementById("txtContraseña").className = "form-control";
+    document.getElementById("txtUsuario").className = "form-control";
+    document.getElementById("TextoError").style.transitionDuration = "0.3s"
+    document.getElementById("TextoError").style.color = "white";
+}
 
 function enviarPedido() {
     var IDCombo = document.getElementById("MainContent_ComboID").value;

@@ -180,6 +180,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
+                        <p id="TextoError">El usuario o contraseña ingresado no son válidos.</p>
                         <button type="button" id="btnCancelar" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                         <button type="button" id="btnIngresarU" class="btn btn-primary" disabled onclick="verificarUsuario(); return false;" tabindex="9">Ingresar</button>
                         <button type="button" id="btnRegistrarse" class="btn btn-primary" disabled style="display: none" tabindex="9" onclick="registrarCliente()">Registrarse</button>

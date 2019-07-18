@@ -14,9 +14,6 @@
                 document.getElementById("titulo").hidden = true;
                 document.getElementById("sinCliente").innerHTML = "Ingrese o registrese para visualizar sus pedidos."
             }
-
-            //$('#alto').height($(window).height());
-
         });
 
     </script>
