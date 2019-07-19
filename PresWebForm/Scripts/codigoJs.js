@@ -49,6 +49,8 @@ function enviarPedido() {
         success: function (salida) {
             if (salida.d == "Cargado") {
                 $(".toast").toast('show');
+                document.getElementById("MainContent_txtObservaciones").value = "";
+                document.getElementById("MainContent_dtpFechaEntrega").value = "";
             }
         }
     });
@@ -107,7 +109,10 @@ function registrarCliente() {
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (salida) {
-            ingresarCliente(salida.d);
+            var nombre = salida.d.substring(0, salida.d.indexOf(','));
+            var ID = salida.d.substring(salida.d.indexOf(',') + 1)
+            document.getElementById("MainContent_ClienteID").value = ID;
+            ingresarCliente(nombre);
         }
     });
 };

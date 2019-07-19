@@ -194,7 +194,7 @@ namespace PresWebForm
             negocioC.agregarTelefonoXCliente(nuevo, idTel);
 
             HttpContext.Current.Session.Add("ClienteID", nuevo.ID);
-            return nuevo.Nombre;
+            return nuevo.Nombre + "," + nuevo.ID;
         }
     }
 }
