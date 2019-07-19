@@ -55,7 +55,7 @@ function enviarPedido() {
 }
 
 function ingresarCliente(nombre) {
-    document.getElementById("lblNombreCliente").innerText = "Bievenido " + nombre + "!";
+    document.getElementById("lblNombreCliente").innerText = "Bienvenido " + nombre + "!";
     document.getElementById("btnIngresar").innerText = "Salir";
     var id = $("#MainContent_ClienteID").val();
     $("#ModalRegistro").modal('hide');

@@ -85,7 +85,7 @@ namespace negocioCom
 
             try
             {
-                string rutaArchivo = Path.GetFullPath("C:\\Users\\Tateh\\Documents\\Comercio\\Factura.docx");
+                string rutaArchivo = Path.GetFullPath("Factura.docx");
                 File.Copy(rutaArchivo, Path.Combine(Application.StartupPath, "Factura "+ NumeroNuevaFact() +".docx") , true);
                 filename = Path.Combine(Application.StartupPath, "Factura " + NumeroNuevaFact() + ".docx");
 

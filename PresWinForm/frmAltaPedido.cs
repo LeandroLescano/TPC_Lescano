@@ -138,6 +138,7 @@ namespace PresWinForm
                 MessageBox.Show("No hay ningún combo seleccionado", "Atención!");
             }
             Cursor.Current = Cursors.Default;
+            this.Close();
         }
 
         private void llenarFactura(Venta nuevaVenta, List<DetalleVenta> Detalle)
