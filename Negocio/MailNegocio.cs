@@ -19,7 +19,7 @@ namespace negocioCom
             AccesoDatosManager accesoDatos = new AccesoDatosManager();
             try
             {
-                accesoDatos.setearConsulta("INSERT INTO MAILS (MAIL, DESCRIPCION) VALUES ('"+nuevo.Direccion+"', '"+nuevo.Descripcion+ "') SELECT SCOPE_IDENTITY();");
+                accesoDatos.setearConsulta("INSERT INTO MAILS (MAIL, DESCRIPCION) VALUES ('" + nuevo.Direccion + "', '" + nuevo.Descripcion + "') SELECT SCOPE_IDENTITY();");
                 accesoDatos.abrirConexion();
                 return accesoDatos.ejecutarAccionReturn();
             }
@@ -75,6 +75,7 @@ namespace negocioCom
 
         public bool mandarMail(string email, Pedido pedido, string Comentario)
         {
+
             try
             {
                 MailMessage mail = new MailMessage();
@@ -99,14 +100,13 @@ namespace negocioCom
                 SmtpServer.Port = 587;
                 SmtpServer.Credentials = new System.Net.NetworkCredential("fiambreria.noreply@gmail.com", "fiambreria123");
                 SmtpServer.EnableSsl = true;
-
                 SmtpServer.Send(mail);
-                return true;
             }
-            catch (SmtpFailedRecipientException)
+            catch (SmtpException)
             {
                 return false;
             }
+            return true;
 
         }
     }

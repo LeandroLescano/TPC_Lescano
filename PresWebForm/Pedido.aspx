@@ -33,7 +33,7 @@
                 document.getElementById("<%=lblDescripcion.ClientID%>").innerText = combosJs[id].Descripcion;
                 document.getElementById("<%=lblPrecio.ClientID%>").innerText = "Precio: $" + combosJs[id].Precio;
                 document.getElementById("<%=lblDias.ClientID%>").innerText = "La podrás retirar en: " + combosJs[id].DiasAnticipo + " días";
-                document.getElementById("<%=ComboID.ClientID%>").value = id;
+                document.getElementById("<%=ComboID.ClientID%>").value = combosJs[id].ID;
 
                 var hoy = new Date();
                 var dd = String(hoy.getDate()).padStart(2, '0');

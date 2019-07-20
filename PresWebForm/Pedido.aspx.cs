@@ -80,7 +80,7 @@ namespace PresWebForm
             nuevo.Cliente = new Cliente();
             nuevo.Combo = new Combo();
             nuevo.Cliente.ID = ClienteID;
-            nuevo.Combo = negocioC.listarCombo(ComboID+1);
+            nuevo.Combo = negocioC.listarCombo(ComboID);
             nuevo.Observacion = Observaciones;
             nuevo.FechaEntrega = Convert.ToDateTime(Entrega);
             nuevo.FechaSolicitud = System.DateTime.Now;

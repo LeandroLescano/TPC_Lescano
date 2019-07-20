@@ -91,9 +91,16 @@ namespace PresWinForm
                 {
                     Cursor.Current = Cursors.Default;
                     MessageBox.Show("El mail ha sido enviado correctamente.","Confirmación");
+                    negocioPed.modificarPedido(local);
+                }
+                else
+                {
+                    if(MessageBox.Show("Hubo un error al enviar el mail.\n\nDesea modificar el pedido?", "Atención!", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        negocioPed.modificarPedido(local);
+                    }
                 }
             }
-            negocioPed.modificarPedido(local);
             Cursor.Current = Cursors.Default;
             this.Close();
         }
